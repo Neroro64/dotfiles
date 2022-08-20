@@ -1,0 +1,42 @@
+: delete
+: !mkdir helloworld
+: delete
+: cd d
+: mkdir
+: mkdir test
+: !mkdir test
+: !mkfile yo.txt
+: !"hello" | out-file -filePath test.tzt
+: ! Out-File -InputObject "hellp"  -filePath t.txt
+: !dyu
+: !du
+$ out-file
+$ echo hello world
+$ pwsh "hello" | out-file -filepath test.txt
+: !touch
+: q
+: unarchive 
+: unarchive 
+: !cd f
+: !cd f:/
+: !cd e:\\Documents\\
+: !cd e:\\
+: cd d:\
+: !cd d:\\
+: shell cd d:\\
+$ cd d:\\
+: !cd e:\\Documents\\GitHub\\
+: !cd E:\\Documents\\
+: set info size
+$ cd e:\\Documents\\
+: $cd e:\\Documents\\
+: delete
+: !mkdir imgs
+: delete
+: delete
+: delete
+: delete
+: delete
+: delete
+: on-cd
+: !on-cd

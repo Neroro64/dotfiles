@@ -1,0 +1,63 @@
+set shell pwsh
+
+# Basic Settings
+set hidden true
+# set drawbox true
+set icons true
+set ignorecase true
+set info size:time
+set scrolloff 10
+set number true
+
+# Open and edit files
+cmd open &Start-Process $env:f
+map e $nvim $env:f
+map w $pwsh
+
+# Archive Mappings
+cmd zip %7z a -r "archive.zip" $env:f
+cmd zip_7z %7z a -r "archive.7z" $env:f
+cmd unzip %7z x $env:f
+cmd list_7z %7z l $env:f
+cmd update_7z %7z u $env:f
+
+map az zip_7z
+map aZ zip
+map ax unzip
+map al list_7z
+map au update_7z
+
+# Basic Functions
+map . set hidden!
+map DD delete
+map p paste
+map <enter> open
+map r rename
+map H top
+map L bottom
+map R reload
+map C clear
+map U unselect
+
+# Copy
+cmd copy-fullPath &Set-Clipboard -Value  $env:f 
+cmd copy-dirname &Set-Clipboard -Value ( $env:f -replace "\\[^\\]+$","" )
+map y 
+map yy copy
+map yp copy-fullPath 
+map yd copy-dirname 
+
+# WindowManagement
+map t2 set ratios 1:2
+map t3 set ratios 1:2:3
+map t4 set ratios 1:2:3:4
+
+# Movement
+map gc cd c:/
+map gd cd d:/
+map ge cd e:/
+map gf cd f:/
+
+# Other
+map ? $lf -doc | less
+
