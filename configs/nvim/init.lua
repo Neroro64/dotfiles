@@ -66,7 +66,10 @@ require('packer').startup(function(use)
     plugins(use)
   end
 
-  if is_bootstrap then
+ -- Add my custom mappings
+  pcall(require, 'custom.mappings')
+
+ if is_bootstrap then
     require('packer').sync()
   end
 end)
