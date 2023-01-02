@@ -2,12 +2,14 @@
 vim.keymap.set('n', 'vA', 'ggVG', {desc = "Select all text"})
 
 -- copy selected text to + register (usually the clipboard)
-vim.keymap.set("v", "<leader>y", '"+y', {noremap = true, desc = "copy to clipboard"})
+vim.keymap.set("v", "<leader>y<cr>", '"+y', {noremap = true, desc = "copy to clipboard"})
 -- paste the clipboard content
-vim.keymap.set("v", "<leader>v", '"+p', {noremap = true,desc = "paste from clipboard"})
+vim.keymap.set({"n", "v"}, "<leader>v<cr>", '"+p', {noremap = true,desc = "paste from clipboard"})
 
 -- new buffer
 vim.keymap.set("n", "<leader>tb", function() vim.api.nvim_command('enew') end, {desc = "new buffer"})
+vim.keymap.set("n", "<leader>n", function() vim.api.nvim_command('bnext') end, {desc = "next buffer"})
+vim.keymap.set("n", "<leader>N", function() vim.api.nvim_command('bprev') end, {desc = "previous buffer"})
 -- new tabs
 vim.api.nvim_set_keymap('n', '<leader>tt', ':tabnew<cr>', {noremap = true, silent = true})
 

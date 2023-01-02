@@ -151,10 +151,18 @@ dap.configurations.python = {
 }
 --
 -- Mappings
+vim.keymap.set('n', '<leader>br', function() require('dap').restart() end, {desc = "restart"})
 vim.keymap.set('n', '<leader>bc', function() require('dap').continue() end, {desc = "continue"})
+vim.keymap.set('n', '<leader>bs', function() require('dap').close() end, {desc = "terminate"})
 vim.keymap.set('n', '<leader>bl', function() require('dap').run_last() end, {desc = "run last"})
-vim.keymap.set('n', '<leader>bb', function() require('dap').toggle_breakpoint() end, {desc = "toggle breakpoint"})
+vim.keymap.set('n', '<leader>ba', function() require('dap').run_to_cursor() end, {desc = "run to cursor"})
+
+vim.keymap.set('n', '<leader>bp', function() require('dap').toggle_breakpoint() end, {desc = "toggle breakpoint"})
+vim.keymap.set('n', '<leader>bx', function() require('dap').clear_breakpoints() end, {desc = "step into"})
+
 vim.keymap.set('n', '<leader>bn', function() require('dap').step_over() end, {desc = "step over"})
 vim.keymap.set('n', '<leader>bi', function() require('dap').step_into() end, {desc = "step into"})
 vim.keymap.set('n', '<leader>bo', function() require('dap').step_out() end, {desc = "step out"})
+vim.keymap.set('n', '<leader>bb', function() require('dap').step_back() end, {desc = "step back"})
+
 vim.keymap.set('n', '<leader>bk', function() require("dap.ui.widgets").hover() end, { silent = true, desc = "hover" })

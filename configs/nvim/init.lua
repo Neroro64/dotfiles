@@ -1,3 +1,7 @@
+if vim.g.vscode then
+  vim.g.mapleader = ' '
+  vim.g.maplocalleader = ' '
+else
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local is_bootstrap = false
@@ -60,13 +64,6 @@ require('packer').startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
-  -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
-  local has_plugins, plugins = pcall(require, 'custom.plugins')
-  if has_plugins then
-    plugins(use)
-  end
-
-
  if is_bootstrap then
     require('packer').sync()
   end
@@ -121,7 +118,8 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme onedark]]
+vim.cmd [[colorscheme dawnfox]]
+
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -350,7 +348,13 @@ local servers = {
 	 		}
   },
   -- gopls = {},
-  -- pyright = {},
+  pyright = {
+    python = {
+      analysis = {
+        extraPaths = {"./", "../"}
+      },
+    }
+  },
   -- rust_analyzer = {},
   -- tsserver = {},
 
@@ -434,6 +438,15 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+end
+
+-- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
+require('packer').startup(function(use)
+  local has_plugins, plugins = pcall(require, 'custom.plugins')
+  if has_plugins then
+    plugins(use)
+  end
+end)
 
 -- Custom Mappings
 -- Select all text
