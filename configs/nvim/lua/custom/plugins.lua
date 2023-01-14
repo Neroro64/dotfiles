@@ -32,5 +32,6 @@ return function(use)
       require "custom.dapui"
     end
   })
-  use "EdenEast/nightfox.nvim"
+  use "sainnhe/everforest"
+  use "ellisonleao/gruvbox.nvim"
 end

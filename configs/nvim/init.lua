@@ -56,7 +56,6 @@ require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
-  use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
 
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
@@ -118,8 +117,12 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme dawnfox]]
 
+-- Tab size
+vim.o.tabstop = 8
+vim.o.shiftwidth = 4
+vim.o.softtabstop = 4
+vim.o.smartindent = true
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -155,7 +158,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = 'onedark',
     component_separators = '|',
     section_separators = '',
   },
@@ -455,7 +457,7 @@ vim.keymap.set('n', 'vA', 'ggVG', {desc = "Select all text"})
 -- copy selected text to + register (usually the clipboard)
 vim.keymap.set("v", "<leader>y", '"+y', {noremap = true, desc = "copy to clipboard"})
 -- paste the clipboard content
-vim.keymap.set("v", "<leader>v", '"+p', {noremap = true,desc = "paste from clipboard"})
+vim.keymap.set("n", "<leader>v", '"+p', {noremap = true,desc = "paste from clipboard"})
 
 -- new buffer
 vim.keymap.set("n", "<leader>tb", function() vim.api.nvim_command('enew') end, {desc = "new buffer"})
@@ -506,5 +508,7 @@ vim.cmd([[
   cnoremap <expr> <Tab>   getcmdtype() =~ '[?/]' ? "<c-g>" : "<c-z>"
   cnoremap <expr> <S-Tab> getcmdtype() =~ '[?/]' ? "<c-t>" : "<S-Tab>"
 ]])
+-- 
+vim.cmd [[colorscheme everforest]]
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
