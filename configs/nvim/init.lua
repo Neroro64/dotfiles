@@ -489,7 +489,7 @@ vim.keymap.set('i', '<A-k>', "<Esc>:m .-2<CR>==gi", {desc = ""})
 vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", {desc = ""})
 vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", {desc = ""})
 
-vim.keymap.set('n', "<leader>#", "let @+ = expand('%:p') echo @+", {desc = "copy filename"})
+vim.keymap.set('n', "<leader>%", ":let @+ = expand('%:p')<cr>", {desc = "copy filename"})
 
 -- Perforce actions
 vim.keymap.set('n', "<leader>pe", ':!p4 edit -c default %:p <cr>', {desc = "p4 edit default"})
