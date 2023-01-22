@@ -457,7 +457,7 @@ vim.keymap.set('n', 'vA', 'ggVG', {desc = "Select all text"})
 -- copy selected text to + register (usually the clipboard)
 vim.keymap.set("v", "<leader>y", '"+y', {noremap = true, desc = "copy to clipboard"})
 -- paste the clipboard content
-vim.keymap.set("n", "<leader>v", '"+p', {noremap = true,desc = "paste from clipboard"})
+vim.keymap.set({"n","v"}, "<leader>p", '"+p', {noremap = true,desc = "paste from clipboard"})
 
 -- new buffer
 vim.keymap.set("n", "<leader>tb", function() vim.api.nvim_command('enew') end, {desc = "new buffer"})
@@ -489,7 +489,7 @@ vim.keymap.set('i', '<A-k>', "<Esc>:m .-2<CR>==gi", {desc = ""})
 vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", {desc = ""})
 vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", {desc = ""})
 
-vim.keymap.set('n', "<leader>%", "let @+ = expand('%:p') echo @+", {desc = "copy filename"})
+vim.keymap.set('n', "<leader>#", "let @+ = expand('%:p') echo @+", {desc = "copy filename"})
 
 -- Perforce actions
 vim.keymap.set('n', "<leader>pe", ':!p4 edit -c default %:p <cr>', {desc = "p4 edit default"})
