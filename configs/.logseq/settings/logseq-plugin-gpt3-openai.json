@@ -1,0 +1,12 @@
+{
+  "openAIKey": "",
+  "openAICompletionEngine": "gpt-3.5-turbo",
+  "chatPrompt": "Do not refer to yourself in your answers. Do not say as an AI language model...",
+  "openAITemperature": 1,
+  "openAIMaxTokens": 1000,
+  "injectPrefix": "",
+  "dalleImageSize": 1024,
+  "shortcutBlock": "",
+  "popupShortcut": "",
+  "disabled": false
+}
