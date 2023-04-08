@@ -16,4 +16,4 @@ Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
 # Alias
 Set-Alias -Name lg -Value lazygit
-Set-Alias -Name rg -Value ranger
+Set-Alias -Name rng -Value ranger

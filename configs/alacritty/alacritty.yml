@@ -673,11 +673,6 @@ cursor:
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-shell:
-  program: pwsh
-  args:
-    - -nologo
-
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
@@ -895,5 +890,3 @@ shell:
 #   - { key: PageDown,  mods: None,          action: ScrollPageDown, mode: ~Alt  }
 #   - { key: Home,      mods: Shift,         action: ScrollToTop,    mode: ~Alt  }
 #   - { key: End,       mods: Shift,         action: ScrollToBottom, mode: ~Alt  }
-
-
