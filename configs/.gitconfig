@@ -1,6 +1,6 @@
 [user]
-	name = NuoC
-	email = nuoc@kth.se
+	name = 
+	email = 
 [alias]
     lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
     lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
@@ -12,8 +12,6 @@
 	gl = config --global -l
 	se = !git rev-list --all | xargs git grep -F
 	acm = "add . ; git commit -m"
-[gui]
-	recentrepo = E:/dev/cmake-project-template
 [core]
 	longpaths = true
 [diff]
@@ -30,3 +28,8 @@
   ignoreSubmodules = dirty
 [init]
 	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

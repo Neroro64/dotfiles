@@ -34,8 +34,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 6
-    y: 6
+    x: 0
+    y: 0
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
@@ -564,6 +564,33 @@ schemes:
       cyan:    '#54ced6'
       white:   '#282a2e'
 
+  ### Embark
+  Embark: &Embark
+    primary:
+      background: '0x1e1c31'
+      foreground: '0xcbe3e7'
+    cursor:
+      text: '0x1e1c31'
+      cursor: '0xa1efd3'
+    normal:
+      black: '0x1e1c31'
+      red: '0xf48fb1'
+      green: '0xa1efd3'
+      yellow: '0xffe6b3'
+      blue: '0x91ddff'
+      magenta: '0xd4bfff'
+      cyan: '0xabf8f7'
+      white: '0xcbe3e7'
+    bright:
+      black: '0x585273'
+      red: '0xf02e6e'
+      green: '0x7fe9c3'
+      yellow: '0xf2b482'
+      blue: '0x78a8ff'
+      magenta: '0x7676ff'
+      cyan: '0x63f2f1'
+      white: '0x8a889d'
+
 ######################################################################
 ## SET THEME: Choose ONE color scheme from those in the above list. ##
 ## ###################################################################
@@ -578,8 +605,9 @@ schemes:
 # *SolarizedLight
 # *SolarizedDark
 # *TomorrowNight
+# *Embark
 
-colors: *GruvboxDark
+colors: *Embark
 
 #######################################
 ##       END OF COLOR SCHEMES        ##
@@ -645,11 +673,6 @@ cursor:
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-shell:
-  program: /usr/bin/pwsh-preview
-  args:
-    - -nologo
-
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
@@ -867,5 +890,3 @@ shell:
 #   - { key: PageDown,  mods: None,          action: ScrollPageDown, mode: ~Alt  }
 #   - { key: Home,      mods: Shift,         action: ScrollToTop,    mode: ~Alt  }
 #   - { key: End,       mods: Shift,         action: ScrollToBottom, mode: ~Alt  }
-
-
