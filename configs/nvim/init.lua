@@ -119,10 +119,14 @@ vim.wo.signcolumn = 'yes'
 vim.o.termguicolors = true
 
 -- Tab size
-vim.o.tabstop = 8
+vim.o.tabstop = 4
+vim.o.expandTab = true
 vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
 vim.o.smartindent = true
+
+-- No EOL
+vim.o.eol = false
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -350,22 +354,11 @@ local servers = {
 	 		}
   },
   -- gopls = {},
-  pyright = {
-    python = {
-      analysis = {
-        extraPaths = {"./", "../"}
-      },
-    }
-  },
+  pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
 
-  sumneko_lua = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-    },
-  },
+  powershell_es = {},
 }
 
 -- Setup neovim lua configuration
