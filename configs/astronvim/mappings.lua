@@ -31,8 +31,8 @@ return {
     ["<leader>%"] = {":let @+ = expand('%:p')<cr>", desc = "copy filename"},
 
     -- Perforce actions
-    ["<leader>pe"] = {':!p4 reopen -c default %:p <cr>', desc = "p4 edit default"},
-    ["<leader>pc"] = {':!p4 reopen %:p -c ', desc = "p4 edit <CL>"},
+    ["<leader>pe"] = {':!p4 edit -c default %:p <cr>', desc = "p4 edit default"},
+    ["<leader>pc"] = {':!p4 reopen %:p -c ', desc = "p4 reopen <CL>"},
     ["<leader>pr"] = {':!p4 revert %:p <cr>', desc = "p4 revert"},
     ["<leader>U"] = {':UndotreeToggle<CR>', desc = "Toggle UndoTree"},
   },

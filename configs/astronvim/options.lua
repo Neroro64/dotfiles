@@ -9,7 +9,7 @@ return {
     wrap = false, -- sets vim.opt.wrap
     undofile = true,
     tabstop = 4,
-    expandTab = true,
+    expandtab = true,
     eol = false
   },
   g = {
