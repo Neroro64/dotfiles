@@ -8,7 +8,7 @@ return {
   n = {
     -- second key is the lefthand side of the map
     -- mappings seen under group name "Buffer"
-    ["C-q"] = { "<C-v>", desc = "Select single character vertically" },
+    ["<C-q>"] = { "<C-v>", desc = "Select single character vertically" },
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
       function()

@@ -2,7 +2,7 @@ return {
   { "justinmk/vim-sneak", lazy = false },
   'junegunn/vim-easy-align',
   {"mbbill/undotree", lazy = false },
-  { 'embark-theme/vim', as = 'embark', lazy = false },
+  { 'embark-theme/vim', as = 'embark'},
   {
     "kylechui/nvim-surround",
     event = "VeryLazy",
@@ -12,4 +12,5 @@ return {
       })
     end
   },
+  {"rebelot/kanagawa.nvim"}
 }
