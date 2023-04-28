@@ -19,6 +19,7 @@ $PSDefaultParameterValues['Out-Default:OutVariable'] = '__'
 # Alias
 Set-Alias -Name lg -Value lazygit
 Set-Alias -Name rng -Value ranger
+Set-Alias -Name hx -Value helix
 
 # Import
 Import-Module $PSScriptRoot/scripts/_fd.psm1 -Force

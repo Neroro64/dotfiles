@@ -12,5 +12,5 @@ return {
       })
     end
   },
-  {"rebelot/kanagawa.nvim"}
+  {"rebelot/kanagawa.nvim"},
 }

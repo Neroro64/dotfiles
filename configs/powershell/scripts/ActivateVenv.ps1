@@ -2,11 +2,11 @@ function Invoke-PythonVenv
 {
 	[Alias("pyv")]
 	param (
-		[string] $VenvPath = $PSScriptRoot
+		[string] $VenvPath = (Get-Location).Path
 	)
 	
-	$pathLinux =  "$VenvPath/bin/activate.ps1"
-	$pathWin =  "$VenvPath/scripts/activate.ps1"
+	$pathLinux =  Join-Path -Path $VenvPath -ChildPath "bin/Activate.ps1"
+	$pathWin =  Join-Path -Path $VenvPath -ChildPath "scripts/Activate.ps1"
 	if (Test-Path $pathLinux)
 	{
 		. $pathLinux
@@ -15,6 +15,6 @@ function Invoke-PythonVenv
 		. $pathWin
 	} else
 	{
-		Write-Error "Activate.ps1 script not found in $VenvPath!"
+		Write-Error "Activate.ps1 script not found in $pathLinux or $pathWin!"
 	}
 }
