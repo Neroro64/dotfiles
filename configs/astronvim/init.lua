@@ -80,10 +80,29 @@ return {
     ]])
     --
     -- Temp fix for unsupported multiple client offset encoding
+    local lspconfig = require("lspconfig")
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.offsetEncoding = { "utf-16" }
-    require("lspconfig").clangd.setup({ capabilities = capabilities })
+    lspconfig.clangd.setup({ capabilities = capabilities })
 
+    -- Temp fix for E5248: Invalid character in group name
+   lspconfig.omnisharp.setup({
+    on_attach = function (client, bufnr)
+      -- https://github.com/OmniSharp/omnisharp-roslyn/issues/2483#issuecomment-1492605642
+      local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
+      for i, v in ipairs(tokenModifiers) do
+        tmp = string.gsub(v, ' ', '_')
+        tokenModifiers[i] = string.gsub(tmp, '-_', '')
+      end
+      local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
+      for i, v in ipairs(tokenTypes) do
+        tmp = string.gsub(v, ' ', '_')
+        tokenTypes[i] = string.gsub(tmp, '-_', '')
+      end
+      on_attach(client, bufnr)
+    end,
+    })
+    --
     -- Set up custom filetypes
     -- vim.filetype.add {
     --   extension = {
