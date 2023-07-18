@@ -16,6 +16,12 @@ Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 # Store previous command's output in $__
 $PSDefaultParameterValues['Out-Default:OutVariable'] = '__'
 
+# Environment variables
+$ENV:PATH+=":/root/.local/bin"
+$ENV:PATH+=":~/.local/bin"
+$ENV:MANGOHUD_CONFIG="~/.config/MangoHUD/mangohud.conf"
+
+
 # Alias
 Set-Alias -Name lg -Value lazygit
 Set-Alias -Name rng -Value ranger
