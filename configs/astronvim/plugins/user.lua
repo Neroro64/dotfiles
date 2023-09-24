@@ -1,8 +1,6 @@
 return {
-  -- { "justinmk/vim-sneak", lazy = false },
   'junegunn/vim-easy-align',
   {"mbbill/undotree", lazy = false },
-  { 'embark-theme/vim', as = 'embark'},
   {
     "kylechui/nvim-surround",
     event = "VeryLazy",
@@ -13,16 +11,8 @@ return {
     end
   },
   {"rebelot/kanagawa.nvim"},
-  {
-    "Exafunction/codeium.vim",
-    lazy = false,
-    config = function()
-      vim.keymap.set('i', '<m-i>', function () return vim.fn['codeium#Accept']() end, { expr = true })
-      vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
-      vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
-      vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
-    end
-  },
+  {"sainnhe/sonokai"},
+  {"luisiacc/gruvbox-baby"},
   {
     "phaazon/hop.nvim",
     lazy = false,
@@ -49,5 +39,5 @@ return {
         hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
       end, {remap=true})
     end
-  }
+  },
 }
