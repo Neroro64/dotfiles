@@ -22,7 +22,7 @@ separator = "│"
 [keys.normal]
 "0" = "goto_line_start"
 "+" = "goto_line_end"
-A-w" = ":write"
+"A-w" = ":write"
 
 [keys.select]
 "o" = "flip_selections"
