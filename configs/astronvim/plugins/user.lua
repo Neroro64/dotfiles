@@ -1,5 +1,5 @@
 return {
-  'junegunn/vim-easy-align',
+  {'junegunn/vim-easy-align', lazy = false},
   {"mbbill/undotree", lazy = false },
   {
     "kylechui/nvim-surround",
@@ -11,7 +11,6 @@ return {
     end
   },
   {"rebelot/kanagawa.nvim"},
-  {"sainnhe/sonokai"},
   {"luisiacc/gruvbox-baby"},
   {
     "phaazon/hop.nvim",
@@ -39,5 +38,5 @@ return {
         hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
       end, {remap=true})
     end
-  },
+  }
 }

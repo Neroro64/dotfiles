@@ -18,7 +18,7 @@ return {
   },
 
   -- Set colorscheme to use
-  colorscheme = "sonokai",
+  colorscheme = "kanagawa",
 
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
@@ -77,6 +77,12 @@ return {
       set wildcharm=<c-z>
       cnoremap <expr> <Tab>   getcmdtype() =~ '[?/]' ? "<c-g>" : "<c-z>"
       cnoremap <expr> <S-Tab> getcmdtype() =~ '[?/]' ? "<c-t>" : "<S-Tab>"
+
+      " Start interactive EasyAlign in visual mode (e.g. vipga)
+      xmap ga <Plug>(EasyAlign)
+
+      " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+      nmap ga <Plug>(EasyAlign)
     ]])
     --
     -- Temp fix for unsupported multiple client offset encoding
@@ -102,7 +108,34 @@ return {
       on_attach(client, bufnr)
     end,
     })
-    --
+
+    local dap = require('dap')
+    dap.configurations.zig = {
+    {
+      name = 'Launch',
+      type = 'codelldb',
+      request = 'launch',
+      program = function()
+        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      end,
+      cwd = '${workspaceFolder}',
+      stopOnEntry = false,
+      args = {},
+
+      -- 💀
+      -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
+      --
+      --    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+      --
+      -- Otherwise you might get the following error:
+      --
+      --    Error on launch: Failed to attach to the target process
+      --
+      -- But you should be aware of the implications:
+      -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
+      -- runInTerminal = false,
+    },
+  }
     -- Set up custom filetypes
     -- vim.filetype.add {
     --   extension = {

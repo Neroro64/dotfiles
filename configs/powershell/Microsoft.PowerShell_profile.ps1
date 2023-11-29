@@ -19,6 +19,7 @@ $PSDefaultParameterValues['Out-Default:OutVariable'] = '__'
 # Environment variables
 $ENV:PATH+=":/root/.local/bin"
 $ENV:PATH+=":~/.local/bin"
+$ENV:PATH+=":~/.cargo/bin"
 $ENV:MANGOHUD_CONFIG="~/.config/MangoHUD/mangohud.conf"
 
 
@@ -29,3 +30,7 @@ Set-Alias -Name hx -Value helix
 
 # Import
 Import-Module $PSScriptRoot/scripts/_fd.psm1 -Force
+
+
+$ENV:LD_LIBRARY_PATH += ":/home/nuoc/.local/lib/mojo"
+$ENV:PATH += ":~/.modular/pkg/packages.modular.com_mojo/bin/"

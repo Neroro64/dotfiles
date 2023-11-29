@@ -23,6 +23,9 @@ separator = "│"
 "0" = "goto_line_start"
 "+" = "goto_line_end"
 "A-w" = ":write"
+"x" = "delete_selection"
+"D" = "kill_to_line_end"
+"V" = "extend_line_below"
 
 [keys.select]
 "o" = "flip_selections"
