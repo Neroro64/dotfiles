@@ -1,7 +1,9 @@
-# Setup prompt
-oh-my-posh init pwsh --config "$PSScriptRoot/posh-themes/nordtron.omp.json" | Invoke-Expression
+# Get user name
+$user = $ENV:USER
 
-#
+# Setup prompt
+oh-my-posh init pwsh --config "$PSScriptRoot/posh-themes/tokyonight_storm.omp.json" | Invoke-Expression
+
 # ReadlineOptions
 
 Set-PSReadLineOption `
@@ -13,6 +15,7 @@ Set-PSReadLineOption `
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+
 # Store previous command's output in $__
 $PSDefaultParameterValues['Out-Default:OutVariable'] = '__'
 
@@ -22,6 +25,8 @@ $ENV:PATH+=":~/.local/bin"
 $ENV:PATH+=":~/.cargo/bin"
 $ENV:MANGOHUD_CONFIG="~/.config/MangoHUD/mangohud.conf"
 
+$ENV:LD_LIBRARY_PATH += ":/home/$user/.local/lib/mojo"
+$ENV:PATH += ":~/.modular/pkg/packages.modular.com_mojo/bin/"
 
 # Alias
 Set-Alias -Name lg -Value lazygit
@@ -30,7 +35,11 @@ Set-Alias -Name hx -Value helix
 
 # Import
 Import-Module $PSScriptRoot/scripts/_fd.psm1 -Force
+. $PSScriptRoot/scripts/Mount-SSHFS.ps1
 
+# Auto mount external drives
+function Mount-RemoteDrives{
+ Mount-SSHFS -ConfigName honeypot -RemoteDir /home/homie/lake/vattern -MountPoint /home/$user/Network/HoneyPot.Lake.Vattern
+ Mount-SSHFS -ConfigName honeypot -RemoteDir /home/homie/lake/vanern -MountPoint /home/$user/Network/HoneyPot.Lake.Vanern
+}
 
-$ENV:LD_LIBRARY_PATH += ":/home/nuoc/.local/lib/mojo"
-$ENV:PATH += ":~/.modular/pkg/packages.modular.com_mojo/bin/"
