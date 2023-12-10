@@ -4,8 +4,8 @@ BeforeAll {
 
 Describe "Verify correct parameter bindings" {
   It "Can invoke command with UseConfig ParameterSet" {
-    # Prepare
-    Mock Invoke-Expression -MockWith {} -Verifiable -ParameterFilter {$Command -eq "sshfs -o Ciphers=aes128-ctr -o cache=no testConfig:/home/test /root"}
+    # Arrange
+    Mock Invoke-Expression -MockWith {} -Verifiable -ParameterFilter { $Command -eq "sshfs -o Ciphers=aes128-ctr -o cache=no testConfig:/home/test /root" }
 
     # Action
     Mount-SSHFS -ConfigName:testConfig -RemoteDir:"/home/test" -MountPoint:"/root"
@@ -15,7 +15,7 @@ Describe "Verify correct parameter bindings" {
   }
 
   It "Can invoke command with Manual ParameterSet" {
-    # Prepare
+    # Arrange
     Mock Invoke-Expression -MockWith {} -Verifiable -ParameterFilter {$Command -eq "sshfs -o Ciphers=aes128-ctr -o cache=no user@host.com:/home/test /root"}
 
     # Action

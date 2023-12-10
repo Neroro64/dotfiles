@@ -1,0 +1,33 @@
+# Exclude patterns
+
+- .thumbnails/***
+- .cache/***
+- node_modules/***
+- env/***
+- Network/***
+- Downloads/***
+
+- temp/***
+- tmp/***
+- /dev/*
+- /proc/*
+- /sys/*
+- /tmp/*
+- /run/*
+- /mnt/*
+- /media/*
+- /lost+found
+
+# Include patterns
+
++ /Documents/***
++ /bin/*
++ /boot/*
++ /efi/*
++ /home/*
++ /lib/*
++ /lib64/*
++ /opt/*
++ /root/*
++ /usr/*
++ /var/*

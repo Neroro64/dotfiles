@@ -1,3 +1,26 @@
+<#
+  .SYNOPSIS
+  Mounts a remote directory using SSHFS.
+
+  .DESCRIPTION
+  This function mounts a remote directory using SSHFS. It can be used either with a configuration name or by specifying the user and hostname manually.
+
+  .PARAMETER ConfigName
+  The name of the SSHFS configuration to use. This parameter is mutually exclusive with the Manual parameter set.
+
+  .PARAMETER User
+  The username to use for SSHFS. This parameter is mutually exclusive with the ConfigName parameter.
+
+  .PARAMETER HostName
+  The hostname to use for SSHFS. This parameter is mutually exclusive with the ConfigName parameter.
+
+  .PARAMETER RemoteDir
+  The remote directory to mount.
+
+  .PARAMETER MountPoint
+  The local mount point directory.
+
+  #>
 function Mount-SSHFS {
   param(
     [Parameter(ParameterSetName = "UseConfig")]
@@ -17,6 +40,16 @@ function Mount-SSHFS {
   Invoke-Expression "sshfs -o Ciphers=aes128-ctr -o cache=no $RemoteLocation $MountPoint"
 }
 
+<#
+.SYNOPSIS
+Dismount-SSHFS function is used to unmount an SSHFS directory.
+
+.PARAMETER MountPoint
+The path to the mounted SSHFS directory
+
+.EXAMPLE
+Dismount-SSHFS -MountPoint '/path/to/mountpoint'
+#>
 function Dismount-SSHFS {
   param(
     [string] $MountPoint

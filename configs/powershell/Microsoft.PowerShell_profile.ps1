@@ -39,7 +39,7 @@ Import-Module $PSScriptRoot/scripts/_fd.psm1 -Force
 
 # Auto mount external drives
 function Mount-RemoteDrives{
- Mount-SSHFS -ConfigName honeypot -RemoteDir /home/homie/lake/vattern -MountPoint /home/$user/Network/HoneyPot.Lake.Vattern
- Mount-SSHFS -ConfigName honeypot -RemoteDir /home/homie/lake/vanern -MountPoint /home/$user/Network/HoneyPot.Lake.Vanern
+ Mount-SSHFS -ConfigName honeypot -RemoteDir /home/homie/Lake/Vattern -MountPoint /home/$user/Network/HoneyPot.Lake.Vattern
+ Mount-SSHFS -ConfigName honeypot -RemoteDir /home/homie/Lake/Vanern -MountPoint /home/$user/Network/HoneyPot.Lake.Vanern
 }
 
