@@ -34,7 +34,7 @@ function Sync-Backup {
         [string] $DestinationDir,
         [string] $FilterPath,
         [string[]] $Exclude = @("**.cache", "**.part", "**.qcow2", "**Trash"),
-        [string[]] $Options = @("--archive", "--verbose", "--delete", "--progress", "-H")
+        [string[]] $Options = @("--archive", "--quiet", "--delete", "--progress", "-H")
     )
     $ErrorActionPreference = "Stop"
     $excludeStr = ($Exclude | ForEach-Object { "--exclude $_" }) -join " "
