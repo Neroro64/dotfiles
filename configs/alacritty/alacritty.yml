@@ -708,7 +708,7 @@ cursor:
 # Entries in `shell.args` are passed unmodified as arguments to the shell.
 #
 shell:
-  program: /usr/bin/pwsh-preview
+  program: /usr/bin/pwsh
   args:
     - -nologo
 # Default:

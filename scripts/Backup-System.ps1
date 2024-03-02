@@ -2,8 +2,8 @@
 . /home/nuoc/.config/powershell/scripts/New-rdiffBackup.ps1
 . /home/nuoc/.config/powershell/scripts/Mount-SSHFS.ps1
 
-# Sync-Backup -SourceDir:"/" -DestinationDir /mnt/f/Backup/sys.bak/ -FilterPath /home/nuoc/.dotfiles/scripts/backup.filter
-# New-rdiffBackup -SourceDir /mnt/f/Backup/sys.bak/ -DestinationDir /mnt/f/Backup/archive/
+Sync-Backup -SourceDir:"/" -DestinationDir /mnt/f/Backup/sys.bak/ -FilterPath /home/nuoc/.dotfiles/scripts/backup.filter
+New-rdiffBackup -SourceDir /mnt/f/Backup/sys.bak/ -DestinationDir /mnt/f/Backup/archive/
 
 try {
 # Sync to remote drive if available

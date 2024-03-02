@@ -28,6 +28,7 @@ $ENV:MANGOHUD_CONFIG="~/.config/MangoHUD/mangohud.conf"
 $ENV:LD_LIBRARY_PATH += ":/home/$user/.local/lib/mojo"
 $ENV:PATH += ":~/.modular/pkg/packages.modular.com_mojo/bin/"
 $ENV:PATH += ":~/.bun/bin"
+$ENV:MOJO_PYTHON_LIBRARY="/usr/lib/libpython3.11.so"
 
 # Alias
 Set-Alias -Name lg -Value lazygit

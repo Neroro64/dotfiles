@@ -70,7 +70,7 @@ history = 100000
 
 [shell]
 args = ["-nologo"]
-program = "/usr/bin/pwsh-preview"
+program = "/usr/bin/pwsh"
 
 [window]
 decorations = "none"
