@@ -18,7 +18,7 @@ return {
   },
 
   -- Set colorscheme to use
-  colorscheme = "kanagawa",
+  colorscheme = "tokyodark",
 
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
@@ -87,8 +87,10 @@ return {
     --
     -- Temp fix for unsupported multiple client offset encoding
     local lspconfig = require("lspconfig")
+    local util = require 'lspconfig.util'
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.offsetEncoding = { "utf-16" }
+    -- setup clangd
     lspconfig.clangd.setup({ capabilities = capabilities })
 
     -- Temp fix for E5248: Invalid character in group name
