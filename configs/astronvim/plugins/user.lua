@@ -11,10 +11,7 @@ return {
     end
   },
   {"rebelot/kanagawa.nvim"},
-  {
-    "tiagovla/tokyodark.nvim",
-    lazy = false
-  },
+  {"sainnhe/gruvbox-material"},
   {
     "phaazon/hop.nvim",
     lazy = false,
