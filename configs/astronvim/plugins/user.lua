@@ -10,6 +10,7 @@ return {
       })
     end
   },
+  {"czheo/mojo.vim", lazy = false},
   {"rebelot/kanagawa.nvim"},
   {"sainnhe/gruvbox-material"},
   {

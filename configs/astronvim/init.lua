@@ -92,6 +92,8 @@ return {
     capabilities.offsetEncoding = { "utf-16" }
     -- setup clangd
     lspconfig.clangd.setup({ capabilities = capabilities })
+    lspconfig.powershell_es.setup({ capabilities = capabilities })
+    lspconfig.mojo.setup({ capabilities = capabilities })
 
     -- Temp fix for E5248: Invalid character in group name
    lspconfig.omnisharp.setup({
