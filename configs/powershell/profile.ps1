@@ -2,7 +2,12 @@
 $user = $ENV:USER
 
 # Setup prompt
-oh-my-posh init pwsh --config "$PSScriptRoot/posh-themes/tokyonight_storm.omp.json" | Invoke-Expression
+try {
+	oh-my-posh init pwsh --config "$PSScriptRoot/posh-themes/tokyonight_storm.omp.json" | Invoke-Expression
+}
+catch {
+	Write-Warning "Oh-My-Posh is not installed. Skipping."
+}
 
 # ReadlineOptions
 
@@ -48,12 +53,3 @@ function Mount-RemoteDrives{
  Mount-SSHFS -ConfigName honeypot -RemoteDir /home/homie/Lake/Vattern -MountPoint /home/$user/Network/HoneyPot.Lake.Vattern
  Mount-SSHFS -ConfigName honeypot -RemoteDir /home/homie/Lake/Vanern -MountPoint /home/$user/Network/HoneyPot.Lake.Vanern
 }
-
-# posh-git
-try {
- Import-Module posh-git
-}
-catch {
-  Install-Module posh-git -Scope:CurrentUser -Force
-}
-
