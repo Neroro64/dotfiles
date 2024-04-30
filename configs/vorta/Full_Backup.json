@@ -1,0 +1,286 @@
+{
+    "id": 1,
+    "name": "FullSystemBackup",
+    "added_at": "2024-04-30 00:17:33.703279",
+    "repo": {
+        "url": "homie@honeypot:~/Lake/Vanern/Backups/7840u",
+        "name": "Thinkpad",
+        "added_at": "2024-04-30 00:18:01.007307",
+        "encryption": "repokey-blake2",
+        "unique_size": 0,
+        "unique_csize": null,
+        "total_size": 0,
+        "total_unique_chunks": 0,
+        "create_backup_cmd": "",
+        "extra_borg_arguments": ""
+    },
+    "ssh_key": "id_ed25519",
+    "compression": "lz4",
+    "exclude_patterns": ".thumbnails/***\n.cache/***\nnode_modules/***\nenv/***\nNetwork/***\nDownloads/***\ntemp/***\ntmp/***\n/dev/*\n/proc/*\n/sys/*\n/tmp/*\n/run/*\n/mnt/*\n/media/*\n/lost+found",
+    "exclude_if_present": null,
+    "schedule_mode": "off",
+    "schedule_interval_count": 1,
+    "schedule_interval_unit": "weeks",
+    "schedule_fixed_hour": 3,
+    "schedule_fixed_minute": 42,
+    "schedule_interval_hours": 3,
+    "schedule_interval_minutes": 42,
+    "schedule_make_up_missed": true,
+    "validation_on": true,
+    "validation_weeks": 3,
+    "prune_on": false,
+    "prune_hour": 2,
+    "prune_day": 7,
+    "prune_week": 4,
+    "prune_month": 6,
+    "prune_year": 2,
+    "prune_keep_within": "10H",
+    "new_archive_name": "{hostname}-{now:%Y-%m-%d-%H%M%S}",
+    "prune_prefix": "{hostname}-",
+    "pre_backup_cmd": "",
+    "post_backup_cmd": "",
+    "dont_run_on_metered_networks": true,
+    "SourceFileModel": [
+        {
+            "dir": "/bin",
+            "dir_size": 663712834,
+            "dir_files_count": 2702,
+            "path_isdir": true,
+            "profile": 1,
+            "added_at": "2024-04-29 22:32:12.855162"
+        },
+        {
+            "dir": "/boot",
+            "dir_size": 413252362,
+            "dir_files_count": 18,
+            "path_isdir": true,
+            "profile": 1,
+            "added_at": "2024-04-29 22:32:26.786698"
+        },
+        {
+            "dir": "/etc",
+            "dir_size": 6597430,
+            "dir_files_count": 1022,
+            "path_isdir": true,
+            "profile": 1,
+            "added_at": "2024-04-29 22:33:32.541341"
+        },
+        {
+            "dir": "/home/nuoc",
+            "dir_size": 8494520893,
+            "dir_files_count": 54029,
+            "path_isdir": true,
+            "profile": 1,
+            "added_at": "2024-04-29 22:33:51.070611"
+        },
+        {
+            "dir": "/lib",
+            "dir_size": 3956550852,
+            "dir_files_count": 79696,
+            "path_isdir": true,
+            "profile": 1,
+            "added_at": "2024-04-29 22:34:09.662299"
+        },
+        {
+            "dir": "/lib64",
+            "dir_size": 3956550852,
+            "dir_files_count": 79696,
+            "path_isdir": true,
+            "profile": 1,
+            "added_at": "2024-04-29 22:34:18.274441"
+        },
+        {
+            "dir": "/opt",
+            "dir_size": 805261919,
+            "dir_files_count": 1201,
+            "path_isdir": true,
+            "profile": 1,
+            "added_at": "2024-04-29 22:34:27.314626"
+        },
+        {
+            "dir": "/usr",
+            "dir_size": 8928630221,
+            "dir_files_count": 223743,
+            "path_isdir": true,
+            "profile": 1,
+            "added_at": "2024-04-29 22:35:04.232531"
+        },
+        {
+            "dir": "/var",
+            "dir_size": 2604596205,
+            "dir_files_count": 35136,
+            "path_isdir": true,
+            "profile": 1,
+            "added_at": "2024-04-29 22:35:11.985105"
+        }
+    ],
+    "SchemaVersion": {
+        "id": 1,
+        "version": 22,
+        "changed_at": "2024-04-30 00:17:33.384016"
+    },
+    "WifiSettingModel": [
+        {
+            "id": 1,
+            "ssid": "192.168.255.255",
+            "last_connected": "2024-04-29 20:15:23",
+            "allowed": true,
+            "profile": 1
+        }
+    ],
+    "SettingsModel": [
+        {
+            "key": "enable_notifications",
+            "value": true,
+            "str_value": "",
+            "label": "Display notifications when background tasks fail",
+            "group": "Notifications",
+            "tooltip": "",
+            "type": "checkbox"
+        },
+        {
+            "key": "enable_notifications_success",
+            "value": false,
+            "str_value": "",
+            "label": "Notify about successful background tasks",
+            "group": "Notifications",
+            "tooltip": "",
+            "type": "checkbox"
+        },
+        {
+            "key": "autostart",
+            "value": false,
+            "str_value": "",
+            "label": "Automatically start Vorta at login",
+            "group": "Startup",
+            "tooltip": "Add Vorta to the systems autostart list",
+            "type": "checkbox"
+        },
+        {
+            "key": "foreground",
+            "value": true,
+            "str_value": "",
+            "label": "Show main window of Vorta on launch",
+            "group": "Startup",
+            "tooltip": "Make Vorta appear on screen instead of minimizing to system tray",
+            "type": "checkbox"
+        },
+        {
+            "key": "get_srcpath_datasize",
+            "value": true,
+            "str_value": "",
+            "label": "Get statistics of file/folder when added",
+            "group": "Information",
+            "tooltip": "When adding a new source, calculate its size and the number of files.",
+            "type": "checkbox"
+        },
+        {
+            "key": "enable_fixed_units",
+            "value": false,
+            "str_value": "",
+            "label": "Use the same unit of measurement for archive sizes",
+            "group": "Information",
+            "tooltip": "When enabled, all archive sizes will use the same unit of measurement, such as  KB or MB. This can make archive sizes easier to compare.",
+            "type": "checkbox"
+        },
+        {
+            "key": "use_system_keyring",
+            "value": true,
+            "str_value": "",
+            "label": "Store repository passwords in system keychain, if available",
+            "group": "Security",
+            "tooltip": "Otherwise Vorta's configuration database stores the password in plaintext.",
+            "type": "checkbox"
+        },
+        {
+            "key": "override_mount_permissions",
+            "value": false,
+            "str_value": "",
+            "label": "Try to replace file permissions when mounting an archive",
+            "group": "Security",
+            "tooltip": "Set owner to current user and umask to 0277",
+            "type": "checkbox"
+        },
+        {
+            "key": "previous_profile_id",
+            "value": false,
+            "str_value": "1",
+            "label": "Previously selected profile",
+            "group": "",
+            "tooltip": "",
+            "type": "internal"
+        },
+        {
+            "key": "previous_window_width",
+            "value": false,
+            "str_value": "1000",
+            "label": "Previous window width",
+            "group": "",
+            "tooltip": "",
+            "type": "internal"
+        },
+        {
+            "key": "previous_window_height",
+            "value": false,
+            "str_value": "600",
+            "label": "Previous window height",
+            "group": "",
+            "tooltip": "",
+            "type": "internal"
+        },
+        {
+            "key": "diff_files_display_mode",
+            "value": false,
+            "str_value": "0",
+            "label": "Diff dialog display mode",
+            "group": "",
+            "tooltip": "",
+            "type": "internal"
+        },
+        {
+            "key": "extract_files_display_mode",
+            "value": false,
+            "str_value": "0",
+            "label": "Extract dialog display mode",
+            "group": "",
+            "tooltip": "",
+            "type": "internal"
+        },
+        {
+            "key": "sourcetab_sort_column",
+            "value": false,
+            "str_value": "0",
+            "label": "Source Tab Sort Column",
+            "group": "",
+            "tooltip": "",
+            "type": "internal"
+        },
+        {
+            "key": "sourcetab_sort_order",
+            "value": false,
+            "str_value": "0",
+            "label": "Source Tab Sort Order",
+            "group": "",
+            "tooltip": "",
+            "type": "internal"
+        },
+        {
+            "key": "enable_background_question",
+            "value": true,
+            "str_value": "",
+            "label": "If the system tray isn't available, ask whether to continue in the background on exit",
+            "group": "",
+            "tooltip": "",
+            "type": "checkbox"
+        },
+        {
+            "key": "disable_background_state",
+            "value": true,
+            "str_value": "",
+            "label": "Previous background exit button state",
+            "group": "",
+            "tooltip": "",
+            "type": "internal"
+        }
+    ]
+}

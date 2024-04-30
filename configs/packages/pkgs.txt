@@ -24,3 +24,5 @@ rdiff-backup
 ripgrep
 tmux
 visual-studio-code-bin
+python-pip
+python-hatch
