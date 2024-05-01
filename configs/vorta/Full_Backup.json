@@ -1,24 +1,24 @@
 {
-    "id": 1,
+    "id": 2,
     "name": "FullSystemBackup",
     "added_at": "2024-04-30 00:17:33.703279",
     "repo": {
-        "url": "homie@honeypot:~/Lake/Vanern/Backups/7840u",
-        "name": "Thinkpad",
-        "added_at": "2024-04-30 00:18:01.007307",
+        "url": "homie@honeypot:~/Lake/Vanern/Backups/Ryzen7950x",
+        "name": "Honeypot",
+        "added_at": "2024-05-01 13:06:26.288801",
         "encryption": "repokey-blake2",
-        "unique_size": 0,
+        "unique_size": null,
         "unique_csize": null,
-        "total_size": 0,
-        "total_unique_chunks": 0,
+        "total_size": null,
+        "total_unique_chunks": null,
         "create_backup_cmd": "",
         "extra_borg_arguments": ""
     },
-    "ssh_key": "id_ed25519",
+    "ssh_key": null,
     "compression": "lz4",
-    "exclude_patterns": ".thumbnails/***\n.cache/***\nnode_modules/***\nenv/***\nNetwork/***\nDownloads/***\ntemp/***\ntmp/***\n/dev/*\n/proc/*\n/sys/*\n/tmp/*\n/run/*\n/mnt/*\n/media/*\n/lost+found",
+    "exclude_patterns": "fm:*/.thumbnails/***\nfm:*/.cache/***\nfm:*/node_modules/***\nfm:*/env/***\nfm:*/Network/***\nfm:*/Downloads/***\nfm:*/temp/***\nfm:*/tmp/***\nfm:/dev/*\nfm:/proc/*\nfm:/sys/*\nfm:/tmp/*\nfm:/run/*\nfm:/mnt/*\nfm:/media/*\nfm:/lost+found",
     "exclude_if_present": null,
-    "schedule_mode": "off",
+    "schedule_mode": "interval",
     "schedule_interval_count": 1,
     "schedule_interval_unit": "weeks",
     "schedule_fixed_hour": 3,
@@ -40,13 +40,14 @@
     "pre_backup_cmd": "",
     "post_backup_cmd": "",
     "dont_run_on_metered_networks": true,
+    "password": "009090000",
     "SourceFileModel": [
         {
             "dir": "/bin",
             "dir_size": 663712834,
             "dir_files_count": 2702,
             "path_isdir": true,
-            "profile": 1,
+            "profile": 2,
             "added_at": "2024-04-29 22:32:12.855162"
         },
         {
@@ -54,7 +55,7 @@
             "dir_size": 413252362,
             "dir_files_count": 18,
             "path_isdir": true,
-            "profile": 1,
+            "profile": 2,
             "added_at": "2024-04-29 22:32:26.786698"
         },
         {
@@ -62,7 +63,7 @@
             "dir_size": 6597430,
             "dir_files_count": 1022,
             "path_isdir": true,
-            "profile": 1,
+            "profile": 2,
             "added_at": "2024-04-29 22:33:32.541341"
         },
         {
@@ -70,7 +71,7 @@
             "dir_size": 8494520893,
             "dir_files_count": 54029,
             "path_isdir": true,
-            "profile": 1,
+            "profile": 2,
             "added_at": "2024-04-29 22:33:51.070611"
         },
         {
@@ -78,7 +79,7 @@
             "dir_size": 3956550852,
             "dir_files_count": 79696,
             "path_isdir": true,
-            "profile": 1,
+            "profile": 2,
             "added_at": "2024-04-29 22:34:09.662299"
         },
         {
@@ -86,7 +87,7 @@
             "dir_size": 3956550852,
             "dir_files_count": 79696,
             "path_isdir": true,
-            "profile": 1,
+            "profile": 2,
             "added_at": "2024-04-29 22:34:18.274441"
         },
         {
@@ -94,7 +95,7 @@
             "dir_size": 805261919,
             "dir_files_count": 1201,
             "path_isdir": true,
-            "profile": 1,
+            "profile": 2,
             "added_at": "2024-04-29 22:34:27.314626"
         },
         {
@@ -102,7 +103,7 @@
             "dir_size": 8928630221,
             "dir_files_count": 223743,
             "path_isdir": true,
-            "profile": 1,
+            "profile": 2,
             "added_at": "2024-04-29 22:35:04.232531"
         },
         {
@@ -110,22 +111,22 @@
             "dir_size": 2604596205,
             "dir_files_count": 35136,
             "path_isdir": true,
-            "profile": 1,
+            "profile": 2,
             "added_at": "2024-04-29 22:35:11.985105"
         }
     ],
     "SchemaVersion": {
         "id": 1,
         "version": 22,
-        "changed_at": "2024-04-30 00:17:33.384016"
+        "changed_at": "2024-05-01 13:04:58.448782"
     },
     "WifiSettingModel": [
         {
-            "id": 1,
+            "id": 2,
             "ssid": "192.168.255.255",
-            "last_connected": "2024-04-29 20:15:23",
+            "last_connected": "2024-05-01 11:31:15",
             "allowed": true,
-            "profile": 1
+            "profile": 2
         }
     ],
     "SettingsModel": [
@@ -204,7 +205,7 @@
         {
             "key": "previous_profile_id",
             "value": false,
-            "str_value": "1",
+            "str_value": "2",
             "label": "Previously selected profile",
             "group": "",
             "tooltip": "",
@@ -275,7 +276,7 @@
         },
         {
             "key": "disable_background_state",
-            "value": true,
+            "value": false,
             "str_value": "",
             "label": "Previous background exit button state",
             "group": "",
