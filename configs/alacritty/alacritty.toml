@@ -69,8 +69,7 @@ y = 1
 history = 100000
 
 [shell]
-args = ["-nologo"]
-program = "/usr/bin/pwsh"
+program = "/usr/bin/zsh"
 
 [window]
 decorations = "none"
