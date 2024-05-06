@@ -2,10 +2,11 @@
 $user = $ENV:USER
 
 # Setup prompt
-try {
+try
+{
 	oh-my-posh init pwsh --config "$PSScriptRoot/posh-themes/tokyonight_storm.omp.json" | Invoke-Expression
-}
-catch {
+} catch
+{
 	Write-Warning "Oh-My-Posh is not installed. Skipping."
 }
 
@@ -39,6 +40,9 @@ $ENV:PATH += ":/home/$user/.modular/pkg/packages.modular.com_nightly_mojo/bin/"
 $ENV:PATH += ":/home/$user/.modular/pkg/packages.modular.com_max/bin/"
 $ENV:MOJO_PYTHON_LIBRARY="/usr/lib/libpython3.11.so"
 
+# Npm stuff
+$ENV:npm_config_prefix="$HOME/.local"
+
 # Alias
 Set-Alias -Name lg -Value lazygit
 Set-Alias -Name rng -Value ranger
@@ -49,7 +53,8 @@ Import-Module $PSScriptRoot/scripts/_fd.psm1 -Force
 . $PSScriptRoot/scripts/Mount-SSHFS.ps1
 
 # Auto mount external drives
-function Mount-RemoteDrives{
+function Mount-RemoteDrives
+{
  Mount-SSHFS -ConfigName honeypot -RemoteDir /home/homie/Lake/Vattern -MountPoint /home/$user/Network/HoneyPot.Lake.Vattern
  Mount-SSHFS -ConfigName honeypot -RemoteDir /home/homie/Lake/Vanern -MountPoint /home/$user/Network/HoneyPot.Lake.Vanern
 }
