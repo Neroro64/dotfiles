@@ -62,7 +62,6 @@ return {
         ["<Leader>b"] = { desc = "Buffers" },
 
         -- My Custom Mappings
-        ["<C-q>"] = { "<C-v>", desc = "Select single character vertically" },
         ["vA"] = { "ggVG", desc = "Select all text" },
         ["<leader>p"] = { '"+p', desc = "paste from clipboard" },
         ["0"] = { "^", desc = "Jump to first non-blank char" },
@@ -74,6 +73,43 @@ return {
         ["<leader>pe"] = { ":!p4 edit -c default %:p <cr>", desc = "p4 edit default" },
         ["<leader>pc"] = { ":!p4 reopen %:p -c ", desc = "p4 reopen <CL>" },
         ["<leader>pr"] = { ":!p4 revert %:p <cr>", desc = "p4 revert" },
+
+        -- Harpoon
+        ["<leader>aa"] = { function() require("harpoon"):list():add() end, desc = "Add current buffer to Harpoon" },
+        ["<leader>ad"] = {
+          function() require("harpoon"):list():remove() end,
+          desc = "Remove current buffer to Harpoon",
+        },
+        ["<C-e>"] = {
+          function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end,
+          desc = "Toggle Harpoon quick menu",
+        },
+        ["<C-a1>"] = { function() require("harpoon"):list():select(1) end, desc = "Go to first buffer in Harpoon" },
+        ["<C-a2>"] = { function() require("harpoon"):list():select(2) end, desc = "Go to second buffer in Harpoon" },
+        ["<C-a3>"] = { function() require("harpoon"):list():select(3) end, desc = "Go to third buffer in Harpoon" },
+        ["<C-a4>"] = { function() require("harpoon"):list():select(4) end, desc = "Go to fourth buffer in Harpoon" },
+        --
+        -- Toggle previous & next buffers stored within Harpoon list
+        ["<C-S-P>"] = { function() require("harpoon"):list():prev() end, desc = "Go to previous buffer in Harpoon" },
+        ["<C-S-N>"] = { function() require("harpoon"):list():next() end, desc = "Go to next buffer in Harpoon" },
+
+        -- Zen mode
+        ["<leader>r"] = {
+          function()
+            require("zen-mode").setup {
+              window = {
+                width = 80,
+                options = {},
+              },
+            }
+            require("zen-mode").toggle()
+            vim.wo.wrap = false
+            vim.wo.number = false
+            vim.wo.rnu = false
+            vim.opt.colorcolumn = "0"
+          end,
+          desc = "Toggle Zen Mode",
+        },
       },
       t = {
         -- setting a mapping to false will disable it
