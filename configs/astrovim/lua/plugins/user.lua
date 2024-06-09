@@ -77,4 +77,42 @@ return {
     config = function() require("nordic").load() end,
   },
   { "folke/zen-mode.nvim" },
+  {
+    "Neroro64/codecompanion.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim", -- Optional
+      {
+        "stevearc/dressing.nvim", -- Optional: Improves the default Neovim UI
+        opts = {},
+      },
+    },
+    config = function()
+      require("codecompanion").setup {
+        adapters = {
+          strategies = {
+            chat = "openai",
+            inline = "openai",
+            tool = "openai",
+          },
+        },
+      }
+      -- Expand `cc` into CodeCompanion in the command line
+      vim.cmd [[cab cc CodeCompanion]]
+    end,
+  },
+  {
+    "folke/edgy.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.opt.laststatus = 3
+      vim.opt.splitkeep = "screen"
+    end,
+    opts = {
+      right = {
+        { ft = "codecompanion", title = "Code Companion Chat", size = { width = 0.45 } },
+      },
+    },
+  },
 }

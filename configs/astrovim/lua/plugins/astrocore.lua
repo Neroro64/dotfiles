@@ -98,18 +98,22 @@ return {
           function()
             require("zen-mode").setup {
               window = {
-                width = 80,
+                width = 120,
                 options = {},
               },
             }
             require("zen-mode").toggle()
             vim.wo.wrap = false
-            vim.wo.number = false
-            vim.wo.rnu = false
+            vim.wo.number = true
+            vim.wo.rnu = true
             vim.opt.colorcolumn = "0"
           end,
           desc = "Toggle Zen Mode",
         },
+
+        -- CodeCompanion
+        ["<C-a>"] = { ":CodeCompanionActions<cr>", desc = "Show CodeCompanionActions" },
+        ["<leader>m"] = { ":CodeCompanionToggle<cr>", desc = "Toogle CodeCompanionChat" },
       },
       t = {
         -- setting a mapping to false will disable it
@@ -125,6 +129,10 @@ return {
         ["0"] = { "^", desc = "Jump to first non-blank char" },
         ["<A-j>"] = { ":m '>+1<CR>gv=gv", desc = "Move line down" },
         ["<A-k>"] = { ":m '<-2<CR>gv=gv", desc = "Move line up" },
+        -- CodeCompanion
+        ["<C-a>"] = { ":CodeCompanionActions<cr>", desc = "Show CodeCompanionActions" },
+        ["<leader>m"] = { ":CodeCompanionToggle<cr>", desc = "Toogle CodeCompanionChat" },
+        ["ga"] = { ":CodeCompanionAdd<cr>", desc = "Add selected text to CodeCompanionChat" },
       },
     },
   },
