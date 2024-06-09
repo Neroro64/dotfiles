@@ -37,7 +37,6 @@ $ENV:PATH += ":~/.bun/bin"
 $ENV:LD_LIBRARY_PATH += ":/home/$user/.local/lib/mojo"
 $ENV:MAX_PATH = "/home/$user/.modular/pkg/packages.modular.com_max"
 $ENV:PATH += ":/home/$user/.modular/pkg/packages.modular.com_nightly_mojo/bin/"
-$ENV:PATH += ":/home/$user/.modular/pkg/packages.modular.com_max/bin/"
 $ENV:MOJO_PYTHON_LIBRARY="/usr/lib/libpython3.11.so"
 
 # Npm stuff
@@ -51,6 +50,7 @@ Set-Alias -Name hx -Value helix
 # Import
 Import-Module $PSScriptRoot/scripts/_fd.psm1 -Force
 . $PSScriptRoot/scripts/Mount-SSHFS.ps1
+. $PSScriptRoot/scripts/Start-LocalCopilot.ps1
 
 # Auto mount external drives
 function Mount-RemoteDrives
