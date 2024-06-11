@@ -15,4 +15,5 @@ return {
   { import = "astrocommunity.syntax.vim-easy-align" },
   { import = "astrocommunity.motion.nvim-surround" },
   { import = "astrocommunity.motion.hop-nvim" },
+  { import = "astrocommunity.test.neotest" }
 }
