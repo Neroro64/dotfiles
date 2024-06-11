@@ -15,11 +15,17 @@ vim.cmd [[
   cnoremap <expr> <Tab>   getcmdtype() =~ '[?/]' ? "<c-g>" : "<c-z>"
   cnoremap <expr> <S-Tab> getcmdtype() =~ '[?/]' ? "<c-t>" : "<S-Tab>"
 
-  "" Start interactive EasyAlign in visual mode (e.g. vipga)
-  "" xmap ga <Plug>(EasyAlign)
-
-  "" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-  "" nmap ga <Plug>(EasyAlign)
 
   set nofixendofline
+  set ff=unix
 ]]
+
+if vim.fn.has("win64") == 1 or vim.fn.has("win32") == 1 then
+  vim.cmd[[
+    let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
+	  let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';'
+	  let &shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
+	  let &shellpipe  = '2>&1 | %%{ "$_" } | Tee-Object %s; exit $LastExitCode'
+	  set shellquote= shellxquote=
+  ]]
+end
