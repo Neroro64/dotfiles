@@ -20,8 +20,9 @@ vim.cmd [[
   set ff=unix
 ]]
 
-if vim.fn.has("win64") == 1 or vim.fn.has("win32") == 1 then
-  vim.cmd[[
+-- Setting up the powershell dap
+if vim.fn.has "win64" == 1 or vim.fn.has "win32" == 1 then
+  vim.cmd [[
     let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
 	  let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';'
 	  let &shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
