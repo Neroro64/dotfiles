@@ -46,6 +46,49 @@ return {
     ---@diagnostic disable: missing-fields
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      omnisharp = {
+        enable_import_completion = true,
+        organize_imports_on_format = true,
+        enable_roslyn_analyzers = true,
+        enable_decompilation_support = true,
+        settings = {
+          FormattingOptions = {
+            -- Enables support for reading code style, naming convention and analyzer
+            -- settings from .editorconfig.
+            EnableEditorConfigSupport = true,
+            -- Specifies whether 'using' directives should be grouped and sorted during
+            -- document formatting.
+            OrganizeImports = true,
+          },
+          MsBuild = {
+            -- If true, MSBuild project system will only load projects for files that
+            -- were opened in the editor. This setting is useful for big C# codebases
+            -- and allows for faster initialization of code navigation features only
+            -- for projects that are relevant to code that is being edited. With this
+            -- setting enabled OmniSharp may load fewer projects and may thus display
+            -- incomplete reference lists for symbols.
+            LoadProjectsOnDemand = true,
+          },
+          RoslynExtensionsOptions = {
+            -- Enables support for roslyn analyzers, code fixes and rulesets.
+            EnableAnalyzersSupport = true,
+            -- Enables support for showing unimported types and unimported extension
+            -- methods in completion lists. When committed, the appropriate using
+            -- directive will be added at the top of the current file. This option can
+            -- have a negative impact on initial completion responsiveness,
+            -- particularly for the first few completion sessions after opening a
+            -- solution.
+            EnableImportCompletion = true,
+            -- Only run analyzers against open files when 'enableRoslynAnalyzers' is true
+            AnalyzeOpenDocumentsOnly = true,
+          },
+          Sdk = {
+            -- Specifies whether to include preview versions of the .NET SDK when
+            -- determining which version to use for project loading.
+            IncludePrereleases = true,
+          },
+        },
+      },
     },
     -- customize how language servers are attached
     handlers = {
@@ -55,6 +98,10 @@ return {
       -- the key is the server that is being setup with `lspconfig`
       -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
       -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
+      omnisharp = function(_, opts)
+        opts["handlers"] = { ["textDocument/definition"] = require("omnisharp_extended").handler }
+        require("lspconfig").omnisharp.setup(opts)
+      end,
     },
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {

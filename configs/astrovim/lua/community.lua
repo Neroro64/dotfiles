@@ -9,11 +9,14 @@ return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.recipes.vscode" },
-  { import = "astrocommunity.code-runner.overseer-nvim" },
+  {
+    import = "astrocommunity.code-runner.overseer-nvim",
+    opts = function(opts) opts["strategy"] = "toggleterm" end,
+  },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   { import = "astrocommunity.editing-support.undotree" },
   { import = "astrocommunity.syntax.vim-easy-align" },
   { import = "astrocommunity.motion.nvim-surround" },
   { import = "astrocommunity.motion.hop-nvim" },
-  { import = "astrocommunity.test.neotest" }
+  { import = "astrocommunity.test.neotest" },
 }
