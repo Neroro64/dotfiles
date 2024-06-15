@@ -30,3 +30,12 @@ if vim.fn.has "win64" == 1 or vim.fn.has "win32" == 1 then
 	  set shellquote= shellxquote=
   ]]
 end
+
+-- Set the telescope to only show recent files in the CWD
+require("telescope").setup({
+  pickers = {
+    oldfiles = {
+      cwd_only = true,
+    }
+  },
+})
