@@ -32,10 +32,18 @@ if vim.fn.has "win64" == 1 or vim.fn.has "win32" == 1 then
 end
 
 -- Set the telescope to only show recent files in the CWD
-require("telescope").setup({
+require("telescope").setup {
   pickers = {
     oldfiles = {
       cwd_only = true,
-    }
+    },
   },
-})
+}
+
+require("neo-tree").setup {
+  config = {
+    window = {
+      auto_expand_width = true, -- expand the window when file exceeds the window width. does not work with position = "float"
+    },
+  },
+}

@@ -47,10 +47,16 @@ return {
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
       omnisharp = {
-        enable_import_completion = true,
-        organize_imports_on_format = true,
-        enable_roslyn_analyzers = true,
-        enable_decompilation_support = true,
+        handlers = {
+          ["textDocument/definition"] = function(...) return require("omnisharp_extended").handler(...) end,
+        },
+        keys = {
+          {
+            "gd",
+            function() require("omnisharp_extended").telescope_lsp_definitions() end,
+            desc = "Goto Definition",
+          },
+        },
         settings = {
           FormattingOptions = {
             -- Enables support for reading code style, naming convention and analyzer
@@ -98,10 +104,6 @@ return {
       -- the key is the server that is being setup with `lspconfig`
       -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
       -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
-      omnisharp = function(_, opts)
-        opts["handlers"] = { ["textDocument/definition"] = require("omnisharp_extended").handler }
-        require("lspconfig").omnisharp.setup(opts)
-      end,
     },
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {
