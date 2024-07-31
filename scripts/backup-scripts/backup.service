@@ -1,0 +1,12 @@
+[Unit]
+Description=Weekly Backup Service
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/nuoc/.dotfiles/scripts/Backup-System.sh -r /mnt/e/restic-backup -e /home/nuoc/.dotfiles/scripts/backup.exclude.filter -i /home/nuoc/.dotfiles/scripts/backup.include.filter
+User=root
+
+[Install]
+WantedBy=multi-user.target
+
