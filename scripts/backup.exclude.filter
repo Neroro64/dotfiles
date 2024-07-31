@@ -1,0 +1,39 @@
+# Exclude patterns
+**/.thumbnails/**
+**/.cache/**
+**/cache/**
+**/Cache/**
+**/.env/**
+**/env/**
+**/.steam/**
+**/steam/**
+**/node_modules/**
+**/Network/**
+**/Downloads/**
+**/Trash/**
+
+# Exclude sys files
+**/temp/**
+**/tmp/**
+**/log/**
+/dev/**
+/proc/**
+/sys/**
+/tmp/**
+/run/**
+/mnt/**
+/media/**
+/lost+found
+
+# Virtuial machine files
+*.vmdk
+*.vdi
+*.vhd
+
+# Swap files:
+/swapfile
+*.swap
+
+# Large image files:
+*.gguf
+*.iso

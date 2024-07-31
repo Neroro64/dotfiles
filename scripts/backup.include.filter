@@ -1,0 +1,12 @@
+# Include patterns
+/bin/*
+/sbin/*
+/boot/*
+/efi/*
+/home/*
+/lib/*
+/lib64/*
+/opt/*
+/root/*
+/usr/*
+/var/*

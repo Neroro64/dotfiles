@@ -11,9 +11,11 @@ The source directory to be backed up. Defaults to the user's home directory if n
 .PARAMETER DestinationDir
 The destination directory where the backup will be stored.
 #>
-function New-rdiffBackup {
+function New-rdiffBackup
+{
     param(
-        [string] $SourceDir = $Home,
+        [Parameter(Mandatory = $true)]
+        [string] $SourceDir,
         [Parameter(Mandatory = $true)]
         [string] $DestinationDir
     )
