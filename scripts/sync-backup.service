@@ -1,0 +1,12 @@
+[Unit]
+Description=Sync the local backups to the remote location
+After=network.target
+
+[Service]
+Type=oneshot
+User=nuoc
+ExecStart=pwsh -c ./Sync-BackupToRemote.ps1 /mnt/e/restic-backup honeypot::/home/homie/Lake/Vanern/Backups/Desktop
+
+[Install]
+WantedBy=multi-user.target
+
