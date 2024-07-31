@@ -22,6 +22,7 @@ vim.cmd [[
   cnoremap <expr> <S-Tab> getcmdtype() =~ '[?/]' ? "<c-t>" : "<S-Tab>"
 
 
+  colorscheme kanagawa-paper
   set nofixendofline
   set ff=unix
 ]]

@@ -70,12 +70,6 @@ return {
       vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end, { desc = "Open harpoon window" })
     end,
   },
-  {
-    "AlexvZyl/nordic.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function() require("nordic").load() end,
-  },
   { "folke/zen-mode.nvim" },
   {
     "Neroro64/codecompanion.nvim",
@@ -174,7 +168,6 @@ return {
       end
     end,
   },
-  {
-    "Hoffs/omnisharp-extended-lsp.nvim",
-  },
+  { "Hoffs/omnisharp-extended-lsp.nvim" },
+  { "sho-87/kanagawa-paper.nvim" },
 }
