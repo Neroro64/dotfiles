@@ -34,7 +34,6 @@ return {
       )
     end,
   },
-  { "czheo/mojo.vim", lazy = false },
   {
     "ThePrimeagen/harpoon",
     lazy = false,

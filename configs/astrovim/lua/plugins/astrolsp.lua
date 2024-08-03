@@ -95,6 +95,22 @@ return {
           },
         },
       },
+      mojo = {
+        cmd = {
+          "mojo-lsp-server",
+          "--bounds-checking-single-trap",
+          "--debugify-level=location+variables",
+          "--enable-vtable-profile-use",
+          "--enable-vtable-value-profiling",
+          "--experimental-debug-variable-locations",
+          "--experimental-debuginfo-iterators",
+          "--hot-cold-split",
+          "--import-all-index",
+        },
+        filetypes = { "mojo" },
+        root_dir = require("lspconfig.util").find_git_ancestor,
+        single_file_support = true,
+      },
     },
     -- customize how language servers are attached
     handlers = {
