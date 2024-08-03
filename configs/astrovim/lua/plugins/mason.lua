@@ -13,6 +13,7 @@ return {
         "lua_ls",
         "jedi-language-server",
         "powershell-editor-services",
+        "omnisharp",
         -- add more arguments for adding more language servers
       },
     },

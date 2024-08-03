@@ -14,7 +14,6 @@ return {
   { import = "astrocommunity.motion.hop-nvim" },
   { import = "astrocommunity.test.neotest" },
   { import = "astrocommunity.pack.cpp" },
-  { import = "astrocommunity.pack.cs" },
   { import = "astrocommunity.pack.python-ruff" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.recipes.vscode" },

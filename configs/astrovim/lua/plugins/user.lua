@@ -47,31 +47,9 @@ return {
     },
   },
   {
-    "Willem-J-an/nvim-dap-powershell",
-    event = "VeryLazy",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "mfussenegger/nvim-dap",
-      "rcarriga/nvim-dap-ui",
-      {
-        "m00qek/baleia.nvim",
-        lazy = true,
-        tag = "v1.4.0",
-      },
+    "theHamsta/nvim-dap-virtual-text",
+    opts = {
+      virt_text_pos = "eol",
     },
-    config = function()
-      require("dap-powershell").setup {
-        include_configs = true,
-        pwsh_executable = [["C:\Program Files\FrostShele-Preview\pwsh.exe"]],
-      }
-      local dapui = require "dapui"
-      local dap = require "dap"
-      dapui.setup()
-      dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open {}
-        require("dap-powershell").correct_repl_colors()
-      end
-    end,
   },
-  { "Hoffs/omnisharp-extended-lsp.nvim" },
 }
