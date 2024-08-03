@@ -1,5 +1,3 @@
--- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- You can also add or configure plugins by creating files in this `plugins/` folder
 -- Here are some examples:
 
@@ -34,67 +32,7 @@ return {
       )
     end,
   },
-  {
-    "ThePrimeagen/harpoon",
-    lazy = false,
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-    config = function()
-      local harpoon = require "harpoon"
-
-      -- REQUIRED
-      harpoon:setup()
-      -- REQUIRED
-
-      -- basic telescope configuration
-      local conf = require("telescope.config").values
-      local function toggle_telescope(harpoon_files)
-        local file_paths = {}
-        for _, item in ipairs(harpoon_files.items) do
-          table.insert(file_paths, item.value)
-        end
-
-        require("telescope.pickers")
-          .new({}, {
-            prompt_title = "Harpoon",
-            finder = require("telescope.finders").new_table {
-              results = file_paths,
-            },
-            previewer = conf.file_previewer {},
-            sorter = conf.generic_sorter {},
-          })
-          :find()
-      end
-
-      vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end, { desc = "Open harpoon window" })
-    end,
-  },
   { "folke/zen-mode.nvim" },
-  {
-    "Neroro64/codecompanion.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-telescope/telescope.nvim", -- Optional
-      {
-        "stevearc/dressing.nvim", -- Optional: Improves the default Neovim UI
-        opts = {},
-      },
-    },
-    config = function()
-      require("codecompanion").setup {
-        adapters = {
-          strategies = {
-            chat = "openai",
-            inline = "openai",
-            tool = "openai",
-          },
-        },
-      }
-      -- Expand `cc` into CodeCompanion in the command line
-      vim.cmd [[cab cc CodeCompanion]]
-    end,
-  },
   {
     "folke/edgy.nvim",
     event = "VeryLazy",
@@ -107,38 +45,6 @@ return {
         { ft = "codecompanion", title = "Code Companion Chat", size = { width = 0.45 } },
       },
     },
-  },
-  {
-    "Issafalcon/neotest-dotnet",
-    event = "VeryLazy",
-    config = function()
-      require("neotest").setup {
-        adapters = {
-          require "neotest-dotnet" {
-            dap = {
-              -- Extra arguments for nvim-dap configuration
-              -- See https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for values
-              args = { justMyCode = false },
-              -- Enter the name of your dap adapter, the default value is netcoredbg
-              adapter_name = "netcoredbg",
-            },
-            -- Tell neotest-dotnet to use either solution (requires .sln file) or project (requires .csproj or .fsproj file) as project root
-            -- Note: If neovim is opened from the solution root, using the 'project' setting may sometimes find all nested projects, however,
-            --       to locate all test projects in the solution more reliably (if a .sln file is present) then 'solution' is better.
-            discovery_root = "solution",
-          },
-        },
-      }
-
-      local install_dir = vim.fn.stdpath "data" .. "/mason" .. "/packages/netcoredbg/netcoredbg"
-      if vim.fn.has "win64" == 1 or vim.fn.has "win32" == 1 then install_dir = install_dir .. ".exe" end
-
-      require("dap").adapters.netcoredbg = {
-        type = "executable",
-        command = install_dir,
-        args = { "--interpreter=vscode" },
-      }
-    end,
   },
   {
     "Willem-J-an/nvim-dap-powershell",
@@ -168,5 +74,4 @@ return {
     end,
   },
   { "Hoffs/omnisharp-extended-lsp.nvim" },
-  { "sho-87/kanagawa-paper.nvim" },
 }
