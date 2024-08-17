@@ -19,7 +19,6 @@ vim.cmd [[
 
   set nofixendofline
   set ff=unix
-  colorscheme kanagawa
 ]]
 
 -- Setting up the powershell dap
