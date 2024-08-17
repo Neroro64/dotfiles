@@ -8,10 +8,9 @@ fi
 source /usr/share/cachyos-zsh-config/cachyos-config.zsh
 
 export MODULAR_HOME="/home/nuoc/.modular"
-export PATH="/home/nuoc/.modular/pkg/packages.modular.com_nightly_mojo/bin:$PATH"
-export PATH=":/home/nuoc/.modular/pkg/packages.modular.com_max/bin:$PATH"
+export PATH=":/home/nuoc/.modular/pkg/packages.modular.com_nightly_max/bin:$PATH"
 export LD_LIBRARY_PATH="/home/nuoc/.local/lib/mojo:$LD_LIBRARY_PATH"
-export MAX_PATH="/home/nuoc/.modular/pkg/packages.modular.com_max"
+export MAX_PATH="/home/nuoc/.modular/pkg/packages.modular.com_nightly_max"
 
 export PATH="/root/.local/bin:$PATH"
 export PATH="/home/nuoc/.local/bin:$PATH"
