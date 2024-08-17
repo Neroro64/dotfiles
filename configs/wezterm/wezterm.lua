@@ -5,6 +5,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
+config.default_prog = { "/usr/bin/zsh" }
 
 -- For example, changing the color scheme:
 config.color_scheme = "kanagawabones"
