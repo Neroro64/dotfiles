@@ -52,4 +52,5 @@ return {
       virt_text_pos = "eol",
     },
   },
+  { "niyabits/calvera-dark.nvim" },
 }
