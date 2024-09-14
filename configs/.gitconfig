@@ -46,11 +46,6 @@
   ff = only
 [rerere]
   enabled = true
-[filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
 [interactive]
   diffFilter = delta --color-only
 [delta]
