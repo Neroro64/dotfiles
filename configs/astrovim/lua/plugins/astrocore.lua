@@ -76,8 +76,8 @@ return {
         ["<leader>pr"] = { ":!p4 revert %:p <cr>", desc = "p4 revert" },
 
         -- Harpoon
-        ["<leader>aa"] = { function() require("harpoon"):list():add() end, desc = "Add current buffer to Harpoon" },
-        ["<leader>ad"] = {
+        ["<leader>Wa"] = { function() require("harpoon"):list():add() end, desc = "Add current buffer to Harpoon" },
+        ["<leader>Wd"] = {
           function() require("harpoon"):list():remove() end,
           desc = "Remove current buffer to Harpoon",
         },
@@ -85,11 +85,10 @@ return {
           function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end,
           desc = "Toggle Harpoon quick menu",
         },
-        ["<C-a1>"] = { function() require("harpoon"):list():select(1) end, desc = "Go to first buffer in Harpoon" },
-        ["<C-a2>"] = { function() require("harpoon"):list():select(2) end, desc = "Go to second buffer in Harpoon" },
-        ["<C-a3>"] = { function() require("harpoon"):list():select(3) end, desc = "Go to third buffer in Harpoon" },
-        ["<C-a4>"] = { function() require("harpoon"):list():select(4) end, desc = "Go to fourth buffer in Harpoon" },
-        --
+        ["<C-W1>"] = { function() require("harpoon"):list():select(1) end, desc = "Go to first buffer in Harpoon" },
+        ["<C-W2>"] = { function() require("harpoon"):list():select(2) end, desc = "Go to second buffer in Harpoon" },
+        ["<C-W3>"] = { function() require("harpoon"):list():select(3) end, desc = "Go to third buffer in Harpoon" },
+        ["<C-W4>"] = { function() require("harpoon"):list():select(4) end, desc = "Go to fourth buffer in Harpoon" },
         -- Toggle previous & next buffers stored within Harpoon list
         ["<C-S-P>"] = { function() require("harpoon"):list():prev() end, desc = "Go to previous buffer in Harpoon" },
         ["<C-S-N>"] = { function() require("harpoon"):list():next() end, desc = "Go to next buffer in Harpoon" },
