@@ -8,7 +8,7 @@ local config = wezterm.config_builder()
 config.default_prog = { "/usr/bin/zsh" }
 
 -- For example, changing the color scheme:
-config.color_scheme = "kanagawabones"
+config.color_scheme = "zenbones"
 
 -- Borderless mode
 config.window_decorations = "NONE"
