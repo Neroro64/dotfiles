@@ -20,9 +20,6 @@ vim.cmd [[
 vim.opt.fixendofline = false
 vim.opt.ff = "unix"
 
--- Color Scheme
-vim.cmd.colorscheme "calvera"
-
 -- PowerShell DAP Setup (for Windows)
 if vim.fn.has "win64" == 1 or vim.fn.has "win32" == 1 then
   vim.cmd [[
@@ -54,3 +51,6 @@ require("neo-tree").setup {
 
 -- Avante Library Load
 require("avante_lib").load()
+
+-- Color Scheme
+-- vim.cmd.colorscheme "zenwritten"

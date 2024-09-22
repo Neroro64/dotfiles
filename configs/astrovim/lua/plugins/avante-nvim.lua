@@ -33,6 +33,9 @@ return {
         maps.n[prefix .. "a"] = { function() require("avante.api").ask() end, desc = "Avante ask" }
         maps.v[prefix .. "a"] = { function() require("avante.api").ask() end, desc = "Avante ask" }
 
+        maps.n[prefix .. "c"] = { function() require("avante.api").ask { ask = false } end, desc = "Avante Chat" }
+        maps.v[prefix .. "c"] = { function() require("avante.api").ask { ask = false } end, desc = "Avante Chat" }
+
         maps.v[prefix .. "r"] = { function() require("avante.api").refresh() end, desc = "Avante refresh" }
 
         maps.n[prefix .. "e"] = { function() require("avante.api").edit() end, desc = "Avante edit" }
@@ -42,6 +45,7 @@ return {
   },
   opts = {
     provider = "localcopilot",
+    auto_suggestions_provider = "localcopilot",
     vendors = {
       ---@type AvanteProvider
       localcopilot = {
@@ -66,6 +70,17 @@ return {
         parse_response_data = function(data_stream, event_state, opts)
           require("avante.providers").openai.parse_response(data_stream, event_state, opts)
         end,
+      },
+    },
+    behaviour = {
+      auto_suggestion = false,
+      mappings = {
+        suggestion = {
+          accept = "<C-e>",
+          next = "<C-n>",
+          prev = "<C-p>",
+          dismiss = "<C-.>",
+        },
       },
     },
   },
