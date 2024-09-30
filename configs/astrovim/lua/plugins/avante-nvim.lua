@@ -51,7 +51,7 @@ return {
       localcopilot = {
         ["local"] = true,
         endpoint = "127.0.0.1:9000/v1",
-        model = "llama3.1",
+        model = "LocalCopilot",
         parse_curl_args = function(opts, code_opts)
           return {
             url = opts.endpoint .. "/chat/completions",
@@ -62,7 +62,7 @@ return {
             body = {
               model = opts.model,
               messages = require("avante.providers").copilot.parse_message(code_opts), -- you can make your own message, but this is very advanced
-              max_tokens = 32768,
+              max_tokens = 8192,
               stream = true,
             },
           }

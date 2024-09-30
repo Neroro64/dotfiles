@@ -34,19 +34,6 @@ return {
   },
   { "folke/zen-mode.nvim" },
   {
-    "folke/edgy.nvim",
-    event = "VeryLazy",
-    init = function()
-      vim.opt.laststatus = 3
-      vim.opt.splitkeep = "screen"
-    end,
-    opts = {
-      right = {
-        { ft = "codecompanion", title = "Code Companion Chat", size = { width = 0.45 } },
-      },
-    },
-  },
-  {
     "theHamsta/nvim-dap-virtual-text",
     opts = {
       virt_text_pos = "eol",

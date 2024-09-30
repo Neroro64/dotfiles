@@ -110,29 +110,6 @@ return {
           end,
           desc = "Toggle Zen Mode",
         },
-
-        -- CodeCompanion
-        ["<C-a>"] = { ":CodeCompanionActions<cr>", desc = "Show CodeCompanionActions" },
-        ["<leader>m"] = { ":CodeCompanionToggle<cr>", desc = "Toogle CodeCompanionChat" },
-      },
-      t = {
-        -- setting a mapping to false will disable it
-        -- ["<C-S>"] = false,
-      },
-      i = {
-        ["<A-j>"] = { "<Esc>:m .+1<CR>==gi", desc = "Move line down" },
-        ["<A-k>"] = { "<Esc>:m .-2<CR>==gi", desc = "Move line up" },
-      },
-      v = {
-        ["<leader>y"] = { '"+y', desc = "copy to clipboard" },
-        ["<leader>p"] = { '"+p', desc = "paste from clipboard" },
-        ["0"] = { "^", desc = "Jump to first non-blank char" },
-        ["<A-j>"] = { ":m '>+1<CR>gv=gv", desc = "Move line down" },
-        ["<A-k>"] = { ":m '<-2<CR>gv=gv", desc = "Move line up" },
-        -- CodeCompanion
-        ["<C-a>"] = { ":CodeCompanionActions<cr>", desc = "Show CodeCompanionActions" },
-        ["<leader>m"] = { ":CodeCompanionToggle<cr>", desc = "Toogle CodeCompanionChat" },
-        ["ga"] = { ":CodeCompanionAdd<cr>", desc = "Add selected text to CodeCompanionChat" },
       },
     },
   },
