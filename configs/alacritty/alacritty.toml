@@ -68,7 +68,7 @@ y = 1
 [scrolling]
 history = 100000
 
-[shell]
+[terminal.shell]
 program = "/usr/bin/zsh"
 
 [window]
