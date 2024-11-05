@@ -34,6 +34,20 @@ return {
   },
   { "folke/zen-mode.nvim" },
   {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "astronvim/astrocore",
+      opts = {
+        diagnostics = {
+          -- Disable diagnostics virtual text to prevent duplicates
+          virtual_text = false,
+        },
+      },
+    },
+    opts = {},
+  },
+  {
     "theHamsta/nvim-dap-virtual-text",
     opts = {
       virt_text_pos = "eol",
@@ -46,12 +60,18 @@ return {
     -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
     -- In Vim, compat mode is turned on as Lush only works in Neovim.
     dependencies = "rktjmp/lush.nvim",
+    lazy = true,
+    config = function() end,
+  },
+  {
+    "loctvl842/monokai-pro.nvim",
     priority = 1000,
     lazy = false,
-    opts = {},
     config = function()
-      vim.opt.background = "light"
-      vim.cmd.colorscheme "zenbones"
+      require("monokai-pro").setup {
+        filter = "spectrum", -- classic | octagon | pro | machine | ristretto | spectrum
+      }
+      vim.cmd.colorscheme "monokai-pro"
     end,
   },
 }

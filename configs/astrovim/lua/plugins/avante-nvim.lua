@@ -71,17 +71,17 @@ return {
           require("avante.providers").openai.parse_response(data_stream, event_state, opts)
         end,
       },
+    mappings = {
+      suggestion = {
+        accept = "<M-a>",
+        next = "<M-u>",
+        prev = "<M-U>",
+        dismiss = "<C-a>",
+      },
     },
     behaviour = {
       auto_suggestion = false,
-      mappings = {
-        suggestion = {
-          accept = "<C-e>",
-          next = "<C-n>",
-          prev = "<C-p>",
-          dismiss = "<C-.>",
-        },
-      },
+      auto_set_keymaps = true,
     },
   },
   specs = { -- configure optional plugins

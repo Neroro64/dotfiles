@@ -19,4 +19,5 @@ return {
   { import = "astrocommunity.recipes.vscode" },
   { import = "astrocommunity.debugging.nvim-dap-repl-highlights" },
   { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
+  { import = "astrocommunity.colorscheme.monokai-pro-nvim" },
 }
