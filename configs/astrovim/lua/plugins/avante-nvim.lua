@@ -71,37 +71,38 @@ return {
           require("avante.providers").openai.parse_response(data_stream, event_state, opts)
         end,
       },
-    mappings = {
-      suggestion = {
-        accept = "<M-a>",
-        next = "<M-u>",
-        prev = "<M-U>",
-        dismiss = "<C-a>",
+      mappings = {
+        suggestion = {
+          accept = "<M-a>",
+          next = "<M-u>",
+          prev = "<M-U>",
+          dismiss = "<C-a>",
+        },
+      },
+      behaviour = {
+        auto_suggestion = false,
+        auto_set_keymaps = true,
       },
     },
-    behaviour = {
-      auto_suggestion = false,
-      auto_set_keymaps = true,
-    },
-  },
-  specs = { -- configure optional plugins
-    {
-      -- make sure `Avante` is added as a filetype
-      "MeanderingProgrammer/render-markdown.nvim",
-      optional = true,
-      opts = function(_, opts)
-        if not opts.file_types then opts.filetypes = { "markdown" } end
-        opts.file_types = require("astrocore").list_insert_unique(opts.file_types, { "Avante" })
-      end,
-    },
-    {
-      -- make sure `Avante` is added as a filetype
-      "OXY2DEV/markview.nvim",
-      optional = true,
-      opts = function(_, opts)
-        if not opts.filetypes then opts.filetypes = { "markdown", "quarto", "rmd" } end
-        opts.filetypes = require("astrocore").list_insert_unique(opts.filetypes, { "Avante" })
-      end,
+    specs = { -- configure optional plugins
+      {
+        -- make sure `Avante` is added as a filetype
+        "MeanderingProgrammer/render-markdown.nvim",
+        optional = true,
+        opts = function(_, opts)
+          if not opts.file_types then opts.filetypes = { "markdown" } end
+          opts.file_types = require("astrocore").list_insert_unique(opts.file_types, { "Avante" })
+        end,
+      },
+      {
+        -- make sure `Avante` is added as a filetype
+        "OXY2DEV/markview.nvim",
+        optional = true,
+        opts = function(_, opts)
+          if not opts.filetypes then opts.filetypes = { "markdown", "quarto", "rmd" } end
+          opts.filetypes = require("astrocore").list_insert_unique(opts.filetypes, { "Avante" })
+        end,
+      },
     },
   },
 }
