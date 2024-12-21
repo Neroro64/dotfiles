@@ -1,8 +1,8 @@
 [Unit]
-Description=Run Weekly Backup
+Description=Run Daily Backup
 
 [Timer]
-OnCalendar=Sat 00:00:00
+OnCalendar=daily
 Persistent=true
 
 [Install]
