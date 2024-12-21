@@ -53,16 +53,6 @@ return {
       virt_text_pos = "eol",
     },
   },
-  { "niyabits/calvera-dark.nvim", lazy = true },
-  {
-    "zenbones-theme/zenbones.nvim",
-    -- Optionally install Lush. Allows for more configuration or extending the colorscheme
-    -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
-    -- In Vim, compat mode is turned on as Lush only works in Neovim.
-    dependencies = "rktjmp/lush.nvim",
-    lazy = true,
-    config = function() end,
-  },
   {
     "loctvl842/monokai-pro.nvim",
     priority = 1000,

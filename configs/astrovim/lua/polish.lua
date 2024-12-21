@@ -19,6 +19,10 @@ vim.cmd [[
 -- Settings
 vim.opt.fixendofline = false
 vim.opt.ff = "unix"
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
+-- Colorscheme
+vim.cmd "colorscheme monokai-pro-octagon"
 
 -- PowerShell DAP Setup (for Windows)
 if vim.fn.has "win64" == 1 or vim.fn.has "win32" == 1 then
@@ -38,6 +42,17 @@ require("telescope").setup {
       cwd_only = true,
     },
   },
+  defaults = {
+    file_ignore_patterns = {
+      "node_modules",
+      "build",
+      "dist",
+      "%.git/.*",
+      "lib",
+      "bin",
+      "vendor",
+    },
+  },
 }
 
 -- NeoTree Setup
@@ -51,6 +66,3 @@ require("neo-tree").setup {
 
 -- Avante Library Load
 require("avante_lib").load()
-
--- Color Scheme
--- vim.cmd.colorscheme "zenwritten"
