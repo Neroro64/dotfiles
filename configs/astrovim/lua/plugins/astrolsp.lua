@@ -43,70 +43,19 @@ return {
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
-      -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
-      omnisharp = {
-        handlers = {
-          ["textDocument/definition"] = function(...) require("omnisharp_extended").definition_handler(...) end,
-          ["textDocument/typeDefinition"] = function(...) require("omnisharp_extended").type_definition_handler(...) end,
-          ["textDocument/references"] = function(...) require("omnisharp_extended").references_handler(...) end,
-          ["textDocument/implementation"] = function(...) require("omnisharp_extended").implementation_handler(...) end,
-        },
-        keys = {
-          {
-            "gd",
-            function() require("omnisharp_extended").telescope_lsp_definitions() end,
-            desc = "Goto Definition",
-          },
-        },
-        settings = {
-          FormattingOptions = {
-            -- Enables support for reading code style, naming convention and analyzer
-            -- settings from .editorconfig.
-            EnableEditorConfigSupport = true,
-            -- Specifies whether 'using' directives should be grouped and sorted during
-            -- document formatting.
-            OrganizeImports = true,
-          },
-          MsBuild = {
-            -- If true, MSBuild project system will only load projects for files that
-            -- were opened in the editor. This setting is useful for big C# codebases
-            -- and allows for faster initialization of code navigation features only
-            -- for projects that are relevant to code that is being edited. With this
-            -- setting enabled OmniSharp may load fewer projects and may thus display
-            -- incomplete reference lists for symbols.
-            LoadProjectsOnDemand = true,
-          },
-          RoslynExtensionsOptions = {
-            -- Enables support for roslyn analyzers, code fixes and rulesets.
-            EnableAnalyzersSupport = true,
-            -- Enables support for showing unimported types and unimported extension
-            -- methods in completion lists. When committed, the appropriate using
-            -- directive will be added at the top of the current file. This option can
-            -- have a negative impact on initial completion responsiveness,
-            -- particularly for the first few completion sessions after opening a
-            -- solution.
-            EnableImportCompletion = true,
-            -- Only run analyzers against open files when 'enableRoslynAnalyzers' is true
-            AnalyzeOpenDocumentsOnly = true,
-          },
-          Sdk = {
-            -- Specifies whether to include preview versions of the .NET SDK when
-            -- determining which version to use for project loading.
-            IncludePrereleases = true,
-          },
-        },
-      },
       mojo = {
         cmd = {
           "mojo-lsp-server",
-          "--bounds-checking-single-trap",
-          "--debugify-level=location+variables",
-          "--enable-vtable-profile-use",
-          "--enable-vtable-value-profiling",
-          "--experimental-debug-variable-locations",
-          "--experimental-debuginfo-iterators",
-          "--hot-cold-split",
-          "--import-all-index",
+          "--bounds-checking-single-trap", -- Use one trap block per function
+          "--debugify-level=location+variables", -- Debug info to add: Locations and Variables
+          "--enable-vtable-profile-use", -- If ThinLTO and WPD is enabled and this option is true, vtable profiles will be used by ICP pass for more efficient indirect call sequence. If false, type profiles won't be used.
+          "--enable-vtable-value-profiling", -- If true, the virtual table address will be instrumented to know the types of a C++ pointer. The information is used in indirect call promotion to do selective vtable-based comparison.
+          "--experimental-debug-variable-locations", -- Use experimental new value-tracking variable locations
+          "--experimental-debuginfo-iterators", -- Enable communicating debuginfo positions through iterators, eliminating intrinsics. Has no effect if --preserve-input-debuginfo-format=true.
+          "--hot-cold-split", -- Enable hot-cold splitting pass
+          "--import-all-index", -- Import all external functions in index.
+          "--cost-kind=latency", -- Target cost kind: Instruction latency
+          "--log=verbose", -- Verbosity of log messages written to stderr: Low level details
         },
         filetypes = { "mojo" },
         root_dir = require("lspconfig.util").find_git_ancestor,

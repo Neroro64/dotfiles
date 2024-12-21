@@ -23,7 +23,7 @@ return {
         args = { "run", "--no-optimization", "--debug-level", "full", "${file}" },
         cwd = "${workspaceFolder}",
         initCommands = {
-          "plugin load /home/nuoc/.modular/pkg/packages.modular.com_nightly_mojo/lib/libMojoLLDB.so",
+          "plugin load " .. vim.fn.expand "$MODULAR_HOME" .. "/../../lib/libMojoLLDB.so",
           -- Add any other necessary commands to initialize the plugin
         },
       },
@@ -34,7 +34,7 @@ return {
         program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
         cwd = "${workspaceFolder}",
         initCommands = {
-          "plugin load /home/nuoc/.modular/pkg/packages.modular.com_nightly_mojo/lib/libMojoLLDB.so",
+          "plugin load " .. vim.fn.expand "$MODULAR_HOME" .. "/../../lib/libMojoLLDB.so",
           -- Add any other necessary commands to initialize the plugin
         },
       },

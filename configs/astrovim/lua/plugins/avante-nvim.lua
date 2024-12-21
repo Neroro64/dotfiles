@@ -53,7 +53,7 @@ return {
       },
     },
     -- NOTE: Provider settings
-    provider = "localcopilot",
+    provider = "localcopilot2",
     auto_suggestions_provider = "localcopilot",
     vendors = {
       ---@type AvanteProvider
