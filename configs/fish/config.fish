@@ -10,7 +10,17 @@ source /usr/share/cachyos-fish-config/cachyos-config.fish
 
 set -gx EDITOR nvim
 set -gx VISUAL $EDITOR
+
+# Mojo config
+set -gx LD_LIBRARY_PATH ~/.local/lib/mojo
+
+# Hydrop config
 set -gx fish_prompt_pwd_dir_length 3
+set hydro_color_pwd $fish_color_command
+set hydro_color_git $fish_color_command
+set hydro_color_error $fish_color_error
+set hydro_color_prompt --dim $fish_color_command
+set hydro_color_duration --dim $fish_color_command
 
 # Set fish theme
 fish_config theme choose "Tomorrow Night"
@@ -27,6 +37,7 @@ alias rng='ranger'
 # Add local bin to PATH
 fish_add_path ~/.local/bin
 fish_add_path ~/.bun/bin
+fish_add_path ~/.modular/bin
 
 
 function ll
@@ -46,3 +57,5 @@ end
 function weather
     curl https://wttr.in
 end
+
+magic completion --shell fish | source
