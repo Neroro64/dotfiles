@@ -1,3 +1,4 @@
+-- return {}
 local prefix = "<Leader>A"
 return {
   "Neroro64/avante.nvim",
@@ -31,6 +32,10 @@ return {
     },
   },
   opts = {
+    behavior = {
+      auto_suggestion = false,
+    },
+    hints = { enabled = false },
     mappings = {
       ask = prefix .. "<CR>",
       edit = prefix .. "e",
