@@ -64,4 +64,5 @@ return {
       vim.cmd.colorscheme "monokai-pro"
     end,
   },
+  { "modularml/mojo.vim" },
 }
