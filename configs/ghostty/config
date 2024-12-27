@@ -1,0 +1,8 @@
+cursor-style = block
+font-family = "Monolisa"
+theme = "Kanagawa Wave"
+
+quick-terminal-position = "top"
+quick-terminal-animation-duration = 0.1
+
+keybind = global:super+o=toggle_quick_terminal
