@@ -2,7 +2,10 @@ cursor-style = block
 font-family = "Monolisa"
 theme = "Kanagawa Wave"
 
+window-decoration = false
+window-theme = ghostty
 quick-terminal-position = "top"
 quick-terminal-animation-duration = 0.1
 
-keybind = global:super+o=toggle_quick_terminal
+keybind = all:super+o=toggle_quick_terminal
+keybind = all:super+t=toggle_window_decorations
