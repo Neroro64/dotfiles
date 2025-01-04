@@ -94,11 +94,11 @@ return {
         ["<C-S-N>"] = { function() require("harpoon"):list():next() end, desc = "Go to next buffer in Harpoon" },
 
         -- Zen mode
-        ["<leader>r"] = {
+        ["<leader>z"] = {
           function()
             require("zen-mode").setup {
               window = {
-                width = 140,
+                width = 0.65,
                 options = {},
               },
             }

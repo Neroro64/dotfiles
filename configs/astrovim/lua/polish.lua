@@ -22,7 +22,7 @@ vim.opt.ff = "unix"
 -- views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3
 -- Colorscheme
-vim.cmd "colorscheme monokai-pro-octagon"
+-- vim.cmd "colorscheme monokai-pro-octagon"
 
 -- PowerShell DAP Setup (for Windows)
 if vim.fn.has "win64" == 1 or vim.fn.has "win32" == 1 then

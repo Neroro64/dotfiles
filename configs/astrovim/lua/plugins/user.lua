@@ -32,7 +32,6 @@ return {
       )
     end,
   },
-  { "folke/zen-mode.nvim" },
   {
     "rachartier/tiny-inline-diagnostic.nvim",
     event = "VeryLazy",
@@ -59,7 +58,7 @@ return {
     lazy = false,
     config = function()
       require("monokai-pro").setup {
-        filter = "spectrum", -- classic | octagon | pro | machine | ristretto | spectrum
+        filter = "octagon", -- classic | octagon | pro | machine | ristretto | spectrum
       }
       vim.cmd.colorscheme "monokai-pro"
     end,
