@@ -39,5 +39,30 @@ return {
         },
       },
     }
+
+    dap.configurations.cpp = {
+      {
+        name = "Launch executable",
+        type = "codelldb",
+        request = "launch",
+        program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+      },
+      {
+        name = "Launch with arguments",
+        type = "codelldb",
+        request = "launch",
+        program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
+        args = function()
+          local args_string = vim.fn.input "Arguments: "
+          return vim.split(args_string, " ")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+      },
+    }
+
+    dap.configurations.c = dap.configurations.cpp
   end,
 }
