@@ -33,6 +33,16 @@ return {
   },
   {
     "Hoffs/omnisharp-extended-lsp.nvim",
+    config = function()
+      local install_dir = vim.fn.stdpath "data" .. "/mason" .. "/packages/netcoredbg/netcoredbg"
+      if vim.fn.has "win64" == 1 or vim.fn.has "win32" == 1 then install_dir = install_dir .. ".exe" end
+
+      require("dap").adapters.netcoredbg = {
+        type = "executable",
+        command = install_dir,
+        args = { "--interpreter=vscode" },
+      }
+    end,
     dependencies = {
       {
         "AstroNvim/astrolsp",
@@ -99,20 +109,7 @@ return {
       },
     },
   },
-  {
-    "Issafalcon/neotest-dotnet",
-    event = "VeryLazy",
-    config = function()
-      local install_dir = vim.fn.stdpath "data" .. "/mason" .. "/packages/netcoredbg/netcoredbg"
-      if vim.fn.has "win64" == 1 or vim.fn.has "win32" == 1 then install_dir = install_dir .. ".exe" end
-
-      require("dap").adapters.netcoredbg = {
-        type = "executable",
-        command = install_dir,
-        args = { "--interpreter=vscode" },
-      }
-    end,
-  },
+  { "Issafalcon/neotest-dotnet", event = "VeryLazy" },
   {
     "nvim-neotest/neotest",
     dependencies = { "Issafalcon/neotest-dotnet" },

@@ -64,5 +64,51 @@ return {
     }
 
     dap.configurations.c = dap.configurations.cpp
+
+    -- C#
+    local install_dir = vim.fn.stdpath "data" .. "/mason" .. "/packages/netcoredbg/netcoredbg"
+    if vim.fn.has "win64" == 1 or vim.fn.has "win32" == 1 then install_dir = install_dir .. ".exe" end
+
+    dap.adapters.netcoredbg = {
+      type = "executable",
+      command = install_dir,
+      args = { "--interpreter=vscode" },
+    }
+
+    dap.configurations.cs = {
+      {
+        type = "coreclr",
+        name = "Launch .NET Executable",
+        request = "launch",
+        program = function() return vim.fn.input("Path to dll: ", vim.fn.getcwd() .. "/bin/Debug/", "file") end,
+        cwd = "${workspaceFolder}",
+        env = {
+          DOTNET_ENVIRONMENT = "Development",
+          ASPNETCORE_ENVIRONMENT = "Development",
+        },
+        justMyCode = false,
+      },
+      {
+        type = "coreclr",
+        name = "Launch with Arguments",
+        request = "launch",
+        program = function() return vim.fn.input("Path to dll: ", vim.fn.getcwd() .. "/bin/Debug/", "file") end,
+        args = function() return vim.split(vim.fn.input "Arguments: ", " ") end,
+        cwd = "${workspaceFolder}",
+        env = {
+          DOTNET_ENVIRONMENT = "Development",
+          ASPNETCORE_ENVIRONMENT = "Development",
+        },
+        justMyCode = false,
+      },
+      {
+        type = "coreclr",
+        name = "Attach to Process",
+        request = "attach",
+        processId = require("dap.utils").pick_process,
+        cwd = "${workspaceFolder}",
+        justMyCode = false,
+      },
+    }
   end,
 }
