@@ -23,4 +23,5 @@ return {
   { import = "astrocommunity.diagnostics.tiny-inline-diagnostic-nvim" },
   { import = "astrocommunity.editing-support.conform-nvim" },
   { import = "astrocommunity.editing-support.zen-mode-nvim" },
+  { import = "astrocommunity.file-explorer.oil-nvim" },
 }
