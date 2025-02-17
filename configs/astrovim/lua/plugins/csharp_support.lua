@@ -72,7 +72,7 @@ return {
                   -- for projects that are relevant to code that is being edited. With this
                   -- setting enabled OmniSharp may load fewer projects and may thus display
                   -- incomplete reference lists for symbols.
-                  LoadProjectsOnDemand = true,
+                  LoadProjectsOnDemand = false,
                 },
                 RoslynExtensionsOptions = {
                   -- Enables support for roslyn analyzers, code fixes and rulesets.
@@ -121,7 +121,7 @@ return {
           dap = {
             -- Extra arguments for nvim-dap configuration
             -- See https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for values
-            args = { justMyCode = false, stopAtEntry = true },
+            args = { justMyCode = false, stopAtEntry = false },
             -- Enter the name of your dap adapter, the default value is netcoredbg
             adapter_name = "netcoredbg",
           },

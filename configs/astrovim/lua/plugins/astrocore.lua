@@ -74,6 +74,24 @@ return {
         ["<leader>pe"] = { ":!p4 edit -c default %:p <cr>", desc = "p4 edit default" },
         ["<leader>pc"] = { ":!p4 reopen %:p -c ", desc = "p4 reopen <CL>" },
         ["<leader>pr"] = { ":!p4 revert %:p <cr>", desc = "p4 revert" },
+
+        -- Zen mode
+        ["<leader>z"] = {
+          function()
+            require("zen-mode").setup {
+              window = {
+                width = 0.6,
+                options = {},
+              },
+            }
+            require("zen-mode").toggle()
+            vim.wo.wrap = false
+            vim.wo.number = true
+            vim.wo.rnu = true
+            vim.opt.colorcolumn = "0"
+          end,
+          desc = "Toggle Zen Mode",
+        },
       },
     },
   },

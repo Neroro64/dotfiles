@@ -58,10 +58,11 @@ return {
     lazy = false,
     config = function()
       require("monokai-pro").setup {
-        filter = "octagon", -- classic | octagon | pro | machine | ristretto | spectrum
+        filter = "spectrum", -- classic | octagon | pro | machine | ristretto | spectrum
       }
       vim.cmd.colorscheme "monokai-pro"
     end,
   },
   { "modularml/mojo.vim" },
+  { "pteroctopus/faster.nvim" },
 }
