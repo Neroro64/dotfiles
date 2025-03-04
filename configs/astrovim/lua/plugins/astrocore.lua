@@ -69,6 +69,7 @@ return {
         -- My Custom Mappings
         ["vA"] = { "ggVG", desc = "Select all text" },
         ["<leader>p"] = { '"+p', desc = "paste from clipboard" },
+        ["<leader>y"] = { '"+y', desc = "copy to clipboard" },
         ["0"] = { "^", desc = "Jump to first non-blank char" },
         ["<A-j>"] = { ":m .+1<CR>==", desc = "Move line down" },
         ["<A-k>"] = { ":m .-2<CR>==", desc = "Move line up" },
