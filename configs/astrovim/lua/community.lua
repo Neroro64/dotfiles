@@ -6,8 +6,7 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.colorscheme.monokai-pro-nvim" },
-  { import = "astrocommunity.completion.magazine-nvim" },
-  -- { import = "astrocommunity.completion.blink-cmp" },
+  { import = "astrocommunity.completion.blink-cmp" },
   { import = "astrocommunity.debugging.nvim-dap-repl-highlights" },
   { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
   { import = "astrocommunity.diagnostics.tiny-inline-diagnostic-nvim" },
@@ -25,7 +24,6 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.python-ruff" },
-  { import = "astrocommunity.recipes.neovide" },
   { import = "astrocommunity.recipes.vscode" },
   { import = "astrocommunity.syntax.vim-easy-align" },
   { import = "astrocommunity.test.neotest" },
