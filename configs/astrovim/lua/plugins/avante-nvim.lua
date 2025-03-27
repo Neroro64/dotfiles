@@ -70,7 +70,7 @@ return {
     },
     -- AI provider configuration
     -- NOTE: Provider settings
-    provider = "copilot_claude",  -- Default AI provider
+    provider = "localcopilot",  -- Default AI provider
     vendors = {
       ---@type AvanteProvider
       localcopilot = {
