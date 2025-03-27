@@ -45,6 +45,11 @@ function ll
     ls -lah $argv
 end
 
+function enable_3090
+    sudo nvidia-smi drain -p 0000:0c:00.0 -m 0
+    sudo nvidia-smi -i 1 -pm 1
+end
+
 
 # Find process using port
 function port
