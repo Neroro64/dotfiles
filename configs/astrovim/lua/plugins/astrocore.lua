@@ -47,7 +47,6 @@ return {
         -- NeoTree keybindings
         ["<leader>E"] = { ":Neotree reveal_file=%", desc = "Locate current file in Neotree" },
 
-
         -- navigate buffer tabs
         ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
@@ -97,6 +96,12 @@ return {
           end,
           desc = "Toggle Zen Mode",
         },
+      },
+      i = {
+        ["<A-h>"] = { "<Left>" },
+        ["<A-j>"] = { "<Down>" },
+        ["<A-k>"] = { "<Up>" },
+        ["<A-l>"] = { "<Right>" },
       },
     },
   },
