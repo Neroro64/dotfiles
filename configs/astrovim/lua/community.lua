@@ -11,6 +11,7 @@ return {
   { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
   { import = "astrocommunity.diagnostics.tiny-inline-diagnostic-nvim" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
+  { import = "astrocommunity.editing-support.conform-nvim" },
   { import = "astrocommunity.editing-support.multiple-cursors-nvim" },
   { import = "astrocommunity.editing-support.telescope-undo-nvim" },
   { import = "astrocommunity.editing-support.zen-mode-nvim" },
