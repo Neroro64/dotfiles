@@ -103,6 +103,10 @@ return {
         ["<A-k>"] = { "<Up>" },
         ["<A-l>"] = { "<Right>" },
       },
+      v = {
+        ["<leader>p"] = { '"+p', desc = "paste from clipboard" },
+        ["<leader>y"] = { '"+y', desc = "copy to clipboard" },
+      },
     },
   },
 }
