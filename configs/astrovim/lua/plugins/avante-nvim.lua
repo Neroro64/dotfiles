@@ -1,6 +1,6 @@
 -- return {}
 -- Define a leader key prefix for all Avante keybindings
-local prefix = "<Leader>A"
+local prefix = "<Leader>a"
 return {
   -- Avante is an AI assistant plugin for Neovim
   "Neroro64/avante.nvim",
