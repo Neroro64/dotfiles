@@ -1,12 +1,8 @@
--- Use Ctrl-h and Ctrl-j to go to next or previous diff, when in diff-mode
-vim.api.nvim_set_keymap("n", "<C-h>", "<cmd>diffnext<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-j>", "<cmd>diffprev<CR>", { noremap = true })
+-- Use Ctrl-h
+vim.api.nvim_set_keymap("n", "<C-h>", "[c", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-j>", "]c", { noremap = true })
 vim.api.nvim_set_keymap("n", "<do>", ":DiffGet<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<dp>", ":DiffPut<CR>", { noremap = true })
-
--- EasyAlign
-vim.api.nvim_set_keymap("x", "gA", "<Plug>(EasyAlign)", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "ga", "<Plug>(EasyAlign)", { noremap = true, silent = true })
 
 -- Use Tab to switch search results
 vim.cmd [[
@@ -23,7 +19,7 @@ vim.opt.ff = "unix"
 vim.opt.laststatus = 3
 -- Colorscheme
 -- vim.opt.background = "light"
--- vim.cmd "colorscheme zenbones"
+vim.cmd "colorscheme vesper"
 
 -- PowerShell DAP Setup (for Windows)
 if vim.fn.has "win64" == 1 or vim.fn.has "win32" == 1 then
@@ -64,6 +60,3 @@ require("neo-tree").setup {
     },
   },
 }
-
--- Avante Library Load
-require("avante_lib").load()

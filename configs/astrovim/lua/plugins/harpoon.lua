@@ -2,9 +2,10 @@
 return {
   -- Plugin name and details
   "ThePrimeagen/harpoon",
-  lazy = false,
+  lazy = true,
   branch = "harpoon2",
   dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+  cmd = { "HarpoonList", "HarpoonAddFile", "HarpoonQuickMenu" },
   config = function()
     -- Initialize harpoon module
     local harpoon = require "harpoon"

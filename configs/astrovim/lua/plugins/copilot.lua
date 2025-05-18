@@ -25,7 +25,7 @@ return {}
 --         panel = { enabled = false },
 --       }
 --
---       local util = require("copilot.util")
+--       local util = require "copilot.util"
 --       local orig_get_editor_configuration = util.get_editor_configuration
 --
 --       ---@diagnostic disable-next-line: duplicate-set-field

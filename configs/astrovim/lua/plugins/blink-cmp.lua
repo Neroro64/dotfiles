@@ -10,7 +10,6 @@ return {
         "path",
         "snippets",
         "buffer",
-        "copilot",
         "avante",
       },
       providers = {
