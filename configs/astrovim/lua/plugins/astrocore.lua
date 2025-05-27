@@ -45,7 +45,7 @@ return {
       n = {
         -- second key is the lefthand side of the map
         -- NeoTree keybindings
-        ["<leader>E"] = { ":Neotree reveal_file=%", desc = "Locate current file in Neotree" },
+        ["<leader>E"] = { ":Neotree reveal_file=%<CR>", desc = "Locate current file in Neotree" },
 
         -- navigate buffer tabs
         ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
