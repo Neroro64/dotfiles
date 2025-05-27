@@ -1,6 +1,6 @@
 -- Use Ctrl-h
 vim.api.nvim_set_keymap("n", "<C-h>", "[c", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-j>", "]c", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-l>", "]c", { noremap = true })
 vim.api.nvim_set_keymap("n", "<do>", ":DiffGet<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<dp>", ":DiffPut<CR>", { noremap = true })
 
