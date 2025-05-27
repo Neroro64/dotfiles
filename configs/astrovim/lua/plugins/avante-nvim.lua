@@ -41,6 +41,7 @@ return {
     },
   },
   opts = {
+    mode = "legacy",
     -- General behavior configuration
     behavior = {
       auto_suggestion = false, -- Disable automatic suggestions
