@@ -41,7 +41,6 @@ return {
     },
   },
   opts = {
-    mode = "legacy",
     -- General behavior configuration
     behavior = {
       auto_suggestion = false, -- Disable automatic suggestions
@@ -80,6 +79,14 @@ return {
         endpoint = "http://127.0.0.1:1234/v1", -- Local endpoint
         model = "LocalCopilot", -- Model to use
       },
+      open_router = {
+        __inherited_from = "openai",
+        api_key_name = "OPENROUTER_API_KEY",
+        endpoint = "https://openrouter.ai/api/v1",
+        -- model = "deepseek/deepseek-r1-0528:free",
+        model = "deepseek/deepseek-r1-0528-qwen3-8b:free",
+        disable_tools = true
+      },
       copilot_claude = {
         __inherited_from = "copilot", -- Inherits from Copilot provider
         model = "claude-3.7-sonnet-thought", -- Uses Claude 3.7 Sonnet with thought process
@@ -87,6 +94,14 @@ return {
       copilot_openai = {
         __inherited_from = "copilot", -- Inherits from Copilot provider
         model = "o3-mini", -- Uses OpenAI o3-mini model
+      },
+      gemini_flash = {
+        __inherited_from = "gemini",
+        model = "gemini-2.5-flash-preview-05-20",
+      },
+      gemini_pro = {
+        __inherited_from = "gemini",
+        model = "gemini-2.5-pro-preview-06-05",
       },
     },
   },
