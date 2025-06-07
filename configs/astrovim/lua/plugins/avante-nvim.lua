@@ -71,7 +71,7 @@ return {
     -- AI provider configuration
     -- NOTE: Provider settings
     provider = "localcopilot", -- Default AI provider
-    vendors = {
+    providers = {
       ---@type AvanteProvider
       localcopilot = {
         __inherited_from = "openai", -- Inherits configuration from OpenAI provider
@@ -85,7 +85,7 @@ return {
         endpoint = "https://openrouter.ai/api/v1",
         -- model = "deepseek/deepseek-r1-0528:free",
         model = "deepseek/deepseek-r1-0528-qwen3-8b:free",
-        disable_tools = true
+        disable_tools = true,
       },
       copilot_claude = {
         __inherited_from = "copilot", -- Inherits from Copilot provider
