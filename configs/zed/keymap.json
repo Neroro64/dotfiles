@@ -1,0 +1,31 @@
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      // Leader Key
+      "space e": "workspace::ToggleLeftDock",
+
+      // Harpoon-like Tab Navigation
+      ", 1": ["pane::ActivateItem", 0],
+      ", 2": ["pane::ActivateItem", 1],
+      ", 3": ["pane::ActivateItem", 2],
+      ", 4": ["pane::ActivateItem", 3],
+      ", 5": ["pane::ActivateItem", 4],
+      ", 6": ["pane::ActivateItem", 5],
+      ", 7": ["pane::ActivateItem", 6],
+      ", 8": ["pane::ActivateItem", 7],
+
+      // LSP Actions
+      "space l a": "editor::ToggleCodeActions",
+      "space l r": "editor::Rename",
+      "shift-k": "editor::Hover",
+      "g d": "editor::GoToDefinition",
+
+      // Pane Navigation
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  }
+]
