@@ -32,12 +32,8 @@ return {
       )
     end,
   },
-  { "modularml/mojo.vim" },
   { "pteroctopus/faster.nvim" },
   { "echasnovski/mini.align", config = function() require("mini.align").setup() end },
-  { "datsfilipe/vesper.nvim", lazy = true },
-  {
-    "thesimonho/kanagawa-paper.nvim",
-    lazy = true,
-  },
+  { "datsfilipe/vesper.nvim" },
+  { "thesimonho/kanagawa-paper.nvim" },
 }

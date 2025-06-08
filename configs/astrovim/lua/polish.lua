@@ -12,15 +12,6 @@ vim.cmd [[
   cnoremap <expr> <S-Tab> getcmdtype() =~ '[?/]' ? "<c-t>" : "<S-Tab>"
 ]]
 
--- Settings
-vim.opt.fixendofline = false
-vim.opt.ff = "unix"
--- views can only be fully collapsed with the global statusline
-vim.opt.laststatus = 3
--- Colorscheme
--- vim.opt.background = "light"
-vim.cmd "colorscheme kanagawa-paper"
-
 -- PowerShell DAP Setup (for Windows)
 if vim.fn.has "win64" == 1 or vim.fn.has "win32" == 1 then
   vim.cmd [[
@@ -47,7 +38,9 @@ require("telescope").setup {
       "%.git/.*",
       "lib",
       "bin",
+      "obj",
       "vendor",
+      "*rtifact/.*",
     },
   },
 }

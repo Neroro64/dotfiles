@@ -8,7 +8,7 @@ return {
       port = "${port}",
       executable = {
         command = "mojo-lldb-dap",
-        args = { "--port", "${port}" },
+        args = { "--connection", "connection://localhost:${port}" },
         -- On windows you may have to uncomment this:
         -- detached = false,
       },
@@ -20,11 +20,13 @@ return {
         name = "Launch current file",
         type = "mojo",
         request = "launch",
+        console = 'integratedTerminal',
         program = "mojo",
-        args = { "run", "--no-optimization", "--debug-level", "full", "${file}" },
+        args = { "run", "--no-optimization", "--debug-level", "full", "--debug-info-language", "Mojo", "${file}" },
         cwd = "${workspaceFolder}",
         initCommands = {
           "plugin load " .. vim.fn.expand "$MODULAR_HOME" .. "/../../lib/libMojoLLDB.so",
+          "settings set target.input-path inputs.txt"
           -- Add any other necessary commands to initialize the plugin
         },
       },
@@ -32,10 +34,20 @@ return {
         name = "Launch executable",
         type = "mojo",
         request = "launch",
+        console = 'integratedTerminal',
         program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
         cwd = "${workspaceFolder}",
+        args = function()
+          local input = vim.fn.input("Arguments: ")
+          if input == "" then
+            return {}
+          else
+            return vim.split(input, " ")
+          end
+        end,
         initCommands = {
           "plugin load " .. vim.fn.expand "$MODULAR_HOME" .. "/../../lib/libMojoLLDB.so",
+          "settings set target.input-path inputs.txt"
           -- Add any other necessary commands to initialize the plugin
         },
       },
@@ -46,6 +58,7 @@ return {
         name = "Launch executable",
         type = "codelldb",
         request = "launch",
+        console = 'integratedTerminal',
         program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
         cwd = "${workspaceFolder}",
         stopOnEntry = false,
@@ -54,6 +67,7 @@ return {
         name = "Launch with arguments",
         type = "codelldb",
         request = "launch",
+        console = 'integratedTerminal',
         program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
         args = function()
           local args_string = vim.fn.input "Arguments: "
@@ -61,7 +75,7 @@ return {
         end,
         cwd = "${workspaceFolder}",
         stopOnEntry = false,
-      },
+      }
     }
 
     dap.configurations.c = dap.configurations.cpp

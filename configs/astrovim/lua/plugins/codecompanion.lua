@@ -119,7 +119,7 @@ return {
       map("v", "<leader>aa", ":CodeCompanionChat Add<CR>", { desc = "CodeCompanion: Add selected file to Chat" })
 
       -- Action Palette (a UI to access various commands)
-      map("n", "<leader>ap", ":CodeCompanionActions<CR>", { desc = "CodeCompanion: Open Action Palette" })
+      map({ "n", "v" }, "<leader>ap", ":CodeCompanionActions<CR>", { desc = "CodeCompanion: Open Action Palette" })
     end,
   },
 
