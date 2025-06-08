@@ -69,3 +69,4 @@ function weather
 end
 
 magic completion --shell fish | source
+fish_add_path /home/nuoc/.pixi/bin
