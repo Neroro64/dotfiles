@@ -19,7 +19,7 @@ vim.opt.ff = "unix"
 vim.opt.laststatus = 3
 -- Colorscheme
 -- vim.opt.background = "light"
-vim.cmd "colorscheme vesper"
+vim.cmd "colorscheme kanagawa-paper"
 
 -- PowerShell DAP Setup (for Windows)
 if vim.fn.has "win64" == 1 or vim.fn.has "win32" == 1 then
