@@ -1,3 +1,6 @@
 **/git/*
 **/graphs/*
 *cache*
+
+# Ignore Lazy lock file
+lazy-lock.json
