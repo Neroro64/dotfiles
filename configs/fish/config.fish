@@ -68,5 +68,4 @@ function weather
     curl https://wttr.in
 end
 
-magic completion --shell fish | source
 fish_add_path /home/nuoc/.pixi/bin
