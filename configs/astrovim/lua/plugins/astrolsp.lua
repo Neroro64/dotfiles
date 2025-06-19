@@ -53,8 +53,6 @@ return {
           "--log=verbose", -- Verbosity of log messages written to stderr: Low level details
         },
         filetypes = { "mojo" },
-        root_dir = vim.fs.dirname(vim.fs.find(".git", { path = ".", upward = true })[1]),
-
         single_file_support = true,
       },
     },

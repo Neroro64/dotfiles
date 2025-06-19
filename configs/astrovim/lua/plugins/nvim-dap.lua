@@ -26,7 +26,6 @@ return {
         cwd = "${workspaceFolder}",
         initCommands = {
           "plugin load " .. vim.fn.expand "$MODULAR_HOME" .. "/../../lib/libMojoLLDB.so",
-          "settings set target.input-path inputs.txt"
           -- Add any other necessary commands to initialize the plugin
         },
       },
@@ -47,7 +46,6 @@ return {
         end,
         initCommands = {
           "plugin load " .. vim.fn.expand "$MODULAR_HOME" .. "/../../lib/libMojoLLDB.so",
-          "settings set target.input-path inputs.txt"
           -- Add any other necessary commands to initialize the plugin
         },
       },
