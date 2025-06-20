@@ -40,17 +40,7 @@ return {
     config = {
       mojo = {
         cmd = {
-          "mojo-lsp-server",
-          "--bounds-checking-single-trap", -- Use one trap block per function
-          "--debugify-level=location+variables", -- Debug info to add: Locations and Variables
-          "--enable-vtable-profile-use", -- If ThinLTO and WPD is enabled and this option is true, vtable profiles will be used by ICP pass for more efficient indirect call sequence. If false, type profiles won't be used.
-          "--enable-vtable-value-profiling", -- If true, the virtual table address will be instrumented to know the types of a C++ pointer. The information is used in indirect call promotion to do selective vtable-based comparison.
-          "--experimental-debug-variable-locations", -- Use experimental new value-tracking variable locations
-          "--experimental-debuginfo-iterators", -- Enable communicating debuginfo positions through iterators, eliminating intrinsics. Has no effect if --preserve-input-debuginfo-format=true.
-          "--hot-cold-split", -- Enable hot-cold splitting pass
-          "--import-all-index", -- Import all external functions in index.
-          "--cost-kind=latency", -- Target cost kind: Instruction latency
-          "--log=verbose", -- Verbosity of log messages written to stderr: Low level details
+          "mojo-lsp-server"
         },
         filetypes = { "mojo" },
         single_file_support = true,
