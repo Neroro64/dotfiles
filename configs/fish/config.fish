@@ -30,6 +30,7 @@ fish_vi_key_bindings
 
 # Aliases
 alias ls='ls --color=auto'
+alias ex='exa -T -L1 --git -l'
 alias grep='grep --color=auto'
 alias lg='lazygit'
 alias rng='ranger'
