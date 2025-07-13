@@ -43,17 +43,60 @@ return {
           "mojo-lsp-server"
         },
         filetypes = { "mojo" },
-        single_file_support = true,
+        root_dir = function(fname)
+          return vim.fs.dirname(vim.fs.find("pixi.toml", {path = fname, upward = true })[1])
+        end,
       },
     },
     -- customize how language servers are attached
     handlers = {
-      -- a function without a key is simply the default handler, functions take two parameters, the server name and the configured options table for that server
-      -- function(server, opts) require("lspconfig")[server].setup(opts) end
+      -- This will apply the on_exit logic to ALL servers that don't have a specific handler defined.
+      function(server_name, opts)
+        local on_attach_original = opts.on_attach -- Store the original on_attach if it exists
+        local lspconfig = require('lspconfig')
 
-      -- the key is the server that is being setup with `lspconfig`
-      -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
-      -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
+        opts.on_attach = function(client, bufnr)
+          -- Call the original on_attach if it was provided by AstroLSP or a server-specific config
+          if on_attach_original then
+            on_attach_original(client, bufnr)
+          end
+
+          -- Your custom on_exit handler
+          client.on_exit = function(code, signal, client_id)
+            if code ~= 0 then -- Server exited with an error
+              print(string.format("LSP server %s (id: %d) exited with code %s, signal %s. Attempting restart...", client.name, client_id, tostring(code), tostring(signal)))
+              -- A small delay before restarting might be good to avoid a rapid restart loop
+              vim.defer_fn(function()
+                -- Check if the client is still registered before attempting restart
+                -- This prevents errors if the client was explicitly stopped or already restarted
+                if vim.lsp.get_client_by_id(client_id) then
+                    vim.cmd(string.format(":LspRestart %s", client.name))
+                end
+              end, 1000) -- Wait 1 second before restarting
+            else
+              print(string.format("LSP server %s (id: %d) exited cleanly.", client.name, client_id))
+            end
+          end
+
+          -- IMPORTANT: AstroLSP already sets up common keymaps and autocmds.
+          -- If you put them here, they might be duplicated or conflict.
+          -- Stick to the on_exit logic in this part, and use AstroLSP's `mappings` and `autocmds` sections for keymaps/autocmds.
+        end
+
+        -- Call the standard lspconfig setup with your modified opts
+        lspconfig[server_name].setup(opts)
+      end,
+
+      -- If you had a specific server that you wanted to exclude from this behavior,
+      -- or give it a different on_exit logic, you could do it here:
+      -- rust_analyzer = function(_, opts)
+      --   -- Custom on_attach for rust_analyzer
+      --   opts.on_attach = function(client, bufnr)
+      --     print("Rust Analyzer attached!")
+      --     -- No auto-restart for rust_analyzer in this example
+      --   end
+      --   require("lspconfig").rust_analyzer.setup(opts)
+      -- end,
     },
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {
