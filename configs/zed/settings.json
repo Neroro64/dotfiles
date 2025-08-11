@@ -14,7 +14,7 @@
     "model_parameters": [],
     "default_model": {
       "provider": "lmstudio",
-      "model": "qwen3-32b-128k"
+      "model": "qwen3-coder-30b-a3b-instruct"
     },
     "version": "2"
   },
