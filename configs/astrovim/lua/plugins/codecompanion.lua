@@ -26,6 +26,8 @@ return {
 
         -- Adapters: Configure your LLM providers
         adapters = {
+          http = {
+
           -- LM Studio Adapter Configuration
           -- LM Studio provides an OpenAI-compatible API, so we use the 'openai' adapter type.
           lmstudio = function()
@@ -46,6 +48,7 @@ return {
           --   host = "http://localhost:11434",
           --   model = "codellama",
           -- },
+          }
         },
 
         -- Strategies: How you interact with the AI (e.g., chat, inline suggestions)
