@@ -37,6 +37,11 @@ return {
   { "thesimonho/kanagawa-paper.nvim", lazy = true },
   { 'everviolet/nvim', name = 'evergarden',
     priority = 1000, -- Colorscheme plugin is loaded first before any other plugins
+    config = function()
+      require("notify").setup({
+        background_colour = "#000000",
+      })
+    end,
     opts = {
       theme = {
         variant = 'winter', -- 'winter'|'fall'|'spring'|'summer'
