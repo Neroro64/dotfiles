@@ -1,0 +1,278 @@
+<!-- src/App.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import marked from 'marked';
+  
+  // Initialize file system state
+  let leftPanel = {
+    path: '/',
+    items: []
+  };
+  let centerPanel = {
+    path: '/',
+    items: []
+  };
+  let rightPanel = {
+    content: '# Welcome to Ranger-like TUI\n\nSelect a Markdown file to preview'
+  };
+  
+  // Resizable panel widths
+  let leftWidth = 25;
+  let centerWidth = 50;
+  let rightWidth = 25;
+  
+  // Initialize with root directory
+  onMount(async () => {
+    await updateDirectory('/', 'center');
+    centerPanel.items = await getDirectoryItems('/');
+  });
+  
+  // Simulate file system operations
+  async function getDirectoryItems(path) {
+    // In a real app, this would be an API call
+    // For demo, we'll use mock data
+    return [
+      { name: 'documents', type: 'dir' },
+      { name: 'notes.md', type: 'file', content: '# My Notes\n\n- Item 1\n- Item 2' },
+      { name: 'readme.md', type: 'file', content: '# Project Readme\n\nThis is a **sample** markdown file.' },
+      { name: 'image.jpg', type: 'file' },
+      { name: 'code.js', type: 'file', content: 'console.log("Hello World");' }
+    ];
+  }
+  
+  async function updateDirectory(path, panel) {
+    const items = await getDirectoryItems(path);
+    if (panel === 'left') {
+      leftPanel = { path, items };
+    } else if (panel === 'center') {
+      centerPanel = { path, items };
+    }
+  }
+  
+  function handleItemClick(item, panel) {
+    if (item.type === 'dir') {
+      // Navigate into directory
+      const newPath = `${panel === 'left' ? leftPanel.path : centerPanel.path}/${item.name}`;
+      updateDirectory(newPath, panel === 'left' ? 'left' : 'center');
+    } else if (item.type === 'file') {
+      // Handle file preview
+      if (item.name.endsWith('.md')) {
+        rightPanel.content = item.content || `# ${item.name}\n\nNo content available`;
+      } else {
+        rightPanel.content = `\`\`\`\n${item.content || 'Binary file or unsupported format'}\n\`\`\``;
+      }
+    }
+  }
+  
+  // Resizing logic
+  let isResizing = null;
+  let startX = 0;
+  
+  function startResize(e, panel) {
+    isResizing = panel;
+    startX = e.clientX;
+    document.body.style.cursor = 'col-resize';
+    e.preventDefault();
+  }
+  
+  function handleMouseMove(e) {
+    if (!isResizing) return;
+    
+    const deltaX = e.clientX - startX;
+    const totalWidth = window.innerWidth;
+    
+    if (isResizing === 'left') {
+      const newLeft = Math.max(10, Math.min(70, leftWidth + (deltaX / totalWidth) * 100));
+      leftWidth = newLeft;
+      rightWidth = 100 - leftWidth - centerWidth;
+    } else if (isResizing === 'center') {
+      const newCenter = Math.max(10, Math.min(70, centerWidth + (deltaX / totalWidth) * 100));
+      centerWidth = newCenter;
+      rightWidth = 100 - leftWidth - centerWidth;
+    }
+    
+    startX = e.clientX;
+  }
+  
+  function stopResize() {
+    isResizing = null;
+    document.body.style.cursor = '';
+  }
+  
+  // Add mouse event listeners
+  onMount(() => {
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', stopResize);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', stopResize);
+    };
+  });
+</script>
+
+<style>
+  :global(body) {
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .app-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .panel {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-right: 1px solid #3c3c3c;
+  }
+  
+  .panel-header {
+    padding: 8px 12px;
+    background: #252526;
+    border-bottom: 1px solid #3c3c3c;
+    font-weight: bold;
+  }
+  
+  .panel-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 0;
+  }
+  
+  .file-item {
+    padding: 6px 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  
+  .file-item:hover {
+    background: #2a2d2e;
+  }
+  
+  .file-item.dir {
+    color: #4ec9b0;
+  }
+  
+  .file-item.file {
+    color: #dcdcaa;
+  }
+  
+  .file-item.md {
+    color: #ce9178;
+  }
+  
+  .resize-handle {
+    width: 4px;
+    background: #3c3c3c;
+    cursor: col-resize;
+    z-index: 10;
+  }
+  
+  .preview-content {
+    padding: 16px;
+    height: 100%;
+    overflow-y: auto;
+    background: #1e1e1e;
+  }
+  
+  /* Markdown styling */
+  .preview-content h1 {
+    color: #4ec9b0;
+    border-bottom: 1px solid #3c3c3c;
+    padding-bottom: 8px;
+  }
+  
+  .preview-content h2 {
+    color: #4ec9b0;
+    margin-top: 24px;
+  }
+  
+  .preview-content p {
+    line-height: 1.6;
+    margin: 12px 0;
+  }
+  
+  .preview-content code {
+    background: #2d2d2d;
+    padding: 2px 4px;
+    border-radius: 3px;
+  }
+  
+  .preview-content pre {
+    background: #2d2d2d;
+    padding: 12px;
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+  
+  .preview-content strong {
+    color: #d7ba7d;
+  }
+  
+  .preview-content ul {
+    padding-left: 20px;
+  }
+  
+  .preview-content li {
+    margin: 4px 0;
+  }
+</style>
+
+<div class="app-container">
+  <!-- Left Panel -->
+  <div class="panel" style="width: {leftWidth}%">
+    <div class="panel-header">Left Panel</div>
+    <div class="panel-content">
+      {#each leftPanel.items as item}
+        <div 
+          class="file-item {item.type} {item.name.endsWith('.md') ? 'md' : ''}"
+          on:click={() => handleItemClick(item, 'left')}
+        >
+          {item.name}
+        </div>
+      {/each}
+    </div>
+  </div>
+  
+  <!-- Left Resize Handle -->
+  <div 
+    class="resize-handle" 
+    on:mousedown={(e) => startResize(e, 'left')}
+  ></div>
+  
+  <!-- Center Panel -->
+  <div class="panel" style="width: {centerWidth}%">
+    <div class="panel-header">Center Panel</div>
+    <div class="panel-content">
+      {#each centerPanel.items as item}
+        <div 
+          class="file-item {item.type} {item.name.endsWith('.md') ? 'md' : ''}"
+          on:click={() => handleItemClick(item, 'center')}
+        >
+          {item.name}
+        </div>
+      {/each}
+    </div>
+  </div>
+  
+  <!-- Center Resize Handle -->
+  <div 
+    class="resize-handle" 
+    on:mousedown={(e) => startResize(e, 'center')}
+  ></div>
+  
+  <!-- Right Panel (Preview) -->
+  <div class="panel" style="width: {rightWidth}%">
+    <div class="panel-header">Preview</div>
+    <div class="preview-content" {@html marked(rightPanel.content)}></div>
+  </div>
+</div>
