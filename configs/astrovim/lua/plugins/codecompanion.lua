@@ -124,6 +124,10 @@ return {
 
       -- Action Palette (a UI to access various commands)
       map({ "n", "v" }, "<leader>ap", ":CodeCompanionActions<CR>", { desc = "CodeCompanion: Open Action Palette" })
+      map({ "n", "v" }, "<leader>ab", ":CodeCompanion #{buffer} ", { desc = "CodeCompanion: Chat with current buffer " })
+      map({ "n", "v" }, "<leader>ai", function()
+        require("codecompanion").inline({prompt = vim.fn.input("Prompt: ")})
+      end, { desc = "Code Companion Inline" })
     end,
   },
 
@@ -132,12 +136,9 @@ return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
     ft = { "markdown", "codecompanion" }, -- Ensure it renders markdown in codecompanion buffers
-    -- Optional: You can configure render-markdown.nvim here if needed
-    -- config = function()
-    --   require('render-markdown').setup({
-    --     -- Your render-markdown specific options
-    --   })
-    -- end
+    config = function()
+      vim.keymap.set({ "n", "v" }, "<leader>mr", ":RenderMarkdown toggle<CR>", { desc = "Toggle Markdown rendering" })
+    end
   },
 
   -- Ensure treesitter is set up if you don't have a separate configuration for it
