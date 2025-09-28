@@ -8,7 +8,7 @@ return {
       port = "${port}",
       executable = {
         command = "mojo-lldb-dap",
-        args = { "--connection", "connection://localhost:${port}" },
+        args = { "--connection", "listen://localhost:${port}" },
         -- On windows you may have to uncomment this:
         -- detached = false,
       },
