@@ -11,6 +11,9 @@ source /usr/share/cachyos-fish-config/cachyos-config.fish
 set -gx EDITOR nvim
 set -gx VISUAL $EDITOR
 
+# Set the SSH Key Agent socket
+set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/gcr/ssh"
+
 # Mojo config
 set -gx LD_LIBRARY_PATH ~/.local/lib/mojo
 
