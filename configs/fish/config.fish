@@ -30,7 +30,6 @@ fish_vi_key_bindings
 
 # Aliases
 alias ls='ls --color=auto'
-alias ex='exa -T -L1 --git -l'
 alias grep='grep --color=auto'
 alias lg='lazygit'
 alias rng='ranger'
@@ -41,9 +40,12 @@ fish_add_path ~/.bun/bin
 fish_add_path ~/.modular/bin
 fish_add_path /opt/cuda/bin
 
-
-function ll
-    ls -lah $argv
+function ex
+    set depth $argv[1]
+    if test -z "$depth"
+        set depth 1
+    end
+    command exa -T -L"$depth" --git -l
 end
 
 function enable_3090
