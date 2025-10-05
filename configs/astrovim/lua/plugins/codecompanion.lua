@@ -59,7 +59,6 @@ return {
             keymaps = {
               -- Example: '<C-y>' = { "accept_suggestion", mode = { "n", "i" } },
             },
-            tools = require("agent_tools.lsp_file_llm_tools")
           },
           inline = {
             adapter = "lmstudio", -- Set LM Studio as the default adapter for inline suggestions
