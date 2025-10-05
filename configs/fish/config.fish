@@ -79,3 +79,7 @@ function weather
 end
 
 fish_add_path /home/nuoc/.pixi/bin
+
+set -gx OPENAI_API_KEY "api_key"
+set -gx OPENAI_BASE_URL "http://127.0.0.1:1234/v1"
+set -gx OPENAI_MODEL "qwen3-coder-30b-a3b-instruct-1m"
