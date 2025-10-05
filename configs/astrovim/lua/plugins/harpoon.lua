@@ -39,13 +39,13 @@ return {
     vim.keymap.set("n", "<leader>ra", function() harpoon:list():add() end, { desc = "Add to Harpoon" })
     vim.keymap.set("n", "<leader>rr", function() harpoon:list():remove() end, { desc = "Remove from Harpoon" })
 
-    -- Navigation               
+    -- Navigation
     vim.keymap.set("n", "<leader>r1", function() harpoon:list():select(1) end, { desc = "Harpoon buffer 1" })
     vim.keymap.set("n", "<leader>r2", function() harpoon:list():select(2) end, { desc = "Harpoon buffer 2" })
     vim.keymap.set("n", "<leader>r3", function() harpoon:list():select(3) end, { desc = "Harpoon buffer 3" })
     vim.keymap.set("n", "<leader>r4", function() harpoon:list():select(4) end, { desc = "Harpoon buffer 4" })
 
-    -- Previous/Next navigation  
+    -- Previous/Next navigation
     vim.keymap.set("n", "<leader>rp", function() harpoon:list():prev() end, { desc = "Prev Harpoon buffer" })
     vim.keymap.set("n", "<leader>rn", function() harpoon:list():next() end, { desc = "Next Harpoon buffer" })
   end,

@@ -35,29 +35,31 @@ return {
   { "pteroctopus/faster.nvim" },
   { "echasnovski/mini.align", config = function() require("mini.align").setup() end },
   { "thesimonho/kanagawa-paper.nvim", lazy = true },
-  { 'everviolet/nvim', name = 'evergarden',
+  {
+    "everviolet/nvim",
+    name = "evergarden",
     priority = 1000, -- Colorscheme plugin is loaded first before any other plugins
     config = function()
-      require("notify").setup({
+      require("notify").setup {
         background_colour = "#000000",
-      })
+      }
     end,
     opts = {
       theme = {
-        variant = 'winter', -- 'winter'|'fall'|'spring'|'summer'
-        accent = 'green',
+        variant = "winter", -- 'winter'|'fall'|'spring'|'summer'
+        accent = "green",
       },
       editor = {
         transparent_background = false,
-        sign = { color = 'none' },
+        sign = { color = "none" },
         float = {
-          color = 'mantle',
+          color = "mantle",
           solid_border = false,
         },
         completion = {
-          color = 'surface0',
+          color = "surface0",
         },
       },
-    }
-  }
+    },
+  },
 }

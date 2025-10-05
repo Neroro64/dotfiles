@@ -20,7 +20,7 @@ return {
         name = "Launch current file",
         type = "mojo",
         request = "launch",
-        console = 'integratedTerminal',
+        console = "integratedTerminal",
         program = "mojo",
         args = { "run", "--no-optimization", "--debug-level", "full", "--debug-info-language", "Mojo", "${file}" },
         cwd = "${workspaceFolder}",
@@ -33,11 +33,11 @@ return {
         name = "Launch executable",
         type = "mojo",
         request = "launch",
-        console = 'integratedTerminal',
+        console = "integratedTerminal",
         program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
         cwd = "${workspaceFolder}",
         args = function()
-          local input = vim.fn.input("Arguments: ")
+          local input = vim.fn.input "Arguments: "
           if input == "" then
             return {}
           else
@@ -56,7 +56,7 @@ return {
         name = "Launch executable",
         type = "codelldb",
         request = "launch",
-        console = 'integratedTerminal',
+        console = "integratedTerminal",
         program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
         cwd = "${workspaceFolder}",
         stopOnEntry = false,
@@ -65,7 +65,7 @@ return {
         name = "Launch with arguments",
         type = "codelldb",
         request = "launch",
-        console = 'integratedTerminal',
+        console = "integratedTerminal",
         program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
         args = function()
           local args_string = vim.fn.input "Arguments: "
@@ -73,7 +73,7 @@ return {
         end,
         cwd = "${workspaceFolder}",
         stopOnEntry = false,
-      }
+      },
     }
 
     dap.configurations.c = dap.configurations.cpp

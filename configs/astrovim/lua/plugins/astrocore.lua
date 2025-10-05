@@ -96,7 +96,7 @@ return {
         ["<leader>y"] = { '"+y', desc = "copy to clipboard" },
       },
       t = {
-        ["<C-t>"] = {'<C-\\><C-n>', desc = 'Exit terminal insert mode' }
+        ["<C-t>"] = { "<C-\\><C-n>", desc = "Exit terminal insert mode" },
       },
     },
   },

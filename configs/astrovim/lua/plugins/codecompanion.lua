@@ -28,27 +28,27 @@ return {
         adapters = {
           http = {
 
-          -- LM Studio Adapter Configuration
-          -- LM Studio provides an OpenAI-compatible API, so we use the 'openai' adapter type.
-          lmstudio = function()
-            return require("codecompanion.adapters").extend("openai_compatible", {
-              env = {
-                api_key = "OPENAI_API_KEY",
-                url = "http://localhost:1234",
-              },
-            })
-          end,
+            -- LM Studio Adapter Configuration
+            -- LM Studio provides an OpenAI-compatible API, so we use the 'openai' adapter type.
+            lmstudio = function()
+              return require("codecompanion.adapters").extend("openai_compatible", {
+                env = {
+                  api_key = "OPENAI_API_KEY",
+                  url = "http://localhost:1234",
+                },
+              })
+            end,
 
-          -- You can optionally add other adapters here if you use other LLM providers:
-          -- openai = {
-          --   api_key = os.getenv("OPENAI_API_KEY"), -- Remember to set this environment variable
-          --   model = "gpt-4o",
-          -- },
-          -- ollama = {
-          --   host = "http://localhost:11434",
-          --   model = "codellama",
-          -- },
-          }
+            -- You can optionally add other adapters here if you use other LLM providers:
+            -- openai = {
+            --   api_key = os.getenv("OPENAI_API_KEY"), -- Remember to set this environment variable
+            --   model = "gpt-4o",
+            -- },
+            -- ollama = {
+            --   host = "http://localhost:11434",
+            --   model = "codellama",
+            -- },
+          },
         },
 
         -- Strategies: How you interact with the AI (e.g., chat, inline suggestions)
@@ -123,10 +123,18 @@ return {
 
       -- Action Palette (a UI to access various commands)
       map({ "n", "v" }, "<leader>ap", ":CodeCompanionActions<CR>", { desc = "CodeCompanion: Open Action Palette" })
-      map({ "n", "v" }, "<leader>ab", ":CodeCompanion #{buffer} ", { desc = "CodeCompanion: Chat with current buffer " })
-      map({ "n", "v" }, "<leader>ai", function()
-        require("codecompanion").inline({prompt = vim.fn.input("Prompt: ")})
-      end, { desc = "Code Companion Inline" })
+      map(
+        { "n", "v" },
+        "<leader>ab",
+        ":CodeCompanion #{buffer} ",
+        { desc = "CodeCompanion: Chat with current buffer " }
+      )
+      map(
+        { "n", "v" },
+        "<leader>ai",
+        function() require("codecompanion").inline { prompt = vim.fn.input "Prompt: " } end,
+        { desc = "Code Companion Inline" }
+      )
     end,
   },
 
@@ -137,7 +145,7 @@ return {
     ft = { "markdown", "codecompanion" }, -- Ensure it renders markdown in codecompanion buffers
     config = function()
       vim.keymap.set({ "n", "v" }, "<leader>mr", ":RenderMarkdown toggle<CR>", { desc = "Toggle Markdown rendering" })
-    end
+    end,
   },
 
   -- Ensure treesitter is set up if you don't have a separate configuration for it

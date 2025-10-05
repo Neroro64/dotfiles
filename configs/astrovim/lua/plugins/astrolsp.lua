@@ -31,7 +31,7 @@ return {
           local root = vim.fs.find("pixi.toml", { path = fname, upward = true })
           if root and root[1] then return vim.fs.dirname(root[1]) end
           -- Fallback to a common pattern if pixi.toml isn't found
-          return require("lspconfig").util.root_pattern(".git")(fname)
+          return require("lspconfig").util.root_pattern ".git"(fname)
         end,
       },
     },
@@ -42,13 +42,17 @@ return {
       mojo = function(server_name, opts)
         -- Debounce the restart mechanism
         local restart_scheduled = false
-        local restart_delay_ms = 100 
+        local restart_delay_ms = 100
 
         opts.on_exit = function(code, signal, client_id)
           if signal ~= 0 and not restart_scheduled then
             restart_scheduled = true
             vim.notify(
-              string.format("Mojo LSP crashed (code: %s, signal: %s). Automatically restarting...", tostring(code), tostring(signal)),
+              string.format(
+                "Mojo LSP crashed (code: %s, signal: %s). Automatically restarting...",
+                tostring(code),
+                tostring(signal)
+              ),
               vim.log.levels.WARN,
               { title = "LSP" }
             )
@@ -66,7 +70,7 @@ return {
       end,
     },
 
--- Configure buffer local auto commands
+    -- Configure buffer local auto commands
     autocmds = {
       lsp_codelens_refresh = {
         cond = "textDocument/codeLens",

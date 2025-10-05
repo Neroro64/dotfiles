@@ -29,7 +29,7 @@ return {
         neovide_min_scale_factor = vim.g.neovide_min_scale_factor or 0.7,
         neovide_max_scale_factor = vim.g.neovide_max_scale_factor or 2.0,
         neovide_initial_scale_factor = vim.g.neovide_scale_factor or 1,
-        neovide_scale_factor = 0.8
+        neovide_scale_factor = 0.8,
       },
     },
     commands = {
