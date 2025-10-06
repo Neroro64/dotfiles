@@ -44,11 +44,15 @@ fish_add_path ~/.modular/bin
 fish_add_path /opt/cuda/bin
 
 function ex
-    set depth $argv[1]
+    set path $argv[1]
+    set depth $argv[2]
+    if test -z "$path"
+        set path .
+    end
     if test -z "$depth"
         set depth 1
     end
-    command exa -T -L"$depth" --git -l
+    command exa -T -L"$depth" --git -l "$path"
 end
 
 function enable_3090
