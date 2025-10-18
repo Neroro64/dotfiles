@@ -53,3 +53,16 @@ require("neo-tree").setup {
     },
   },
 }
+
+-- ToggleTerm
+local Terminal = require('toggleterm.terminal').Terminal
+local opencodeTerm = Terminal:new({
+  cmd       = "opencode",
+  hidden    = true,
+  direction = "float",
+  float_opts = { border = "double" },
+})
+
+vim.keymap.set('n', '<leader>to',
+  function() opencodeTerm:toggle() end,
+  { noremap = true, silent = true, desc = "ToggleTerm Opencode" })
