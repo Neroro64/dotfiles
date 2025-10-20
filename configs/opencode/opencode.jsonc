@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "theme": "opencode",
+  "theme": "system",
   "share": "disabled",
   "provider": {
     "lmstudio": {
