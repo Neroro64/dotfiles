@@ -132,7 +132,7 @@ return {
       map(
         { "n", "v" },
         "<leader>ai",
-        function() require("codecompanion").inline { prompt = vim.fn.input "Prompt: " } end,
+        ":CodeCompanion ",
         { desc = "Code Companion Inline" }
       )
     end,
