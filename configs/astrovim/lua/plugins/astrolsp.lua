@@ -25,7 +25,7 @@ return {
     config = {
       mojo = {
         -- This is a TABLE, as expected by the plugin.
-        cmd = { "mojo-lsp-server", "-I", "." },
+        cmd = { "mojo-lsp-server", "-I", "src"  },
         filetypes = { "mojo" },
         root_dir = function(fname)
           local root = vim.fs.find("pixi.toml", { path = fname, upward = true })
