@@ -1,7 +1,6 @@
 ---
 description: Researches questions using web search, prioritizing credible sources and factual accuracy without exposing sensitive data
 mode: subagent
-temperature: 0.3
 tools:
   searxng_searxng_web_search: true
   searxng_web_url_read: true

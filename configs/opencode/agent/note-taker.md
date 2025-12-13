@@ -2,7 +2,6 @@
 
 description: Specialized subagent for knowledge extraction and management from conversations, capturing key takeaways and saving to the opencode project
 mode: subagent
-temperature: 0.3
 tools:
   mcp_basic_memory_*: true
   write: false
