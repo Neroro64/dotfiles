@@ -18,6 +18,8 @@
   pager = delta
   autocrlf = false
   editor = nvim
+[credential]
+  helper = store
 [commit]
   verbose = true
 [status]
