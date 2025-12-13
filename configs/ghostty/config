@@ -1,11 +1,51 @@
-cursor-style = block
+# --- Aesthetics & Theme ---
+theme = "Monokai Classic"
+
+# Transparent background with blur (macOS only mostly, acts as opacity on Linux)
+background-opacity = 0.90
+background-blur-radius = 20
+
+# Hide the titlebar for a cleaner, "hacker" look
+# On macOS, "tabs" keeps the native tabs but hides the bar. "hidden" removes it all.
+macos-titlebar-style = tabs
+# On Linux (GTK)
+gtk-titlebar = false
+
+# --- Fonts (Typography) ---
+# Use a Nerd Font for icons (ensure you have one installed, e.g., JetBrainsMono NF)
 font-family = "Monolisa"
-theme = "Kanagawa Wave"
+font-size = 13
+# Thicken the font slightly for better readability on high-DPI screens
+font-thicken = true
+# Increase line height slightly for breathing room
+adjust-cell-height = 10%
 
-window-decoration = false
-window-theme = ghostty
-quick-terminal-position = "top"
-quick-terminal-animation-duration = 0.1
+# --- Cursor ---
+cursor-style = block
+cursor-style-blink = false
+# Make the cursor customizable (e.g., orange)
+cursor-color = #ff9e64
 
-keybind = all:super+o=toggle_quick_terminal
-keybind = all:super+t=toggle_window_decorations
+# --- Keybindings ---
+# Reload config without restarting
+keybind = ctrl+shift+r=reload_config
+
+# Split management (Tmux-like feel)
+keybind = ctrl+shift+o=new_split:right
+keybind = ctrl+shift+l=new_split:down
+keybind = ctrl+shift+w=close_surface
+
+# Navigation between splits (Vim-style)
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+j=goto_split:bottom
+keybind = ctrl+k=goto_split:top
+keybind = ctrl+l=goto_split:right
+
+# Zoom a split (maximize it temporarily)
+keybind = ctrl+z=toggle_split_zoom
+
+# --- Cool Features ---
+keybind = global:cmd+\=toggle_quick_terminal
+
+# Mouse integration
+mouse-hide-while-typing = true
