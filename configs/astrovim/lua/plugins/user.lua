@@ -34,11 +34,22 @@ return {
   },
   { "pteroctopus/faster.nvim" },
   { "echasnovski/mini.align", config = function() require("mini.align").setup() end },
+  { 
+    "loctvl842/monokai-pro.nvim",
+    lazy = true,
+    config = function()
+      require("monokai-pro").setup()
+      require("notify").setup({
+        background_colour = "#000000",
+      })
+    end
+  },
   { "thesimonho/kanagawa-paper.nvim", lazy = true },
   {
     "everviolet/nvim",
     name = "evergarden",
     priority = 1000, -- Colorscheme plugin is loaded first before any other plugins
+    lazy = true,
     config = function()
       require("notify").setup {
         background_colour = "#000000",
