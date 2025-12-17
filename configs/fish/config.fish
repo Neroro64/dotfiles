@@ -65,6 +65,10 @@ function disable_3090
     nvidia-smi drain -p 0000:0c:00.0 -m 1
 end
 
+function new_project
+    pixi init $argv[1] -c https://conda.modular.com/max-nightly/ -c conda-forge && cd $argv[1]
+end
+
 # Find process using port
 function port
     if test (count $argv) = 1
