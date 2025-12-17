@@ -1,6 +1,5 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "theme": "system",
   "share": "disabled",
   "provider": {
     "lmstudio": {
@@ -35,7 +34,11 @@
     }
   },
   "permission": {
-    "bash": "ask"
+    "external_directory": "ask",
+    "bash": {
+      "rm": "ask",
+      "curl": "ask"
+    }
   },
-  "autoupdate": true,
+  "autoupdate": false,
 }
