@@ -18,7 +18,6 @@ return {
     -- enable servers that you already have installed without mason
     servers = {
       "mojo",
-      "zls",
     },
     -- Static configuration is placed here. This is read first.
     ---@diagnostic disable: missing-fields
