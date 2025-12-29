@@ -63,6 +63,6 @@ local opencodeTerm = Terminal:new({
   float_opts = { border = "double" },
 })
 
-vim.keymap.set('n', '<leader>to',
+vim.keymap.set('n', '<leader>aa',
   function() opencodeTerm:toggle() end,
   { noremap = true, silent = true, desc = "ToggleTerm Opencode" })

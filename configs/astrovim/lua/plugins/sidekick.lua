@@ -2,17 +2,6 @@ return {
   "folke/sidekick.nvim",
   keys = {
     {
-      "<c-.>",
-      function() require("sidekick.cli").toggle() end,
-      desc = "Sidekick Toggle",
-      mode = { "n", "t", "i", "x" },
-    },
-    {
-      "<leader>aa",
-      function() require("sidekick.cli").toggle() end,
-      desc = "Sidekick Toggle CLI",
-    },
-    {
       "<leader>as",
       function() require("sidekick.cli").select() end,
       -- Or to select only installed tools:
@@ -38,7 +27,7 @@ return {
     {
       "<leader>av",
       function() require("sidekick.cli").send({ msg = "{selection}" }) end,
-      mode = { "x" },
+      mode = { "x", "v" },
       desc = "Send Visual Selection",
     },
     {
@@ -46,11 +35,6 @@ return {
       function() require("sidekick.cli").prompt() end,
       mode = { "n", "x" },
       desc = "Sidekick Select Prompt",
-    },
-    {
-      "<leader>ac",
-      function() require("sidekick.cli").toggle({ name = "opencode", focus = true }) end,
-      desc = "Sidekick Toggle Opencode",
     },
   },
 }
