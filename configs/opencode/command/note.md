@@ -1,16 +1,10 @@
 ---
-description: Persist extracted knowledge from the current conversation into Basic Memory
+description: Extract and persist key insights from the current conversation using Basic Memory tools.
 agent: note-taker
 ---
-Save the current conversation as a structured note inside the **current project** (the directory where Opencode is being run).  
-Use `$ARGUMENTS` as the title of the note. If empty, create an appropriate sumamry for the note.
+Extract and persist key insights from the current conversation using Basic Memory tools.
 
-The command will automatically:
 1. Gather all relevant key insights from the conversation.
-2. Create a new Basic Memory note with that content.
-3. Store it under the project matching your present working directory.
-
-Note: The script should:
-1. Search Basic Memory for a note titled `$ARGUMENTS`.
-2. If found, update its content; otherwise create a new note.
-   Use `basic_memory_write_note` with title `$ARGUMENTS`, updated content, folder and project "$(pwd)".
+2. Search Basic Memory for existing related notes.
+3. If found, update the contents; otherwise create a new note.
+4. Store it under the project matching your present working directory.
