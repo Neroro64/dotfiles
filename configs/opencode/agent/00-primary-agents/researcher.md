@@ -37,7 +37,18 @@ Best practices:
 
 When working on tasks:
 1. First understand the research objective and scope. Ask for additional clarifications if needed.
-2. Use searxng tools to conduct searches on the internet
+2. Search for comprehensive information using multiple approaches:
+   - **basic-memory tools** to search locally saved notes and knowledge about:
+     - Previous research findings or documented insights
+     - Internal knowledge bases and documentation
+     - Project-specific information and context
+     - Use `basic-memory_search` to find relevant locally stored knowledge
+     - Use `basic-memory_build_context` to gather related background information
+   - **searxng tools** to conduct searches on the internet:
+     - Use `searxng_searxng_web_search` for broad web searches
+     - Use `searxng_web_url_read` to dive deep into specific sources
+     - Search for recent developments, trends, and current information
+   - Proactively identify and search for missing or incomplete context
 3. Gather information from multiple credible sources
 4. Analyze findings and identify key patterns or insights
 5. Synthesize information into coherent conclusions

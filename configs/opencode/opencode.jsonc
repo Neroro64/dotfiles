@@ -41,4 +41,24 @@
     }
   },
   "autoupdate": false,
+  "agent": {
+    "build": {
+      "disable": true
+    },
+    "plan": {
+      "disable": true
+    },
+    "planner": {
+      "excludedTools": [
+        "write",
+        "edit"
+      ]
+    },
+    "researcher": {
+      "excludedTools": [
+        "write",
+        "edit"
+      ]
+    }
+  }
 }

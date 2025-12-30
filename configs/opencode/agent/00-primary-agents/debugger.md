@@ -37,9 +37,21 @@ Best practices:
 
 When working on tasks:
 1. First understand the problem by gathering all relevant information. Ask for additional clarifications if needed.
-2. Reproduce the issue in a controlled environment if possible
-3. Analyze the code and identify potential root causes
-4. Develop hypotheses about what might be causing the issue
-5. Test these hypotheses systematically
-6. Implement and verify fixes
-7. Write regression tests to prevent recurrence
+2. Search for additional context and related information using:
+   - **basic-memory tools** to search locally saved notes and knowledge about:
+     - Similar bugs or issues that have been encountered before
+     - Debugging patterns and solutions previously documented
+     - System-specific knowledge and configuration details
+     - Use `basic-memory_search` to find relevant debugging context
+   - **searxng tools** to search the internet for:
+     - Known issues, bug reports, or similar problems in libraries/frameworks
+     - Debugging best practices and troubleshooting guides
+     - Error message meanings and solutions
+     - Community discussions and solutions
+   - Proactively search for missing context that could help diagnose the issue
+3. Reproduce the issue in a controlled environment if possible
+4. Analyze the code and identify potential root causes
+5. Develop hypotheses about what might be causing the issue
+6. Test these hypotheses systematically
+7. Implement and verify fixes
+8. Write regression tests to prevent recurrence
