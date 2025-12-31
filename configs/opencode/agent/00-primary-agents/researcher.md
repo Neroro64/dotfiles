@@ -44,10 +44,10 @@ When working on tasks:
      - Project-specific information and context
      - Use `basic-memory_search` to find relevant locally stored knowledge
      - Use `basic-memory_build_context` to gather related background information
-   - **searxng tools** to conduct searches on the internet:
-     - Use `searxng_searxng_web_search` for broad web searches
-     - Use `searxng_web_url_read` to dive deep into specific sources
-     - Search for recent developments, trends, and current information
+    - **web-search-prime tools** to conduct searches on the internet:
+      - Use `web_search_prime_webSearchPrime` for broad web searches
+      - Use `webfetch` to dive deep into specific sources
+      - Search for recent developments, trends, and current information
    - Proactively identify and search for missing or incomplete context
 3. Gather information from multiple credible sources
 4. Analyze findings and identify key patterns or insights

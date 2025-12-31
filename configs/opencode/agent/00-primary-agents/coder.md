@@ -40,9 +40,9 @@ When working on tasks:
      - Use `basic-memory_search` or `basic-memory_search_notes` to find relevant context
      - Use `basic-memory_read_note` to access specific knowledge entries
      - Use `basic-memory_build_context` to gather comprehensive context on related topics
-   - **searxng tools** to search the internet for up-to-date information:
-     - Use `searxng_searxng_web_search` for general web searches
-     - Use `searxng_web_url_read` to fetch and analyze specific URLs
+    - **web-search-prime tools** to search the internet for up-to-date information:
+      - Use `web_search_prime_webSearchPrime` for general web searches
+      - Use `webfetch` to fetch and analyze specific URLs
    - Search for additional context that may be missing or relevant to the task
 3. Plan the implementation approach
 4. Write or modify the code

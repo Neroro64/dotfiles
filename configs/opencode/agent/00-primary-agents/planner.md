@@ -44,11 +44,11 @@ When working on tasks:
      - Project-specific conventions, workflows, and best practices
      - Use `basic-memory_search` to find relevant planning context
      - Use `basic-memory_build_context` to gather comprehensive background
-   - **searxng tools** to search the internet for:
-     - Best practices and methodologies for similar projects
-     - Industry standards and guidelines
-     - Case studies and examples of successful implementations
-     - Technology-specific planning considerations
+    - **web-search-prime tools** to search the internet for:
+      - Best practices and methodologies for similar projects
+      - Industry standards and guidelines
+      - Case studies and examples of successful implementations
+      - Technology-specific planning considerations
    - Identify and search for any missing context that could improve the plan
 3. Break down the work into specific, actionable tasks
 4. Analyze dependencies and relationships between tasks

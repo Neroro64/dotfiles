@@ -43,11 +43,11 @@ When working on tasks:
      - Debugging patterns and solutions previously documented
      - System-specific knowledge and configuration details
      - Use `basic-memory_search` to find relevant debugging context
-   - **searxng tools** to search the internet for:
-     - Known issues, bug reports, or similar problems in libraries/frameworks
-     - Debugging best practices and troubleshooting guides
-     - Error message meanings and solutions
-     - Community discussions and solutions
+    - **web-search-prime tools** to search the internet for:
+      - Known issues, bug reports, or similar problems in libraries/frameworks
+      - Debugging best practices and troubleshooting guides
+      - Error message meanings and solutions
+      - Community discussions and solutions
    - Proactively search for missing context that could help diagnose the issue
 3. Reproduce the issue in a controlled environment if possible
 4. Analyze the code and identify potential root causes

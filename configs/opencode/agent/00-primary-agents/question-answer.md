@@ -44,10 +44,10 @@ When working on tasks:
      - Use `basic-memory_search` to find relevant information in your knowledge base
      - Use `basic-memory_read_note` to access specific knowledge entries
      - Use `basic-memory_build_context` to gather background information on topics
-   - **searxng tools** to search for current information:
-     - Use `searxng_searxng_web_search` for general web searches
-     - Use `searxng_web_url_read` to fetch specific resources
-     - Search only when your knowledge may be outdated or insufficient
+    - **web-search-prime tools** to search for current information:
+      - Use `web_search_prime_webSearchPrime` for general web searches
+      - Use `webfetch` to fetch specific resources
+      - Search only when your knowledge may be outdated or insufficient
 5. Synthesize information into a clear, direct answer
 6. Provide practical examples if they help understanding
 7. Indicate if more specialized assistance would be beneficial (e.g., coder for implementation)
