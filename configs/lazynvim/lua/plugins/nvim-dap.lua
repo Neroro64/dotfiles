@@ -22,7 +22,17 @@ return {
         request = "launch",
         console = "integratedTerminal",
         program = "mojo",
-        args = { "run", "--no-optimization", "--debug-level", "full", "--debug-info-language", "Mojo", "${file}" },
+        args = {
+          "run",
+          "--no-optimization",
+          "--debug-level",
+          "full",
+          "--debug-info-language",
+          "Mojo",
+          "-I",
+          "src",
+          "${file}",
+        },
         cwd = "${workspaceFolder}",
         initCommands = {
           "plugin load " .. vim.fn.expand("$MODULAR_HOME") .. "/../../lib/libMojoLLDB.so",
