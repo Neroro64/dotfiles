@@ -29,6 +29,7 @@ return {
           "full",
           "--debug-info-language",
           "Mojo",
+          "-Werror",
           "-I",
           "src",
           "${file}",
@@ -36,6 +37,9 @@ return {
         cwd = "${workspaceFolder}",
         initCommands = {
           "plugin load " .. vim.fn.expand("$MODULAR_HOME") .. "/../../lib/libMojoLLDB.so",
+          "command script import "
+            .. vim.fn.expand("$MODULAR_HOME")
+            .. "/../../lib/lldb-visualizers/lldbDataFormatters.py ",
           -- Add any other necessary commands to initialize the plugin
         },
       },
