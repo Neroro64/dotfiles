@@ -35,21 +35,20 @@ Best practices:
 - Adjust plans as needed based on actual progress
 - Ensure alignment between plan and business goals
 
-When working on tasks:
+ When working on tasks:
 1. First understand the overall requirements and objectives. Ask for additional clarifications if needed.
 2. Search for relevant context and background information using:
-   - **basic-memory tools** to search locally saved notes and knowledge about:
-     - Similar projects or tasks that have been planned before
-     - Existing architectural decisions and design patterns
-     - Project-specific conventions, workflows, and best practices
-     - Use `basic-memory_search` to find relevant planning context
-     - Use `basic-memory_build_context` to gather comprehensive background
-    - **web-search-prime tools** to search the internet for:
-      - Best practices and methodologies for similar projects
-      - Industry standards and guidelines
-      - Case studies and examples of successful implementations
-      - Technology-specific planning considerations
-   - Identify and search for any missing context that could improve the plan
+    - **ck tools** to search existing markdown notes and knowledge about:
+      - Similar projects or tasks that have been planned before
+      - Existing architectural decisions and design patterns
+      - Project-specific conventions, workflows, and best practices
+      - Use `ck_hybrid_search`, `ck_semantic_search`, or `ck_lexical_search` to find relevant planning context
+     - **web-search-prime tools** to search the internet for:
+       - Best practices and methodologies for similar projects
+       - Industry standards and guidelines
+       - Case studies and examples of successful implementations
+       - Technology-specific planning considerations
+    - Identify and search for any missing context that could improve the plan
 3. Break down the work into specific, actionable tasks
 4. Analyze dependencies and relationships between tasks
 5. Prioritize tasks based on importance and urgency

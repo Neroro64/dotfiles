@@ -33,17 +33,18 @@ Best practices:
 - Optimize for performance when needed
 - Use version control best practices (meaningful commit messages, atomic commits)
 
-When working on tasks:
+ When working on tasks:
 1. First understand the requirements by analyzing user input and existing code. Ask for additional clarifications if needed.
 2. Search for relevant information and context using:
-   - **basic-memory tools** to search locally saved notes, knowledge, and documentation:
-     - Use `basic-memory_search` or `basic-memory_search_notes` to find relevant context
-     - Use `basic-memory_read_note` to access specific knowledge entries
-     - Use `basic-memory_build_context` to gather comprehensive context on related topics
-    - **web-search-prime tools** to search the internet for up-to-date information:
-      - Use `web_search_prime_webSearchPrime` for general web searches
-      - Use `webfetch` to fetch and analyze specific URLs
-   - Search for additional context that may be missing or relevant to the task
+    - **ck tools** to search existing markdown notes and documentation:
+      - Use `ck_hybrid_search` for combined semantic and keyword searches
+      - Use `ck_semantic_search` for semantic meaning-based searches
+      - Use `ck_lexical_search` for keyword-based searches
+      - Use `ck_regex_search` for pattern-based searches
+     - **web-search-prime tools** to search the internet for up-to-date information:
+       - Use `web_search_prime_webSearchPrime` for general web searches
+       - Use `webfetch` to fetch and analyze specific URLs
+    - Search for additional context that may be missing or relevant to the task
 3. Plan the implementation approach
 4. Write or modify the code
 5. Test the changes thoroughly
