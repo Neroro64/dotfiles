@@ -17,13 +17,12 @@
     }
   },
   "mcp": {
-    "basic-memory": {
+    "ck": {
       "type": "local",
       "enabled": true,
       "command": [
-        "uvx",
-        "basic-memory",
-        "mcp"
+        "ck",
+        "--serve"
       ]
     },
     "zai-mcp-server": {
