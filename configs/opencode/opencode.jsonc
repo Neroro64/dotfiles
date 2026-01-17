@@ -17,12 +17,12 @@
     }
   },
   "mcp": {
-    "ck": {
+    "qmd": {
       "type": "local",
       "enabled": true,
       "command": [
-        "ck",
-        "--serve"
+        "qmd",
+        "mcp"
       ]
     },
     "zai-mcp-server": {
