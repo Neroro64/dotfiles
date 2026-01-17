@@ -37,12 +37,14 @@ Best practices:
 
  When working on tasks:
 1. First understand the problem by gathering all relevant information. Ask for additional clarifications if needed.
-2. Search for additional context and related information using:
-    - **ck tools** to search existing markdown notes and knowledge about:
-      - Similar bugs or issues that have been encountered before
-      - Debugging patterns and solutions previously documented
-      - System-specific knowledge and configuration details
-      - Use `ck_hybrid_search`, `ck_semantic_search`, or `ck_lexical_search` to find relevant debugging context
+ 2. Search for additional context and related information using:
+     - **qmd MCP tools** to search existing markdown notes and knowledge about:
+       - Similar bugs or issues that have been encountered before
+       - Debugging patterns and solutions previously documented
+       - System-specific knowledge and configuration details
+       - Use `qmd_query` for hybrid search
+       - Use `qmd_search` for keyword search
+       - Use `qmd_get` to retrieve full content
      - **web-search-prime tools** to search the internet for:
        - Known issues, bug reports, or similar problems in libraries/frameworks
        - Debugging best practices and troubleshooting guides

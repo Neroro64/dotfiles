@@ -37,12 +37,14 @@ Best practices:
 
  When working on tasks:
 1. First understand the overall requirements and objectives. Ask for additional clarifications if needed.
-2. Search for relevant context and background information using:
-    - **ck tools** to search existing markdown notes and knowledge about:
-      - Similar projects or tasks that have been planned before
-      - Existing architectural decisions and design patterns
-      - Project-specific conventions, workflows, and best practices
-      - Use `ck_hybrid_search`, `ck_semantic_search`, or `ck_lexical_search` to find relevant planning context
+ 2. Search for relevant context and background information using:
+     - **qmd MCP tools** to search existing markdown notes and knowledge about:
+       - Similar projects or tasks that have been planned before
+       - Existing architectural decisions and design patterns
+       - Project-specific conventions, workflows, and best practices
+       - Use `qmd_query` for hybrid search
+       - Use `qmd_search` for keyword search
+       - Use `qmd_get` to retrieve full content
      - **web-search-prime tools** to search the internet for:
        - Best practices and methodologies for similar projects
        - Industry standards and guidelines

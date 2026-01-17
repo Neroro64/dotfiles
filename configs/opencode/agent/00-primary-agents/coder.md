@@ -35,13 +35,14 @@ Best practices:
 
  When working on tasks:
 1. First understand the requirements by analyzing user input and existing code. Ask for additional clarifications if needed.
-2. Search for relevant information and context using:
-    - **ck tools** to search existing markdown notes and documentation:
-      - Use `ck_hybrid_search` for combined semantic and keyword searches
-      - Use `ck_semantic_search` for semantic meaning-based searches
-      - Use `ck_lexical_search` for keyword-based searches
-      - Use `ck_regex_search` for pattern-based searches
-     - **web-search-prime tools** to search the internet for up-to-date information:
+  2. Search for relevant information and context using:
+     - **qmd MCP tools** to search existing markdown notes and documentation:
+       - Use `qmd_query` for hybrid search with re-ranking (best quality)
+       - Use `qmd_search` for fast BM25 keyword search
+       - Use `qmd_vsearch` for vector semantic search
+       - Use `qmd_get` to retrieve full document content by path or docid
+       - Use `qmd_multi_get` to retrieve multiple documents
+      - **web-search-prime tools** to search the internet for up-to-date information:
        - Use `web_search_prime_webSearchPrime` for general web searches
        - Use `webfetch` to fetch and analyze specific URLs
     - Search for additional context that may be missing or relevant to the task

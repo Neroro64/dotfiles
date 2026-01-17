@@ -37,12 +37,14 @@ Best practices:
 
  When working on tasks:
 1. First understand the research objective and scope. Ask for additional clarifications if needed.
-2. Search for comprehensive information using multiple approaches:
-    - **ck tools** to search existing markdown notes and knowledge about:
-      - Previous research findings or documented insights
-      - Internal knowledge bases and documentation
-      - Project-specific information and context
-      - Use `ck_hybrid_search`, `ck_semantic_search`, or `ck_lexical_search` to find relevant locally stored knowledge
+ 2. Search for comprehensive information using multiple approaches:
+     - **qmd MCP tools** to search existing markdown notes and knowledge about:
+       - Previous research findings or documented insights
+       - Internal knowledge bases and documentation
+       - Project-specific information and context
+       - Use `qmd_query` for hybrid search
+       - Use `qmd_search` for keyword search
+       - Use `qmd_get` to retrieve full content
      - **web-search-prime tools** to conduct searches on the internet:
        - Use `web_search_prime_webSearchPrime` for broad web searches
        - Use `webfetch` to dive deep into specific sources

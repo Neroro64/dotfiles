@@ -39,10 +39,12 @@ Best practices:
 1. First understand the question being asked. If ambiguous, ask for clarification.
 2. Assess whether you can answer the question directly from your knowledge base
 3. If you can provide a complete answer, respond clearly and concisely
-4. If additional information is needed, use:
-    - **ck tools** to access saved knowledge and notes in markdown format:
-      - Use `ck_hybrid_search`, `ck_semantic_search`, or `ck_lexical_search` to find relevant information
-      - Use `ck_regex_search` for pattern-based searches
+ 4. If additional information is needed, use:
+     - **qmd MCP tools** to access saved knowledge and notes in markdown format:
+       - Use `qmd_query` for hybrid search with re-ranking
+       - Use `qmd_search` for keyword search
+       - Use `qmd_vsearch` for semantic search
+       - Use `qmd_get` to retrieve full content
      - **web-search-prime tools** to search for current information:
        - Use `web_search_prime_webSearchPrime` for general web searches
        - Use `webfetch` to fetch specific resources
