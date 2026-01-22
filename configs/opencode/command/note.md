@@ -1,46 +1,106 @@
 ---
 description: Extract and persist key insights from the current conversation using qmd
 ---
-Extract and persist key insights from the current conversation.
+Extract and persist key insights, observations, and learnings from the current conversation.
 
 ## Task
 
-1. Gather all relevant key insights, decisions, observations and learnings from the conversation.
-2. Determine the appropriate qmd collection for the current working directory:
-   - Check if a collection already exists for the current project directory using `qmd collection list`
-   - If not, create a collection with `qmd collection add . --name <project-name>` where `<project-name>` is derived from the current directory
-3. Use qmd to search for existing notes on related topics:
-   - `qmd query "keywords from insight" -n 10 --json` - Hybrid search with re-ranking for best results
-   - OR `qmd search "exact keywords" -n 10 --json` - Fast keyword search
-   - OR `qmd vsearch "semantic meaning" -n 10 --json` - Pure semantic search
-4. If relevant notes exist (score > 0.3), retrieve them with `qmd get <filepath>` or `qmd multi-get <pattern>` to read their content.
-5. Update existing notes with new insights, or create new markdown notes if no relevant notes exist.
-6. Determine an appropriate folder structure within the collection (e.g., "notes/insights", "notes/decisions", "notes/meetings", "notes/projects").
-7. Write the notes using clear, descriptive titles that capture the main topic.
-8. Include context like date, related topics where relevant.
-9. Store notes in a location that is part of the qmd-indexed collection.
-10. After adding or modifying notes, update the qmd index with `qmd update` to ensure new/changed documents are searchable.
+1. **Gather insights** - Review the conversation and identify:
+   - Key decisions made and their rationale
+   - Problems solved and the solutions used
+   - Insights or learnings discovered
+   - Observations about code, architecture, or patterns
+   - Useful commands, configurations, or techniques
 
-## Search Strategy
+2. **Check qmd index status** - Use `qmd_status` MCP tool to see available collections and their health.
 
-Choose the appropriate qmd search command based on your need:
+3. **Ensure a collection exists** for the current project:
+   - Check if a collection already exists for the current project directory via `qmd_status` or `qmd collection list`
+   - If not, create one: `qmd collection add . --name <project-name>` where `<project-name>` is derived from the directory name
 
-- **`qmd search`**: Fast BM25 full-text search. Use for exact keyword matches and when you know the terminology.
-- **`qmd vsearch`**: Vector semantic search. Use when searching for concepts, even if different words are used.
-- **`qmd query`**: Hybrid search with LLM re-ranking. Best quality search for finding the most relevant results across keywords and meaning.
+4. **Search for existing related notes** using qmd MCP tools:
+   - `qmd_query` - Best quality: hybrid search with query expansion + LLM re-ranking (use for important searches)
+   - `qmd_search` - Fast: BM25 keyword search (use when you know exact terminology)
+   - `qmd_vsearch` - Semantic: vector similarity search (use for conceptual/meaning-based searches)
 
-## Retrieval Options
+5. **Retrieve and review** existing notes if found (score > 0.3):
+   - `qmd_get` - Retrieve single document by filepath or docid (e.g., `notes/topic.md` or `#abc123`)
+   - `qmd_multi_get` - Retrieve multiple documents by glob pattern (e.g., `notes/*.md`)
 
-- `qmd get <filepath>`: Retrieve a specific document by its collection-relative path
-- `qmd get #docid`: Retrieve a document by its docid (shown in search results)
-- `qmd multi-get "pattern*.md"`: Retrieve multiple documents matching a glob pattern
-- Use `--full` flag to get complete document content
-- Use `-l <num>` to limit line count
+6. **Write or update notes**:
+   - Update existing notes if they cover the same topic
+   - Create new markdown notes if no relevant notes exist
+   - Use clear, descriptive filenames that capture the main topic
+   - Organize into appropriate folders (e.g., `notes/decisions/`, `notes/insights/`, `notes/til/`, `notes/troubleshooting/`)
 
-## Output Format
+7. **Structure note content** with:
+   - Clear title as H1 heading
+   - Date in frontmatter or header (format: YYYY-MM-DD)
+   - Context section explaining the background
+   - Main content with the insight/decision/learning
+   - Related topics or links where relevant
+   - Tags for categorization (optional)
 
-Return a summary of what was captured:
-- Number of notes created/updated
-- List of note titles and their locations (collection-relative paths)
-- Any links to related notes found (docids from search results)
-- Confirmation that `qmd update` was run to index the changes
+8. **Update the qmd index** after writing notes:
+   - Run `qmd update` to re-index new/changed documents
+   - Run `qmd embed` if semantic search is needed for new content
+
+## Search Strategy (MCP Tools)
+
+| Tool | Best For | Speed | Quality |
+|------|----------|-------|---------|
+| `qmd_search` | Exact keywords, known terminology | Fast | Good |
+| `qmd_vsearch` | Concepts, semantic similarity | Medium | Better |
+| `qmd_query` | Important searches, best matches | Slower | Best |
+
+All search tools accept:
+- `query`: The search string
+- `collection`: Filter to specific collection (optional)
+- `limit`: Max results (default: 10)
+- `minScore`: Minimum relevance score 0-1
+
+## Retrieval Tools
+
+| Tool | Usage | Example |
+|------|-------|---------|
+| `qmd_get` | Single document | `file: "notes/api-design.md"` or `file: "#abc123"` |
+| `qmd_multi_get` | Multiple documents | `pattern: "notes/decisions/*.md"` |
+
+Options:
+- `lineNumbers`: Add line numbers to output
+- `maxLines`: Limit lines returned
+- `fromLine`: Start from specific line (qmd_get only)
+- `maxBytes`: Skip large files (qmd_multi_get only, default: 10KB)
+
+## Note Template
+
+```markdown
+# [Descriptive Title]
+
+**Date:** YYYY-MM-DD
+**Tags:** #tag1 #tag2
+
+## Context
+
+[Brief background on why this is relevant]
+
+## Insight/Decision/Learning
+
+[Main content - what was learned, decided, or observed]
+
+## Details
+
+[Supporting information, code examples, or elaboration]
+
+## Related
+
+- [Links to related notes or resources]
+```
+
+## Output Summary
+
+After completing the task, report:
+- **Notes created**: Count and list of new note paths
+- **Notes updated**: Count and list of updated note paths
+- **Related notes found**: Links to existing notes on similar topics (with docids)
+- **Index updated**: Confirmation that `qmd update` was run
