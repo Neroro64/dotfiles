@@ -1,6 +1,5 @@
 source /usr/share/cachyos-fish-config/cachyos-config.fish
 
-
 # overwrite greeting
 # potentially disabling fastfetch
 #function fish_greeting
@@ -32,7 +31,7 @@ fish_config theme choose "Tomorrow Night"
 fish_vi_key_bindings
 
 # Aliases
-alias ls='ls --color=auto'
+alias ls='ex'
 alias grep='grep --color=auto'
 alias lg='lazygit'
 alias rng='ranger'
