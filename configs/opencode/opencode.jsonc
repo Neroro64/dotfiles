@@ -20,18 +20,6 @@
               "text"
             ]
           },
-        },
-        "Qwen3.5-Thinking": {
-          "name": "Qwen3.5-35B-A3B-UD-Q4_K_XL.gguf",
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
-          },
         }
       }
     }
@@ -80,6 +68,7 @@
   },
   "autoupdate": false,
   "agent": {
+    "coder": {},
     "build": {
       "disable": true
     },
