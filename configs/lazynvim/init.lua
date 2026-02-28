@@ -2,4 +2,4 @@
 require("config.lazy")
 
 -- Colorscheme
-vim.cmd.colorscheme("kanagawa")
+vim.cmd.colorscheme("monokai-pro-spectrum")
