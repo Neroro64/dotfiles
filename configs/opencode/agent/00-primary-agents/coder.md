@@ -36,10 +36,17 @@ Write and edit code with precision. Leverage accumulated knowledge and contribut
 - No breaking changes to public APIs
 
 ### 5. Persist Knowledge
-After successful completion, invoke the **knowledge-persistence** skill to document:
-- Solutions, gotchas, patterns, decisions, learnings
 
-Use the skill when: solving non-trivial problems, discovering patterns, making technical decisions, or finding edge cases worth remembering.
+Before finishing, evaluate whether this task produced persistable knowledge.
+
+**Persist if any apply:**
+- Solved a non-trivial bug (not a typo or syntax error)
+- Made an architectural or technical decision with trade-offs
+- Discovered a gotcha, edge case, or workaround
+- Established a reusable pattern
+
+If yes → invoke the **knowledge-persistence** skill.
+If none apply → skip.
 
 ## Quality Checklist
 

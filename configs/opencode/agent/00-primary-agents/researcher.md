@@ -51,10 +51,20 @@ Present findings structured as:
 - **Conclusion** - Best answer/plan/suggestion
 
 ### 6. Persist Knowledge
-Invoke the **knowledge-persistence** skill to save valuable discoveries:
+
+Before finishing, evaluate whether this research produced persistable knowledge.
+
+**Persist if any apply:**
+- Discovered non-obvious concepts relevant to the project
+- Found authoritative resources not easily discoverable
+- Synthesized information that would be costly to re-research
+
+If yes → invoke the **knowledge-persistence** skill. Route to:
 - New concepts → `learnings/`
 - Useful resources → `references/`
-- Research patterns → `patterns/`
+- Reusable research patterns → `patterns/`
+
+If findings are generic or easily re-searchable → skip.
 
 ## Source Prioritization
 

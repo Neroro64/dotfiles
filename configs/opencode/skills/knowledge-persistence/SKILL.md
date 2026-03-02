@@ -1,144 +1,115 @@
 ---
 name: knowledge-persistence
-description: Extract and persist knowledge, learnings, findings, and insights from the current session to structured Obsidian documents. Automatically organizes knowledge under project_root/.knowledge with proper frontmatter, wikilinks, and categorization. Use when you want to save session knowledge, create documentation from discoveries, or build a knowledge base from work done.
+description: Persist reusable knowledge from the current session to structured Obsidian documents in `.knowledge/`. Use after solving non-trivial problems, discovering patterns, making technical decisions, or finding gotchas worth remembering.
 ---
 
 # Knowledge Persistence Skill
 
-Extract knowledge from the current coding session and persist it to well-structured Obsidian documents. This skill helps build a cumulative knowledge base that survives across sessions.
+Persist reusable, non-obvious knowledge to `.knowledge/` so future sessions can find it.
 
-## When to Use
+## Gate: Save or Skip?
 
-- After discovering important patterns, solutions, or insights
-- When documenting architectural decisions or technical findings
-- To save learning outcomes from debugging or research
-- When building project-specific knowledge bases
-- After completing significant implementation work worth remembering
+Ask: **"Would finding this in 6 months save real time?"**
 
----
+| Save | Skip |
+|------|------|
+| Non-trivial debugging solutions | Simple typos, syntax errors |
+| Architectural decisions + rationale | Generic/Googleable info |
+| Project-specific patterns, conventions | Temporary workarounds |
+| Tech stack gotchas, library bugs | One-time fixes, session context |
 
-## ⚠️ Critical: What to Save vs. What to Skip
-
-### ✅ SAVE: Reusable Knowledge
-
-Only persist items that meet **ALL** of these criteria:
-
-| Criterion | Question to Ask |
-|-----------|-----------------|
-| **Reusable** | Will this help solve future problems? |
-| **Non-obvious** | Is this something not easily found via docs/Google? |
-| **Project-specific** | Does this contain context unique to this codebase? |
-| **Durable** | Will this remain relevant for months, not days? |
-
-**Good candidates:**
-- Non-trivial debugging solutions (not simple typos)
-- Architectural decisions and their rationale
-- Project-specific patterns and conventions
-- Gotchas unique to this tech stack/configuration
-- Workarounds for library bugs
-
-### ❌ SKIP: Don't Save
-
-| Skip These | Reason |
-|------------|--------|
-| One-time fixes | Not reusable |
-| Simple typos/syntax errors | Self-evident |
-| Generic documentation | Better sources exist |
-| Temporary workarounds | Will become stale |
-| Session-specific context | Won't apply later |
-| Easily Googleable info | Redundant |
+If uncertain, skip. Only high-signal knowledge belongs here.
 
 ---
 
 ## Workflow
 
-### 1. Filter Knowledge
+### 1. Check for Duplicates
 
-Before saving, ask: **"Would I benefit from finding this in 6 months?"**
+```bash
+rg -il "<topic keywords>" .knowledge
+```
 
-If no → Skip it.
+If a relevant file exists, **update it** instead of creating a new one.
 
 ### 2. Categorize
 
-| Category | Use For | Example |
-|----------|---------|---------|
-| `architecture` | System design, structure decisions | `api-design.md` |
-| `patterns` | Reusable code patterns | `error-handling.md` |
-| `solutions` | Specific problem solutions | `cors-fix.md` |
-| `learnings` | Non-obvious concepts discovered | `webgl-basics.md` |
-| `decisions` | ADRs and technical choices | `0001-database-choice.md` |
-| `gotchas` | Pitfalls and edge cases | `timezone-issues.md` |
-| `references` | Curated external resources | `official-api-docs.md` |
+| Category | Purpose |
+|----------|---------|
+| `architecture/` | System design, structure |
+| `patterns/` | Reusable code patterns |
+| `solutions/` | Specific problem fixes |
+| `learnings/` | Non-obvious concepts |
+| `decisions/` | ADRs, technical choices |
+| `gotchas/` | Pitfalls, edge cases |
+| `references/` | Curated external resources |
 
-### 3. Create Document
+### 3. Name the File
 
-Use this exact format:
+Format: `kebab-case-descriptive-name.md`
+Path: `.knowledge/<category>/<name>.md`
 
-```yaml
----
-title: Document Title
-date: 2024-01-15
-tags: [category, relevant-tags, project-name]
-related:
-  - "[[solutions/related-solution]]"
-  - "[[gotchas/related-gotcha]]"
-category: patterns
----
+Good: `solutions/cors-credential-mode-fix.md`
+Bad: `solutions/fix.md`, `solutions/CORS Fix.md`
 
-# Brief Summary
-
-One sentence explaining what this is about.
-
-## The Problem / Context
-
-Brief description of the situation.
-
-## The Solution / Pattern / Finding
-
-The actual knowledge content.
-
-## Why This Matters
-
-Why this is useful to remember.
-```
-
-### 4. Wikilink Format
-
-**Always use relative paths from `.knowledge/` root:**
+### 4. Write the Document
 
 ```markdown
-<!-- ✅ Correct -->
-[[solutions/cors-fix]]
-[[gotchas/credentials-mode]]
-[[patterns/error-handling]]
+---
+title: <Clear, Searchable Title>
+date: <YYYY-MM-DD>
+tags: [<category>, <tech>, <project>]
+related: ["[[category/filename]]"]
+---
 
-<!-- ❌ Wrong -->
-[[cors-fix]]           <!-- missing category -->
-[[../solutions/cors-fix]]  <!-- no relative parent paths -->
-[[CORS Fix]]           <!-- not a valid filename -->
+# <Title>
+
+<One-line summary of the knowledge.>
+
+## Context
+
+<What situation or problem led to this.>
+
+## Solution / Pattern / Finding
+
+<The actual knowledge. Be specific — include code, commands, config.>
+
+## Key Takeaway
+
+<Why this matters. When to apply it.>
+```
+
+**See [`example.md`](./example.md) for a complete reference document.**
+
+**Rules:**
+- Frontmatter is required — `title`, `date`, `tags` always; `related` only if links exist (omit or use `[]` otherwise — never fabricate links)
+- `related` uses wikilinks: `[[category/filename]]` (no extensions, no `../`)
+- Keep content concise — facts and code, not narrative
+- **Make it searchable:** embed the exact strings someone would `rg` for — error messages, CLI output, function names, config keys, package names. The search skill uses full-text search, so body content matters more than tags
+
+### 5. Create Directory if Needed
+
+Ensure the category directory exists before writing:
+
+```bash
+mkdir -p .knowledge/<category>
 ```
 
 ---
 
-## Storage Structure
+## Directory Structure
 
 ```
-project_root/.knowledge/
-├── architecture/   # System design docs
-├── patterns/       # Reusable patterns
-├── solutions/      # Problem solutions
-├── learnings/      # New concepts learned
-├── decisions/      # ADRs and decisions
-├── gotchas/        # Pitfalls and edge cases
-└── references/     # External resources
+.knowledge/
+├── architecture/
+├── patterns/
+├── solutions/
+├── learnings/
+├── decisions/
+├── gotchas/
+└── references/
 ```
 
 ---
 
-## Quick Checklist Before Saving
-
-- [ ] Is this reusable in future sessions?
-- [ ] Is this non-obvious / hard to find elsewhere?
-- [ ] Is the title clear and searchable?
-- [ ] Are wikilinks using `[[category/filename]]` format?
-- [ ] Is the content concise (not a brain dump)?
+> **Persist selectively.** A small, high-quality knowledge base beats a large, noisy one.

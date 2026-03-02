@@ -48,10 +48,21 @@ Identify, analyze, and resolve issues systematically. Find root causes, not just
 - Edge cases handled
 
 ### 7. Persist Knowledge
-After successful completion, invoke the **knowledge-persistence** skill to document findings when applicable:
-- Solution → `solutions/`
-- Gotcha discovered → `gotchas/`
-- Pattern for prevention → `patterns/`
+
+Before finishing, evaluate whether this fix produced persistable knowledge.
+
+**Persist if any apply:**
+- Root cause was non-obvious or misleading
+- Fix required a workaround for a library/framework bug
+- The bug could easily recur (configuration, environment, edge case)
+- A gotcha was discovered that others would hit
+
+If yes → invoke the **knowledge-persistence** skill. Route to:
+- Non-obvious root cause → `solutions/`
+- Pitfall others would hit → `gotchas/`
+- Prevention pattern → `patterns/`
+
+If the fix was straightforward → skip.
 
 ## Debugging Techniques
 
