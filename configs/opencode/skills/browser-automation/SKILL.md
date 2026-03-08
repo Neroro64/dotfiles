@@ -3,7 +3,7 @@ name: browser-automation
 description: Control web browsers using tappi CLI. Start browsers with remote debugging, navigate pages, interact with elements, fill forms, capture screenshots, and automate web workflows. Use when you need to browse websites, test web apps, or extract web data.
 ---
 
-# Browser Automation with Tappi CLI
+# Browser Automation with Tappi command line tool (CLI)
 
 Automate browser interactions using the tappi CLI, which connects to Chrome/Brave via Chrome DevTools Protocol (CDP).
 
@@ -96,7 +96,7 @@ uvx tappi upload [path] [selector]
 ### 4. Extract Information
 
 ```bash
-# Get visible text from page
+# Get all visible text from page (warning: might be large output)
 uvx tappi text
 
 # Extract from specific element
