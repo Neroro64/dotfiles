@@ -1,10 +1,6 @@
 # --- Aesthetics & Theme ---
 theme = "Monokai Classic"
 
-# Transparent background with blur (macOS only mostly, acts as opacity on Linux)
-background-opacity = 0.90
-background-blur-radius = 20
-
 # Hide the titlebar for a cleaner, "hacker" look
 # On macOS, "tabs" keeps the native tabs but hides the bar. "hidden" removes it all.
 macos-titlebar-style = tabs
@@ -49,3 +45,7 @@ keybind = global:cmd+\=toggle_quick_terminal
 
 # Mouse integration
 mouse-hide-while-typing = true
+
+keybind = alt+backspace=text:\x1b\x7f
+keybind = shift+enter=text:\n
+
