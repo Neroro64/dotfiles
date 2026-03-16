@@ -1,0 +1,17 @@
+providers:
+  llamacpp:
+    baseUrl: http://localhost:4398/v1
+    apiKey: LLAMA_API_KEY
+    api: openai-completions
+    models:
+      - id: Qwen3.5-27B.gguf
+        name: Qwen3.5 27B (Thinking)
+        reasoning: true
+        input: [image, text]
+        cost:
+          input: 0
+          output: 0
+          cacheRead: 0
+          cacheWrite: 0
+        contextWindow: 210688
+        maxTokens: 65536

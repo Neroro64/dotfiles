@@ -4,3 +4,6 @@
 
 # Ignore Lazy lock file
 lazy-lock.json
+
+*session*
+*.db*

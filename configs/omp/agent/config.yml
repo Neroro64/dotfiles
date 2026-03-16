@@ -1,0 +1,38 @@
+lastChangelogVersion: 13.12.8
+hideThinkingBlock: false
+task: 
+  isolation: 
+    commits: ai
+memories: 
+  enabled: true
+theme: 
+  dark: dark-volcanic
+  light: marble
+statusLine: 
+  separator: powerline
+  showHookStatus: true
+terminal: 
+  showImages: true
+display: 
+  showTokenUsage: false
+steeringMode: one-at-a-time
+doubleEscapeAction: tree
+treeFilterMode: default
+startup: 
+  quiet: true
+compaction: 
+  strategy: context-full
+  thresholdPercent: 50
+branchSummary: 
+  enabled: false
+edit: 
+  mode: hashline
+readLineNumbers: false
+renderMermaid: 
+  enabled: true
+calc: 
+  enabled: true
+inspect_image: 
+  enabled: true
+browser: 
+  headless: true
