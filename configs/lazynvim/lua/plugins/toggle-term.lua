@@ -1,7 +1,6 @@
 --[[
 ToggleTerm Configuration
 ========================
-
 Provides persistent terminals and floating terminal windows for Neovim.
 
 Features:
@@ -26,13 +25,11 @@ return {
     --------------------------------------------------------------------------------
     -- Plugin Setup
     --------------------------------------------------------------------------------
-    -- These are global defaults applied to all terminals unless overridden
     require("toggleterm").setup({
-      -- Note: <C-\> is handled manually below to toggle the last-used terminal
-      direction = "horizontal", -- "horizontal" | "vertical" | "float" | "tab"
-      size = 15, -- Height (horizontal) or width (vertical) in lines/columns
+      direction = "horizontal",
+      size = 20,
       float_opts = {
-        border = "curved", -- "single" | "double" | "curved" | "shadow" | etc.
+        border = "curved",
       },
     })
 
@@ -42,81 +39,88 @@ return {
     local Terminal = require("toggleterm.terminal").Terminal
 
     --------------------------------------------------------------------------------
-    -- Last Terminal Tracker
+    -- State
     --------------------------------------------------------------------------------
-    -- Tracks the most recently used terminal so <C-\> can toggle it
-    -- Stores a function that toggles the appropriate terminal
+    --- Tracks the most recently used terminal so <C-\> can toggle it
     local last_terminal = nil
 
     --------------------------------------------------------------------------------
     -- Terminal Keymaps
     --------------------------------------------------------------------------------
-    -- Called when a terminal opens; sets buffer-local mappings that only apply
-    -- while that terminal is focused. This avoids polluting global mappings.
-    --
-    -- @param term Terminal The terminal object
-    -- @param escape_passthrough boolean If true, <Esc> passes through (for TUI apps)
+    --- Sets buffer-local mappings for a terminal.
+    --- @param term Terminal The terminal object
+    --- @param escape_passthrough boolean If true, <Esc> passes through (for TUI apps)
     local function set_terminal_keymaps(term, escape_passthrough)
       local opts = { buffer = term.bufnr, noremap = true, silent = true }
 
-      -- Close terminal window with <C-\> instead of toggling
-      -- Prevents accidental toggle when we want to close
       vim.keymap.set("t", "<C-\\>", "<cmd>close<CR>", vim.tbl_extend("force", opts, { desc = "Close terminal" }))
-
-      -- Enter Normal mode with <C-Esc> for scrolling/copying text
-      -- This works for all terminals, including TUI apps
       vim.keymap.set("t", "<C-Esc>", "<C-\\><C-n>", vim.tbl_extend("force", opts, { desc = "Terminal normal mode" }))
 
-      -- For non-TUI terminals, <Esc> enters normal mode for easier scrolling
-      -- TUI apps need <Esc> to pass through (e.g., for navigation, quitting)
       if not escape_passthrough then
         vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", vim.tbl_extend("force", opts, { desc = "Terminal normal mode" }))
       end
 
-      -- App-specific: 'q' closes lazygit (its native binding)
       if term.cmd == "lazygit" then
         vim.keymap.set("t", "q", "<cmd>close<CR>", vim.tbl_extend("force", opts, { desc = "Close lazygit" }))
       end
     end
 
     --------------------------------------------------------------------------------
+    -- Terminal Factory
+    --------------------------------------------------------------------------------
+    --- Creates a terminal with automatic last_terminal tracking.
+    --- @param opts table Terminal options (cmd, direction, hidden, etc.)
+    --- @return table terminal, function toggle_fn
+    local function create_terminal(opts)
+      opts = opts or {}
+      opts.on_open = opts.on_open or function(term)
+        set_terminal_keymaps(term, true)
+      end
+
+      local terminal = Terminal:new(opts)
+
+      local function toggle()
+        last_terminal = toggle
+        terminal:toggle()
+      end
+
+      return terminal, toggle
+    end
+
+    --------------------------------------------------------------------------------
+    -- Keymap Helper
+    --------------------------------------------------------------------------------
+    --- Creates a keymap with consistent defaults.
+    --- @param mode string Keymap mode
+    --- @param lhs string Key sequence
+    --- @param rhs function|string Right-hand side (function for callback, string for desc)
+    --- @param desc_or_opts string|table Description or full opts table
+    local function map(mode, lhs, rhs, desc_or_opts)
+      local opts = type(desc_or_opts) == "string" and { desc = desc_or_opts } or desc_or_opts
+      opts = vim.tbl_extend("force", { noremap = true, silent = true }, opts)
+      vim.keymap.set(mode, lhs, rhs, opts)
+    end
+
+    --------------------------------------------------------------------------------
     -- Bracketed Paste Constants
     --------------------------------------------------------------------------------
-    -- Bracketed paste mode allows terminals to distinguish between typed input
-    -- and pasted content. Many TUI apps provide special handling for pastes.
-    -- See: https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Bracketed-Paste-Mode
-    local BP_START = "\27[200~" -- ESC[200~
-    local BP_END = "\27[201~" -- ESC[201~
+    local BP_START = "\27[200~"
+    local BP_END = "\27[201~"
 
     --------------------------------------------------------------------------------
     -- Dedicated Terminal: oh-my-pi
     --------------------------------------------------------------------------------
-    -- A floating terminal for oh-my-pi interactions
-    local omp = Terminal:new({
+    local omp, omp_toggle = create_terminal({
       cmd = "omp",
-      hidden = true, -- Excludes from :ToggleTerm list
+      hidden = true,
       direction = "float",
-      on_open = function(term)
-        set_terminal_keymaps(term, true) -- true = <Esc> passes through for TUI
-      end,
     })
 
-    --- Toggle the oh-my-pi terminal
-    function _G.__omp_toggle()
-      last_terminal = function()
-        omp:toggle()
-      end
-      omp:toggle()
-    end
-
     --- Send visual selection to oh-my-pi with file context
-    --- Context format: @relative/path/to/file:startline[-endline]
-    function _G.__omp_send_selection()
-      -- Get visual selection boundaries
-      local start_pos = vim.fn.getpos("v") -- Start of visual selection
-      local end_pos = vim.fn.getpos(".") -- Current cursor position
+    local function omp_send_selection()
+      local start_pos = vim.fn.getpos("v")
+      local end_pos = vim.fn.getpos(".")
 
-      -- Extract the selected text (getregion handles linewise/charwise/blockwise)
       local lines = vim.fn.getregion(start_pos, end_pos)
       local text = table.concat(lines, "\n")
 
@@ -124,44 +128,30 @@ return {
         return
       end
 
-      -- Build context string with relative path and line range
-      local rel_path = vim.fn.expand("%:.") -- % = current file, :. = relative to cwd
+      local rel_path = vim.fn.expand("%:.")
       local start_line = start_pos[2]
       local end_line = end_pos[2]
-
-      -- Single line: "10" | Multi-line: "10-25"
       local range = start_line == end_line and tostring(start_line) or string.format("%d-%d", start_line, end_line)
-
       local context = string.format("@%s:%s", rel_path, range)
 
-      -- Track this terminal and ensure it's visible before sending
-      last_terminal = function()
-        omp:toggle()
-      end
+      last_terminal = omp_toggle
       if not omp:is_open() then
         omp:open()
       end
 
-      -- Send context as typed input (appears on command line)
       omp:send(context)
-
-      -- Send selection as bracketed paste (simulates clipboard paste)
-      -- This allows oh-my-pi to handle it with any special paste logic
       omp:send(BP_START .. text .. BP_END)
     end
 
     --- Send current file path to oh-my-pi
-    function _G.__omp_send_file()
+    local function omp_send_file()
       local rel_path = vim.fn.expand("%:.")
 
       if not rel_path or #rel_path == 0 then
         return
       end
 
-      -- Track this terminal and ensure it's visible before sending
-      last_terminal = function()
-        omp:toggle()
-      end
+      last_terminal = omp_toggle
       if not omp:is_open() then
         omp:open()
       end
@@ -169,103 +159,44 @@ return {
       omp:send(rel_path)
     end
 
-    --------------------------------------------------------------------------------
-    -- oh-my-pi Keybindings
-    --------------------------------------------------------------------------------
-    vim.keymap.set("n", "<leader>ai", "<cmd>lua _G.__omp_toggle()<CR>", {
-      noremap = true,
-      silent = true,
-      desc = "[A]rtificial [I]ntelligence - Toggle oh-my-pi",
-    })
-    vim.keymap.set("v", "<leader>as", "<cmd>lua _G.__omp_send_selection()<CR>", {
-      noremap = true,
-      silent = true,
-      desc = "[A]rtificial intelligence [S]end selection to oh-my-pi",
-    })
-    vim.keymap.set("n", "<leader>af", "<cmd>lua _G.__omp_send_file()<CR>", {
-      noremap = true,
-      silent = true,
-      desc = "[A]rtificial intelligence send [F]ile to oh-my-pi",
-    })
+    -- oh-my-pi keybindings
+    map("n", "<leader>ai", omp_toggle, "[A]rtificial [I]ntelligence - Toggle oh-my-pi")
+    map("v", "<leader>as", omp_send_selection, "[A]rtificial intelligence [S]end selection to oh-my-pi")
+    map("n", "<leader>af", omp_send_file, "[A]rtificial intelligence send [F]ile to oh-my-pi")
 
     --------------------------------------------------------------------------------
     -- Dedicated Terminal: Lazygit
     --------------------------------------------------------------------------------
-    local lazygit = Terminal:new({
+    local _, lazygit_toggle = create_terminal({
       cmd = "lazygit",
       hidden = true,
       direction = "float",
-      on_open = function(term)
-        set_terminal_keymaps(term, true) -- true = <Esc> passes through for TUI
-      end,
     })
 
-    --- Toggle the Lazygit terminal
-    function _G.__lazygit_toggle()
-      last_terminal = function()
-        lazygit:toggle()
-      end
-      lazygit:toggle()
-    end
-
-    vim.keymap.set("n", "<leader>lg", "<cmd>lua _G.__lazygit_toggle()<CR>", {
-      noremap = true,
-      silent = true,
-      desc = "Toggle [L]azy[G]it",
-    })
+    map("n", "<leader>lg", lazygit_toggle, "Toggle [L]azy[G]it")
 
     --------------------------------------------------------------------------------
     -- Numbered Terminals (1, 2, 3)
     --------------------------------------------------------------------------------
-    -- Quick-access horizontal terminals for general shell work
-    -- Each number corresponds to a distinct terminal instance
+    local numbered_toggles = {}
 
-    --- Helper to create tracked terminal toggle for numbered terminals
-    ---@param num integer Terminal number (1-3)
-    ---@return function
-    local function tracked_term_toggle(num)
-      return function()
-        last_terminal = function()
-          vim.cmd(string.format("%dToggleTerm direction=horizontal", num))
-        end
-        vim.cmd(string.format("%dToggleTerm direction=horizontal", num))
-      end
+    for i = 1, 4 do
+      local _, toggle = create_terminal({ direction = "horizontal" })
+      numbered_toggles[i] = toggle
+      map("n", string.format("<leader>t%d", i), toggle, string.format("Toggle terminal [%d]", i))
     end
-
-    vim.keymap.set("n", "<leader>t1", tracked_term_toggle(1), {
-      noremap = true,
-      silent = true,
-      desc = "Toggle terminal [1]",
-    })
-    vim.keymap.set("n", "<leader>t2", tracked_term_toggle(2), {
-      noremap = true,
-      silent = true,
-      desc = "Toggle terminal [2]",
-    })
-    vim.keymap.set("n", "<leader>t3", tracked_term_toggle(3), {
-      noremap = true,
-      silent = true,
-      desc = "Toggle terminal [3]",
-    })
 
     --------------------------------------------------------------------------------
     -- Smart Terminal Toggle (<C-\>)
     --------------------------------------------------------------------------------
-    -- Toggles the most recently used terminal, or terminal 1 if none used yet
-    vim.keymap.set("n", "<C-\\>", function()
+    map("n", "<C-\\>", function()
       if last_terminal then
         last_terminal()
       else
-        -- No terminal used yet, default to terminal 1
-        last_terminal = function()
-          vim.cmd("1ToggleTerm direction=horizontal")
-        end
+        -- Default to terminal 1 if none used yet
+        last_terminal = numbered_toggles[1]
         last_terminal()
       end
-    end, {
-      noremap = true,
-      silent = true,
-      desc = "Toggle last used terminal",
-    })
+    end, "Toggle last used terminal")
   end,
 }
