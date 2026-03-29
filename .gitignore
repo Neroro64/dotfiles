@@ -8,3 +8,7 @@ lazy-lock.json
 *session*
 *.db*
 **/memories/*
+
+# omp
+*.mdb
+**/blobs/*
