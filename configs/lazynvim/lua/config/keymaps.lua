@@ -16,3 +16,7 @@ pcall(vim.keymap.del, "n", "<leader>ft")
 pcall(vim.keymap.del, "n", "<leader>fT")
 pcall(vim.keymap.del, "n", "<c-/>")
 pcall(vim.keymap.del, "n", "<c-_>")
+
+-- Clipboard: explicit system clipboard yank/paste
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>pp", '"+p', { desc = "Paste from clipboard" })
