@@ -1,6 +1,28 @@
 return {
   "mfussenegger/nvim-dap",
-  lazy = true,
+  keys = {
+    {
+      "<leader>dB",
+      function()
+        require("dap").clear_breakpoints()
+      end,
+      desc = "Delete all breakpoints",
+    },
+    {
+      "<leader>do",
+      function()
+        require("dap").step_over()
+      end,
+      desc = "Step over",
+    },
+    {
+      "<leader>dO",
+      function()
+        require("dap").step_out()
+      end,
+      desc = "Step out",
+    },
+  },
   config = function()
     local dap = require("dap")
     dap.adapters.mojo = {
