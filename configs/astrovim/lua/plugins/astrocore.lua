@@ -51,6 +51,9 @@ return {
 
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
+
+        -- Magma (Jupyter) group
+        ["<Leader>j"] = { desc = "Jupyter" },
         ["<Leader>b"] = { desc = "Buffers" },
 
         -- My Custom Mappings
