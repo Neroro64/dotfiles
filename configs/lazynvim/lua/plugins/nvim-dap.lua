@@ -1,5 +1,6 @@
 return {
   "mfussenegger/nvim-dap",
+  ft = { "c", "cpp", "cs", "mojo" },
   keys = {
     {
       "<leader>dB",
@@ -25,6 +26,17 @@ return {
   },
   config = function()
     local dap = require("dap")
+
+    -- codelldb adapter (Mason-managed; used by C/C++ configs)
+    dap.adapters.codelldb = {
+      type = "server",
+      port = "${port}",
+      executable = {
+        command = vim.fn.stdpath("data") .. "/mason/bin/codelldb",
+        args = { "--port", "${port}" },
+      },
+    }
+
     dap.adapters.mojo = {
       type = "server",
       port = "${port}",
