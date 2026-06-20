@@ -37,6 +37,12 @@ return {
     }
     dap.adapters["mojo-lldb"] = dap.adapters["mojo"]
 
+    local lib_ext = "so"
+    if vim.fn.has("mac") == 1 then
+      lib_ext = "dylib"
+    elseif vim.fn.has("win32") == 1 then
+      lib_ext = "dll"
+    end
     dap.configurations.mojo = {
       {
         name = "Launch current file",
@@ -58,10 +64,7 @@ return {
         },
         cwd = "${workspaceFolder}",
         initCommands = {
-          "plugin load " .. vim.fn.expand("$MODULAR_HOME") .. "/../../lib/libMojoLLDB.so",
-          "command script import "
-            .. vim.fn.expand("$MODULAR_HOME")
-            .. "/../../lib/lldb-visualizers/lldbDataFormatters.py ",
+          "plugin load " .. vim.fn.expand("$MODULAR_HOME") .. "/../../lib/libMojoLLDB." .. lib_ext,
           -- Add any other necessary commands to initialize the plugin
         },
       },
@@ -83,10 +86,7 @@ return {
           end
         end,
         initCommands = {
-          "plugin load " .. vim.fn.expand("$MODULAR_HOME") .. "/../../lib/libMojoLLDB.so",
-          "command script import "
-            .. vim.fn.expand("$MODULAR_HOME")
-            .. "/../../lib/lldb-visualizers/lldbDataFormatters.py ",
+          "plugin load " .. vim.fn.expand("$MODULAR_HOME") .. "/../../lib/libMojoLLDB." .. lib_ext,
           -- Add any other necessary commands to initialize the plugin
         },
       },
