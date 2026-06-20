@@ -1,12 +1,12 @@
--- EmberBox: A high-contrast, fiery dark theme inspired by Gruvbox.
--- Pure charcoal backgrounds with Gruvbox's iconic glowing embers.
--- Zero brown or blue tones.
+-- EmberBox: A Gruvbox-Material dark theme styled after the Mojo docs.
+-- Warm Gruvbox bg with muted accents; functions yellow, strings aqua,
+-- punctuation in Mojo's signature periwinkle.
 
 local M = {}
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Palettes                                                 │
--- │ Charcoal & Ash backgrounds, Gruvbox warm accents.        │
+-- │ Dark: Gruvbox Material on Gruvbox bg (matches mojolang.org). │
 -- ╰──────────────────────────────────────────────────────────╯
 
 local palettes = {
@@ -35,7 +35,7 @@ local palettes = {
     ruby = "#8f3f71", -- Gruvbox dark purple/pink
     coral = "#c87040", -- Soft peach/orange
     purple = "#8f3f71",
-    pink = "#a84966",
+    pink = "#637bff", -- periwinkle (punctuation; matches dark role)
 
     -- Brighter variants
     bright_red = "#cc241d",
@@ -79,71 +79,73 @@ local palettes = {
   },
 
   dark = {
-    -- EmberBox core: Pure charcoals (Zero brown)
-    bg = "#121212", -- Deep charcoal
-    bg_dark = "#080808", -- Pitch black
-    bg_light = "#1c1c1c", -- Ash
-    bg_visual = "#2e2a29", -- Very subtle warm-ash for visual mode
-    bg_search = "#3c1f16", -- Smoldering dark orange
-    bg_cursor = "#1a1a1a",
-    bg_popup = "#161616",
-    bg_nc = "#0c0c0c",
+    -- Mojo docs style: Gruvbox-Material muted accents on Gruvbox bg.
+    -- Hex values sourced from the rendered mojolang.org code blocks.
+    bg = "#282828", -- Gruvbox bg0 (Mojo code-block bg)
+    bg_dark = "#1d2021", -- Gruvbox bg0 hard (statusline / winbar)
+    bg_light = "#3c3836", -- Gruvbox bg1 (popups, floats)
+    bg_visual = "#3c3836", -- Gruvbox bg1 (visual select)
+    bg_search = "#3c3836",
+    bg_cursor = "#32302f", -- Subtle cursor-line tint
+    bg_popup = "#32302f",
+    bg_nc = "#252220", -- Non-current window
 
-    -- Text (Gruvbox warm creamy parchment - replaces cold silver)
+    -- Text (Gruvbox)
     fg_bright = "#fbf1c7", -- Gruvbox fg0
-    fg = "#ebdbb2", -- Gruvbox fg1
-    fg_muted = "#a89984", -- Gruvbox gray
-    fg_subtle = "#665c54", -- Gruvbox dark gray
+    fg = "#ebdbb2", -- Gruvbox fg1 (Mojo default code color)
+    fg_muted = "#a89984", -- Gruvbox gray (Mojo operator/comment color)
+    fg_subtle = "#928374", -- Gruvbox dark gray
 
-    -- Accents (The Embers - using exact Gruvbox vivid hexes)
-    red = "#fb4934", -- Gruvbox bright red
-    orange = "#fe8019", -- Gruvbox bright orange
-    yellow = "#fabd2f", -- Gruvbox bright yellow
-    green = "#b8bb26", -- Gruvbox bright green
-    ruby = "#d3869b", -- Gruvbox pink/magenta (Constants)
-    coral = "#e78a4e", -- Gruvbox material peach (Types)
-    purple = "#b16286",
-    pink = "#d3869b",
+    -- Accents (Gruvbox Material muted palette — as rendered by Mojo docs).
+    -- pink repurposed as the Mojo periwinkle used for punctuation.
+    red = "#ea6962", -- keywords, errors (Mojo keyword red)
+    orange = "#e78a4e", -- UI accent (Gruvbox Material orange)
+    yellow = "#d8a657", -- functions, TODO (Mojo function yellow)
+    green = "#89b482", -- strings (Gruvbox Material aqua — Mojo uses aqua for strings)
+    ruby = "#d3869b", -- numbers, constants (Mojo number purple)
+    coral = "#e78a4e", -- alias orange (module / UI accents)
+    purple = "#d3869b", -- alias ruby
+    pink = "#b5c0f6", -- Mojo periwinkle: punctuation (brand accent)
 
-    -- Brighter variants
-    bright_red = "#fc5d4b",
-    bright_orange = "#ff933b",
-    bright_yellow = "#fcd462",
-    bright_green = "#c6c944",
+    -- Brighter variants (emphasis / search highlights)
+    bright_red = "#f2594a",
+    bright_orange = "#f2814c",
+    bright_yellow = "#e8b86a",
+    bright_green = "#9bc892",
     bright_ruby = "#e09eae",
-    bright_coral = "#f2a06b",
-    bright_purple = "#c97b9d",
-    bright_pink = "#e09eae",
+    bright_coral = "#f2814c",
+    bright_purple = "#e09eae",
+    bright_pink = "#c8d2ff",
 
-    -- Grays (Cool/Neutral ash, no mud)
-    gray1 = "#222222",
-    gray2 = "#333333",
-    gray3 = "#555555",
-    gray4 = "#777777",
-    gray5 = "#999999",
+    -- Grays (Gruvbox ramp)
+    gray1 = "#3c3836",
+    gray2 = "#504945",
+    gray3 = "#665c54",
+    gray4 = "#928374",
+    gray5 = "#a89984",
 
-    border = "#333333",
+    border = "#3c3836", -- Gruvbox bg1
 
-    -- Semantic
-    error = "#fb4934",
-    warn = "#fe8019",
-    info = "#d3869b",
-    hint = "#b8bb26",
+    -- Semantic (harmonized with Gruvbox Material)
+    error = "#ea6962", -- red
+    warn = "#d8a657", -- yellow
+    info = "#7daea3", -- blue
+    hint = "#89b482", -- aqua
 
-    git_add = "#b8bb26",
-    git_change = "#fabd2f",
-    git_delete = "#fb4934",
+    git_add = "#89b482", -- aqua
+    git_change = "#d8a657", -- yellow
+    git_delete = "#ea6962", -- red
 
-    -- Diagnostic virtual-text backgrounds
-    vbg_error = "#3b1616",
-    vbg_warn = "#3b2310",
-    vbg_info = "#2e1c27",
-    vbg_hint = "#222e14",
+    -- Diagnostic virtual-text backgrounds (low-sat tints on Gruvbox bg)
+    vbg_error = "#3b1c1c",
+    vbg_warn = "#38301c",
+    vbg_info = "#1c2a26",
+    vbg_hint = "#1c281e",
 
     -- Gitsigns line backgrounds
-    gs_add_bg = "#1d2612",
-    gs_change_bg = "#292110",
-    gs_delete_bg = "#291313",
+    gs_add_bg = "#1f2a1e",
+    gs_change_bg = "#342d17",
+    gs_delete_bg = "#341c1c",
   },
 }
 
@@ -241,7 +243,7 @@ local function make_groups(p)
     Constant = { fg = p.ruby },
 
     Identifier = { fg = p.fg },
-    Function = { fg = p.orange, bold = true },
+    Function = { fg = p.yellow, bold = true },
 
     Statement = { fg = p.red },
     Conditional = { fg = p.red },
@@ -257,15 +259,15 @@ local function make_groups(p)
     Macro = { fg = p.bright_pink },
     PreCondit = { fg = p.pink },
 
-    Type = { fg = p.coral },
+    Type = { fg = p.fg },
     StorageClass = { fg = p.orange },
-    Structure = { fg = p.coral },
-    Typedef = { fg = p.coral },
+    Structure = { fg = p.fg },
+    Typedef = { fg = p.fg },
 
     Special = { fg = p.orange },
     SpecialChar = { fg = p.orange },
     Tag = { fg = p.orange },
-    Delimiter = { fg = p.fg_muted },
+    Delimiter = { fg = p.pink },
     SpecialComment = { fg = p.fg_muted, italic = true },
     Debug = { fg = p.bright_orange },
 
@@ -298,27 +300,27 @@ local function make_groups(p)
     ["@number"] = { fg = p.ruby },
     ["@float"] = { fg = p.ruby },
 
-    ["@function"] = { fg = p.orange, bold = true },
-    ["@function.call"] = { fg = p.orange },
-    ["@function.builtin"] = { fg = p.bright_orange, bold = true },
+    ["@function"] = { fg = p.yellow, bold = true },
+    ["@function.call"] = { fg = p.yellow },
+    ["@function.builtin"] = { fg = p.bright_yellow, bold = true },
     ["@function.macro"] = { fg = p.pink },
-    ["@method"] = { fg = p.orange, bold = true },
-    ["@method.call"] = { fg = p.orange },
-    ["@constructor"] = { fg = p.orange, bold = true },
+    ["@method"] = { fg = p.yellow, bold = true },
+    ["@method.call"] = { fg = p.yellow },
+    ["@constructor"] = { fg = p.yellow, bold = true },
     ["@parameter"] = { fg = p.fg_muted, italic = true },
 
     ["@property"] = { fg = p.fg },
     ["@field"] = { fg = p.fg },
 
-    ["@type"] = { fg = p.coral },
-    ["@type.builtin"] = { fg = p.coral, italic = true },
-    ["@type.definition"] = { fg = p.coral },
+    ["@type"] = { fg = p.fg },
+    ["@type.builtin"] = { fg = p.fg, italic = true },
+    ["@type.definition"] = { fg = p.fg },
     ["@type.qualifier"] = { fg = p.red },
-    ["@class"] = { fg = p.coral },
-    ["@enum"] = { fg = p.coral },
-    ["@interface"] = { fg = p.coral },
-    ["@struct"] = { fg = p.coral },
-    ["@union"] = { fg = p.coral },
+    ["@class"] = { fg = p.fg },
+    ["@enum"] = { fg = p.fg },
+    ["@interface"] = { fg = p.fg },
+    ["@struct"] = { fg = p.fg },
+    ["@union"] = { fg = p.fg },
 
     ["@attribute"] = { fg = p.pink },
     ["@annotation"] = { fg = p.pink, italic = true },
@@ -350,10 +352,10 @@ local function make_groups(p)
     ["@comment.warning"] = { fg = p.warn },
     ["@comment.note"] = { fg = p.purple },
 
-    ["@punctuation"] = { fg = p.fg_muted },
-    ["@punctuation.bracket"] = { fg = p.fg_muted },
-    ["@punctuation.delimiter"] = { fg = p.fg_muted },
-    ["@punctuation.special"] = { fg = p.orange },
+    ["@punctuation"] = { fg = p.pink },
+    ["@punctuation.bracket"] = { fg = p.pink },
+    ["@punctuation.delimiter"] = { fg = p.pink },
+    ["@punctuation.special"] = { fg = p.pink },
 
     ["@tag"] = { fg = p.red },
     ["@tag.attribute"] = { fg = p.orange },
@@ -709,7 +711,7 @@ end
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Terminal Colors                                          │
--- │ Gruvbox accents loaded into the integrated terminal.     │
+-- │ Gruvbox-Material accents for the integrated terminal.    │
 -- ╰──────────────────────────────────────────────────────────╯
 
 local terminal_colors = {
@@ -732,22 +734,22 @@ local terminal_colors = {
     [15] = "#282828", -- fg_bright
   },
   dark = {
-    [0] = "#121212", -- bg
-    [1] = "#fb4934", -- red
-    [2] = "#b8bb26", -- green
-    [3] = "#fabd2f", -- yellow
-    [4] = "#d3869b", -- ruby
-    [5] = "#b16286", -- purple
-    [6] = "#e78a4e", -- coral
+    [0] = "#282828", -- bg (Gruvbox bg0)
+    [1] = "#ea6962", -- red
+    [2] = "#a9b665", -- green
+    [3] = "#d8a657", -- yellow
+    [4] = "#7daea3", -- blue
+    [5] = "#d3869b", -- magenta
+    [6] = "#89b482", -- cyan
     [7] = "#ebdbb2", -- fg
-    [8] = "#928374", -- gray3
-    [9] = "#fc5d4b", -- bright_red
-    [10] = "#c6c944", -- bright_green
-    [11] = "#fcd462", -- bright_yellow
-    [12] = "#e09eae", -- bright_ruby
-    [13] = "#d3869b", -- bright_purple
-    [14] = "#f2a06b", -- bright_coral
-    [15] = "#fbf1c7", -- fg_bright
+    [8] = "#928374", -- bright black
+    [9] = "#f2594a", -- bright red
+    [10] = "#bfcf7e", -- bright green
+    [11] = "#e8b86a", -- bright yellow
+    [12] = "#97c5c0", -- bright blue
+    [13] = "#e09eae", -- bright magenta
+    [14] = "#9bc892", -- bright cyan
+    [15] = "#fbf1c7", -- bright white
   },
 }
 
