@@ -35,7 +35,7 @@ local palettes = {
     ruby = "#8f3f71", -- Gruvbox dark purple/pink
     coral = "#c87040", -- Soft peach/orange
     purple = "#8f3f71",
-    pink = "#637bff", -- periwinkle (punctuation; matches dark role)
+    pink = "#9d0006", -- red-ish (punctuation, imports; was periwinkle)
 
     -- Brighter variants
     bright_red = "#cc241d",
@@ -83,7 +83,7 @@ local palettes = {
     -- Hex values sourced from the rendered mojolang.org code blocks.
     bg = "#282828", -- Gruvbox bg0 (Mojo code-block bg)
     bg_dark = "#1d2021", -- Gruvbox bg0 hard (statusline / winbar)
-    bg_light = "#3c3836", -- Gruvbox bg1 (popups, floats)
+    bg_light = "#504945", -- Gruvbox bg2 (popups, floats — elevated for selection contrast)
     bg_visual = "#3c3836", -- Gruvbox bg1 (visual select)
     bg_search = "#3c3836",
     bg_cursor = "#32302f", -- Subtle cursor-line tint
@@ -97,7 +97,7 @@ local palettes = {
     fg_subtle = "#928374", -- Gruvbox dark gray
 
     -- Accents (Gruvbox Material muted palette — as rendered by Mojo docs).
-    -- pink repurposed as the Mojo periwinkle used for punctuation.
+    -- pink maps to the keyword red (imports, punctuation, decorators).
     red = "#ea6962", -- keywords, errors (Mojo keyword red)
     orange = "#e78a4e", -- UI accent (Gruvbox Material orange)
     yellow = "#d8a657", -- functions, TODO (Mojo function yellow)
@@ -105,7 +105,7 @@ local palettes = {
     ruby = "#d3869b", -- numbers, constants (Mojo number purple)
     coral = "#e78a4e", -- alias orange (module / UI accents)
     purple = "#d3869b", -- alias ruby
-    pink = "#b5c0f6", -- Mojo periwinkle: punctuation (brand accent)
+    pink = "#ea6962", -- red (was periwinkle: imports, punctuation, decorators)
 
     -- Brighter variants (emphasis / search highlights)
     bright_red = "#f2594a",
@@ -115,7 +115,7 @@ local palettes = {
     bright_ruby = "#e09eae",
     bright_coral = "#f2814c",
     bright_purple = "#e09eae",
-    bright_pink = "#c8d2ff",
+    bright_pink = "#f2594a", -- bright red (was light periwinkle)
 
     -- Grays (Gruvbox ramp)
     gray1 = "#3c3836",
@@ -129,7 +129,7 @@ local palettes = {
     -- Semantic (harmonized with Gruvbox Material)
     error = "#ea6962", -- red
     warn = "#d8a657", -- yellow
-    info = "#7daea3", -- blue
+    info = "#d3869b", -- purple (was teal/blue; avoids blue in diagnostics)
     hint = "#89b482", -- aqua
 
     git_add = "#89b482", -- aqua
@@ -201,8 +201,8 @@ local function make_groups(p)
     Whitespace = { fg = p.gray1 },
     SpecialKey = { fg = p.gray3 },
 
-    Pmenu = { fg = p.fg, bg = p.bg_popup },
-    PmenuSel = { fg = p.fg_bright, bg = p.bg_visual, bold = true },
+    Pmenu = { fg = p.fg, bg = p.bg_visual },
+    PmenuSel = { fg = p.fg_bright, bg = p.bg_nc, bold = true },
     PmenuSbar = { bg = p.gray1 },
     PmenuThumb = { bg = p.gray3 },
     WildMenu = { fg = p.fg_bright, bg = p.bg_visual },
@@ -333,7 +333,7 @@ local function make_groups(p)
     ["@keyword.exception"] = { fg = p.red },
     ["@keyword.conditional"] = { fg = p.red, italic = true },
     ["@keyword.repeat"] = { fg = p.red, italic = true },
-    ["@keyword.import"] = { fg = p.pink },
+    ["@keyword.import"] = { fg = p.red },
     ["@keyword.storage"] = { fg = p.orange },
     ["@keyword.coroutine"] = { fg = p.red },
     ["@keyword.directive"] = { fg = p.pink },
