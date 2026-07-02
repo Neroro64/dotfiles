@@ -6,6 +6,7 @@
 lazy-lock.json
 
 *session*
+!*session-*
 *.db*
 **/memories/*
 
