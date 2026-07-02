@@ -108,6 +108,48 @@ return {
     local BP_END = "\27[201~"
 
     --------------------------------------------------------------------------------
+    -- PTY Send Helpers
+    --------------------------------------------------------------------------------
+    --- Send raw bytes directly to a terminal's PTY.
+    --- Bypasses Terminal:send() which appends an unwanted newline via with_cr().
+    --- @param term Terminal
+    --- @param data string
+    local function raw_send(term, data)
+      if term and term.job_id then
+        vim.api.nvim_chan_send(term.job_id, data)
+      end
+    end
+
+    --- Send data in safe chunks to prevent PTY buffer overflow.
+    --- Kernel PTY buffer is typically 4096 bytes; use conservative 1024-byte chunks.
+    --- @param term Terminal
+    --- @param data string
+    local function send_chunked(term, data)
+      if not term or not term.job_id then
+        return
+      end
+      local CHUNK = 1024
+      local i = 1
+      while i <= #data do
+        vim.api.nvim_chan_send(term.job_id, data:sub(i, i + CHUNK - 1))
+        i = i + CHUNK
+        if i <= #data then
+          vim.wait(5)
+        end
+      end
+    end
+
+    --- Ensure a terminal is open and track it as the last-used terminal.
+    --- @param term Terminal
+    --- @param toggle function
+    local function ensure_open(term, toggle)
+      last_terminal = toggle
+      if not term:is_open() then
+        term:open()
+      end
+    end
+
+    --------------------------------------------------------------------------------
     -- Dedicated Terminal: oh-my-pi
     --------------------------------------------------------------------------------
     local omp, omp_toggle = create_terminal({
@@ -121,7 +163,9 @@ return {
       local start_pos = vim.fn.getpos("v")
       local end_pos = vim.fn.getpos(".")
 
-      local lines = vim.fn.getregion(start_pos, end_pos)
+      local start_line = math.min(start_pos[2], end_pos[2])
+      local end_line = math.max(start_pos[2], end_pos[2])
+      local lines = vim.api.nvim_buf_get_lines(0, start_line - 1, end_line, false)
       local text = table.concat(lines, "\n")
 
       if not text or #text == 0 then
@@ -129,18 +173,17 @@ return {
       end
 
       local rel_path = vim.fn.expand("%:.")
-      local start_line = start_pos[2]
-      local end_line = end_pos[2]
       local range = start_line == end_line and tostring(start_line) or string.format("%d-%d", start_line, end_line)
       local context = string.format("@%s:%s", rel_path, range)
 
-      last_terminal = omp_toggle
-      if not omp:is_open() then
-        omp:open()
-      end
+      ensure_open(omp, omp_toggle)
 
-      omp:send(context)
-      omp:send(BP_START .. text .. BP_END)
+      -- Paste context + selection as a single bracketed-paste block then
+      -- submit. The old code sent context + Enter as a separate message, so
+      -- the paste arrived while omp was no longer at an input prompt.
+      raw_send(omp, BP_START)
+      send_chunked(omp, context .. "\n" .. text)
+      raw_send(omp, BP_END .. "\n")
     end
 
     --- Send current file path to oh-my-pi
@@ -151,12 +194,9 @@ return {
         return
       end
 
-      last_terminal = omp_toggle
-      if not omp:is_open() then
-        omp:open()
-      end
+      ensure_open(omp, omp_toggle)
 
-      omp:send(rel_path)
+      raw_send(omp, "@" .. rel_path .. "\n")
     end
 
     -- oh-my-pi keybindings
