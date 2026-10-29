@@ -1,5 +1,4 @@
 # --- Aesthetics & Theme ---
-theme = "Monokai Classic"
 
 # Hide the titlebar for a cleaner, "hacker" look
 # On macOS, "tabs" keeps the native tabs but hides the bar. "hidden" removes it all.
