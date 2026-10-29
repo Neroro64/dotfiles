@@ -79,7 +79,3 @@ if (Get-Command starship -ErrorAction SilentlyContinue) {
     Invoke-Expression (&starship init powershell)
 }
 
-# ── Custom scripts ──────────────────────────────────────────────────────────
-
-Import-Module Microsoft.PowerShell.UnixTabCompletion
-. "$HOME/.cargo/env.ps1"
