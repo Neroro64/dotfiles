@@ -31,6 +31,3 @@ maki.setup({
 		},
 	},
 })
-
--- Plugins
-maki.pack.add({ "https://github.com/zipadoodlez/maki-session-index" })

@@ -1,0 +1,1 @@
+{"timestamp":"2026-11-01T16:30:04.973+01:00","level":"debug","pid":73409,"message":"mnemopi: fastembed not loadable, using on-demand runtime install","error":"ResolveMessage: Cannot find module 'fastembed/package.json'\nRequire stack:\n- /$bunfs/root/chunks/cli-c2cqfgjg.js"}

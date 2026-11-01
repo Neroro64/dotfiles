@@ -1,0 +1,322 @@
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+[?1034hbash-3.2$ ls mojo/stdlib/std/gpu/compute/ 2>&1 | head
+ls: mojo/stdlib/std/gpu/compute/: No such file or directory
+bash-3.2$ ls mojo/stdlib/std/runtime/ 2>&1; echo '---'; ls mojo/stdlib/std/algorithm/ 2>&1; echo '---'; ls mojo/stdlib/s td/gpu/host/ 2>&1; echo '---'; ls max/mojo/max/runtime/ 2>&1; echo '---'; ls max/mojo/max/algorithm/ 2>&1; echo '---'; l s max/mojo/max/gpu/host/ 2>&1
+__init__.mojo	asyncrt.mojo
+---
+__init__.mojo	backend		functional.mojo
+---
+__init__.mojo			_nvidia_cuda.mojo		dim.mojo
+_amdgpu_hip.mojo		_tensormap.mojo			func_attribute.mojo
+_device_context_extras.mojo	_tracing.mojo			info.mojo
+_device_context_metal.mojo	compile.mojo			launch_attribute.mojo
+_launch_args.mojo		constant_memory_mapping.mojo	nvidia
+_metal_capture.mojo		device_attribute.mojo
+_metal.mojo			device_context.mojo
+---
+async_value.mojo	asyncrt.mojo		tracing.mojo
+---
+__init__.mojo	backend		functional.mojo	memory.mojo	reduction.mojo
+---
+__init__.mojo		device_graph.mojo
+bash-3.2$ echo '--- std/runtime/asyncrt.mojo size ---' && wc -l mojo/stdlib/std/runtime/asyncrt.mojo 2>/dev/null && echo  '--- std/runtime content ---' && head -20 mojo/stdlib/std/runtime/asyncrt.mojo 2>/dev/null && echo '--- std/algorithm/_ _init__.mojo size ---' && wc -l mojo/stdlib/std/algorithm/__init__.mojo && echo '--- std/algorithm/__init__.mojo content  ---' && head -30 mojo/stdlib/std/algorithm/__init__.mojo && echo '--- std/gpu/host/__init__.mojo (looking for device_gr aph re-export) ---' && head -40 mojo/stdlib/std/gpu/host/__init__.mojo
+--- std/runtime/asyncrt.mojo size ---
+     691 mojo/stdlib/std/runtime/asyncrt.mojo
+--- std/runtime content ---
+# ===----------------------------------------------------------------------=== #
+# Copyright (c) 2026, Modular Inc. All rights reserved.
+#
+# Licensed under the Apache License v2.0 with LLVM Exceptions:
+# https://llvm.org/LICENSE.txt
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ===----------------------------------------------------------------------=== #
+"""This module implements the low level concurrency library."""
+
+from std.os import abort
+from std.atomic import Atomic
+from std.ffi import _CPointer, external_call
+from std.memory.alloc import alloc, dealloc, ThinAllocation, Layout
+
+from std.builtin.coroutine import (
+--- std/algorithm/__init__.mojo size ---
+      32 mojo/stdlib/std/algorithm/__init__.mojo
+--- std/algorithm/__init__.mojo content ---
+# ===----------------------------------------------------------------------=== #
+# Copyright (c) 2026, Modular Inc. All rights reserved.
+#
+# Licensed under the Apache License v2.0 with LLVM Exceptions:
+# https://llvm.org/LICENSE.txt
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ===----------------------------------------------------------------------=== #
+
+"""High performance data operations including vectorization, functional map, and tiling."""
+
+from .functional import (
+    BinaryTile1DTileUnitFunc,
+    Dynamic1DTileUnitFunc,
+    Dynamic1DTileUnswitchUnitFunc,
+    Static1DTileUnitFunc,
+    Static1DTileUnitFuncWithFlags,
+    Static1DTileUnswitchUnitFunc,
+    Static2DTileUnitFunc,
+    SwitchedFunction,
+    SwitchedFunction2,
+    map,
+    tile,
+    tile_and_unswitch,
+    tile_middle_unswitch_boundaries,
+    unswitch,
+--- std/gpu/host/__init__.mojo (looking for device_graph re-export) ---
+# ===----------------------------------------------------------------------=== #
+# Copyright (c) 2026, Modular Inc. All rights reserved.
+#
+# Licensed under the Apache License v2.0 with LLVM Exceptions:
+# https://llvm.org/LICENSE.txt
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ===----------------------------------------------------------------------=== #
+"""Implements the gpu host package."""
+
+from .compile import get_gpu_target
+from .constant_memory_mapping import ConstantMemoryMapping
+from .device_attribute import DeviceAttribute
+from .device_context import (
+    CompletionFlag,
+    DeviceBuffer,
+    DeviceContext,
+    DeviceContextArray,
+    DeviceContextList,
+    DeviceEvent,
+    DeviceFunction,
+    DeviceMulticastBuffer,
+    DevicePointer,
+    DeviceStream,
+    HostBuffer,
+)
+from .dim import Dim
+from .func_attribute import Attribute, FuncAttribute
+from .launch_attribute import LaunchAttribute
+bash-3.2$ echo '=== All std.gpu.compute Part N ===' && git --no-pager log --since=2026-01-01 --format='%h %ad %s' --date =short --grep='std.gpu.compute' mojo/stdlib/ max/mojo/ 2>/dev/null && echo '=== All std.algorithm Part N ===' && git --n o-pager log --since=2026-01-01 --format='%h %ad %s' --date=short --grep='std.algorithm' mojo/stdlib/ max/mojo/ 2>/dev/nu ll && echo '=== all unsafe_stack_allocation / stack_allocation remaining ===' && grep -rn 'stack_allocation' mojo/stdlib /std/ max/mojo/ 2>/dev/null | wc -l && echo '--- places still using unprefixed stack_allocation ---' && grep -rn 'stack_ allocation' mojo/stdlib/std/ max/mojo/ 2>/dev/null | grep -v 'unsafe_stack_allocation' | head -20
+=== All std.gpu.compute Part N ===
+2dfb14ff13 2026-07-29 [stdlib][max] feat: Move `std.gpu.compute` to `max.gpu.compute` (Part 7/N)
+=== All std.algorithm Part N ===
+e449f2829a 2026-07-28 [stdlib] feat: Move part of `std.algorithm` to `max.algorithm` (Part 6/N)
+1dab824eb8 2026-07-20 [stdlib] Use safe Pointer in algorithm
+c78a344439 2026-06-05 [stdlib][Kernels] Make reduction operations take Coord input shape
+3b9d0ab97a 2026-06-01 [Kernels][stdlib] Make reduce ops axis a compile-time parameter
+a121eddd78 2026-05-21 [stdlib][Kernels][MAX] Drop Optional[DeviceContext] from elementwise
+4288cdd765 2026-03-12 [mojo-lang] MOCO-3355: Migrate fn to def: std:algorithm:math:os:runtime:ffi
+=== all unsafe_stack_allocation / stack_allocation remaining ===
+      48
+--- places still using unprefixed stack_allocation ---
+mojo/stdlib/std/memory/stack_allocation.mojo:123:            var generic_ptr = __mlir_op.`pop.stack_allocation`[
+mojo/stdlib/std/memory/stack_allocation.mojo:136:    elif CurrentPlugin.stack_allocation_fn[address_space]:
+mojo/stdlib/std/memory/stack_allocation.mojo:138:            CurrentPlugin.stack_allocation_fn[address_space].value()
+mojo/stdlib/std/memory/stack_allocation.mojo:143:        _mlir_value = __mlir_op.`pop.stack_allocation`[
+mojo/stdlib/std/memory/stack_allocation.mojo:154:def stack_allocation[
+mojo/stdlib/std/memory/stack_allocation.mojo:189:def stack_allocation[
+mojo/stdlib/std/_plugin/_trait.mojo:22:from std.memory.stack_allocation import _StackAllocationPluginHookFnType
+mojo/stdlib/std/_plugin/_trait.mojo:99:    comptime stack_allocation_fn[address_space: AddressSpace]: OptionalReg[
+mojo/stdlib/std/format/_utils.mojo:406:            _mlir_value = __mlir_op.`pop.stack_allocation`[
+bash-3.2$ echo '=== std.gpu.compute moves (any title) ===' && git --no-pager log --since=2026-01-01 --format='%h %ad %s'  --date=short --grep='std.gpu.compute' 2>/dev/null && echo '=== std.algorithm moves (any title) ===' && git --no-pager l og --since=2026-01-01 --format='%h %ad %s' --date=short --grep='std.algorithm' 2>/dev/null && echo '=== std.runtime move s ===' && git --no-pager log --since=2026-01-01 --format='%h %ad %s' --date=short --grep='std.runtime' 2>/dev/null && ec ho '=== Part N in title ===' && git --no-pager log --since=2026-01-01 --format='%h %ad %s' --date=short --grep='Part ' - -all 2>/dev/null | head -40
+=== std.gpu.compute moves (any title) ===
+2dfb14ff13 2026-07-29 [stdlib][max] feat: Move `std.gpu.compute` to `max.gpu.compute` (Part 7/N)
+66e1d15c28 2026-04-01 [Kernels][AMD] Added dequantized mxfp4 matmul for AMD
+=== std.algorithm moves (any title) ===
+e449f2829a 2026-07-28 [stdlib] feat: Move part of `std.algorithm` to `max.algorithm` (Part 6/N)
+1dab824eb8 2026-07-20 [stdlib] Use safe Pointer in algorithm
+c78a344439 2026-06-05 [stdlib][Kernels] Make reduction operations take Coord input shape
+3b9d0ab97a 2026-06-01 [Kernels][stdlib] Make reduce ops axis a compile-time parameter
+a121eddd78 2026-05-21 [stdlib][Kernels][MAX] Drop Optional[DeviceContext] from elementwise
+fd6312a5c8 2026-05-19 [mojo] Improve diagnostics at invalid locations
+4288cdd765 2026-03-12 [mojo-lang] MOCO-3355: Migrate fn to def: std:algorithm:math:os:runtime:ffi
+=== std.runtime moves ===
+8344188ae0 2026-07-20 [stdlib] Use safe Pointer in runtime
+00fe312c11 2026-07-10 [stdlib] Move device-graph types to std.gpu.host.device_graph
+c03bab59a1 2026-06-11 [stdlib][NFC] Remove DeviceContextPtr leftovers
+=== Part N in title ===
+2dfb14ff13 2026-07-29 [stdlib][max] feat: Move `std.gpu.compute` to `max.gpu.compute` (Part 7/N)
+e449f2829a 2026-07-28 [stdlib] feat: Move part of `std.algorithm` to `max.algorithm` (Part 6/N)
+99d04e18c1 2026-07-12 [External] [Kernels][GPU] Route NVFP4 operations to cuBLAS on consumer Blackwell (sm_120 / sm_121) (#91479)
+a263b9831a 2026-07-03 [mojo-lang] feat: Allow omitting `@explicit_destroy` when `ImplicitlyDeletable where ...` (Part 2/N)
+3e7736fca8 2026-06-25 [Kernels] Apple Metal kernel correctness: GPU-closure copy-capture + comptime split index
+2d127942c2 2026-06-22 [MAX] Thread video_url sampling hints through the chat router
+68fc9d3f3a 2026-06-04 [max cascade] Add basic example FastAPI adapters
+b3b67851bb 2026-05-23 [External] [Stdlib][GPU] Add sm_121/sm_121a platform detection predicates (#87004)
+eaab868399 2026-05-22 [External] [Stdlib][GPU] Use arch-specific sm_121a target for DGX Spark (GB10) (#86989)
+9022825579 2026-04-17 [Kernels] Remove null pointer usage in kernels and tests
+f5a73cf32a 2026-04-17 [Kernels][stdlib] Make null pointer usage explicit
+356f28af70 2026-04-15 [Kernels] refactor: Remove ALL remaining `UInt` uses in `max/kernels/src` (Part 76/N)
+536d40c472 2026-04-14 [Kernels] refactor: Remove last unnecessary uses of `UInt` from `max/kernels/test/` (Part 75/N)
+da010be16d 2026-04-14 [Kernels] refactor: Remove last `UInt` parameters and args in `max/kernels/test/` (Part 74/N)
+973193903d 2026-04-14 [Kernels] refactor: Use `Int` for `AttentionRDNA` associated `comptime` values (Part 73/N)
+88be29c530 2026-04-14 [Docs] Add VideoContentPart to max.interfaces API docs
+237dac0d45 2026-04-13 [Kernels] refactor: Use `Int` in `shmem` functions (Part 72/N)
+bb20e3dd34 2026-04-13 [Kernels] refactor: Use `Int` for remaining inputs in `linalg` (Part 71/N)
+dd620343c9 2026-04-13 [Kernels] refactor: Use `Int` for remaining inputs in `nn` (Part 70/N)
+8b2ac6dcdd 2026-04-13 [Kernels] refactor: Use `Int` for `KVCacheStaticParams` fields (Part 69/N)
+ab85accff3 2026-04-13 [Kernels] refactor: Use `Int` for `MatmulConfig` fields (Part 68/N)
+0c0972c884 2026-04-10 [Kernels] refactor: Use `Int` args to `TensorCore` `load_a()`/`load_b()` methods (Part 67/N)
+e8f9d96c06 2026-04-10 [Kernels] refactor: Use `Int` for return type of all functions in `max/` (Part 66/N)
+4ef1733c26 2026-04-10 [Kernels] refactor: Use `Int` in `shared_memory_epilogue` parameters (Part 65/N)
+e070ea3904 2026-04-10 [Kernels] refactor: Use `Int` for `num_pipeline_stages` params (Part 63/N)
+6626f8e146 2026-04-10 [Kernels] refactor: Use `Int` for remaining `MHAConfig` methods (Part 62/N)
+0b5b1bf505 2026-04-09 [Kernels] refactor: Use `Int` for `MHAConfig` fields (Part 61/N)
+b13cf10a13 2026-04-09 [Kernels] refactor: Use `Int` args to `MHAConfig` initializer (Part 60/N)
+192dc361e3 2026-04-09 [Kernels] refactor: Change `Attention` associated `comptime`s to `Int` (Part 59/N)
+66a2c0decb 2026-04-09 [Kernels] refactor: Remove `UInt` uses in `gpu/mha.mojo` (Part 58/N)
+40b84118b9 2026-04-08 [Kernels] refactor: Remove `UInt` inputs in `mla.mojo` (Part 57/N)
+8caa6d6baa 2026-04-08 [Kernels] refactor: Change `peer_cta_coord` and `work_tile_coord` tuples to `Int` (Part 56/N)
+0c5b945c2e 2026-04-08 [stdlib] refactor: Use `Int` for `cluster_dim`, `cluster_idx`, and `block_id_in_cluster` (Part 55/N)
+57bf47c73c 2026-04-08 [stdlib] refactor: Remove `*_int` accessors (Part 54/N)
+e678f2929a 2026-04-07 [Kernels] refactor: Use `Int` `thread_idx` etc. in `max/examples/` (Part 53)
+c68f922846 2026-04-07 [Kernels] refactor: Use `Int` `thread_idx` etc. `linalg` (Part 52/N)
+75f2c26603 2026-04-07 [Kernels] refactor: Use `Int` `thread_idx` etc. in `linalg/matmul/gpu/` (Part 51/N)
+3fef24f03f 2026-04-07 [Kernels] refactor: Use `Int` `thread_idx` etc. in minor kernels files (Part 49/N)
+2e9e11fe76 2026-04-06 [Kernels] refactor: Use `Int` `thread_idx` etc. in `layout/` (Part 48/N)
+548bca2a56 2026-04-06 [Kernels] Use `Int` `thread_idx` etc. in examples, demos, and tests (Part 45/N)
+bash-3.2$ echo '=== All std.gpu.compute moves full history ===' && git --no-pager log --format='%h %ad %s' --date=short  --grep='std.gpu.compute to' 2>/dev/null && echo '=== All std.algorithm moves full history ===' && git --no-pager log --f ormat='%h %ad %s' --date=short --grep='std.algorithm to' 2>/dev/null && echo '=== All Part N/N for std moves ===' && git  --no-pager log --format='%h %ad %s' --date=short --all --grep='max.gpu.compute' 2>/dev/null && echo '--- max.algorithm  ---' && git --no-pager log --format='%h %ad %s' --date=short --all --grep='max.algorithm' 2>/dev/null
+=== All std.gpu.compute moves full history ===
+=== All std.algorithm moves full history ===
+=== All Part N/N for std moves ===
+2dfb14ff13 2026-07-29 [stdlib][max] feat: Move `std.gpu.compute` to `max.gpu.compute` (Part 7/N)
+--- max.algorithm ---
+65ed692ed9 2026-07-29 [stdlib] Use unsafe_stack_allocation in stdlib and max.algorithm
+e449f2829a 2026-07-28 [stdlib] feat: Move part of `std.algorithm` to `max.algorithm` (Part 6/N)
+a3d67774e0 2023-11-15 [Kernels][GPU] Add and enable GPU softmax kernel (#25773)
+50e3cddc86 2023-11-15 [Kernels][GPU] Add and enable GPU softmax kernel (#25773)
+c2b1e4997a 2023-11-15 [Kernels][GPU] Add and enable GPU softmax kernel (#25773)
+bash-3.2$ echo '=== when was max/mojo/max/gpu/compute first added? ===' && git --no-pager log --diff-filter=A --format=' %h %ad %s' --date=short -- max/mojo/max/gpu/compute/mma.mojo 2>/dev/null | tail -5 && echo '=== when was max/mojo/max/al gorithm functional.mojo first added? ===' && git --no-pager log --diff-filter=A --format='%h %ad %s' --date=short -- max /mojo/max/algorithm/functional.mojo 2>/dev/null | tail -5 && echo '=== commits since 2026-01-01 mentioning gpu/compute = ==' && git --no-pager log --since=2026-01-01 --format='%h %ad %s' --date=short --grep='gpu.compute' 2>/dev/null | head - 20
+=== when was max/mojo/max/gpu/compute first added? ===
+2dfb14ff13 2026-07-29 [stdlib][max] feat: Move `std.gpu.compute` to `max.gpu.compute` (Part 7/N)
+=== when was max/mojo/max/algorithm functional.mojo first added? ===
+e449f2829a 2026-07-28 [stdlib] feat: Move part of `std.algorithm` to `max.algorithm` (Part 6/N)
+=== commits since 2026-01-01 mentioning gpu/compute ===
+2dfb14ff13 2026-07-29 [stdlib][max] feat: Move `std.gpu.compute` to `max.gpu.compute` (Part 7/N)
+f09651343b 2026-07-28 [stdlib] Use safe Pointer in GPU device-side modules and GPU host device_context
+77b5d14007 2026-06-09 [Kernels] Add local compute-sanitizer harness and memcheck pool-disable flag
+66e1d15c28 2026-04-01 [Kernels][AMD] Added dequantized mxfp4 matmul for AMD
+4bc679605e 2026-01-16 [stdlib] Move `tcgen05` module to `gpu.compute.arch`
+29674b1887 2026-01-16 [stdlib] Remove deprecated GPU compatibility modules
+bash-3.2$ echo '=== new alloc/dealloc stdlib APIs ===' && git show --stat 034f69413f | tail -25 && echo '=== Rename Impl icitlyDestructible -> ImplicitlyDeletable ===' && git show --stat cafa256e97 | tail -20 && echo '=== Remove deprecated U nsafePointer methods ===' && git show --stat 0e619ec517 | tail -20 && echo '=== New alloc/dealloc body excerpt ===' && g it show 034f69413f --format='' -- mojo/stdlib/std/memory/alloc.mojo | head -50
+=== new alloc/dealloc stdlib APIs ===
+ mojo/stdlib/std/builtin/error.mojo                 |   2 +-
+ mojo/stdlib/std/builtin/sort.mojo                  |   6 +-
+ mojo/stdlib/std/collections/_swisstable.mojo       |  46 +-
+ mojo/stdlib/std/collections/deque.mojo             |  54 ++-
+ mojo/stdlib/std/collections/dict.mojo              |  26 +-
+ mojo/stdlib/std/collections/interval.mojo          |  12 +-
+ mojo/stdlib/std/collections/linked_list.mojo       |  56 ++-
+ mojo/stdlib/std/collections/list.mojo              |  18 +-
+ mojo/stdlib/std/ffi/__init__.mojo                  |   8 +-
+ mojo/stdlib/std/gpu/compute/mma.mojo               |   7 +-
+ mojo/stdlib/std/gpu/host/_device_context_hal.mojo  |  41 +-
+ .../stdlib/std/gpu/host/_device_context_metal.mojo |  28 +-
+ mojo/stdlib/std/gpu/host/device_context.mojo       |  26 +-
+ mojo/stdlib/std/memory/__init__.mojo               |   2 +-
+ mojo/stdlib/std/memory/alloc.mojo                  | 497 ++++++++++++++++++---
+ mojo/stdlib/std/memory/arc_pointer.mojo            |  19 +-
+ mojo/stdlib/std/memory/owned_pointer.mojo          |  45 +-
+ mojo/stdlib/std/python/_cpython.mojo               |   2 +-
+ mojo/stdlib/std/random/random.mojo                 |   1 -
+ mojo/stdlib/std/runtime/asyncrt.mojo               |  68 +--
+ mojo/stdlib/test/benchmark/test_quick_bench.mojo   |  14 +-
+ mojo/stdlib/test/builtin/test_simd.mojo            |  14 +-
+ mojo/stdlib/test/memory/test_alloc.mojo            | 105 ++++-
+ mojo/stdlib/test/python/test_python_cpython.mojo   |  24 +-
+ 27 files changed, 931 insertions(+), 252 deletions(-)
+=== Rename ImplicitlyDestructible -> ImplicitlyDeletable ===
+commit cafa256e97adf60851c6dd1973a1af65354ed858
+Author: Connor Gray <code@connorgray.com>
+Date:   Thu Jun 11 14:42:02 2026 -0500
+
+    [stdlib][mojo] feat: Rename `ImplicitlyDestructible` to
+    `ImplicitlyDeletable`
+    
+    MODULAR_ORIG_COMMIT_REV_ID: 38c6b54343db6df677c808068e84696d43e430ff
+
+ mojo/stdlib/std/builtin/anytype.mojo      | 23 +++++++++++++++--------
+ mojo/stdlib/std/prelude/__init__.mojo     |  1 +
+ mojo/stdlib/std/python/bindings.mojo      |  2 +-
+ mojo/stdlib/std/python/python_object.mojo |  2 +-
+ 4 files changed, 18 insertions(+), 10 deletions(-)
+=== Remove deprecated UnsafePointer methods ===
+commit 0e619ec517d63f8693578334b3f776755f07ed11
+Author: Nate <43621845+NathanSWard@users.noreply.github.com>
+Date:   Fri Jul 10 08:43:48 2026 -0600
+
+    [stdlib] Remove deprecated UnsafePointer methods
+    
+    MODULAR_ORIG_COMMIT_REV_ID: 3816253abed4457ef51bfa7c4e49dd816a44c0aa
+
+ mojo/stdlib/std/memory/unsafe_pointer.mojo | 80 ++----------------------------
+ 1 file changed, 4 insertions(+), 76 deletions(-)
+=== New alloc/dealloc body excerpt ===
+diff --git a/mojo/stdlib/std/memory/alloc.mojo b/mojo/stdlib/std/memory/alloc.mojo
+index 2e031a10df..b9222f643e 100644
+--- a/mojo/stdlib/std/memory/alloc.mojo
++++ b/mojo/stdlib/std/memory/alloc.mojo
+@@ -12,9 +12,105 @@
+ # ===----------------------------------------------------------------------=== #
+ """Implements layout-aware memory allocation and deallocation.
+ 
+-This module provides `alloc` and `free` functions that pair with a `Layout`
+-descriptor to express the size and alignment of an allocation at the call site,
+-making ownership and layout information explicit and co-located.
++This module provides the `alloc` and `dealloc` functions together with a
++`Layout` descriptor that expresses the size and alignment of an allocation at
++the call site, keeping ownership and layout information explicit and
++co-located.
++
++Allocations are represented by two explicitly destroyed (`@explicit_destroy`)
++owning handles, so the compiler forces every allocation to be released on all
++paths — either by passing it to `dealloc` or by taking the raw pointer with
++`unsafe_leak()`:
++
++- `Allocation[T]`: the handle returned by `alloc`. It bundles the owning
++  pointer with the `Layout` it was allocated with, so the element count and
++  alignment needed to free the storage travel with the pointer.
++- `ThinAllocation[T]`: a bare owning handle that carries only the pointer, with
++  no `Layout`. It makes a good storage field for a container that already
++  tracks its own capacity (such as `List`); pair it back with a `Layout` via
++  `unsafe_with_layout` to deallocate.
++
++Examples:
++
++Allocate, use, and free storage through the `Allocation` returned by `alloc`:
++
++```mojo
++from std.memory.alloc import alloc, dealloc, Layout
++from std.memory import destroy_n
++
++var allocation = alloc(Layout[String](count=4))
++var ptr = allocation.unsafe_ptr()
++
++# initialize the memory
++for i in range(allocation.layout().count()):
++    (ptr + i).init_pointee_move("🔥")
++
++# print the values
++for string in allocation.unsafe_span():
++    print(string) # prints "🔥"
++
++# deinitialize the values
++destroy_n(allocation.unsafe_ptr(), allocation.layout().count())
+bash-3.2$ 

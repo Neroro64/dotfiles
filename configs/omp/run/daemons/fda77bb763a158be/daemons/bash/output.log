@@ -1,0 +1,1235 @@
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+[?1034hbash-3.2$ cd /Users/nuoc/dev/ai/modular && git --no-pager log --since=2026-06-01 --until=2026-07-31 --format='%h %s' --  max/pipelines | head -300
+bash-3.2$ git --no-pager log --since=2026-06-01 --until=2026-07-31 --format='%h %s' -- max/pipelines > /tmp/pipelines.lo g 2>&1; wc -l /tmp/pipelines.log
+       0 /tmp/pipelines.log
+bash-3.2$ date; git --no-pager log --format='%h %ai %s' | head -5
+Fri Jul 31 22:53:48 CEST 2026
+cc7155d854 2026-07-30 15:31:29 +0000 [Release] Pin lockfiles to Mojo 1.0.0b3.dev2026073014, MAX 26.5.0.dev2026073014
+0df55a7338 2026-07-30 13:39:37 +0000 [Kernels] Implement the RecordingDeviceContext
+430224796d 2026-07-30 15:38:30 +0200 [Driver] Add explicit `machine` dep to `max.sys._hal` Mojo targets
+f203eacab2 2026-07-30 07:31:04 -0600 [stdlib] Remove move UnsafePointer usage P2
+77d7e08100 2026-07-30 08:50:47 -0400 [CI] Compile layer-benchmark harness graphs on CPU, execute on GPU
+bash-3.2$ git --no-pager log --format='%h %ai %s' --since=2026-06-01 | tail -3; echo "---"; git --no-pager log --format= '%h %ai %s' --since=2026-06-01 -- max/pipelines | wc -l
+79a858a277 2026-06-01 14:41:01 +0200 [Models] Bump Llama-3 and Llama-3.1 logit verification thresholds
+c056534206 2026-06-01 14:28:39 +0200 [Models] Mark LFM2.5-1.2B logit verification as manual
+5aa3b131ac 2026-06-01 14:26:30 +0200 [DFlash] Add workaround for DFlash overlap scheduling
+---
+       0
+bash-3.2$ ls -d max/pipelines 2>&1; echo "---"; git ls-files max/pipelines 2>&1 | head -5; echo "---"; find . -maxdepth  2 -name pipelines -type d 2>/dev/null
+ls: max/pipelines: No such file or directory
+---
+---
+bash-3.2$ ls -la max/; echo "---"; find . -type d -name 'pipelines' 2>/dev/null
+total 64
+drwxr-xr-x@ 13 nuoc  staff    416 Jul 31 22:51 .
+drwxr-xr-x@ 33 nuoc  staff   1056 Jul 31 22:51 ..
+-rw-r--r--@  1 nuoc  staff   1857 Jul 31 22:51 BUILD.bazel
+-rw-r--r--@  1 nuoc  staff  11593 Jul 31 22:51 CLAUDE.md
+-rw-r--r--@  1 nuoc  staff   9570 Jun  9 01:19 CONTRIBUTING.md
+drwxr-xr-x@ 14 nuoc  staff    448 Jul 31 22:51 docs
+drwxr-xr-x@ 13 nuoc  staff    416 Jul 31 22:51 examples
+drwxr-xr-x@  3 nuoc  staff     96 Jun  9 01:19 include
+drwxr-xr-x@ 10 nuoc  staff    320 Jun 17 09:26 kernels
+drwxr-xr-x@  4 nuoc  staff    128 Jul 31 22:51 mojo
+drwxr-xr-x@  5 nuoc  staff    160 Jun  9 01:19 python
+-rw-r--r--@  1 nuoc  staff   1481 Jul 31 22:51 README.md
+drwxr-xr-x@  6 nuoc  staff    192 Jul 31 22:51 tests
+---
+./max/python/max/experimental/cascade/pipelines
+./max/python/max/pipelines
+./max/python/max/serve/pipelines
+./max/tests/integration/pipelines
+./max/tests/tests/pipelines
+./max/tests/tests/serve/pipelines
+bash-3.2$ ls max/python/max/; echo "---"; ls max/python/max/pipelines/ 2>&1 | head -30; echo "---"; ls max/python/max/mo dels/ 2>&1 | head -30
+_core			_interpreter.py		benchmark		engine			pipelines
+_core_mojo		_kv_cache_ops		BUILD.bazel		experimental		profiler
+_core_types		_mlir			config			graph			serve
+_distributed_ops	_mlir_context.py	diagnostics		kv_cache		support
+_entrypoints		_xgrammar		driver			mlir			sys
+_interpreter_ops	all_deps.bzl		dtype			nn
+---
+__init__.py
+architectures
+BUILD.bazel
+context
+diffusion
+kv_cache
+lib
+logging_utils.py
+lora
+modeling
+README.md
+request
+sampling
+speculative
+weights
+---
+ls: max/python/max/models/: No such file or directory
+bash-3.2$ ls max/python/max/pipelines/architectures/; echo "---"; ls max/python/max/pipelines/modeling/; echo "---"; ls  max/python/max/nn/
+__init__.py			glm5_1				olmo3
+all_arches.bzl			gpt_oss				phi3
+autoencoders			gpt_oss_modulev3		phi3_modulev3
+autoencoders_modulev3		granite				pixtral
+bert				granite_modulev3		pixtral_modulev3
+BUILD.bazel			hf_config_shims.py		qwen_image
+clip				hy_v3				qwen_image_edit
+deepseekV2			idefics3			qwen2
+deepseekV2_modulev3		idefics3_modulev3		qwen2_5vl
+deepseekV3			ideogram4			qwen3
+deepseekV3_2			internvl			qwen3_5
+deepseekV3_2_nextn		kimik2_5			qwen3_embedding
+deepseekV3_modulev3		laguna				qwen3_embedding_modulev3
+deepseekV3_nextn		lfm2				qwen3_modulev3
+dflash_kimi_k25			llama3				qwen3vl_moe
+dflash_llama3			llama3_modulev3			README.md
+diffusion_gemma			llama4				step3p5
+eagle_common			mamba				t5
+eagle_llama3			minimax_m2			umt5
+eagle3_deepseekV3		mistral				unified_dflash_kimi_k25
+flux_modulev3			mistral3			unified_dflash_llama3
+flux2				mistral3_modulev3		unified_eagle_llama3
+flux2_modulev3			mpnet				unified_mtp_deepseekV3
+gemma3				mpnet_modulev3			unified_mtp_gemma4
+gemma3_modulev3			nemotron_h			unified_mtp_glm5_2
+gemma3multimodal		olmo				wan
+gemma3multimodal_modulev3	olmo_modulev3			whisper
+gemma4				olmo2				z_image_modulev3
+gemma4_assistant		olmo2_modulev3
+---
+__init__.py	base		BUILD.bazel	config_enums.py	dataprocessing	types
+---
+__init__.py			embedding.py			norm
+_identity.py			float8_scale_stacking.py	parallel
+activation.py			hooks				quant_config.py
+attention			identity.py			quant_ops.py
+BUILD.bazel			kernels.py			rotary_embedding.py
+clamp.py			kv_cache			sampling
+comm				layer				sequential.py
+conv_transpose.py		linear.py			stacked_linear.py
+conv.py				lora				transformer
+data_parallelism		moe
+bash-3.2$ git --no-pager log --since=2026-06-01 --until=2026-07-31 --format='%h %ad %s' --date=short -- max/python/max/p ipelines/ | head -300 > /tmp/pip.log 2>&1; wc -l /tmp/pip.log; echo "---HEAD---"; head -30 /tmp/pip.log
+     300 /tmp/pip.log
+---HEAD---
+32c9befbf2 2026-07-30 [MAX] Remove redundant concatenate in Eagle3
+ee72154c1a 2026-07-29 [MAX] Remove dead max_num_steps flag (#93944)
+084e8cdb73 2026-07-29 [docs] Refactor MAX docs, remove `/max` path in build output
+eb04f472f6 2026-07-29 [Pipelines] Split _select_quantization_encoding into encoding + dtype-cast helpers (#93931)
+bb20ffc931 2026-07-29 [Pipelines] Delete the unused applied_dtype_cast ArchConfig fields (#93924)
+307b23faf0 2026-07-29 [Pipelines] Don't apply the model revision to an external weights repo (#93870)
+ca7a33816e 2026-07-29 [Pipelines] Rebuild config in ModelManifest.with_override for weight-path overrides (#93694)
+3ba6f4abc2 2026-07-29 [MAX] Add video encoder metrics tracking and reporting
+dd1f3475e9 2026-07-29 [Serve][KVCache] Add device-hit and cross-replica KV cache metrics
+fbd67b6c24 2026-07-29 [Pipelines] Resolve quantization_encoding in the consumer, not the config (#93014)
+c141830bbe 2026-07-29 [Docs] Enable Sybil docstring tests for max.pipelines
+efd8f1a52f 2026-07-28 [KVCache][NFC] Harden shape/group assertions in the KV transfer engine
+391c91b9a6 2026-07-28 [MAX][Profiling] Remove the public Python surface of the kineto profiler
+51245b7df1 2026-07-28 [CI][MAX] Precompile the structured-output CLI test's graphs on CPU
+42a82f59fd 2026-07-28 [KVCache][NFC] Name connect_pairing's index quads with a NamedTuple
+53dbcfae89 2026-07-28 [KVCache][NIXL] Derive total_num_pages from the memory groups
+3743486eb1 2026-07-28 [KVCache][NIXL] Route KV transfers by per-group strategy, not an engine-wide flag
+4e5a63e632 2026-07-28 [KVCache][NIXL] Author per-group KV memory via to_memory_groups(); retire _unit_shard_groups
+7223969080 2026-07-28 [KVCache][NIXL] Consume typed to_memory() units and read bytes_per_page off the view
+68887c005b 2026-07-28 [KVCache][NIXL] Split generic TransferEngine + metadata bases and extract pure topology resolver
+5ee42b80b9 2026-07-27 [KV] Warn at startup about leftover `max_kv_tiered_*` offload directories from previous runs.
+c50d9b5d5b 2026-07-27 [MAX] Bound vision encoding to the chunked-prefill active window
+9d08903698 2026-07-27 [KVConnector] Default the tiered and rust_tiered connectors' disk worker pool to 32 threads (up from 16) and make it configurable.
+7031569b45 2026-07-27 [max] shrink overflowed vision cache asap
+6741c40284 2026-07-27 [MAX] Sample recovered tokens from the residual in stochastic acceptance (#93233)
+6a039ca7a8 2026-07-27 [MAX] Batch multi-device replay preface copies into one submission
+9dafe99953 2026-07-27 [dKV] surfaces dKV connector connection stats through KVCacheMetrics and OTel
+71371c15cc 2026-07-27 [MAX] Fix DI vision-context handling gaps
+c578b574f7 2026-07-26 [MAX] Move VLM vision-merge input finalization into the pipeline seam
+5fbb062216 2026-07-25 [Pipelines] Fix CLI kv-cache flags clobbering config-file values
+bash-3.2$ git --no-pager log --since=2026-06-01 --until=2026-07-31 --format='%h %ad %s' --date=short | grep -iE "(gemma| llama|mistral|kimi|glm|minimax|deepseek|qwen|smollm|eagle|nemotron|phi|gpt-oss|olmo|moonshot|granite|wan|flux|ideogram|i nternvl|pixtral|whisper|idefics|bert|mpnet|clip|t5|umt5|hy|step3|laguna|mamba|exaone|dflash|autoencoder|umt|z_image|hy_v 3|granite|pixtral|idefics3|granite|lfm|minimax|llama4)" | head -150 > /tmp/model_commits.log; wc -l /tmp/model_commits.l og; echo "---"; cat /tmp/model_commits.log
+     150 /tmp/model_commits.log
+---
+32c9befbf2 2026-07-30 [MAX] Remove redundant concatenate in Eagle3
+eb64db7a75 2026-07-29 [hf-repo-lock] Add MiniMax M3 bf16 (important for accuracy test)
+f59d853606 2026-07-29 [Kernels] Enable native FP8 sparse MLA decode + prefill for GLM 5.2
+65fef0e793 2026-07-29 [CI] Move llm-fuzz Kimi coverage from K2.5/K2.6 to K2.7
+f957d12126 2026-07-29 [MAX] Use strict_mode=False in Gemma 4
+52d4733620 2026-07-29 [CI] Precompile the plain SmolLM CLI test's graphs on CPU
+29d8ced2a0 2026-07-28 [CI] Pin Wan2.1-T2V-14B in hf-repo-lock.tsv to stop HF cache race
+5135d285de 2026-07-28 [bazel] Precompile gemma4 attention test MEFs on CPU
+e959e2b588 2026-07-27 [MAX][Kernels] Fix AMD MiniMax M3 smoke compilation
+4311344194 2026-07-27 [CI][DI] Add MiniMax-M3 single-node uniform 1p1d smoke config
+39dcc420ec 2026-07-27 [bazel] Use graph cross-compilation in gpt-oss tests
+878c78389b 2026-07-27 [MAX][Kernels] Add MTP speculative decoding for MiniMax-M3
+9e34fd4021 2026-07-27 [Kernels][MAX] Fused all-gather + RMSNorm op, gated MiniMax-M3 wiring
+f00047e45c 2026-07-25 [CI] Serve the production recipe in the MiniMax-M3 8xB200 smoke test
+a24d59cc49 2026-07-24 [MAX] Fix Kimi-K2.5 device graph capture after vision cache migration
+9384cc1dc2 2026-07-24 [MAX][NFC] Make Gemma 4 structural tag builder public
+3441a0a686 2026-07-23 [xgrammar] Enforce string length constraints per character in Gemma tool calls
+884ec7fb76 2026-07-23 [MAX] Migrate unified_mtp_gemma4 onto the shared encoder cache
+af07cce1a8 2026-07-23 [xgrammar] Add Gemma 4 structured output support
+c54059f578 2026-07-23 [CI] Fix MiniMax-M3 kadabra recipe and enable it in nightly smoke tests
+21916f160f 2026-07-23 [MAX] Unify gemma4 video into the per-frame image path
+c839a9d1cc 2026-07-23 [MAX] Own the vision cache at the pipeline and migrate gemma4 and kimik2_5
+bb7739b88a 2026-07-22 [MAX][NFC] Change ModuleV3 DeepSeekV3 to use EP
+0634e5451f 2026-07-22 [Kernels][MAX] Support FP8 KV cache for MiniMax-M3 attention
+a7e1a530cb 2026-07-22 [Kernels] Generate SM90 Gemma dispatch configs from tuning data
+de9962341a 2026-07-22 [MAX] Remove exaone architecture
+37ad702612 2026-07-23 [MAX][Pipelines] Guard DeepseekV3 NextN EP init under the virtual device
+5238a8331e 2026-07-22 [Kernels] Generate SM90 Llama dispatch configs from tuning data
+d692427464 2026-07-22 [Kernels] Generate SM90 InternVL dispatch configs from tuning data
+0166a1b0a1 2026-07-21 [MAX] Fix EAGLE3 MHA draft lm_head allgather in pure-TP mode
+e392070842 2026-07-21 [MAX] Support DP-EP in ModuleV3 DeepSeekV3
+da338d39e7 2026-07-21 [ENABLE] Add EPLB routing profiling for MiniMax-M3 and M3 Eagle spec-decode
+9d8609e709 2026-07-21 [MAX] Fix Eagle speculative decoding stopping short of max_tokens
+629f404f0d 2026-07-21 [Kernels] Direct decode grid for MiniMax-M3 MXFP4 grouped matmul At decode, size the grouped-matmul grid to a static concurrency cap and use the direct (non-persistent) kernel for both gate_up and down. Beats persistent 7–18% across concurrency (no crossover); gate_up ~ties ATOM at conc-8.
+ad9658ab5d 2026-07-21 [MAX] Nemotron-3-Nano-4B FP8 optimization follow-on
+389a75ed29 2026-07-20 [MAX] Return 400 for MiniMax M3 tool-role messages with no preceding tool_calls
+0479fa1cb5 2026-07-17 [Models] Enable sparse MLA prefill for FP8-attention GLM
+b6ae0019d9 2026-07-17 [Models] Enable sparse MLA prefill for BF16-attention GLM
+a2a35e1524 2026-07-16 [Benchmarking] ATOM MiniMax-M3-MXFP4 kadabra multi-turn serving benchmark (mi355.4 + mi355.8)
+887df6444a 2026-07-16 [MAX] Default FLUX.2-klein to int8 W8A8 on Apple M5 (bf16 or NVFP4 source)
+e170958735 2026-07-17 [MAX][Pipelines] Guard MiniMax-M2 EP init under the virtual device
+5949fb180b 2026-07-15 [Kernels][Pipelines] Serve Nemotron-3-Nano-30B-A3B-FP8 on Apple M5 with a tiled grouped-FP8 MoE matmul
+eb5e26a479 2026-07-15 [Kernels][Pipelines] Nemotron-H Apple M5: FP8 (4B + 8B) + gnorm fusion + vectorized SSD + bf16 SSM state
+268b0593be 2026-07-15 [Pipelines] Sweep flux2/wan diffuser components onto the shared resolver (#91857)
+41ee60bca7 2026-07-14 [Models] Enable sparse MLA prefill for DeepSeek V3.2
+b3ef5d2f68 2026-07-14 [CI] Add GLM 5.2 to the llm-fuzz matrix and serve smoke test
+8c2f7b6461 2026-07-13 [CI] Consolidate gemma 4 smoke tests
+907cba85bd 2026-07-13 [Models] Enable request-level concurrency during video decoding in Gemma 4
+88a1328f55 2026-07-13 [MAX][Models] Key all VLM images and gemma4 video on raw bytes
+3dabbeff47 2026-07-13 [Docs] Add DFlash to speculative decoding supported methods
+41800006fa 2026-07-11 [MAX] Stream MiniMax-M3 tool-call arguments incrementally
+166e6d732e 2026-07-11 [MAX][Kernels] Nemotron-H on Apple M5: MoE hybrid + Apple decode kernels
+c0efde5879 2026-07-10 [Kernels][Pipelines] Nemotron-H FP8: route static-scaled FP8 onto MAX's own Mojo SM100 pipeline + fuse Mamba in_proj + SSD DSTATE-split
+263be8ec2a 2026-07-10 [Benchmarking] Wire up MiniMax-M3-MXFP4 MAX-vs-Atom serving + engine benchmarks
+c7bb68a0ce 2026-07-10 Revert "[MAX][Kernels][Driver] Nemotron-H on Apple M5: bring-up + decode optimization"
+d7821306aa 2026-07-10 [MAX][Kernels][Driver] Nemotron-H on Apple M5: bring-up + decode optimization
+d5048e305a 2026-07-09 [Kernels] [AMD] Fix diffusion models on AMD RDNA GPUs by adding residual path for 2-D convolution On AMD RDNA GPUs, FLUX.2 and other image generation models were generating corrupt outputs due to a missing residual path in the RDNA-specific 2-D convolution, so this adds that path on RDNA. As a result, FLUX.2 and other models should once again work correctly on AMD RDNA GPUs.
+63d99f616a 2026-07-09 [Kernel] Fix Kimi-2.6 logit verification
+87740b50b1 2026-07-08 [Models] Use grouped allgathers for the eagle MHA draft TP+DP input split
+476eba2832 2026-07-08 [Kernels] Added 1 WG subtree to minimax launch for minimum M values
+75c5b15432 2026-07-08 [MAX] Constrain Kimi tool-call args under tool_choice=auto
+c40e10d65a 2026-07-08 [Models] Experimental Eagle3 support for M3
+8621550acd 2026-07-07 [MAX] Fix test_smollm_serving_gpu collection and missing deps
+1265711692 2026-07-07 [Docs] Add GLM-5.2 to MTP speculative decoding guide
+0905e082c2 2026-07-06 [MAX] Fix default structured output backend of glm + diffusion gemma
+d0c2630e59 2026-07-06 [Pipelines] Pin gemma4 spec-decode archs to llguidance
+86c90d43e4 2026-07-06 [MAX] Nemotron-H: forward the resolved max_batch_size through model __init__
+40132e13ba 2026-07-06 [Kernels][MAX] Apple M5: int8 W8A8 matmul + FLUX.2-klein wiring
+f80ba9d348 2026-07-05 [MAX] Enforce MiniMax-M3 tool-call turns to EOS after the single section
+11a6d22556 2026-07-03 [MAX] FLUX.2 denoising cache: wire FBCache into Flux2Executor + docs
+82d02ba6c7 2026-07-03 [CI] Disable Meta-Llama-3.1-8B-Instruct-GPTQ in logit verification
+4c15d4d2e0 2026-07-02 [Kernels] Added minimax bands to moe dispatcher
+9cf97e34fe 2026-07-02 [MAX] Add tool calling, reasoning, and structured outputs to GLM-5.x
+270dda7c9d 2026-07-02 [Model] Support NVFP4 in GLM 5.2 MTP Additional changes required to support NVFP4 weights with the unified GLM MTP model.
+1691df462b 2026-07-02 [MAX] Gemma4 MTP: plumb vision through the unified graph
+4cd3fde3c9 2026-07-02 [Models] Fix GLM-5.1-FP8 shared-experts dtype crash
+07394f4105 2026-07-02 [ConstrainedDecoding] Support Kimi tool-calling with response_format on xgrammar
+a61ad67a04 2026-07-02 [max]Skip laguna tests on macOS CI
+06e82346ae 2026-07-02 [Kernels][MAX] Apple M5: NVFP4 W4A16 for FLUX.2-dev
+2ed92e6223 2026-07-01 [Kernels] Enable preshuffle mxfp4 weights for minimax
+b35d4797bf 2026-07-01 [MAX] update `amd/MiniMax-M3-MXFP4` commit
+1e92287cb9 2026-07-01 [MAX] GLM-5.2 Sparse MLA Decode bf16 + NVFP4 wiring
+01a1f88775 2026-07-01 [MAX] Fix DeepSeek-V3.1-NVFP4 MTP draft EPConfig crash on BF16 NextN
+184e37212e 2026-07-01 [CI] Enable MiniMax M3 smoke test on MI355
+eb0f02ae14 2026-06-30 [MAX] Add greedy-acceptance option to unified MTP Gemma4 spec graph (#90391)
+bbf9f370f4 2026-06-30 [CI] Add GLM 5.2 NVFP4 to hf-repo-lock.tsv
+1fae2da6e2 2026-06-30 [models] fix max_batch_size for nemotron_h
+1fc9cfe02a 2026-06-30 [Models] Bump Llama-3.1-8B-Instruct float32 thresholds
+d03655cb47 2026-06-30 [Models][CI] add amd/MiniMax-M3-MXFP4 config
+444981ac37 2026-06-30 [Models] Support unified MTP for MiniMax-M3
+84c581a23d 2026-06-29 [Models] Support MTP in GLM 5.2
+559e12c61c 2026-06-29 [KB] Add Llama4 Scout text-only pipeline architecture on MI355X
+12d86ceba7 2026-06-29 [KB] Nemotron-H FP8 bring-up + autonomous in-place SSM decode optimization
+f9993a243a 2026-06-29 [MAX] Gemma4 pool vision tokens with gather-reduce instead of a dense matmul
+4f5c1affe5 2026-06-29 [MAX] Add text-only Llama 4 Scout architecture (+ FP8 serving)
+21612c1167 2026-06-29 [MAX] Fix Qwen3EmbeddingModel crash
+3c6639b783 2026-06-28 [Kernels][MiniMax-M3] Fix sparse indexer decode off-by-current-token on prefix hit
+777f7a73ab 2026-06-27 [Kernels] Add MiniMax-M3 block-sparse attention prefill fuzz target
+a5d54cef87 2026-06-27 [Kernels] Add MiniMax-M3 5-way fused QKV+index MXFP8 matmul fuzz target
+390c646c8d 2026-06-27 [Kernels] Add MiniMax-M3 MXFP8 fused QKV matmul fuzz target
+c4d55c31c6 2026-06-27 [Kernels] Add MiniMax-M3 fused QK RoPE fuzz target
+f5e09c7e8a 2026-06-27 [Kernels] Add MiniMax-M3 fused QK RMSNorm fuzz target
+35e3b9e77e 2026-06-27 [CI] Exclude failing Kimi K2.5 NVFP4 and DSv3.1 MTP variants from golden gating (MXSERV-212) (#90180)
+13c62f3825 2026-06-27 [SERVOPT] Restore mo.moe.router.group.limited registration A prior router-fusion change replaced the mo.moe.router.group.limited registration with a fused single-group EPLB kernel, dropping the op that DeepSeek-V3/V3.2 and other group-limited MoE models still emit. Restore the original registration alongside the fused variant.
+dfe243c43d 2026-06-27 [SERVOPT] Fuse Kimi single-group router with EPLB remap
+a94ac0d711 2026-06-27 [SERVOPT] Fuse EPLB log->phy remap into mo.moe.eplb.remap
+9a0f73c2c5 2026-06-26 [SERVOPT] EPLB log2phy remap on dispatch (max_replicas=1)
+ac618cad74 2026-06-26 [Kernels] Add MiniMax-M3 block-sparse decode attention fuzz target
+cf2a11ca86 2026-06-26 [SERVOPT] Capture per-layer EPLB histograms in Kimi 2.5
+8a9f898524 2026-06-26 [benchmarks] fix nemotron dataset decoding
+7d47715a77 2026-06-26 [Kernels] Port MiniMax MSA block-sparse attention to AMD (gfx950)
+cafad1eb79 2026-06-26 [Kernels] Add MiniMax-M3 prefill sparse-indexer fuzz target
+57fb8ce016 2026-06-26 [Models][CI] Update MiniMax-M3-MXFP8 default serving config
+10840a83c2 2026-06-26 [Kernels] Add MiniMax-M3 decode sparse-indexer fuzz target
+fa869c4c66 2026-06-26 [MAX] Add Index Share feature for GLM 5.2
+e3495c94ae 2026-06-26 [Models] Add GLM5.1 FP8 to logit verification
+91125b3ae5 2026-06-26 [MAX] Fix UnifiedMTPGemma4 input count for structured output
+2cd196562a 2026-06-26 [Models] Add MTP (Multi-Token Prediction) support to MiniMax-M3
+be751ae21e 2026-06-26 [DFlash] Remove disable overlap override for DFlash
+0242a5c27c 2026-06-25 [MAX] Migrate DeepSeek architectures to batch processor
+30a0892252 2026-06-25 [MAX] Add Gemma-4 MoE NVFP4 fp8kv smoke recipe Adds an fp8 KV-cache smoke recipe for `nvidia/Gemma-4-26B-A4B-NVFP4` and wires it into the nightly matrix (single-B200). This covers fp8 KV on the NVFP4 MoE path.
+c87fd2018b 2026-06-25 [MAX][Models] Cache Gemma4 video vision-encoder outputs
+ca5a62874d 2026-06-25 [Models][CI] Add full MiniMax-M3-MXFP8 to logit verification
+be1059b729 2026-06-25 [bazel] Remove stale SDK/integration-test visibility from minimax_m3 fixture
+05e96cfcfe 2026-06-25 [MAX] Add reasoning_split request field for MiniMax M3
+a1beadabb5 2026-06-25 [ConstrainedDecoding] Enforce Kimi tool-call args via xgrammar structural tags
+07e5a1cf65 2026-06-24 [Models][Kernels] Full 5-way fused QKV+index projection for MiniMax-M3
+cf33ab4865 2026-06-24 [MAX] Pin FLUX.2 NVFP4 weight repos in hf-repo-lock and guard them
+fd12c55fba 2026-06-24 [Models] Remove Olmo-3 from logit verification
+db95464b2f 2026-06-24 [Models] Improve mixed precision support for MiniMax-M3 MXFP4
+6cda99f4c3 2026-06-24 [CI][Models] Add MiniMax M3 llm-fuzz config
+183f087c25 2026-06-24 [MAX][Models] Fix Gemma4 chunked-prefill video scatter indices
+73e08c66ec 2026-06-24 [Models][CI] Set K2.6 Eagle3 draft sliding_window in smoke-test recipes
+b7c33f62a3 2026-06-24 [Models][CI] Add Kimi-K2.6-NVFP4 Eagle3 to llm-fuzz
+8236a39d80 2026-06-24 [Models] Fix Laguna for split KV cache max_lengths inputs
+cb28d9a54f 2026-06-24 [Models] Add Laguna (LagunaForCausalLM) architecture
+77e5f4c0ea 2026-06-24 [Models] Bring up amd/Kimi-K2.7-Code-MXFP4
+6ba8bf3a50 2026-06-23 [gemma4] Fix build_image_inputs pixel_position_ids desync under chunked prefill
+e8ac5ead98 2026-06-23 [Models] Prepare Step3.5 arch for transformer bump
+bb492c66b2 2026-06-23 [Examples] Add FLUX.2 architecture to the simple_offline_generation example When the model architectures were split out, the FLUX.2 architecture wasn't re-added to this example. This adds that back, allowing for FLUX.2 image generation to be run once again using this example.
+0e1923ccb0 2026-06-22 [gemma4] Fix rank-1 crash in merge_per_device_buffers
+38a83893ab 2026-06-22 [CENG] MiniMax-M3 NVFP4 and mixed MXFP8+NVFP4 checkpoint loading
+bc41e4110e 2026-06-22 [MAX][Benchmarking] Add image-to-video task for Wan I2V benchmarks
+aca6d4a33f 2026-06-22 [Logits] Bump all-mpnet-base-v2-float32 KL threshold
+20279a7467 2026-06-21 [CI] Exclude gemma-3 bfloat16 models from MI355 post-submit
+eddce71d3e 2026-06-20 [MAX] fix kimi+eagle+mxfp4 weight handling
+5ba929ba88 2026-06-19 [dataset-evals] update hf repo lock for minimax 3
+28b8423902 2026-06-18 [MXF] Offload batched input/output processing onto a dedicated BatchProcessor - `PipelineModel` now delegates to a new ABC `BatchProcessor` that handles `get_symbolic_inputs` `prepare_initial_token_inputs`, <strike>`prepare_next_token_inputs`</strike>, and `process_outputs`, as well as prealloc of buffers, such as for `input_row_offsets`. - `SupportedArchitecture`'s can register a specific batch processor implementation used and each model family can implement their own. - Base batch processors implemented and wired up for Llama3 (and subclasses including Qwen, Granite), Minimax M2, HYv3, MMistral and Bert.
+89f927f983 2026-06-18 [Models] Native FP8 GEMMs for Ideogram-4 DiT (~24% e2e improvement on MI355). END_PUBLIC
+0a440726c8 2026-06-18 [MAX][Models] Add MiniMax-M3 to serve smoke tests
+bash-3.2$ git --no-pager log --since=2026-06-01 --until=2026-07-31 --diff-filter=A --name-only --format='%h' -- max/pyth on/max/pipelines/architectures | grep -v '^$' | sed -E 's#(max/python/max/pipelines/architectures/[^/]+)/.*#\1#' | sort  -u > /tmp/new_arch.log; cat /tmp/new_arch.log; echo "---"; echo "Total new archs:"; wc -l /tmp/new_arch.log
+0242a5c27c
+0d8cf992c6
+11a6d22556
+12d86ceba7
+233ffd2d5a
+28b8423902
+2cda03e549
+30a0892252
+48e7ed71c7
+4f5c1affe5
+535f582604
+5388e0e60c
+55259bb33d
+5e8dd00943
+692fea30d2
+73a32ea3f0
+76447f92c7
+77e5f4c0ea
+84c581a23d
+89f927f983
+8e455f5016
+91fff2f9be
+92be5b7280
+977e00fe7a
+98dbe880d3
+9cf97e34fe
+ac440c90b0
+ad9658ab5d
+af535ddd28
+b3ef5d2f68
+b90136f4c2
+c4af0b917c
+cb28d9a54f
+d208fa74f3
+ddc4160ede
+de21ec55cf
+e7c3209b10
+ef72deddde
+ff11914f87
+max/python/max/pipelines/architectures/all_arches.bzl
+max/python/max/pipelines/architectures/autoencoders
+max/python/max/pipelines/architectures/autoencoders_modulev3
+max/python/max/pipelines/architectures/bert
+max/python/max/pipelines/architectures/clip
+max/python/max/pipelines/architectures/deepseekV2
+max/python/max/pipelines/architectures/deepseekV2_modulev3
+max/python/max/pipelines/architectures/deepseekV3
+max/python/max/pipelines/architectures/deepseekV3_2
+max/python/max/pipelines/architectures/deepseekV3_2_nextn
+max/python/max/pipelines/architectures/deepseekV3_modulev3
+max/python/max/pipelines/architectures/deepseekV3_nextn
+max/python/max/pipelines/architectures/dflash_kimi_k25
+max/python/max/pipelines/architectures/dflash_llama3
+max/python/max/pipelines/architectures/diffusion_gemma
+max/python/max/pipelines/architectures/eagle_common
+max/python/max/pipelines/architectures/eagle_llama3
+max/python/max/pipelines/architectures/eagle3_deepseekV3
+max/python/max/pipelines/architectures/exaone
+max/python/max/pipelines/architectures/exaone_modulev3
+max/python/max/pipelines/architectures/flux_modulev3
+max/python/max/pipelines/architectures/flux2
+max/python/max/pipelines/architectures/flux2_modulev3
+max/python/max/pipelines/architectures/gemma3
+max/python/max/pipelines/architectures/gemma3_modulev3
+max/python/max/pipelines/architectures/gemma3multimodal
+max/python/max/pipelines/architectures/gemma3multimodal_modulev3
+max/python/max/pipelines/architectures/gemma4
+max/python/max/pipelines/architectures/gemma4_assistant
+max/python/max/pipelines/architectures/glm5_1
+max/python/max/pipelines/architectures/gpt_oss
+max/python/max/pipelines/architectures/gpt_oss_modulev3
+max/python/max/pipelines/architectures/granite
+max/python/max/pipelines/architectures/granite_modulev3
+max/python/max/pipelines/architectures/hf_config_shims.py
+max/python/max/pipelines/architectures/hy_v3
+max/python/max/pipelines/architectures/idefics3
+max/python/max/pipelines/architectures/idefics3_modulev3
+max/python/max/pipelines/architectures/ideogram4
+max/python/max/pipelines/architectures/internvl
+max/python/max/pipelines/architectures/kimik2_5
+max/python/max/pipelines/architectures/laguna
+max/python/max/pipelines/architectures/lfm2
+max/python/max/pipelines/architectures/llama3
+max/python/max/pipelines/architectures/llama3_modulev3
+max/python/max/pipelines/architectures/llama4
+max/python/max/pipelines/architectures/mamba
+max/python/max/pipelines/architectures/minimax_m2
+max/python/max/pipelines/architectures/mistral
+max/python/max/pipelines/architectures/mistral3
+max/python/max/pipelines/architectures/mistral3_modulev3
+max/python/max/pipelines/architectures/mpnet
+max/python/max/pipelines/architectures/mpnet_modulev3
+max/python/max/pipelines/architectures/nemotron_h
+max/python/max/pipelines/architectures/olmo
+max/python/max/pipelines/architectures/olmo_modulev3
+max/python/max/pipelines/architectures/olmo2
+max/python/max/pipelines/architectures/olmo2_modulev3
+max/python/max/pipelines/architectures/olmo3
+max/python/max/pipelines/architectures/phi3
+max/python/max/pipelines/architectures/phi3_modulev3
+max/python/max/pipelines/architectures/pixtral
+max/python/max/pipelines/architectures/pixtral_modulev3
+max/python/max/pipelines/architectures/qwen_image
+max/python/max/pipelines/architectures/qwen_image_edit
+max/python/max/pipelines/architectures/qwen2
+max/python/max/pipelines/architectures/qwen2_5vl
+max/python/max/pipelines/architectures/qwen3
+max/python/max/pipelines/architectures/qwen3_5
+max/python/max/pipelines/architectures/qwen3_embedding
+max/python/max/pipelines/architectures/qwen3_embedding_modulev3
+max/python/max/pipelines/architectures/qwen3_modulev3
+max/python/max/pipelines/architectures/qwen3vl_moe
+max/python/max/pipelines/architectures/step3p5
+max/python/max/pipelines/architectures/t5
+max/python/max/pipelines/architectures/umt5
+max/python/max/pipelines/architectures/unified_dflash_kimi_k25
+max/python/max/pipelines/architectures/unified_dflash_llama3
+max/python/max/pipelines/architectures/unified_eagle_llama3
+max/python/max/pipelines/architectures/unified_mtp_deepseekV3
+max/python/max/pipelines/architectures/unified_mtp_gemma4
+max/python/max/pipelines/architectures/unified_mtp_glm5_2
+max/python/max/pipelines/architectures/wan
+max/python/max/pipelines/architectures/whisper
+max/python/max/pipelines/architectures/z_image_modulev3
+---
+Total new archs:
+     124 /tmp/new_arch.log
+bash-3.2$ for d in $(ls max/python/max/pipelines/architectures/); do first=$(git --no-pager log --diff-filter=A --format ='%h %ad' --date=short -- "max/python/max/pipelines/architectures/$d" | tail -1); echo "$d: $first"; done > /tmp/arch_fi rst_add.log; cat /tmp/arch_first_add.log
+cat /tmp/arch_first_add.log
+cat /tmp/arch_first_add.log | tail -40
+__init__.py: 05f30fd3a6 2025-10-28
+all_arches.bzl: af535ddd28 2026-06-15
+autoencoders: 7c8353073d 2026-01-30
+autoencoders_modulev3: 484437f3f4 2026-03-30
+bert: 6f9d4f009e 2026-01-13
+BUILD.bazel: 05f30fd3a6 2025-10-28
+clip: a8fd0bd76a 2026-01-30
+deepseekV2: 05f30fd3a6 2025-10-28
+deepseekV2_modulev3: 8e455f5016 2026-06-01
+deepseekV3: 05f30fd3a6 2025-10-28
+deepseekV3_2: 1718b03c07 2026-01-20
+deepseekV3_2_nextn: 84c581a23d 2026-06-29
+deepseekV3_modulev3: de21ec55cf 2026-06-03
+deepseekV3_nextn: e636a84432 2026-01-20
+dflash_kimi_k25: 3ce772342d 2026-05-29
+dflash_llama3: 8f43558213 2026-05-15
+diffusion_gemma: d208fa74f3 2026-06-16
+eagle_common: 48e7ed71c7 2026-06-19
+eagle_llama3: ec557e75ef 2025-12-08
+eagle3_deepseekV3: 883ce34050 2026-04-29
+flux_modulev3: e7c3209b10 2026-06-08
+flux2: f0615cc0bf 2026-02-05
+flux2_modulev3: f37e3fd0e0 2026-03-06
+gemma3: 05f30fd3a6 2025-10-28
+gemma3_modulev3: 1e2d8689eb 2026-04-09
+gemma3multimodal: 05f30fd3a6 2025-10-28
+gemma3multimodal_modulev3: 44e73805b6 2026-04-14
+gemma4: bc5e2cc339 2026-04-07
+gemma4_assistant: 977e00fe7a 2026-06-04
+glm5_1: e46092bb48 2026-05-28
+gpt_oss: 05f30fd3a6 2025-10-28
+gpt_oss_modulev3: fadd70a538 2026-02-24
+granite: 05f30fd3a6 2025-10-28
+granite_modulev3: fadd70a538 2026-02-24
+hf_config_shims.py: ac440c90b0 2026-06-15
+hy_v3: 5bdfd54389 2026-05-30
+idefics3: 05f30fd3a6 2025-10-28
+idefics3_modulev3: 650f7559ec 2026-03-17
+ideogram4: c4af0b917c 2026-06-15
+internvl: 05f30fd3a6 2025-10-28
+kimik2_5: 6190248ab7 2026-02-26
+laguna: cb28d9a54f 2026-06-24
+lfm2: b2b5bf33d3 2026-05-01
+llama3: 05f30fd3a6 2025-10-28
+llama3_modulev3: fadd70a538 2026-02-24
+llama4: 05f30fd3a6 2025-10-28
+mamba: b0d734220c 2026-03-25
+minimax_m2: c799fd31b2 2026-04-20
+mistral: 05f30fd3a6 2025-10-28
+mistral3: 05f30fd3a6 2025-10-28
+mistral3_modulev3: db626b7d64 2026-03-30
+mpnet: 05f30fd3a6 2025-10-28
+mpnet_modulev3: e0f904b080 2026-03-16
+nemotron_h: 12d86ceba7 2026-06-29
+olmo: 05f30fd3a6 2025-10-28
+olmo_modulev3: c3a4c17afe 2026-02-25
+olmo2: 05f30fd3a6 2025-10-28
+olmo2_modulev3: 8159955ec3 2026-03-05
+olmo3: 29a8f6664a 2026-02-11
+phi3: 05f30fd3a6 2025-10-28
+phi3_modulev3: fadd70a538 2026-02-24
+pixtral: 05f30fd3a6 2025-10-28
+pixtral_modulev3: 42cb83bbf2 2026-03-05
+qwen_image: c7385538e3 2026-04-06
+qwen_image_edit: ab8a497791 2026-04-06
+qwen2: 05f30fd3a6 2025-10-28
+qwen2_5vl: 05f30fd3a6 2025-10-28
+qwen3: 05f30fd3a6 2025-10-28
+qwen3_5: 5574161e66 2026-04-29
+qwen3_embedding: 2b2bdb98fd 2026-01-20
+qwen3_embedding_modulev3: ce5520fb57 2026-03-16
+qwen3_modulev3: 18fb0e9455 2026-03-30
+qwen3vl_moe: 7b4904c235 2025-11-07
+README.md: 05f30fd3a6 2025-10-28
+step3p5: 2db7fe5021 2026-04-28
+t5: 8e5a078f0c 2026-01-30
+umt5: 80d3773091 2026-03-31
+unified_dflash_kimi_k25: 3ce772342d 2026-05-29
+unified_dflash_llama3: 8f43558213 2026-05-15
+unified_eagle_llama3: c7a9b35e83 2026-03-11
+unified_mtp_deepseekV3: 03856889b9 2026-03-23
+unified_mtp_gemma4: 977e00fe7a 2026-06-04
+unified_mtp_glm5_2: 84c581a23d 2026-06-29
+wan: d123799834 2026-04-13
+whisper: 05f30fd3a6 2025-10-28
+z_image_modulev3: 6a3523d24f 2026-03-24
+bash-3.2$ cat /tmp/arch_first_add.log
+__init__.py: 05f30fd3a6 2025-10-28
+all_arches.bzl: af535ddd28 2026-06-15
+autoencoders: 7c8353073d 2026-01-30
+autoencoders_modulev3: 484437f3f4 2026-03-30
+bert: 6f9d4f009e 2026-01-13
+BUILD.bazel: 05f30fd3a6 2025-10-28
+clip: a8fd0bd76a 2026-01-30
+deepseekV2: 05f30fd3a6 2025-10-28
+deepseekV2_modulev3: 8e455f5016 2026-06-01
+deepseekV3: 05f30fd3a6 2025-10-28
+deepseekV3_2: 1718b03c07 2026-01-20
+deepseekV3_2_nextn: 84c581a23d 2026-06-29
+deepseekV3_modulev3: de21ec55cf 2026-06-03
+deepseekV3_nextn: e636a84432 2026-01-20
+dflash_kimi_k25: 3ce772342d 2026-05-29
+dflash_llama3: 8f43558213 2026-05-15
+diffusion_gemma: d208fa74f3 2026-06-16
+eagle_common: 48e7ed71c7 2026-06-19
+eagle_llama3: ec557e75ef 2025-12-08
+eagle3_deepseekV3: 883ce34050 2026-04-29
+flux_modulev3: e7c3209b10 2026-06-08
+flux2: f0615cc0bf 2026-02-05
+flux2_modulev3: f37e3fd0e0 2026-03-06
+gemma3: 05f30fd3a6 2025-10-28
+gemma3_modulev3: 1e2d8689eb 2026-04-09
+gemma3multimodal: 05f30fd3a6 2025-10-28
+gemma3multimodal_modulev3: 44e73805b6 2026-04-14
+gemma4: bc5e2cc339 2026-04-07
+gemma4_assistant: 977e00fe7a 2026-06-04
+glm5_1: e46092bb48 2026-05-28
+gpt_oss: 05f30fd3a6 2025-10-28
+gpt_oss_modulev3: fadd70a538 2026-02-24
+granite: 05f30fd3a6 2025-10-28
+granite_modulev3: fadd70a538 2026-02-24
+hf_config_shims.py: ac440c90b0 2026-06-15
+hy_v3: 5bdfd54389 2026-05-30
+idefics3: 05f30fd3a6 2025-10-28
+idefics3_modulev3: 650f7559ec 2026-03-17
+ideogram4: c4af0b917c 2026-06-15
+internvl: 05f30fd3a6 2025-10-28
+kimik2_5: 6190248ab7 2026-02-26
+laguna: cb28d9a54f 2026-06-24
+lfm2: b2b5bf33d3 2026-05-01
+llama3: 05f30fd3a6 2025-10-28
+llama3_modulev3: fadd70a538 2026-02-24
+llama4: 05f30fd3a6 2025-10-28
+mamba: b0d734220c 2026-03-25
+minimax_m2: c799fd31b2 2026-04-20
+mistral: 05f30fd3a6 2025-10-28
+mistral3: 05f30fd3a6 2025-10-28
+mistral3_modulev3: db626b7d64 2026-03-30
+mpnet: 05f30fd3a6 2025-10-28
+mpnet_modulev3: e0f904b080 2026-03-16
+nemotron_h: 12d86ceba7 2026-06-29
+olmo: 05f30fd3a6 2025-10-28
+olmo_modulev3: c3a4c17afe 2026-02-25
+olmo2: 05f30fd3a6 2025-10-28
+olmo2_modulev3: 8159955ec3 2026-03-05
+olmo3: 29a8f6664a 2026-02-11
+phi3: 05f30fd3a6 2025-10-28
+phi3_modulev3: fadd70a538 2026-02-24
+pixtral: 05f30fd3a6 2025-10-28
+pixtral_modulev3: 42cb83bbf2 2026-03-05
+qwen_image: c7385538e3 2026-04-06
+qwen_image_edit: ab8a497791 2026-04-06
+qwen2: 05f30fd3a6 2025-10-28
+qwen2_5vl: 05f30fd3a6 2025-10-28
+qwen3: 05f30fd3a6 2025-10-28
+qwen3_5: 5574161e66 2026-04-29
+qwen3_embedding: 2b2bdb98fd 2026-01-20
+qwen3_embedding_modulev3: ce5520fb57 2026-03-16
+qwen3_modulev3: 18fb0e9455 2026-03-30
+qwen3vl_moe: 7b4904c235 2025-11-07
+README.md: 05f30fd3a6 2025-10-28
+step3p5: 2db7fe5021 2026-04-28
+t5: 8e5a078f0c 2026-01-30
+umt5: 80d3773091 2026-03-31
+unified_dflash_kimi_k25: 3ce772342d 2026-05-29
+unified_dflash_llama3: 8f43558213 2026-05-15
+unified_eagle_llama3: c7a9b35e83 2026-03-11
+unified_mtp_deepseekV3: 03856889b9 2026-03-23
+unified_mtp_gemma4: 977e00fe7a 2026-06-04
+unified_mtp_glm5_2: 84c581a23d 2026-06-29
+wan: d123799834 2026-04-13
+whisper: 05f30fd3a6 2025-10-28
+z_image_modulev3: 6a3523d24f 2026-03-24
+bash-3.2$ cat /tmp/arch_first_add.log | tail -40
+mamba: b0d734220c 2026-03-25
+minimax_m2: c799fd31b2 2026-04-20
+mistral: 05f30fd3a6 2025-10-28
+mistral3: 05f30fd3a6 2025-10-28
+mistral3_modulev3: db626b7d64 2026-03-30
+mpnet: 05f30fd3a6 2025-10-28
+mpnet_modulev3: e0f904b080 2026-03-16
+nemotron_h: 12d86ceba7 2026-06-29
+olmo: 05f30fd3a6 2025-10-28
+olmo_modulev3: c3a4c17afe 2026-02-25
+olmo2: 05f30fd3a6 2025-10-28
+olmo2_modulev3: 8159955ec3 2026-03-05
+olmo3: 29a8f6664a 2026-02-11
+phi3: 05f30fd3a6 2025-10-28
+phi3_modulev3: fadd70a538 2026-02-24
+pixtral: 05f30fd3a6 2025-10-28
+pixtral_modulev3: 42cb83bbf2 2026-03-05
+qwen_image: c7385538e3 2026-04-06
+qwen_image_edit: ab8a497791 2026-04-06
+qwen2: 05f30fd3a6 2025-10-28
+qwen2_5vl: 05f30fd3a6 2025-10-28
+qwen3: 05f30fd3a6 2025-10-28
+qwen3_5: 5574161e66 2026-04-29
+qwen3_embedding: 2b2bdb98fd 2026-01-20
+qwen3_embedding_modulev3: ce5520fb57 2026-03-16
+qwen3_modulev3: 18fb0e9455 2026-03-30
+qwen3vl_moe: 7b4904c235 2025-11-07
+README.md: 05f30fd3a6 2025-10-28
+step3p5: 2db7fe5021 2026-04-28
+t5: 8e5a078f0c 2026-01-30
+umt5: 80d3773091 2026-03-31
+unified_dflash_kimi_k25: 3ce772342d 2026-05-29
+unified_dflash_llama3: 8f43558213 2026-05-15
+unified_eagle_llama3: c7a9b35e83 2026-03-11
+unified_mtp_deepseekV3: 03856889b9 2026-03-23
+unified_mtp_gemma4: 977e00fe7a 2026-06-04
+unified_mtp_glm5_2: 84c581a23d 2026-06-29
+wan: d123799834 2026-04-13
+whisper: 05f30fd3a6 2025-10-28
+z_image_modulev3: 6a3523d24f 2026-03-24
+bash-3.2$ git --no-pager show --stat 12d86ceba7 | head -80
+commit 12d86ceba772ef055085dafd9f7bfb64594f756f
+Author: LinLinHua <lhua@modular.com>
+Date:   Mon Jun 29 14:30:46 2026 -0700
+
+    [KB] Nemotron-H FP8 bring-up + autonomous in-place SSM decode
+    optimization
+    
+    Brings up `nvidia/NVIDIA-Nemotron-3-Nano-4B-FP8` (Nemotron-H: a 42-layer
+    hybrid Mamba-2 + NoPE GQA-attention + relu2-MLP decoder, modelopt
+    per-tensor FP8) in MAX, and lands a verified decode optimization.
+    
+    - New kernel `mamba2_ssd_chunk_scan_varlen_fwd` (Mamba-2 SSD
+    chunked-scan, parity vs HuggingFace ~1e-16), registered in the builtin
+    kernel library; it also serves decode (the existing state-update op caps
+    at `dstate` 16; Nemotron-H uses 128).
+    - New `nemotron_h` pipeline architecture (config, modules, weight
+    adapters, hybrid paged-KV + slot-indexed SSM/conv state cache).
+    Random-weight logit-verify vs HuggingFace: cosine 0.9999.
+    - Decode optimization — in-place SSM state-pool write-back: profiling
+    found ~35% of decode GPU time was a whole-pool read-modify-write every
+    step (near the HBM roofline, but only the active slots change); the
+    in-place variant writes just those slots.
+    
+    Result on B200 (matched-completion sweep), baseline → optimized:
+    
+    | concurrency | output tok/s | TPOT mean (ms) |
+    |---|---|---|
+    | 16 | 876 → 1432 (+63.5%) | 16.1 → 10.0 |
+    | 32 | 926 → 1408 (+52.0%) | 24.8 → 16.2 |
+    
+    gsm8k held (strict-match 70%). Full results + profile + validation
+    detail: `utils/kb/nemotron-3-nano-4b-fp8-opt-loop-results.md`.
+    MODULAR_ORIG_COMMIT_REV_ID: 5fedbdfc5452e7b2e534170e3b255ba7c21dc86b
+
+ docs/max/models.mdx                                |   9 +
+ docs/max/nightly-changelog.md                      |   8 +
+ docs/sidebars.json                                 |   1 +
+ .../graph_compiler/builtin_kernels/kernels.mojo    | 742 ++++++++++++++++
+ max/kernels/src/state_space/mamba2_ssd_scan.mojo   | 772 ++++++++++++++++
+ .../src/state_space/varlen_causal_conv1d_ops.mojo  | 386 +-------
+ .../test/gpu/state_space/test_mamba2_ssd_scan.mojo | 988 +++++++++++++++++++++
+ .../docs/pipelines.architectures.nemotron_h.rst    |  13 +
+ max/python/docs/pipelines.architectures.rst        |   2 +
+ max/python/max/pipelines/architectures/__init__.py |   1 +
+ .../max/pipelines/architectures/all_arches.bzl     |   1 +
+ .../pipelines/architectures/nemotron_h/BUILD.bazel |  29 +
+ .../pipelines/architectures/nemotron_h/__init__.py |  23 +
+ .../max/pipelines/architectures/nemotron_h/arch.py |  51 ++
+ .../architectures/nemotron_h/functional_ops.py     | 243 +++++
+ .../pipelines/architectures/nemotron_h/model.py    | 359 ++++++++
+ .../architectures/nemotron_h/model_config.py       | 394 ++++++++
+ .../architectures/nemotron_h/nemotron_h.py         | 682 ++++++++++++++
+ .../architectures/nemotron_h/state_cache.py        | 231 +++++
+ .../architectures/nemotron_h/weight_adapters.py    | 184 ++++
+ 20 files changed, 4741 insertions(+), 378 deletions(-)
+bash-3.2$ echo "===Laguna==="; git --no-pager show --stat cb28d9a54f 2>&1 | head -30; echo "===EagleCommon==="; git --no -pager show --stat 48e7ed71c7 2>&1 | head -30; echo "===DiffusionGemma==="; git --no-pager show --stat d208fa74f3 2>&1 |  head -30; echo "===FluxModuleV3==="; git --no-pager show --stat e7c3209b10 2>&1 | head -30
+===Laguna===
+commit cb28d9a54fc37a7eb3d463d20f9989a7ebc0a715
+Author: Patrick Rachford <pat@modular.com>
+Date:   Wed Jun 24 07:33:00 2026 -0700
+
+    [Models] Add Laguna (LagunaForCausalLM) architecture
+    
+    Adds poolside's Laguna decoder-only sparse-MoE language model: sigmoid
+    expert routing with a per-expert score-correction bias, a per-element
+    softplus
+    attention-output gate, and per-head QK-RMSNorm.
+    
+    MODULAR_ORIG_COMMIT_REV_ID: db9f6d03c0aee867bd384d5521305607fe2bd710
+
+ docs/max/models.mdx                                |   9 +
+ docs/max/nightly-changelog.md                      |  12 +
+ docs/sidebars.json                                 |   1 +
+ max/python/docs/pipelines.architectures.laguna.rst |  13 +
+ max/python/docs/pipelines.architectures.rst        |   2 +
+ max/python/max/pipelines/architectures/__init__.py |   1 +
+ .../max/pipelines/architectures/all_arches.bzl     |   1 +
+ .../max/pipelines/architectures/hf_config_shims.py |  29 +
+ .../max/pipelines/architectures/laguna/BUILD.bazel |  32 ++
+ .../max/pipelines/architectures/laguna/__init__.py |  30 +
+ .../max/pipelines/architectures/laguna/arch.py     |  56 ++
+ .../max/pipelines/architectures/laguna/laguna.py   | 625 +++++++++++++++++++++
+ .../architectures/laguna/layers/__init__.py        |  12 +
+ .../architectures/laguna/layers/attention.py       | 323 +++++++++++
+ .../architectures/laguna/layers/moe_gate.py        | 218 +++++++
+ .../laguna/layers/rotary_embedding.py              |  77 +++
+ .../max/pipelines/architectures/laguna/model.py    | 361 ++++++++++++
+===EagleCommon===
+commit 48e7ed71c70e9729ea0e04d7b1d6bed057f5c289
+Author: Shaurya Sharma <shaurya@modular.com>
+Date:   Fri Jun 19 09:57:42 2026 +0200
+
+    [MAX] Refactor spec decode pipelines to reduce duplication
+    
+    A recent increase in the amount of unified spec decoding pipelines has
+    resulted in a lot of duplicate code. This PR extracts common
+    functionality into helpers.
+    
+    MODULAR_ORIG_COMMIT_REV_ID: 97f62642c8c077487d7949cc88db6091a6981d11
+
+ .../architectures/eagle3_deepseekV3/BUILD.bazel    |   2 +-
+ .../eagle3_deepseekV3/eagle3_draft.py              | 523 +-------------------
+ .../eagle3_deepseekV3/mha_pipeline.py              | 109 +----
+ .../architectures/eagle3_deepseekV3/model.py       | 115 +----
+ .../eagle3_deepseekV3/unified_eagle.py             | 332 +++----------
+ .../architectures/eagle_common/BUILD.bazel         |  14 +
+ .../architectures/eagle_common/__init__.py         |  18 +
+ .../eagle_mha_draft.py}                            |  30 +-
+ .../architectures/eagle_common/eagle_mla_draft.py  | 542 +++++++++++++++++++++
+ .../max/pipelines/architectures/hf_config_shims.py |  12 +
+ .../pipelines/architectures/kimik2_5/BUILD.bazel   |   2 +-
+ .../architectures/kimik2_5/eagle3_kimi_k25.py      | 521 +-------------------
+ .../kimik2_5/unified_eagle_mha_model.py            | 355 +++-----------
+ .../kimik2_5/unified_eagle_mha_pipeline_model.py   | 109 +----
+ .../architectures/kimik2_5/unified_eagle_model.py  | 397 +++------------
+ .../kimik2_5/unified_eagle_pipeline_model.py       | 100 +---
+ .../architectures/kimik2_5/weight_adapters.py      |   4 +-
+ .../unified_dflash_kimi_k25/BUILD.bazel            |   1 -
+===DiffusionGemma===
+commit d208fa74f3349e4c9628aa7219312ede6f49ebb2
+Author: Patrick Rachford <pat@modular.com>
+Date:   Tue Jun 16 11:22:37 2026 -0700
+
+    [Pipelines] Adds DiffusionGemma
+    
+    MODULAR_ORIG_COMMIT_REV_ID: 4f3797aff304060ada010a4cdbcb5fc81ee3c2e0
+
+ docs/max/models.mdx                                |  10 +
+ docs/max/nightly-changelog.md                      |   4 +
+ docs/sidebars.json                                 |   1 +
+ max/kernels/src/nn/attention/mha_mask.mojo         |  14 +-
+ max/kernels/test/nn/test_mask_iteration.mojo       |  23 +
+ .../pipelines.architectures.diffusion_gemma.rst    |  13 +
+ max/python/docs/pipelines.architectures.rst        |   2 +
+ max/python/max/pipelines/architectures/__init__.py |   5 +
+ .../max/pipelines/architectures/all_arches.bzl     |   1 +
+ .../architectures/diffusion_gemma/BUILD.bazel      |  22 +
+ .../architectures/diffusion_gemma/__init__.py      |  23 +
+ .../architectures/diffusion_gemma/arch.py          |  69 +++
+ .../diffusion_gemma/diffusion_gemma.py             | 670 +++++++++++++++++++++
+ .../architectures/diffusion_gemma/model.py         | 311 ++++++++++
+ .../architectures/diffusion_gemma/model_config.py  | 128 ++++
+ .../diffusion_gemma/weight_adapters.py             | 200 ++++++
+ .../architectures/gemma4/layers/attention.py       |   6 +-
+ .../pipelines/lib/pipeline_variants/__init__.py    |   3 +
+ .../block_diffusion_text_generation.py             | 357 +++++++++++
+ max/python/max/pipelines/lib/registry.py           |  21 +
+ .../smoke_tests/smoke_test_github_matrix.py        |   2 +
+ max/tests/integration/hf-repo-lock.tsv             |   2 +
+===FluxModuleV3===
+commit e7c3209b106de48c959b2fb8e78080db6b44b5bf
+Author: kcaverly <kylebcaverly@gmail.com>
+Date:   Mon Jun 8 09:59:14 2026 -0400
+
+    [Pipelines] Add standalone flux_modulev3 VAE Module
+    
+    Reference implementation of the
+    single-Module-with-two-forward-methods-and-shared-weights pattern.
+    The unified ``Vae`` Module owns the encoder, decoder, and shared
+    per-channel batch-norm statistics, exposing the two halves as
+    ``encode()`` and ``decode()`` rather than a single ``forward``.
+    Both methods are designed to be invoked from a containing parent
+    Module's ``forward`` so they land in one traced graph and bind the
+    BN parameters exactly once.
+    
+    The ``flux_modulev3`` package is self-contained: encoder, decoder,
+    their building blocks (Down/Up/Mid blocks, Downsample/Upsample/
+    Resnet/VAEAttention layers), and the ``AutoencoderKLFlux2`` config
+    class all live alongside the ``Vae`` Module with no imports from
+    ``autoencoders_modulev3``.
+    
+    Includes 13 unit tests covering construction, the dual entry-point
+    contract (``forward`` raises), ``input_types`` declaration, shared
+    BN topology (``bn_mean`` / ``bn_var`` live only on the ``Vae``
+    root and are never duplicated under ``encoder`` / ``decoder``),
+    the full ``adapt_state_dict`` key map (encoder, decoder,
+    quant_conv, post_quant_conv, bn), eager encode shape, and a
+    headline parameter-sharing assertion through a small wrapper
+    Module that mirrors how the production FLUX.2 parent embeds
+    the ``Vae``.
+bash-3.2$ echo "===FluxModuleV3stat==="; git --no-pager show --stat e7c3209b10 2>&1 | tail -40; echo "===LagunaStat===";  git --no-pager show --stat cb28d9a54f 2>&1 | tail -50; echo "===EagleCommonStat==="; git --no-pager show --stat 48e7ed7 1c7 2>&1 | tail -60
+===FluxModuleV3stat===
+    Both methods are designed to be invoked from a containing parent
+    Module's ``forward`` so they land in one traced graph and bind the
+    BN parameters exactly once.
+    
+    The ``flux_modulev3`` package is self-contained: encoder, decoder,
+    their building blocks (Down/Up/Mid blocks, Downsample/Upsample/
+    Resnet/VAEAttention layers), and the ``AutoencoderKLFlux2`` config
+    class all live alongside the ``Vae`` Module with no imports from
+    ``autoencoders_modulev3``.
+    
+    Includes 13 unit tests covering construction, the dual entry-point
+    contract (``forward`` raises), ``input_types`` declaration, shared
+    BN topology (``bn_mean`` / ``bn_var`` live only on the ``Vae``
+    root and are never duplicated under ``encoder`` / ``decoder``),
+    the full ``adapt_state_dict`` key map (encoder, decoder,
+    quant_conv, post_quant_conv, bn), eager encode shape, and a
+    headline parameter-sharing assertion through a small wrapper
+    Module that mirrors how the production FLUX.2 parent embeds
+    the ``Vae``.
+    
+    Also extends the default ``Module.forward`` ``NotImplementedError``
+    message to point readers at the multi-entry-point alternative, so
+    Modules using the dual-method pattern (like ``Vae``) don't need a
+    custom stub purely to produce a clear error.
+    
+    MODULAR_ORIG_COMMIT_REV_ID: 499bbaec3e614c08dbae48bf0b6d32c133c0c78e
+
+ max/python/max/experimental/nn/module.py           |   4 +-
+ .../architectures/flux_modulev3/__init__.py        |  32 +
+ .../architectures/flux_modulev3/components.py      | 676 +++++++++++++++++++++
+ .../architectures/flux_modulev3/layers/__init__.py |  19 +
+ .../flux_modulev3/layers/attention.py              | 136 +++++
+ .../flux_modulev3/layers/downsampling.py           | 152 +++++
+ .../architectures/flux_modulev3/layers/resnet.py   | 197 ++++++
+ .../flux_modulev3/layers/upsampling.py             | 154 +++++
+ .../architectures/flux_modulev3/model_config.py    |  89 +++
+ .../pipelines/architectures/flux_modulev3/vae.py   | 351 +++++++++++
+ .../architectures/flux_modulev3/BUILD.bazel        |  38 ++
+ .../architectures/flux_modulev3/test_vae.py        | 382 ++++++++++++
+ 12 files changed, 2229 insertions(+), 1 deletion(-)
+===LagunaStat===
+commit cb28d9a54fc37a7eb3d463d20f9989a7ebc0a715
+Author: Patrick Rachford <pat@modular.com>
+Date:   Wed Jun 24 07:33:00 2026 -0700
+
+    [Models] Add Laguna (LagunaForCausalLM) architecture
+    
+    Adds poolside's Laguna decoder-only sparse-MoE language model: sigmoid
+    expert routing with a per-expert score-correction bias, a per-element
+    softplus
+    attention-output gate, and per-head QK-RMSNorm.
+    
+    MODULAR_ORIG_COMMIT_REV_ID: db9f6d03c0aee867bd384d5521305607fe2bd710
+
+ docs/max/models.mdx                                |   9 +
+ docs/max/nightly-changelog.md                      |  12 +
+ docs/sidebars.json                                 |   1 +
+ max/python/docs/pipelines.architectures.laguna.rst |  13 +
+ max/python/docs/pipelines.architectures.rst        |   2 +
+ max/python/max/pipelines/architectures/__init__.py |   1 +
+ .../max/pipelines/architectures/all_arches.bzl     |   1 +
+ .../max/pipelines/architectures/hf_config_shims.py |  29 +
+ .../max/pipelines/architectures/laguna/BUILD.bazel |  32 ++
+ .../max/pipelines/architectures/laguna/__init__.py |  30 +
+ .../max/pipelines/architectures/laguna/arch.py     |  56 ++
+ .../max/pipelines/architectures/laguna/laguna.py   | 625 +++++++++++++++++++++
+ .../architectures/laguna/layers/__init__.py        |  12 +
+ .../architectures/laguna/layers/attention.py       | 323 +++++++++++
+ .../architectures/laguna/layers/moe_gate.py        | 218 +++++++
+ .../laguna/layers/rotary_embedding.py              |  77 +++
+ .../max/pipelines/architectures/laguna/model.py    | 361 ++++++++++++
+ .../pipelines/architectures/laguna/model_config.py | 385 +++++++++++++
+ .../pipelines/architectures/laguna/reasoning.py    | 176 ++++++
+ .../pipelines/architectures/laguna/tokenizer.py    |  64 +++
+ .../pipelines/architectures/laguna/tool_parser.py  | 238 ++++++++
+ .../architectures/laguna/weight_adapters.py        | 122 ++++
+ .../integration/architectures/laguna/BUILD.bazel   |  21 +
+ .../architectures/laguna/test_tool_parser.py       |  90 +++
+ .../architectures/laguna/test_weight_adapter.py    |  97 ++++
+ 25 files changed, 2995 insertions(+)
+===EagleCommonStat===
+commit 48e7ed71c70e9729ea0e04d7b1d6bed057f5c289
+Author: Shaurya Sharma <shaurya@modular.com>
+Date:   Fri Jun 19 09:57:42 2026 +0200
+
+    [MAX] Refactor spec decode pipelines to reduce duplication
+    
+    A recent increase in the amount of unified spec decoding pipelines has
+    resulted in a lot of duplicate code. This PR extracts common
+    functionality into helpers.
+    
+    MODULAR_ORIG_COMMIT_REV_ID: 97f62642c8c077487d7949cc88db6091a6981d11
+
+ .../architectures/eagle3_deepseekV3/BUILD.bazel    |   2 +-
+ .../eagle3_deepseekV3/eagle3_draft.py              | 523 +-------------------
+ .../eagle3_deepseekV3/mha_pipeline.py              | 109 +----
+ .../architectures/eagle3_deepseekV3/model.py       | 115 +----
+ .../eagle3_deepseekV3/unified_eagle.py             | 332 +++----------
+ .../architectures/eagle_common/BUILD.bazel         |  14 +
+ .../architectures/eagle_common/__init__.py         |  18 +
+ .../eagle_mha_draft.py}                            |  30 +-
+ .../architectures/eagle_common/eagle_mla_draft.py  | 542 +++++++++++++++++++++
+ .../max/pipelines/architectures/hf_config_shims.py |  12 +
+ .../pipelines/architectures/kimik2_5/BUILD.bazel   |   2 +-
+ .../architectures/kimik2_5/eagle3_kimi_k25.py      | 521 +-------------------
+ .../kimik2_5/unified_eagle_mha_model.py            | 355 +++-----------
+ .../kimik2_5/unified_eagle_mha_pipeline_model.py   | 109 +----
+ .../architectures/kimik2_5/unified_eagle_model.py  | 397 +++------------
+ .../kimik2_5/unified_eagle_pipeline_model.py       | 100 +---
+ .../architectures/kimik2_5/weight_adapters.py      |   4 +-
+ .../unified_dflash_kimi_k25/BUILD.bazel            |   1 -
+ .../architectures/unified_dflash_kimi_k25/model.py |  70 +--
+ .../unified_dflash_kimi_k25/model_config.py        |   9 +
+ .../unified_dflash_kimi_k25.py                     | 124 +----
+ .../architectures/unified_dflash_llama3/model.py   |  74 +--
+ .../unified_dflash_llama3/unified_dflash_llama3.py |  72 +--
+ .../architectures/unified_eagle_llama3/model.py    | 113 +----
+ .../unified_eagle_llama3/unified_eagle_llama3.py   | 214 ++------
+ .../architectures/unified_mtp_deepseekV3/model.py  | 102 +---
+ .../unified_mtp_deepseekV3.py                      | 357 +++-----------
+ .../architectures/unified_mtp_gemma4/model.py      |  92 +---
+ .../unified_mtp_gemma4/unified_mtp_gemma4.py       | 296 +++--------
+ max/python/max/pipelines/lib/__init__.py           |   2 +
+ .../max/pipelines/lib/interfaces/__init__.py       |   2 +
+ .../max/pipelines/lib/interfaces/pipeline_model.py |  72 +++
+ .../pipeline_variants/overlap_text_generation.py   |   8 +-
+ .../pipeline_variants/unified_spec_decode_model.py |  56 +++
+ max/python/max/pipelines/speculative/__init__.py   |   2 +
+ max/python/max/pipelines/speculative/config.py     |  11 +
+ .../pipelines/speculative/ragged_token_merger.py   |  31 +-
+ .../max/pipelines/speculative/spec_input_types.py  | 166 +++++++
+ .../max/pipelines/speculative/unified_graph_ops.py | 212 ++++++++
+ .../architectures/kimik2_5/test_tool_parser.py     |   4 +-
+ .../test_overlap_text_generation_pipeline.py       |  22 +-
+ 41 files changed, 1828 insertions(+), 3469 deletions(-)
+bash-3.2$ echo "===UnifiedMTPGemma4==="; git --no-pager show --stat 977e00fe7a 2>&1 | head -50; echo "===Gemma4Assistant ==="; git --no-pager show --stat 977e00fe7a -- max/python/max/pipelines/architectures/gemma4_assistant 2>&1 | head -30;  echo "===Ideogram4==="; git --no-pager show --stat c4af0b917c 2>&1 | head -50; echo "===DeepSeekV3ModuleV3==="; git --no -pager show --stat de21ec55cf 2>&1 | head -50
+===UnifiedMTPGemma4===
+commit 977e00fe7ace00299e24367e114e1bbb45937201
+Author: Shaurya Sharma <shaurya@modular.com>
+Date:   Thu Jun 4 14:55:10 2026 +0200
+
+    [MTP] Add MTP support for Gemma4
+    
+    Add a unified MTP Gemma4 model with smoke test which gets an accuracy of
+    0.95 on gsm8k. Also tested with the benchmark workload.
+    
+    MODULAR_ORIG_COMMIT_REV_ID: 16324146851cde8a41ab672f690ebb594cca2598
+
+ docs/max/models.mdx                                |  19 +
+ docs/sidebars.json                                 |   2 +
+ .../pipelines.architectures.gemma4_assistant.rst   |  13 +
+ max/python/docs/pipelines.architectures.rst        |   4 +
+ .../pipelines.architectures.unified_mtp_gemma4.rst |  13 +
+ .../max/nn/transformer/distributed_transformer.py  |  31 +-
+ max/python/max/nn/transformer/transformer.py       |   6 +-
+ max/python/max/pipelines/architectures/__init__.py |   4 +
+ .../pipelines/architectures/gemma4/model_config.py |  17 +
+ .../gemma4/recipes/gemma4_31b_mtp.yaml             |  26 +
+ .../architectures/gemma4_assistant/__init__.py     |  17 +
+ .../architectures/gemma4_assistant/arch.py         |  37 ++
+ .../gemma4_assistant/gemma4_assistant.py           | 662 +++++++++++++++++++++
+ .../architectures/gemma4_assistant/model_config.py | 157 +++++
+ .../architectures/unified_mtp_gemma4/__init__.py   |  22 +
+ .../architectures/unified_mtp_gemma4/arch.py       |  37 ++
+ .../architectures/unified_mtp_gemma4/model.py      | 533 +++++++++++++++++
+ .../unified_mtp_gemma4/unified_mtp_gemma4.py       | 502 ++++++++++++++++
+ .../unified_mtp_gemma4/weight_adapters.py          |  62 ++
+ .../kv_cache/paged_kv_cache/cache_manager.py       |  44 +-
+ max/python/max/pipelines/lib/config/config.py      |  11 +
+ .../pipeline_variants/overlap_text_generation.py   | 191 ++++--
+ .../integration/accuracy/smoke_tests/smoke_test.py |   1 +
+ .../smoke_tests/smoke_test_github_matrix.py        |   1 +
+ max/tests/integration/hf-repo-lock.tsv             |   1 +
+ 25 files changed, 2345 insertions(+), 68 deletions(-)
+===Gemma4Assistant===
+commit 977e00fe7ace00299e24367e114e1bbb45937201
+Author: Shaurya Sharma <shaurya@modular.com>
+Date:   Thu Jun 4 14:55:10 2026 +0200
+
+    [MTP] Add MTP support for Gemma4
+    
+    Add a unified MTP Gemma4 model with smoke test which gets an accuracy of
+    0.95 on gsm8k. Also tested with the benchmark workload.
+    
+    MODULAR_ORIG_COMMIT_REV_ID: 16324146851cde8a41ab672f690ebb594cca2598
+
+ .../architectures/gemma4_assistant/__init__.py     |  17 +
+ .../architectures/gemma4_assistant/arch.py         |  37 ++
+ .../gemma4_assistant/gemma4_assistant.py           | 662 +++++++++++++++++++++
+ .../architectures/gemma4_assistant/model_config.py | 157 +++++
+ 4 files changed, 873 insertions(+)
+===Ideogram4===
+commit c4af0b917cbde6ac3cffe00da55ba1c5788b977c
+Author: Ehsan M. Kermani <6980212+ehsanmok@users.noreply.github.com>
+Date:   Mon Jun 15 15:55:01 2026 -0700
+
+    [Models] Add Ideogram 4 text-to-image diffusion pipeline.
+    
+    MODULAR_ORIG_COMMIT_REV_ID: 1bc72cb9c7c307039f49320e1ad34003e1b6f01c
+
+ docs/max/models.mdx                                |   9 +
+ docs/max/nightly-changelog.md                      |   8 +
+ docs/sidebars.json                                 |   1 +
+ .../docs/pipelines.architectures.ideogram4.rst     |  13 +
+ max/python/docs/pipelines.architectures.rst        |   2 +
+ .../serving_ideogram4_t2i_random_config.yaml       |  74 +++++
+ max/python/max/nn/kernels.py                       |  13 +-
+ max/python/max/pipelines/architectures/__init__.py |   1 +
+ .../max/pipelines/architectures/all_arches.bzl     |   1 +
+ .../autoencoders_modulev3/layers/upsampling.py     |   9 +-
+ .../pipelines/architectures/ideogram4/BUILD.bazel  |  34 ++
+ .../pipelines/architectures/ideogram4/__init__.py  |  26 ++
+ .../max/pipelines/architectures/ideogram4/arch.py  |  67 ++++
+ .../architectures/ideogram4/decode_step.py         |  99 ++++++
+ .../architectures/ideogram4/denoise_step.py        | 137 ++++++++
+ .../pipelines/architectures/ideogram4/ideogram4.py | 222 +++++++++++++
+ .../architectures/ideogram4/latent_norm.py         | 294 +++++++++++++++++
+ .../architectures/ideogram4/layers/__init__.py     |  23 ++
+ .../architectures/ideogram4/layers/attention.py    |  84 +++++
+ .../architectures/ideogram4/layers/embeddings.py   | 170 ++++++++++
+ .../max/pipelines/architectures/ideogram4/model.py |  82 +++++
+ .../architectures/ideogram4/model_config.py        | 122 +++++++
+ .../architectures/ideogram4/pipeline_ideogram4.py  | 367 +++++++++++++++++++++
+ .../architectures/ideogram4/text_encoder.py        | 116 +++++++
+ .../pipelines/architectures/ideogram4/tokenizer.py | 315 ++++++++++++++++++
+ .../max/pipelines/architectures/ideogram4/vae.py   | 111 +++++++
+ .../architectures/ideogram4/weight_adapters.py     | 140 ++++++++
+ max/python/max/pipelines/lib/pixel_tokenizer.py    |   1 +
+ max/tests/integration/hf-repo-lock.tsv             |   1 +
+ 29 files changed, 2537 insertions(+), 5 deletions(-)
+===DeepSeekV3ModuleV3===
+commit de21ec55cf5ed574cd4147f8ace31c1d12975390
+Author: Katherine Wu <31663267+k-w-w@users.noreply.github.com>
+Date:   Wed Jun 3 14:46:24 2026 -0700
+
+    [Models] Add DeepSeekV3 ModuleV3 architecture (single GPU)
+    
+    MODULAR_ORIG_COMMIT_REV_ID: 7e03c3e7985a3c1777ffb654735ec4d7bca30795
+
+ docs/sidebars.json                                 |   1 +
+ ...pipelines.architectures.deepseekV3_modulev3.rst |  13 ++
+ max/python/docs/pipelines.architectures.rst        |   2 +
+ .../nn/common_layers/functional_kernels.py         |   5 +
+ .../max/experimental/nn/common_layers/moe.py       |  10 +-
+ max/python/max/pipelines/architectures/__init__.py |   2 +
+ .../architectures/deepseekV3_modulev3/__init__.py  |  19 ++
+ .../architectures/deepseekV3_modulev3/arch.py      |  47 +++++
+ .../deepseekV3_modulev3/deepseekV3.py              | 219 ++++++++++++++++++++
+ .../deepseekV3_modulev3/layers/__init__.py         |  14 ++
+ .../deepseekV3_modulev3/layers/moe_gate.py         | 113 +++++++++++
+ .../deepseekV3_modulev3/layers/rotary_embedding.py | 220 +++++++++++++++++++++
+ .../layers/transformer_block.py                    |  66 +++++++
+ .../architectures/deepseekV3_modulev3/model.py     | 121 ++++++++++++
+ .../deepseekV3_modulev3/model_config.py            | 217 ++++++++++++++++++++
+ .../deepseekV3_modulev3/weight_adapters.py         |  72 +++++++
+ 16 files changed, 1134 insertions(+), 7 deletions(-)
+bash-3.2$ echo "===DeepSeekV3_2NextN (in 84c581a23d)==="; git --no-pager show --stat 84c581a23d 2>&1 | head -50; echo "= ==DeepSeekV2ModuleV3==="; git --no-pager show --stat 8e455f5016 2>&1 | head -50; echo "===DiffusionGemmaFull==="; git -- no-pager show --stat d208fa74f3 2>&1 | tail -30
+===DeepSeekV3_2NextN (in 84c581a23d)===
+commit 84c581a23dd7414ea6a31e37f889ba949ddf8067
+Author: Katherine Wu <31663267+k-w-w@users.noreply.github.com>
+Date:   Mon Jun 29 21:03:21 2026 -0700
+
+    [Models] Support MTP in GLM 5.2
+    
+    - Defines DeepSeekV3_2_NextN draft model
+    - Adds new MTP architecture for `GlmMoeDsaForCausalLM`, with support for
+    index sharing (where index is computed at step 0, and reused in steps
+    1+).
+    
+    MODULAR_ORIG_COMMIT_REV_ID: ca83aef3669fe5dd5c07441c65e991bbeaab3fdb
+
+ docs/max/models.mdx                                |   9 +
+ docs/max/nightly-changelog.md                      |   8 +
+ docs/sidebars.json                                 |   1 +
+ max/python/docs/pipelines.architectures.rst        |   2 +
+ .../pipelines.architectures.unified_mtp_glm5_2.rst |  13 +
+ max/python/max/pipelines/architectures/__init__.py |   5 +
+ .../max/pipelines/architectures/all_arches.bzl     |   2 +
+ .../pipelines/architectures/deepseekV2/model.py    |   3 +-
+ .../pipelines/architectures/deepseekV3/model.py    |   2 +-
+ .../architectures/deepseekV3_2/BUILD.bazel         |   1 +
+ .../architectures/deepseekV3_2/deepseekV3_2.py     | 105 +----
+ .../deepseekV3_2/layers/sparse_mla.py              |   7 +-
+ .../pipelines/architectures/deepseekV3_2/model.py  |   1 +
+ .../architectures/deepseekV3_2/model_config.py     |  12 +
+ .../architectures/deepseekV3_2_nextn/BUILD.bazel   |  23 +
+ .../architectures/deepseekV3_2_nextn/__init__.py   |  21 +
+ .../deepseekV3_2_nextn/deepseekV3_2_nextn.py       | 463 +++++++++++++++++++++
+ .../deepseekV3_2_nextn/model_config.py             | 123 ++++++
+ .../architectures/deepseekV3_nextn/model.py        |   2 +-
+ .../architectures/unified_mtp_glm5_2/BUILD.bazel   |  33 ++
+ .../architectures/unified_mtp_glm5_2/__init__.py   |  22 +
+ .../architectures/unified_mtp_glm5_2/arch.py       |  52 +++
+ .../unified_mtp_glm5_2/batch_processor.py          |  82 ++++
+ .../architectures/unified_mtp_glm5_2/model.py      | 374 +++++++++++++++++
+ .../unified_mtp_glm5_2/unified_mtp_glm5_2.py       | 446 ++++++++++++++++++++
+ .../unified_mtp_glm5_2/weight_adapters.py          |  73 ++++
+ max/python/max/pipelines/lib/config/config.py      |  14 +
+ 27 files changed, 1807 insertions(+), 92 deletions(-)
+===DeepSeekV2ModuleV3===
+commit 8e455f5016b51edc7db7a42a4c2f4b6e9c3902ab
+Author: Katherine Wu <31663267+k-w-w@users.noreply.github.com>
+Date:   Mon Jun 1 16:58:44 2026 -0400
+
+    [Models] Add DeepSeekV2 (ModuleV3)
+    
+    MODULAR_ORIG_COMMIT_REV_ID: 6ab7e97a5d2940794eb68f692b9e5bde33bd580f
+
+ docs/sidebars.json                                 | 135 +++++++++++
+ ...pipelines.architectures.deepseekV2_modulev3.rst |  13 ++
+ max/python/docs/pipelines.architectures.rst        |   2 +
+ max/python/max/pipelines/architectures/__init__.py |   2 +
+ .../architectures/deepseekV2_modulev3/__init__.py  |  24 ++
+ .../architectures/deepseekV2_modulev3/arch.py      |  46 ++++
+ .../deepseekV2_modulev3/deepseekV2.py              | 215 ++++++++++++++++++
+ .../deepseekV2_modulev3/layers/__init__.py         |  14 ++
+ .../deepseekV2_modulev3/layers/moe_gate.py         | 129 +++++++++++
+ .../deepseekV2_modulev3/layers/rotary_embedding.py | 220 ++++++++++++++++++
+ .../layers/transformer_block.py                    |  66 ++++++
+ .../architectures/deepseekV2_modulev3/model.py     | 247 +++++++++++++++++++++
+ .../deepseekV2_modulev3/model_config.py            | 234 +++++++++++++++++++
+ .../recipes/deepseekv2_lite.yaml                   |  18 ++
+ .../deepseekV2_modulev3/weight_adapters.py         |  52 +++++
+ .../integration/accuracy/smoke_tests/smoke_test.py |   1 +
+ .../smoke_tests/smoke_test_github_matrix.py        |   1 +
+ 17 files changed, 1419 insertions(+)
+===DiffusionGemmaFull===
+Author: Patrick Rachford <pat@modular.com>
+Date:   Tue Jun 16 11:22:37 2026 -0700
+
+    [Pipelines] Adds DiffusionGemma
+    
+    MODULAR_ORIG_COMMIT_REV_ID: 4f3797aff304060ada010a4cdbcb5fc81ee3c2e0
+
+ docs/max/models.mdx                                |  10 +
+ docs/max/nightly-changelog.md                      |   4 +
+ docs/sidebars.json                                 |   1 +
+ max/kernels/src/nn/attention/mha_mask.mojo         |  14 +-
+ max/kernels/test/nn/test_mask_iteration.mojo       |  23 +
+ .../pipelines.architectures.diffusion_gemma.rst    |  13 +
+ max/python/docs/pipelines.architectures.rst        |   2 +
+ max/python/max/pipelines/architectures/__init__.py |   5 +
+ .../max/pipelines/architectures/all_arches.bzl     |   1 +
+ .../architectures/diffusion_gemma/BUILD.bazel      |  22 +
+ .../architectures/diffusion_gemma/__init__.py      |  23 +
+ .../architectures/diffusion_gemma/arch.py          |  69 +++
+ .../diffusion_gemma/diffusion_gemma.py             | 670 +++++++++++++++++++++
+ .../architectures/diffusion_gemma/model.py         | 311 ++++++++++
+ .../architectures/diffusion_gemma/model_config.py  | 128 ++++
+ .../diffusion_gemma/weight_adapters.py             | 200 ++++++
+ .../architectures/gemma4/layers/attention.py       |   6 +-
+ .../pipelines/lib/pipeline_variants/__init__.py    |   3 +
+ .../block_diffusion_text_generation.py             | 357 +++++++++++
+ max/python/max/pipelines/lib/registry.py           |  21 +
+ .../smoke_tests/smoke_test_github_matrix.py        |   2 +
+ max/tests/integration/hf-repo-lock.tsv             |   2 +
+ 22 files changed, 1884 insertions(+), 3 deletions(-)
+bash-3.2$ ls max/python/max/pipelines/architectures/minimax_m2/; echo "---"; ls max/python/max/pipelines/architectures/g lm5_1/; echo "---"; ls max/python/max/pipelines/architectures/kimik2_5/; echo "---"; ls max/python/max/pipelines/archite ctures/gemma4/
+__init__.py		BUILD.bazel		minimax_m2.py		reasoning.py		tool_parser.py
+arch.py			layers			model_config.py		recipes			weight_adapters.py
+batch_processor.py	memory_planner.py	model.py		tokenizer.py
+---
+__init__.py	BUILD.bazel	model.py	recipes		tool_parser.py
+arch.py		model_config.py	reasoning.py	tokenizer.py
+---
+__init__.py				layers					unified_eagle_mha_model.py
+arch.py					memory_planner.py			unified_eagle_mha_pipeline_model.py
+batch_processor.py			model_config.py				unified_eagle_model.py
+BUILD.bazel				model.py				unified_eagle_pipeline_model.py
+context.py				reasoning.py				vision_processor.py
+eagle3_kimi_k25.py			recipes					weight_adapters.py
+kimi_nvfp4_policy.py			tokenizer.py
+kimik2_5.py				tool_parser.py
+---
+__init__.py		BUILD.bazel		layers			processing_utils.py	tool_parser.py
+arch.py			context.py		memory_planner.py	reasoning.py		video_processor.py
+batch_processor.py	gemma4.py		model_config.py		recipes			vision_model
+batch_vision_inputs.py	image_processor.py	model.py		tokenizer.py		weight_adapters.py
+bash-3.2$ ls /tmp/gitdump/ 2>&1 | head -10; echo "---"; wc -l /tmp/gitdump/*.log 2>&1
+0933ca3265.txt
+0df55a7338.txt
+0fe279d15a.txt
+2dfb14ff13.txt
+5dbbaede02.txt
+6f0f348b66.txt
+803b248a17.txt
+81ef6ff661.txt
+887885aa6a.txt
+benchmarking.log
+---
+      27 /tmp/gitdump/benchmarking.log
+      41 /tmp/gitdump/ci.log
+      96 /tmp/gitdump/driver.log
+     316 /tmp/gitdump/kernels-new-files.log
+     731 /tmp/gitdump/kernels.log
+      26 /tmp/gitdump/kgen.log
+     112 /tmp/gitdump/kvcache.log
+       0 /tmp/gitdump/models-new-dirs.log
+     234 /tmp/gitdump/models.log
+      70 /tmp/gitdump/mojolang.log
+      10 /tmp/gitdump/pipelines-new-dirs.log
+     445 /tmp/gitdump/pipelines.log
+       5 /tmp/gitdump/serve-new-dirs.log
+     130 /tmp/gitdump/serve.log
+     437 /tmp/gitdump/stdlib.log
+    2680 total
+bash-3.2$ 

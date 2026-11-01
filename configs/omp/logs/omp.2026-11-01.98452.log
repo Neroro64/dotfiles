@@ -1,0 +1,51 @@
+{"timestamp":"2026-11-01T16:41:44.347+01:00","level":"debug","pid":98452,"message":"provider proxy resolved","provider":"zai","source":"none"}
+{"timestamp":"2026-11-01T16:41:44.388+01:00","level":"debug","pid":98452,"message":"stream: local publisher unavailable","code":"ENOENT"}
+{"timestamp":"2026-11-01T16:41:44.407+01:00","level":"warn","pid":98452,"message":"model discovery failed for provider","provider":"ollama","url":"http://127.0.0.1:11434/","error":"ECONNREFUSED: Unable to connect. Is the computer able to access the url?"}
+{"timestamp":"2026-11-01T16:41:44.407+01:00","level":"warn","pid":98452,"message":"model discovery failed for provider","provider":"lm-studio","url":"http://127.0.0.1:1234/v1","error":"ECONNREFUSED: Unable to connect. Is the computer able to access the url?"}
+{"timestamp":"2026-11-01T16:41:44.423+01:00","level":"debug","pid":98452,"message":"Usage fetch requested","providers":["opencode-go","zai"]}
+{"timestamp":"2026-11-01T16:41:44.423+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"zai","credentialType":"api_key","baseUrl":"https://api.z.ai/api/anthropic"}
+{"timestamp":"2026-11-01T16:41:44.423+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"opencode-go","credentialType":"api_key","baseUrl":"https://opencode.ai/inference/go/v1"}
+{"timestamp":"2026-11-01T16:41:44.426+01:00","level":"warn","pid":98452,"message":"model discovery failed for provider","provider":"llama.cpp","url":"http://127.0.0.1:8080/","error":"ECONNREFUSED: Unable to connect. Is the computer able to access the url?"}
+{"timestamp":"2026-11-01T16:41:44.858+01:00","level":"debug","pid":98452,"message":"AuthStorage usage fetch failed","provider":"opencode-go","error":"ProviderHttpError: OpenCode Go usage endpoint returned 401: This API key has expired. Create a new API key in OpenCode Console and replace it in your client or secret store. Signing in again will not renew this key."}
+{"timestamp":"2026-11-01T16:41:44.859+01:00","level":"debug","pid":98452,"message":"Usage fetch resolved","reports":[{"provider":"zai","limits":2}]}
+{"timestamp":"2026-11-01T16:41:45.248+01:00","level":"debug","pid":98452,"message":"Usage fetch requested","providers":["opencode-go","zai"]}
+{"timestamp":"2026-11-01T16:41:45.248+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"zai","credentialType":"api_key","baseUrl":"https://api.z.ai/api/anthropic"}
+{"timestamp":"2026-11-01T16:41:45.248+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"opencode-go","credentialType":"api_key","baseUrl":"https://opencode.ai/inference/go/v1"}
+{"timestamp":"2026-11-01T16:41:45.248+01:00","level":"debug","pid":98452,"message":"Usage fetch resolved","reports":[{"provider":"zai","limits":2}]}
+{"timestamp":"2026-11-01T16:41:45.765+01:00","level":"debug","pid":98452,"message":"Usage fetch requested","providers":["opencode-go","zai"]}
+{"timestamp":"2026-11-01T16:41:45.765+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"zai","credentialType":"api_key","baseUrl":"https://api.z.ai/api/anthropic"}
+{"timestamp":"2026-11-01T16:41:45.765+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"opencode-go","credentialType":"api_key","baseUrl":"https://opencode.ai/inference/go/v1"}
+{"timestamp":"2026-11-01T16:41:45.765+01:00","level":"debug","pid":98452,"message":"Usage fetch resolved","reports":[{"provider":"zai","limits":2}]}
+{"timestamp":"2026-11-01T16:41:46.410+01:00","level":"debug","pid":98452,"message":"Usage fetch requested","providers":["opencode-go","zai"]}
+{"timestamp":"2026-11-01T16:41:46.410+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"zai","credentialType":"api_key","baseUrl":"https://api.z.ai/api/anthropic"}
+{"timestamp":"2026-11-01T16:41:46.410+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"opencode-go","credentialType":"api_key","baseUrl":"https://opencode.ai/inference/go/v1"}
+{"timestamp":"2026-11-01T16:41:46.410+01:00","level":"debug","pid":98452,"message":"Usage fetch resolved","reports":[{"provider":"zai","limits":2}]}
+{"timestamp":"2026-11-01T16:41:46.915+01:00","level":"debug","pid":98452,"message":"Usage fetch requested","providers":["opencode-go","zai"]}
+{"timestamp":"2026-11-01T16:41:46.915+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"zai","credentialType":"api_key","baseUrl":"https://api.z.ai/api/anthropic"}
+{"timestamp":"2026-11-01T16:41:46.915+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"opencode-go","credentialType":"api_key","baseUrl":"https://opencode.ai/inference/go/v1"}
+{"timestamp":"2026-11-01T16:41:46.915+01:00","level":"debug","pid":98452,"message":"Usage fetch resolved","reports":[{"provider":"zai","limits":2}]}
+{"timestamp":"2026-11-01T16:41:47.407+01:00","level":"debug","pid":98452,"message":"Usage fetch requested","providers":["opencode-go","zai"]}
+{"timestamp":"2026-11-01T16:41:47.407+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"zai","credentialType":"api_key","baseUrl":"https://api.z.ai/api/anthropic"}
+{"timestamp":"2026-11-01T16:41:47.407+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"opencode-go","credentialType":"api_key","baseUrl":"https://opencode.ai/inference/go/v1"}
+{"timestamp":"2026-11-01T16:41:47.407+01:00","level":"debug","pid":98452,"message":"Usage fetch resolved","reports":[{"provider":"zai","limits":2}]}
+{"timestamp":"2026-11-01T16:41:47.571+01:00","level":"debug","pid":98452,"message":"Usage fetch requested","providers":["opencode-go","zai"]}
+{"timestamp":"2026-11-01T16:41:47.572+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"zai","credentialType":"api_key","baseUrl":"https://api.z.ai/api/anthropic"}
+{"timestamp":"2026-11-01T16:41:47.572+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"opencode-go","credentialType":"api_key","baseUrl":"https://opencode.ai/inference/go/v1"}
+{"timestamp":"2026-11-01T16:41:47.572+01:00","level":"debug","pid":98452,"message":"Usage fetch resolved","reports":[{"provider":"zai","limits":2}]}
+{"timestamp":"2026-11-01T16:42:10.797+01:00","level":"warn","pid":98452,"message":"Skill description compression unusable; keeping the preview for this model","skill":"brainstorming","model":"zai/glm-4.7-flash"}
+{"timestamp":"2026-11-01T16:42:14.350+01:00","level":"warn","pid":98452,"message":"Skill description compression failed","skill":"extract-session-rules","error":"Error: Model stopped: aborted Request was aborted"}
+{"timestamp":"2026-11-01T16:42:14.351+01:00","level":"warn","pid":98452,"message":"Skill description compression failed","skill":"skill-creator","error":"Error: Model stopped: aborted Request was aborted"}
+{"timestamp":"2026-11-01T16:42:18.847+01:00","level":"debug","pid":98452,"message":"Usage fetch requested","providers":["opencode-go","zai"]}
+{"timestamp":"2026-11-01T16:42:18.847+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"zai","credentialType":"api_key","baseUrl":"https://api.z.ai/api/anthropic"}
+{"timestamp":"2026-11-01T16:42:18.847+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"opencode-go","credentialType":"api_key","baseUrl":"https://opencode.ai/inference/go/v1"}
+{"timestamp":"2026-11-01T16:42:19.017+01:00","level":"debug","pid":98452,"message":"AuthStorage usage fetch failed","provider":"opencode-go","error":"ProviderHttpError: OpenCode Go usage endpoint returned 401: This API key has expired. Create a new API key in OpenCode Console and replace it in your client or secret store. Signing in again will not renew this key."}
+{"timestamp":"2026-11-01T16:42:19.017+01:00","level":"debug","pid":98452,"message":"Usage fetch resolved","reports":[{"provider":"zai","limits":2}]}
+{"timestamp":"2026-11-01T16:42:19.793+01:00","level":"debug","pid":98452,"message":"Usage fetch requested","providers":["opencode-go","zai"]}
+{"timestamp":"2026-11-01T16:42:19.793+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"zai","credentialType":"api_key","baseUrl":"https://api.z.ai/api/anthropic"}
+{"timestamp":"2026-11-01T16:42:19.793+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"opencode-go","credentialType":"api_key","baseUrl":"https://opencode.ai/inference/go/v1"}
+{"timestamp":"2026-11-01T16:42:19.793+01:00","level":"debug","pid":98452,"message":"Usage fetch resolved","reports":[{"provider":"zai","limits":2}]}
+{"timestamp":"2026-11-01T16:42:20.093+01:00","level":"debug","pid":98452,"message":"Usage fetch requested","providers":["opencode-go","zai"]}
+{"timestamp":"2026-11-01T16:42:20.093+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"zai","credentialType":"api_key","baseUrl":"https://api.z.ai/api/anthropic"}
+{"timestamp":"2026-11-01T16:42:20.093+01:00","level":"debug","pid":98452,"message":"Usage fetch queued","provider":"opencode-go","credentialType":"api_key","baseUrl":"https://opencode.ai/inference/go/v1"}
+{"timestamp":"2026-11-01T16:42:20.093+01:00","level":"debug","pid":98452,"message":"Usage fetch resolved","reports":[{"provider":"zai","limits":2}]}
+{"timestamp":"2026-11-01T16:42:25.596+01:00","level":"warn","pid":98452,"message":"Skill description compression failed","skill":"systematic-debugging","error":"Error: Model stopped: aborted Request was aborted"}

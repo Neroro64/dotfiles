@@ -1,0 +1,11 @@
+/Users/nuoc/dev/ai/modular
+cc7155d854a049dce99aefc8d2570311e1e0b15f
+]10;?]11;?[c[33mcc7155d854[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m [Release] Pin lockfiles to Mojo 1.0.0b3.dev2026073014, MAX 26.5.0.de[m [33m[m[33m[m[1;36m[m[33m[m[1;32m[m[33m[m[1;31m[m[33m[m[1;31m[m[33m[mv2026073014[m
+[33m0df55a7338[m [Kernels] Implement the RecordingDeviceContext[m
+[33m430224796d[m [Driver] Add explicit `machine` dep to `max.sys._hal` Mojo targets[m
+[Kcc7155d854 [Release] Pin lockfiles to Mojo 1.0.0b3.dev2026073014, MAX 26.5.0.dev2026073014
+0df55a7338 [Kernels] Implement the RecordingDeviceContext
+430224796d [Driver] Add explicit `machine` dep to `max.sys._hal` Mojo targets
+f203eacab2 [stdlib] Remove move UnsafePointer usage P2
+77d7e08100 [CI] Compile layer-benchmark harness graphs on CPU, execute on GPU
+ls: max/serve: No such file or directory

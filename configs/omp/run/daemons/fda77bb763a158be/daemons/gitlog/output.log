@@ -1,0 +1,1008 @@
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+[?1034hbash-3.2$ git --no-pager log --since=2026-06-01 --format='%h %ad %s' --date=short -- mojo/stdlib | head -800
+f203eacab2 2026-07-30 [stdlib] Remove move UnsafePointer usage P2
+9dfc95aa2f 2026-07-30 [stdlib] Array stabilization and removal of ImplicitlyCopyable conformance - #93309
+a6384745c3 2026-07-29 [mojo-lang] Introduce a __generator_type keyword
+d238ab1575 2026-07-29 [stdlib][driver] Use correct `unsafe_` prefixed methods on `Pointer` P1/N
+0fe279d15a 2026-07-29 [Driver] Move HAL to max/internal
+d63a9d3db7 2026-07-29 [stdlib] Add dedicated no-message debug_assert overloads
+084e8cdb73 2026-07-29 [docs] Refactor MAX docs, remove `/max` path in build output
+431952d70a 2026-07-29 [Stdlib] Document that List.shrink checks its precondition
+65ed692ed9 2026-07-29 [stdlib] Use unsafe_stack_allocation in stdlib and max.algorithm
+f9ab2ce4dc 2026-07-29 [stdlib] refactor: Remove dependency between `DevicePointer` and `DeviceTypeEncoder`
+58f3a1660b 2026-07-29 [stdlib] Rename stack_allocation to unsafe_stack_allocation
+ed5160768c 2026-07-29 [mojo-lang][stdlib] Support sugared function-pointer callees; forward `OwnedDLHandle` FFI through the C ABI
+803b248a17 2026-07-29 [stdlib][max] feat: Move `std.{runtime, gpu/host/device_graph.mojo}` to `max`
+844379c152 2026-07-29 [stdlib] Check for a `String` being passed to `external_call`.
+1f5ad2a238 2026-07-29 [stdlib][NFC] Use lambdas for thin single-expression closures
+e643b436c0 2026-07-29 [stdlib] Add `Span.address_space` parameter
+00112f1c2e 2026-07-29 [stdlib] Drop `Movable` bound from `deinit_with`
+2dfb14ff13 2026-07-29 [stdlib][max] feat: Move `std.gpu.compute` to `max.gpu.compute` (Part 7/N)
+d3d3727cfb 2026-07-29 [bazel][stdlib] Add std_impl alias for stdlib
+c5bb8785d5 2026-07-29 [stdlib] Remove static `String.write()` methods
+6f0f348b66 2026-07-29 [Driver][bazel] Wire CUDA stream interop for the HAL DeviceContext
+f09651343b 2026-07-28 [stdlib] Use safe Pointer in GPU device-side modules and GPU host device_context
+9d998c22ae 2026-07-28 [stdlib] Loosen `Optional` element type to `AnyType`
+c2b95a5114 2026-07-28 [stdlib] Remove the redundant `unsafe_from` pointer constructor
+d9db145462 2026-07-28 [stdlib] Add bitset zext/trunc casting and additional range checks Adds the ability to cast a BitSet[N] to a BitSet[M] where N != M, zero-extending when N < M or truncating when N > M.
+51e237e797 2026-07-28 [stdlib] remove __as_int__ method from Bool
+3e7439949f 2026-07-28 [stdlib] Back `OpaquePointer` with safe `Pointer`
+73a8b91aba 2026-07-28 [stdlib] add `Int` `__getitem__` overloads to `List`,`Span`, and `Array`
+5e8e5a7775 2026-07-28 [stdlib] Rename `DeletableAllocation`.
+1100479dbf 2026-07-28 [stdlib] use `Imm` prefix over `mut=False`
+64822730a8 2026-07-28 [stdlib] Take a safe `Pointer` in the precompiled-format slice helper
+09d446de76 2026-07-28 [stdlib] Steer memset callers to Span.fill
+e449f2829a 2026-07-28 [stdlib] feat: Move part of `std.algorithm` to `max.algorithm` (Part 6/N)
+a9bc41395f 2026-07-28 [stdlib] Build `Span` from a safe `Pointer`
+f2a581ff76 2026-07-28 [stdlib] Return a safe `Pointer` from `Allocation.unsafe_leak`
+30880b1d32 2026-07-28 [stdlib] Rename `steal_data` to `unsafe_take_allocation`, return `Allocation`
+1e06cf2c2c 2026-07-28 [stdlib] Use safe Pointer for load_to_lds buffer-descriptor construction
+6c17bd4a44 2026-07-28 [stdlib] Accept safe Pointer GPU kernel entry params; flip reduction buffers
+8391a23a29 2026-07-28 [stdlib] make direct safe->unsafe ptr conversion the first pick
+fab6b41d0e 2026-07-28 [stdlib] Optimize debug_assert for faster compilation time
+3104793834 2026-07-28 [bazel][Driver] Fix stdlib build under --config=hal-device-context
+f077ddf3f8 2026-07-27 [stdlib] make SIMD convertible from python
+a2178255bc 2026-07-27 [stdlib] Make `Error` implicitly copyable
+8b5f1af2d0 2026-07-27 [stdlib] cleanup: Reorganize monolithic `device_context.mojo`
+c499029d23 2026-07-27 [stdlib] Allow constructing any integer scalar from an `Intable` value
+4a93c7e378 2026-07-27 [stdlib] Use capture lists in benchmarks that capture state
+5b50737e84 2026-07-27 [stdlib] Accept raising closures in `Bencher.iter`
+7f51b7fd0f 2026-07-27 [stdlib] Add `unsafe_from` constructor for cross-safety Pointer casts
+8cda94702b 2026-07-27 [stdlib] Speed up PythonObject operator dispatch
+f395830941 2026-07-27 [mojo-lang][CheckLifetimes] Improve I-O and subtree origin processing
+01d3fd711b 2026-07-27 [max][stdlib] feat: Move `Bencher.iter_custom` to `max.bencher`
+f01b5acaa1 2026-07-27 [stdlib] cleanup: Reorganize monolithic `device_context.mojo`
+c77fd4c8ab 2026-07-27 [stdlib] Rename `TypeList.size` to `TypeList.length`
+edfd4a6128 2026-07-27 [max][stdlib] feat: Move `bench_multicontext` to `max.benchmark`
+9c654164d5 2026-07-27 [stdlib][NFC] Drop stale iterator `rebind` casts
+a100be9174 2026-07-27 [stdlib] Unify `Int` and `Scalar` range types
+9d00424a6e 2026-07-27 [stdlib] Skip pointer-overflow test on Apple GPUs
+6fee1e24ee 2026-07-26 [Integrate] Bump LLVM to 3cbb24bd5412a5ecea5a0e4d1603e0a38676432d
+ae6ddf680c 2026-07-25 [stdlib] Rename `InlineArray` to `Array` in tests, benchmarks, and scripts
+f4b3842d5c 2026-07-25 [stdlib] Rename `InlineArray` to `Array` in std/os, pathlib, python (#93390)
+36b38c2d42 2026-07-25 [stdlib] Rename `InlineArray` to `Array` in builtin, format, io, sys, reflection (#93391)
+aad737dcf8 2026-07-25 [stdlib] Rename `InlineArray` to `Array` in std/collections (#93393)
+8d7c362e41 2026-07-25 [stdlib] Have `UnsafeUnion.unsafe_ptr` return a safe `Pointer`
+6678b5163c 2026-07-25 [stdlib] Use safe OptionalPointer in _serialize
+f5bd65a76d 2026-07-25 [stdlib] Accept safe Pointer in deprecated memcpy-family wrappers
+d84e6836dc 2026-07-25 [stdlib] Use safe Pointer for capture_sizes and misc internals
+2b75c66b8f 2026-07-25 [stdlib] Use safe Pointers for several remaining stdlib APIs
+e7a0492ea6 2026-07-25 [stdlib] Use safe Pointer for the ldg global-load intrinsic
+54157c5f04 2026-07-25 [stdlib] Use safe Pointer for AMD LDS and buffer-resource intrinsics
+6e6392f1e6 2026-07-25 [mojo-lang] Require the `var` convention to be spelled out on `**kwargs`
+ffcd1b99a3 2026-07-24 [stdlib] Have `StringLiteral.unsafe_ptr` return a safe `Pointer`
+2178b9a399 2026-07-24 [stdlib] Have `Span`, `StringSlice`, and `String` `unsafe_ptr` return safe `Pointer`s
+f76825445c 2026-07-24 [MojoLang] error on custom self type unless opt in explicitly.
+7ba5a7f11f 2026-07-24 [stdlib] Support subtracting two pointers
+1c04ac0119 2026-07-24 [stdlib] Return a safe Pointer from PythonObject._try_downcast_value and get_symbol
+d310547f69 2026-07-24 [stdlib] cleanup: Delete `@deprecated` `DeviceContext` methods
+08a8c9cd47 2026-07-24 [stdlib] Rename InlineArray to Array (#93254)
+1c68758af8 2026-07-24 [stdlib][Kernels] Have `Allocation`/`OwnedPointer` `unsafe_ptr` return safe `Pointer`
+225e26a2e4 2026-07-24 [mojo-lang] Require an argument to `@explicit_destroy` on traits
+ae3246006f 2026-07-24 [stdlib] Fix RDNA4 WMMA A/B fragment width
+e636d2901c 2026-07-24 [stdlib] Have `InlineArray.unsafe_ptr` return a safe `Pointer`
+0ac81d9b6e 2026-07-24 [stdlib] Infer InlineArray size from list literals via __literal_size__
+d029482383 2026-07-24 [KGEN][Metal] Fix AIR compiler crash on nested pointer constant expressions
+0ce0ea6a2c 2026-07-24 [stdlib] Add TypeDict to std.collections
+b131811797 2026-07-24 [stdlib] Have `PythonObject` pointer accessors return a safe `Pointer`
+a67d0ad983 2026-07-24 [Kernels][KGEN] Restore 32-bit atomic scatter_nd reduce on Apple GPU
+813264436a 2026-07-24 [stdlib] Rename immutable-cast methods to `as_imm`/`get_imm`
+d4ab5093c1 2026-07-23 [stdlib] Have `List.unsafe_ptr` return a safe `Pointer`
+8e9809bb5a 2026-07-23 [stdlib] Use safe Pointer in nicheable trait and conformers
+9c9bb4ec4d 2026-07-23 [stdlib] Have `CStringSlice.unsafe_ptr` return a safe `Pointer`
+88ff3260c9 2026-07-23 [stdlib] Fix docstring examples in vectorize.mojo and warp.mojo
+e4abd28fa4 2026-07-23 [External] [Stdlib] Support arithmetic between IntLiteral and FloatLiteral (#91931)
+7ea3642647 2026-07-23 [External] [Stdlib][GPU] Fix warp shuffles for Int/UInt on Apple and NVIDIA GPUs (#93101)
+d0c1542d4a 2026-07-23 [stdlib] Add `List.try_index` for use at comptime
+e00709d328 2026-07-23 [stdlib] Add `debug_assert` for `UnsafePointer` ctor from `Int`
+b394033289 2026-07-23 [stdlib] Make `OwnedPointer` conditionally `ImplicitlyDeletable`
+92acd8ffd6 2026-07-23 [stdlib] Add `runtime.initialize_runtime()` for shared libs called from C
+805882a48e 2026-07-23 [mojo-lang] Deprecate multiply-importing overload sets
+364754c550 2026-07-22 [stdlib] Rename `memset` and `memset_zero` to `unsafe_` variants
+4ed860a33b 2026-07-22 [stdlib] Remove negative index normalization from `LinkedList.insert`
+9a3825c417 2026-07-22 [stdlib] Rename memcmp to unsafe_memcmp
+f1f4e4e475 2026-07-22 [stdlib] Rename `destroy_n` to `unsafe_destroy_n`
+c74f849a99 2026-07-22 [stdlib] Rename `DeviceContextList` to `DeviceContextArray`
+cb98f335b3 2026-07-22 [stdlib] Make linear types usable in `Set`: `insert`/`clear_with`
+3ba3bbd109 2026-07-22 [stdlib] Rename `uninit_move_n`/`uninit_copy_n` to `unsafe_` variants
+2a4b42bafa 2026-07-22 [stdlib] Allow linear types in `Optional.map`/`and_then`
+aa4a48ba26 2026-07-22 [stdlib] Clean up UnsafePointer usages missed by the pointer migration
+1ffe583841 2026-07-22 [stdlib] feat: Conditional `ImplicitlyDeletable` on `Variant` and `Optional`
+380e93c762 2026-07-22 [stdlib] Use safe Pointer in Atomic public static pointer methods
+24dad19490 2026-07-22 [stdlib] Fix stale `Span(ptr=)` call sites in AMD GPU printf paths
+aff99d7341 2026-07-22 [stdlib] Remove negative index normalization from `List.insert`
+7039928fb7 2026-07-22 [stdlib] Rename `Span(ptr=)` ctor arg to `Span(unsafe_ptr=)`
+6c3291eedc 2026-07-22 [stdlib] Fix dangling name pointer in CPython.PyCapsule_New
+b9f35bf09d 2026-07-22 [stdlib] Migrate sort's `_insertion_sort`/`_merge` off `Span.unsafe_ptr()` to safe `Pointer`
+6f6f09ef13 2026-07-22 [stdlib] Add closure-based construction and replacement to Variant
+af8ede0cac 2026-07-22 [stdlib] Fix AMDGPU print NUL termination
+42a1ca71c9 2026-07-22 [stdlib] Rename `memmove` to `unsafe_memmove`
+feaf160f9c 2026-07-22 [stdlib] Use safe Pointer in Optional internals
+7c5513720a 2026-07-22 [stdlib] Use safe Pointer in the Swiss table, Dict, and InlineArray
+c2e0889c7d 2026-07-22 [max][stdlib] feat: Move stdlib tests using `DeviceContext` or std.gpu to `max`
+5d96fccb57 2026-07-22 [stdlib] Use safe Pointer in StringSlice and UTF-8 helpers
+4e052e87de 2026-07-22 [stdlib] Use safe Pointer in String
+1e0675c364 2026-07-22 [stdlib] Use safe Pointer in Deque and Counter
+7aa05e3b54 2026-07-22 [stdlib] Loosen Variant element bound to AnyType
+5a27acbe3c 2026-07-22 [stdlib] Use safe Pointer in LinkedList, IntervalTree, and BinaryHeap
+7dcb654ea1 2026-07-22 [External] [doc] Removed extra empty line in __contains__ docstring (#92841)
+2adf3c47e5 2026-07-22 [stdlib] cleanup: Delete `DeviceContext.enqueue_cpu_range` variant taking `capturing` closure
+71cf4b657e 2026-07-22 [stdlib] Print stack-trace hint on unhandled error
+501fd78c81 2026-07-22 [stdlib] Make `b16decode` reject invalid base16 input
+91f2c553f8 2026-07-22 [stdlib] Rename `SIMDSize` to `SIMDLength`
+3aee9a12a7 2026-07-22 [Driver] Close remaining API gaps in HAL DeviceContext implementation
+921e7ccb08 2026-07-21 [stdlib] Migrate Python typed-self binding contract to safe Pointer
+1c6eee0c82 2026-07-21 [stdlib] Use safe Pointer in python C-ABI internals
+b496fd7faf 2026-07-21 [stdlib] Rename init_pointee_move_from to unsafe_write_move_from and un-gate it
+4865c4c96f 2026-07-21 [stdlib] Remove StringLiteral positional indexing
+b2721720c4 2026-07-21 [stdlib] Use safe Pointer in gpu/host DeviceContext and DeviceGraph
+22757b91b6 2026-07-21 [stdlib] Add safe Pointer path for _get_ref_with_unsafe_interior_origin
+e2aedcfe6b 2026-07-21 [stdlib] Give `HostBuffer.as_span` an interior origin
+308af67c0f 2026-07-21 [stdlib] Use safe Pointer in gpu/host driver and launch helpers
+aea7672ca0 2026-07-21 [stdlib] Loosen `InlineArray` element bound to `AnyType`
+ddc85de49d 2026-07-21 [stdlib] Remove Dead Attributes and Types
+0fd25acfc1 2026-07-21 [stdlib] Use safe Pointer in python
+01f97c6deb 2026-07-21 [stdlib] Adopt some changes from the jul 21 stabilization meeting
+9ec98faf9b 2026-07-21 [stdlib] Restore `T: KeyElement` bound on `Set`
+7a02727991 2026-07-21 [stdlib] stabilize some more list and span methods.
+9461660819 2026-07-21 [stdlib] Update HAL DeviceContext overlay.
+10644b9108 2026-07-21 [bazel][Driver] Add hal_device_context stdlib plumbing
+643b26c4a1 2026-07-21 [KGEN] `call_location` not inlined enough hard-errors at lowering
+ee4a1175c7 2026-07-21 [stdlib] Adopt interior origins in `OwnedPointer`
+26ec48d299 2026-07-21 [stdlib] Adopt interior origins in `LinkedList.get_nth`
+7fe4ef743f 2026-07-21 [stdlib] Make `FileHandle.seek` offset signed
+32bcf9f88a 2026-07-20 [stdlib] Print scalar `SIMD` `repr()` using type aliases
+4f77c7a37a 2026-07-20 [stdlib] Make `Set` conditionally `ImplicitlyDeletable`
+8344188ae0 2026-07-20 [stdlib] Use safe Pointer in runtime
+1dab824eb8 2026-07-20 [stdlib] Use safe Pointer in algorithm
+27f6debf90 2026-07-20 [stdlib] Use safe Pointer in memory
+75892094bf 2026-07-20 [stdlib] Adopt interior origins in String split/splitlines
+c5d7eb711f 2026-07-20 [stdlib] Give `List` slices an interior origin
+658f776479 2026-07-20 [stdlib] Fix use-after-free in benchmark output-suffix naming
+136b1c011c 2026-07-20 [stdlib] Adopt interior origins in more String accessors
+30549aa091 2026-07-20 [stdlib] Fix iteration bug for floating point reversed ranges
+58437668ff 2026-07-20 [stdlib] Adopt interior origins in Dict
+47f516dfad 2026-07-20 [stdlib] Use safe Pointer in builtin
+ea8f1b0fae 2026-07-20 [stdlib] Use safe Pointer in sys
+692ce9c245 2026-07-20 [stdlib] Use safe Pointer in utils
+218337a756 2026-07-20 [stdlib] Use safe Pointer in atomic
+b5c0ba1a45 2026-07-20 [KGEN][stdlib] Lower pop.atomic.cmpxchg to AIR on Apple GPU (weak only)
+880a948585 2026-07-20 [max] Add remaining DeviceGraphBuilder.add_function overloads
+67dd7056f8 2026-07-19 [stdlib] Start adopting interior origins in String
+dbc34291f5 2026-07-19 [stdlib] Adopt interior origins in Deque
+b67ffea64f 2026-07-19 [stdlib] Adopt interior origins in List
+b67291fa0a 2026-07-19 [mojo-stdlib][mojo-docs] Simplify `ref[origin_of(x)]` -> `ref[x]`.
+44fec2fb58 2026-07-19 [stdlib] Rename `InlineArray.size` to `InlineArray.length`
+f6af47b594 2026-07-18 [mojo-lang] Remove the `@__defines_interior_origins` decorator.
+a86a162031 2026-07-17 [stdlib] stabilize more list methods
+c7f8b55d71 2026-07-17 [stdlib] Make `Tuple` conditionally `ImplicitlyDeletable`
+1ff60a0465 2026-07-17 [mojo-lang] Enable Interior Origins, MVP
+1cccd5f93d 2026-07-17 [KGEN] Sort offload bundling by mangled kernel name
+12db5a46c4 2026-07-17 [docs][stdlib] DOCS-2278: Updates collections summary line
+64a1baef0f 2026-07-17 [stdlib] Avoid double-hashing keys in Dict insert paths
+b29dbdb499 2026-07-17 [stdlib] Generalize `Dict.fromkeys` to any iterable
+53383088d1 2026-07-17 [stdlib] cleanup: Remove custom self usage in device_context.mojo
+b1e721157d 2026-07-17 [stdlib] Use safe Pointer in long-tail modules and ffi internals
+31b473ce12 2026-07-17 [stdlib] Use safe Pointer in iter module and math GPU tests
+ba1e0536d5 2026-07-17 [docs][stdlib] Finalized Mojo docstring style guide
+0855fe07fc 2026-07-17 [stdlib] cleanup: Remove custom self usage in optional.mojo
+26505b2452 2026-07-17 [Driver] Implement CUDA TMA support
+67f7170db7 2026-07-17 [stdlib] Rename `StaticConstantOrigin` to `ImmStaticOrigin`
+45ad7636a8 2026-07-17 [stdlib] Add `Tuple.consume_elements` for moving out elements
+0f58e79589 2026-07-16 [stdlib] Support `math.sqrt` on `Float64` on NVIDIA GPU
+172fb41964 2026-07-16 [stdlib][NFC] Use index-free iteration in a few places
+e23cc00264 2026-07-16 [stdlib] Fix dangling fn ptr from get_function
+c76dc4311d 2026-07-16 [stdlib] Use `Pointer` type in `List`
+ade84921e3 2026-07-16 [stdlib] Rename Pointer `type` parameter to `T`
+878cf5e35a 2026-07-16 [mojo-lang][stdlib][Kernels] Migrate `read` argument/capture convention to `imm`
+3a11aa0956 2026-07-16 [stdlib] Make `DictEntry.hash` private
+fbdeb898f8 2026-07-16 [stdlib][kernels] Remove DType.invalid sentinel
+5781fdcd5b 2026-07-16 [mojo-lang] Fix remaining usages of `Immut-` prefixed origins in the compiler and use `Imm-`.
+6cf5711d8c 2026-07-16 [stdlib] Replace loose `...` unbind in `List`/`Span` args
+2ecd2b4e27 2026-07-15 [stdlib] Make `List.capacity` a method
+c685e9d537 2026-07-15 [stdlib] Remove bad Pointer constructor.
+12fdd112ff 2026-07-15 [mojo-lang] Rename `@__unsafe_disable_nested_origin_exclusivity`
+30ceb03531 2026-07-15 [stdlib] Deprecate Immut prefixes and use Imm
+c785b5bd01 2026-07-15 [stdlib] Add unsafe_ prefixed methods to Pointer
+e739c2a4e9 2026-07-15 [stdlib] Route accelerator-vendor detection through shared arch->Vendor
+038640f53b 2026-07-15 [MAX] Delete compiler package
+c9e5a27d7b 2026-07-15 [driver] Make enqueue_copy take non-null pointers.
+cf5a03aefc 2026-07-15 [stdlib] Add add count == 0 check in memcpy to fix failing metal print tests.
+2e50b6a7cf 2026-07-15 [stdlib] Rename to_numpy_array to copy_to_numpy_array
+ed93faf78b 2026-07-15 [stdlib] Improve NumPy interop dtype diagnostics
+68deb744e6 2026-07-15 [Kernels] Properly propagate alignment for 1D elementwise kernels.
+71b863c696 2026-07-14 [stdlib] Make Pointer an alias to the common pointer type.
+492edfff4a 2026-07-14 [stdlib] Fix --target-accelerator inconsistency
+bff2508884 2026-07-14 [stdlib] Rename `OwnedKwargsDict` to `StringDict`
+fa2dfcf6e5 2026-07-14 [stdlib] Support linear value types in OwnedKwargsDict
+8666714a11 2026-07-14 [stdlib] Refactor PluginHooks Selector
+9f05bad59b 2026-07-14 [stdlib] Drop ImplicitlyDeletable bound from by-ref Dict iterators
+6842d185b5 2026-07-14 [stdlib] Rename (parallel)memcpy and require non-null pointers.
+42c0e623e7 2026-07-14 [stdlib] Add Dict.insert for linear non-ImplicitlyDeletable types
+03fc9c8637 2026-07-14 [stdlib] Add Imm- prefixed type aliases.
+0105587a32 2026-07-14 [stdlib][Kernels] Fix cluster_mask_base for tall clusters
+a0fad9d924 2026-07-14 [stdlib] Add _is_unsafe and gate unsafe Pointer methods behind it
+4a21c6b9f1 2026-07-14 [stdlib] Work toward a single `Pointer` type.
+2b6e94737b 2026-07-14 [stdlib] cleanup: Remove more `downcast` and `rebind` uses
+fd3a486c25 2026-07-14 [stdlib] cleanup: Remove `downcast` uses in return values
+589c185af0 2026-07-14 [stdlib] Fix exp_approx precision
+6cbafb608a 2026-07-14 [neo-driver] Add DLpack support to Array in python HAL
+bbd55e10bd 2026-07-13 [stdlib] Add `stdlib_plugin` for all targets to correctly select stdlib plugin during compilation
+07bd5094f8 2026-07-13 [stdlib] Verify `get_plugin_index` selects the expected plugin for each `stdlib_plugin` target field value (`default`/`metal`/`cuda`/`hip`), and that an unset field resolves to the default plugin.
+98573d28f2 2026-07-13 [stdlib] Select stdlib plugin based on current target architecture
+fcc59c7f01 2026-07-13 [stdlib] Add an index-typed type accessor on `TypeList` that takes a raw `!kgen.index` directly, alongside the existing `SIMDSize`-typed `__getitem_param__`.
+93ccbe630b 2026-07-13 [driver] Document that `std.gpu.host.launch_attribute` is CUDA only
+fb68fb9937 2026-07-13 [stdlib] `CUDAPlugin`, `HIPPlugin`, and `MetalPlugin` implementations of `PluginHooks`.
+251c4bee9a 2026-07-13 [stdlib] Add default values to comptime members on `PluginHooks` so derived implementations can be less verbose
+e8eae5b0f2 2026-07-13 [Docs] Fix broken vector_addition.mojo link in gpu docstring
+8c32782093 2026-07-13 [stdlib] Use OptionalReg on PluginHooks to avoid spurious application of niche optimization at comptime
+9762a64d16 2026-07-13 [stdlib] Stabilize some List methods
+9be4b27797 2026-07-13 [stdlib] Update some comments in info.mojo
+0acabbdbc3 2026-07-13 [stdlib] Using `deinit_with` convention for deinitializing a type with a function.
+b5ad9d5bce 2026-07-13 [stdlib][NFC] Fix device graph doc-strings
+99d04e18c1 2026-07-12 [External] [Kernels][GPU] Route NVFP4 operations to cuBLAS on consumer Blackwell (sm_120 / sm_121) (#91479)
+158708e6cb 2026-07-12 [stdlib] Conform Tuple to Comparable when its elements are comparable
+8bf50cc417 2026-07-12 [mojo-lang][POP] Treat volatile loads as a store effect
+99d1e24b96 2026-07-11 [mojo-lang][POP] Remove tristate booleans from some pop ops.
+5b254af966 2026-07-11 [mojo-lang] polish: Make `@explicit_destroy` used only for setting error message
+7d00e9268c 2026-07-10 [stdlib] Make `Coord` conform to `DevicePassable`
+ed8c24f317 2026-07-10 [stdlib] Drop manual copy inits from iterator wrappers
+58e0d9ac0d 2026-07-10 [GraphCompiler] Implement the mgp.device_graph.execute runtime primitive
+0cb53c6826 2026-07-10 [stdlib] Remove a redundant transfer operator from Variant
+ee74af62de 2026-07-10 [stdlib] Add Dict.clear_with for linear non-ImplicitlyDeletable types
+25f4c945a9 2026-07-10 [stdlib] `UnsafePointer` rename `destroy_pointee` to `unsafe_deinit_pointee`.
+6ada59a18f 2026-07-10 [Driver][stdlib] Store and propagate outputs on DeviceGraphBuilder
+00fe312c11 2026-07-10 [stdlib] Move device-graph types to std.gpu.host.device_graph
+1d07746d34 2026-07-10 [stdlib][Docs] Add UInt docs and tests
+e810733303 2026-07-10 [stdlib][NFC] Simplify `_lane_id` result type and drop redundant casts
+0e619ec517 2026-07-10 [stdlib] Remove deprecated UnsafePointer methods
+d3d35a9ea2 2026-07-09 [stdlib] Simplify variadic conditional conformance checks
+932d9c7c0a 2026-07-09 [stdlib] cleanup: Remove uses of `downcast` and `rebind_var` in itertools.mojo
+052c9786ce 2026-07-09 [stdlib] cleanup: Remove `downcast` uses in ternary if
+3bdf8e1f61 2026-07-09 [stdlib] Use native AIR ballot intrinsic for Apple warp.vote
+6af12f3fa0 2026-07-09 [stdlib][Kernels] Remove the uneeded UInt usage
+27b374b8c6 2026-07-09 [stdlib] Update benchmark.run to use unified closures
+debe805052 2026-07-09 [max][stdlib][CI] Disable tests failing on macOS CI
+91cec87dc6 2026-07-09 [stdlib] Bounds-check List.insert with check_bounds
+0b8b67baab 2026-07-09 [KGEN][Driver] Move KGEN_CompilerRT_TaskIdForDevice into the DeviceContext bindings
+89612b966e 2026-07-09 [MLRT][Metal] Add programmatic GPU frame capture and print control
+b156ede400 2026-07-08 [stdlib] deprecate `UnsafePointer.init_pointee` methods in favor of `unsafe_write` variants.
+0550129c24 2026-07-08 [stdlib] Remove explicit return type for optional map/and_then
+9021b63a61 2026-07-08 [stdlib] Make `alloc`'s type parameter explicitly bindable (#91120)
+caf322564b 2026-07-08 [stdlib] Relax `LinkedList` `insert`/`extend` to not require `ImplicitlyDeletable`
+15597dab94 2026-07-08 [stdlib] cleanup: Remove custom self usage in span.mojo
+5d43bccbb2 2026-07-08 [stdlib] Implement warp.vote (ballot) for Apple GPU
+2f7937d160 2026-07-08 [Kernels] Introduce DevicePointer backed TensorStorage
+7ae1e890b6 2026-07-07 [stdlib][KGEN] Add Apple M5 edge-masked vector loads
+b05fee860e 2026-07-07 [Stdlib] Rename arguments to List.resize and List.shrink for consistency
+f81002cb18 2026-07-07 [Stdlib] Make Equatable arguments "positional only"
+089ad81065 2026-07-07 [stdlib] Migrate AnyOrigin struct fields to UntrackedOrigin
+56489a896e 2026-07-07 [stdlib] Add a disabled cluster-based split-k for FA4
+5484c4fcfd 2026-07-07 [stdlib] Deprecate `ConditionalType`.
+dfbe222bc1 2026-07-07 [stdlib] Use explicit `_mlir_value` ctor for `UnsafePointer`
+7a6fdb9431 2026-07-07 [max] Gate Apple-GPU-capability tests off M2 macOS CI
+d5b9b4bc96 2026-07-06 [docs] DOCS-2129: Revises docstring content for ranges.mojo
+e44791111f 2026-07-06 [stdlib] Migrating variant.mojo away from `ConditionalType`
+dded05a04f 2026-07-06 [stdlib] rename `UnsafePointer.address` to a private `_mlir_value` field.
+88919985b3 2026-07-06 [Driver] Add multi-stream support to DeviceContext
+b82a0b9293 2026-07-06 [stdlib] Give `ReversibleRange` an associated `ReversedType`
+524d14d4b1 2026-07-06 [stdlib] DeviceBuffer unsafe_ptr tie origin to self
+a08ef76dfe 2026-07-05 [stdlib] cleanup: Prefetch removal of 0-arg `@explicit_destroy` uses
+62e44191d5 2026-07-04 [stdlib] cleanup: Remove `_GraphArena` dummy type
+eea4249eea 2026-07-03 [mojo-lang][stdlib] Back TypeList.all_conforms_to with variadic conforms_to
+9f5e0c191f 2026-07-02 [stdlib] Skip zero-sized captures when packing GPU kernel launch args
+9841debd20 2026-07-02 [stdlib] fix: Fix stale import path
+b398c92677 2026-07-02 [stdlib] add chdir and fchdir
+7a3647d1fb 2026-07-02 [stdlib] Make `LinkedList` conditionally `ImplicitlyDeletable`
+9e7b593898 2026-07-02 [stdlib] Add NumPy interop
+a475bd3db1 2026-07-02 [stdlib] Rename `is_trivially_destructible` to `is_trivially_deletable`
+e55fb433e0 2026-07-02 [stdlib] Correct Radeon 6900 GPU arch metadata
+65e6d31496 2026-07-01 [stdlib] Make `coord` a comptime expression rather than function
+1ea5536383 2026-07-01 [stdlib] Make `Dict` conditionally `ImplicitlyDeletable`
+d03cae1973 2026-07-01 [Kernels] Reland GEMM+ReduceScatter
+56d19a7696 2026-06-30 [Kernels] Use new layout-based `alloc` and fix memory leaks.
+fcf4b92b91 2026-06-30 [stdlib] Make `SwissTable` conditionally `ImplicitlyDeletable`
+beae8cc296 2026-06-30 [stdlib] Let `Span` type be inferred
+c10b94b0d5 2026-06-30 [bazel] Use production Mojo compiler for asan builds on critical path targets
+033c0abd53 2026-06-29 [stdlib] Use `==` and `!=` for type equality check.
+eb61b174c2 2026-06-29 [stdlib] feat: Drop `Copyable` from `IterableOwned` on `Dict`, `LinkedList`, `Set`
+d634e8b048 2026-06-28 [Kernels] Use unified closure overload for `elementwise` in kernels
+98180db0ba 2026-06-28 [stdlib] Remove `Optional[UnsafePointer]` implicit anyorigin conversions
+44cc0e12fa 2026-06-28 [stdlib] better support for `TypeList` inference
+6ef55c7e83 2026-06-27 [stdlib] cleanup: Deprecate `trait_downcast` + remove remaining uses
+bfd952cadc 2026-06-27 [stdlib] Stop swizzling FA4 output writing
+e442a947d2 2026-06-27 [stdlib] fix: Use `init_pointee_copy()` instead of `=` assignment
+9fce6e3bbc 2026-06-27 [stdlib] cleanup: Remove low-hanging uses of `downcast`
+7d7d249c47 2026-06-27 [External] [Stdlib] Add by-index `field_at[idx]` to reflection (#90004)
+0dc7d60e96 2026-06-27 [stdlib] feat: Delete `trait_downcast_var()`
+872127116d 2026-06-27 [stdlib] polish: Re-add descriptive field conformance failure descriptions
+d9c8c71244 2026-06-27 [stdlib] cleanup: Remove most `trait_downcast` uses
+cc428f1a1c 2026-06-26 [stdlib] remove duplicated AllCopyable, etc impl
+c67191b6ad 2026-06-26 [driver] Fix `DeviceContext` function cache key
+713a7f3b9d 2026-06-26 [stdlib] stablelizing `AnyType`
+b0ab21d8c8 2026-06-26 [Integrate] Bump LLVM to 933aa3e1c2face96ca268f2ce412000764b03111
+36ec2a51ae 2026-06-26 [GPU] Add support for the Steam Deck's GPU Adds support to Mojo and MAX for the Steam Deck's RDNA2 Vega2 GPU.
+dfe1c8bc5d 2026-06-26 [stdlib] Stop relying on implicit intra-package imports
+9cb6b0ced3 2026-06-26 [stdlib] Mark `String.__len__` as `@unavailable`
+046fa811fa 2026-06-25 [stdlib] support stdlib_plugin_name attr on kgen.target
+30cb8024e9 2026-06-25 [stdlib] cleanup: Remove `is_gpu()` conditional logic from `unroll_factor` default value
+ef6e534c78 2026-06-25 [stdlib] Add `String`/`StringSlice` default grapheme iteration
+21c0c437f6 2026-06-25 [stdlib] Add `DeletableAllocation ` to `alloc` module.
+0933ca3265 2026-06-25 [driver] Restructure hal interfaces
+9fd9cc3331 2026-06-25 [stdlib] Avoid `comptime for` relying on resolvability of current plugin
+dd6828851a 2026-06-25 [stdlib] Parameterize HAL `Buffer` by `device_spec`
+556746aecf 2026-06-25 [stdlib] Document `DeviceStream` in generated docs
+96cf3e8437 2026-06-25 [stdlib] Remove `GPUAddressSpace` aliases
+3388ba6594 2026-06-24 [stdlib] Make `AddressSpace` target-extensible
+7826947a64 2026-06-24 [stdlib] Remove `load_volatile` and `store_volatile`
+9ddbcc6959 2026-06-24 [lint] Fix various typos
+5156a63fac 2026-06-24 [stdlib] Fix remaining MOCO-3855 fixme
+f94fa26be3 2026-06-24 [stdlib] Add parameter-based `DeviceGraphBuilder.add_function` overload
+7a761cadb6 2026-06-23 [Kernels] Revert "[Kernels] GEMM+ReduceScatter fused kernel & GC pattern fusion"
+630bd41683 2026-06-23 [stdlib] Scope device graph construction behind a callback
+e3a575a5ff 2026-06-23 [stdlib] Support input dependencies for DeviceGraphBuilder.collect_dependencies
+d1f7a39f16 2026-06-23 [stdlib] Take advantage of parametric conforms_to to verify downcast.
+350ba784ef 2026-06-23 [lint] Fix or ignore various typos
+7616826ea2 2026-06-23 [neo-driver] Plumb set_memory through the HAL queue and stream
+04148ecda8 2026-06-23 [Kernels] GEMM+ReduceScatter fused kernel & GC pattern fusion
+c659a8f448 2026-06-22 [stdlib] Temporary API change to support closure refactor
+52c5e3dedb 2026-06-22 [mojo-lang] Remove support for `import .module`
+f0eba48eb2 2026-06-22 [Kernels] Add low-latency (lamport) Allreduce & helpers
+532280fa5d 2026-06-19 [stdlib] Fix up module imports, NFC
+3aaa709644 2026-06-18 [stdlib] Add `raise_python_exception` error helper
+54a78a6b68 2026-06-18 [mojo-stdlib] More `OwnedKwargsDict` related cleanups, NFC
+02dc3835d0 2026-06-18 [stdlib] Make `Deque` conditionally `ImplicitlyDeletable`
+810ce3eefc 2026-06-18 [mojo-stdlib] Update python bindings to use better kwargs
+fae6733faf 2026-06-18 [stdlib] Rename `Reflected.field_type` to `Reflected.field`
+92f0e6d422 2026-06-18 [stdlib] polish: Use synthesized `Movable`/`Copyable` for `Variant`
+621e0c2057 2026-06-18 [Stdlib] Stabilize lifecycle traits
+9c45aef849 2026-06-18 [mojo-lang] Reject struct fields that expose `UnsafeAnyOrigin`
+3e63ee5167 2026-06-18 [stdlib] feat: Support `StringSlice` for `print(start=.., end=..)`
+e4b1f2c958 2026-06-18 [External] [stdlib] Updated list element access documentation (#89338)
+def02c4a6c 2026-06-17 [External] [stdlib] Added `once` iterator (#87196)
+65b14834d9 2026-06-17 [stdlib] Store `DeviceFunction.declared_arg_types` as a `TypeList`
+6dc17c622c 2026-06-17 [stdlib] Drop `Optional` from `DeviceFunction.declared_arg_types`
+d0739d2516 2026-06-17 [stdlib] Relax `IterableOwned` to not require `Copyable`
+b0c16d4e0c 2026-06-17 [stdlib] Make `List`/`InlineArray` `IterableOwned` conditional
+f896b4bc4f 2026-06-17 [stdlib] Fix test_metal_device_type_encoder.mojo
+fd460d0b97 2026-06-17 [stdlib] Add origin to DevicePointer
+0df4f5c2d3 2026-06-17 [stdlib] Add Apple Silicon SIMDGroup Matrix 8x8 Support to Mojo
+e584449851 2026-06-17 [stdlib] Use `CStringSlice` in `nul_terminate` callers
+08368db721 2026-06-17 [KGEN][stdlib] Recurse into closure captures DevicePassable members
+4e15ac5e86 2026-06-16 [stdlib] Make `InlineArray` conditionally `ImplicitlyDeletable`
+723f408110 2026-06-16 [MOCO] DOCS-2180: Update pack diagnostics for user-facing help
+a560bac57e 2026-06-16 [Stdlib] Remove `SIMD._int_mlir_index`
+56a86982e3 2026-06-16 [stdlib] [driver] Have `EventAttributes` carry an origin to properly extend lifetimes.
+414be4afc0 2026-06-16 [stdlib] Allow allocating zero-sized types
+a07fbd55bc 2026-06-16 [stdlib] Add trivial destruction check to SwissTable destructor and clear() functions
+ed0f1eed15 2026-06-16 [stdlib] Extend string lifetimes for NVTX calls.
+e8e01ce5d8 2026-06-15 [mojo-stdlib] Remove `Python._dict`
+e56ec8b1bb 2026-06-15 [stdlib] remove `UnsafeNullablePointer`
+e3b88dd717 2026-06-15 [Stdlib] isatty, use normal external_call
+46e89ac40b 2026-06-15 [stdlib][KGEN] Support FP8 inputs for Apple M5 simdgroup_matrix MMA
+5e52d1ca26 2026-06-15 [stdlib] Support StaticTuple/InlineArray in DeviceTypeEncoder
+f6349ea7f8 2026-06-15 [mojo-lang] Strip identity wrappers from `conforms_to` type values.
+896e4bb382 2026-06-14 [stdlib] Deprecate `UnsafePointer` implicit conversion to `UnsafeAnyOrigin`
+c5668557c2 2026-06-14 [stdlib] Add `warp.match_all` GPU primitive
+65e927adc7 2026-06-14 [External] [stdlib] Add support for MI300A gpus (#86119)
+b627f64a49 2026-06-13 [stdlib] Add `warp.match_any` GPU primitive
+970b6daca8 2026-06-13 [Integrate] Bump LLVM to 5096057eb8254c7d56e1b70c4ba2fbf3ac215b73
+8dcdfbb1ee 2026-06-12 [Driver] Add opt-out for cross-stream sync in device-to-device copies
+1b91187004 2026-06-12 [stdlib] feat: Deprecate `ImplicitlyDestructible`
+607bea1c5f 2026-06-12 [stdlib][Kernels] Add float16 MMA support on NVIDIA GPUs
+b6c836e725 2026-06-11 [Stdlib] Unify Int with SIMD
+a7964131ee 2026-06-11 [KGEN] Use address space when getting ptr info
+034f69413f 2026-06-11 [stdlib] New `alloc/dealloc` and `Allocation` stdlib APIs
+9d1e85fa8b 2026-06-11 [stdlib][mojo-lang] feat: Update uses of `ImplicitlyDestructible` to `ImplicitlyDeletable`
+dafe66de66 2026-06-11 [stdlib] Add conditional conforms to `ImplicitlyDestructible` for `List[T]`.
+cafa256e97 2026-06-11 [stdlib][mojo] feat: Rename `ImplicitlyDestructible` to `ImplicitlyDeletable`
+4dba6bcda4 2026-06-11 [stdlib] Create MachineDefinition, expand DeviceSpec, DeviceRef
+362abb1275 2026-06-11 [stdlib] Fix stray paren in String docstring cross-reference
+5cd7ed9311 2026-06-11 [driver] Fix DeviceContext destruction-order use-after-free
+c03bab59a1 2026-06-11 [stdlib][NFC] Remove DeviceContextPtr leftovers
+1261a2ced3 2026-06-10 [stdlib] migrating `if` to use `scalar<bool>`
+65a2c40b14 2026-06-10 [stdlib] [nfc] Rename `as_any_origin` to `as_unsafe_any_origin`.
+a8aa92034d 2026-06-10 [Stdlib] Rename `take` argument to `move` in `Movable`
+6fe8e6dee0 2026-06-10 [stdlib] Deprecate `External` in favor of `Untracked` origin
+e6fdc94393 2026-06-10 [stdlib] Add `DeviceTypeEncoder.encode_fields()`
+15384b1992 2026-06-09 [stdlib] Fix StringSlice byte= getitem docstrings
+9856e4ab8b 2026-06-09 [mojo-lang] add `@unavailable` decorator
+c9d417b157 2026-06-09 [stdlib] Add new `Untracked` and `UnsafeAny` origin aliases.
+59aea8ba1c 2026-06-09 [GraphCompiler] Make mgp.buffer.alloc return OwnedByteBuffer
+323090c5ff 2026-06-09 [stdlib] Make DevicePointer TrivialRegisterPassable
+ed631b4360 2026-06-09 [mojo-lang] Make exported fns require an explicit `abi`
+a086ceb92e 2026-06-08 [stdlib] Make `_get_nd_indices_from_flat_index` work on `Coord`
+b46e2107d6 2026-06-07 [stdlib] [nfc] Make `AnyOrigin` explicit P1
+a814e0b418 2026-06-07 [Integrate] Bump LLVM from 3298a0c7 (May 22) to 60bd8f80 (June 4)
+02d2715fc0 2026-06-06 [stdlib] Relocate print_emit/reduce_generator plugin-hook type aliases
+a1ff7f8d0e 2026-06-06 [stdlib] Co-locate stack_allocation/unsafe_dangling plugin-hook types
+c51e2edb61 2026-06-06 [stdlib] Co-locate exp/tanh plugin-hook types with their primaries
+0c841a3f65 2026-06-06 [Kernels] Use unsigned modulo for swizzle base index in tile_io
+db1f5507ab 2026-06-06 [stdlib] Fix GPU reduction correctness at the thread-saturation boundary
+db59fa42a2 2026-06-06 [External] [Stdlib] Add non-static store method to Atomic (#87888)
+381bd243ac 2026-06-05 [stdlib] Fix `UnsafePointer` implicit constructor for converting mutable to immutable origins.
+c78a344439 2026-06-05 [stdlib][Kernels] Make reduction operations take Coord input shape
+b268dc7333 2026-06-05 [stdlib] migrate param.assert to scalar<bool>
+c5436b5ac1 2026-06-05 [driver][stdlib] Support closures and external functions in HAL-backed DeviceContext
+b8b17ecb4f 2026-06-04 [stdlib] FA4: avoid reading from pages that were never loaded.
+a1462c030b 2026-06-04 [stdlib] [Kernels] Remove unnecessary `rebind` usages.
+6da520b58b 2026-06-04 [Kernels][AMD] implement DPP version of `warp.prefix_sum`
+4971089374 2026-06-03 [stdlib] Remove bad AnyOrigin usage P1
+24d0699c80 2026-06-03 [stdlib] Fix conflicting enqueueFunctionDirect signature on GPU launch path
+e83009bb77 2026-06-02 [stdlib] Migrate dual elementwise to Coord
+63edb7948c 2026-06-02 [stdlib] Include DevicePointer tests in GPU resource tracking
+4edd9a317e 2026-06-02 [stdlib] Make trace_description required for _elementwise_impl
+3b9d0ab97a 2026-06-01 [Kernels][stdlib] Make reduce ops axis a compile-time parameter
+c66217fcf4 2026-06-01 [Kernels][stdlib] Migrate elementwise to use `Coord` `elementwise` now uses `Coord`, so rather than
+5c36dbeb15 2026-06-01 [stdlib] Add target member to DeviceTypeEncoder trait
+3d1b084621 2026-06-01 [Mojo][CI] Disable test_elementwise.mojo on Apple GPU
+4b5c54caa6 2026-06-01 [stdlib][MLRT] Implement MetalDeviceTypeEncoder
+bash-3.2$ git --no-pager log --since=2026-06-01 --format='%h %ad %s' --date=short -- mojo/stdlib | wc -l && echo '---' & & git --no-pager log --since=2026-06-01 --format='%h %ad %s' --date=short -- mojo/stdlib | tail -5 && echo '---' && git  --no-pager log -1 --format='%h %ad %s' --date=short HEAD
+     437
+---
+3b9d0ab97a 2026-06-01 [Kernels][stdlib] Make reduce ops axis a compile-time parameter
+c66217fcf4 2026-06-01 [Kernels][stdlib] Migrate elementwise to use `Coord` `elementwise` now uses `Coord`, so rather than
+5c36dbeb15 2026-06-01 [stdlib] Add target member to DeviceTypeEncoder trait
+3d1b084621 2026-06-01 [Mojo][CI] Disable test_elementwise.mojo on Apple GPU
+4b5c54caa6 2026-06-01 [stdlib][MLRT] Implement MetalDeviceTypeEncoder
+---
+cc7155d854 2026-07-30 [Release] Pin lockfiles to Mojo 1.0.0b3.dev2026073014, MAX 26.5.0.dev2026073014
+bash-3.2$ git --no-pager log --since=2026-06-01 --format='%h %ad %s' --date=short -- mojo/stdlib > /tmp/stdlib_commits.t xt && wc -l /tmp/stdlib_commits.txt && head -250 /tmp/stdlib_commits.txt
+     437 /tmp/stdlib_commits.txt
+f203eacab2 2026-07-30 [stdlib] Remove move UnsafePointer usage P2
+9dfc95aa2f 2026-07-30 [stdlib] Array stabilization and removal of ImplicitlyCopyable conformance - #93309
+a6384745c3 2026-07-29 [mojo-lang] Introduce a __generator_type keyword
+d238ab1575 2026-07-29 [stdlib][driver] Use correct `unsafe_` prefixed methods on `Pointer` P1/N
+0fe279d15a 2026-07-29 [Driver] Move HAL to max/internal
+d63a9d3db7 2026-07-29 [stdlib] Add dedicated no-message debug_assert overloads
+084e8cdb73 2026-07-29 [docs] Refactor MAX docs, remove `/max` path in build output
+431952d70a 2026-07-29 [Stdlib] Document that List.shrink checks its precondition
+65ed692ed9 2026-07-29 [stdlib] Use unsafe_stack_allocation in stdlib and max.algorithm
+f9ab2ce4dc 2026-07-29 [stdlib] refactor: Remove dependency between `DevicePointer` and `DeviceTypeEncoder`
+58f3a1660b 2026-07-29 [stdlib] Rename stack_allocation to unsafe_stack_allocation
+ed5160768c 2026-07-29 [mojo-lang][stdlib] Support sugared function-pointer callees; forward `OwnedDLHandle` FFI through the C ABI
+803b248a17 2026-07-29 [stdlib][max] feat: Move `std.{runtime, gpu/host/device_graph.mojo}` to `max`
+844379c152 2026-07-29 [stdlib] Check for a `String` being passed to `external_call`.
+1f5ad2a238 2026-07-29 [stdlib][NFC] Use lambdas for thin single-expression closures
+e643b436c0 2026-07-29 [stdlib] Add `Span.address_space` parameter
+00112f1c2e 2026-07-29 [stdlib] Drop `Movable` bound from `deinit_with`
+2dfb14ff13 2026-07-29 [stdlib][max] feat: Move `std.gpu.compute` to `max.gpu.compute` (Part 7/N)
+d3d3727cfb 2026-07-29 [bazel][stdlib] Add std_impl alias for stdlib
+c5bb8785d5 2026-07-29 [stdlib] Remove static `String.write()` methods
+6f0f348b66 2026-07-29 [Driver][bazel] Wire CUDA stream interop for the HAL DeviceContext
+f09651343b 2026-07-28 [stdlib] Use safe Pointer in GPU device-side modules and GPU host device_context
+9d998c22ae 2026-07-28 [stdlib] Loosen `Optional` element type to `AnyType`
+c2b95a5114 2026-07-28 [stdlib] Remove the redundant `unsafe_from` pointer constructor
+d9db145462 2026-07-28 [stdlib] Add bitset zext/trunc casting and additional range checks Adds the ability to cast a BitSet[N] to a BitSet[M] where N != M, zero-extending when N < M or truncating when N > M.
+51e237e797 2026-07-28 [stdlib] remove __as_int__ method from Bool
+3e7439949f 2026-07-28 [stdlib] Back `OpaquePointer` with safe `Pointer`
+73a8b91aba 2026-07-28 [stdlib] add `Int` `__getitem__` overloads to `List`,`Span`, and `Array`
+5e8e5a7775 2026-07-28 [stdlib] Rename `DeletableAllocation`.
+1100479dbf 2026-07-28 [stdlib] use `Imm` prefix over `mut=False`
+64822730a8 2026-07-28 [stdlib] Take a safe `Pointer` in the precompiled-format slice helper
+09d446de76 2026-07-28 [stdlib] Steer memset callers to Span.fill
+e449f2829a 2026-07-28 [stdlib] feat: Move part of `std.algorithm` to `max.algorithm` (Part 6/N)
+a9bc41395f 2026-07-28 [stdlib] Build `Span` from a safe `Pointer`
+f2a581ff76 2026-07-28 [stdlib] Return a safe `Pointer` from `Allocation.unsafe_leak`
+30880b1d32 2026-07-28 [stdlib] Rename `steal_data` to `unsafe_take_allocation`, return `Allocation`
+1e06cf2c2c 2026-07-28 [stdlib] Use safe Pointer for load_to_lds buffer-descriptor construction
+6c17bd4a44 2026-07-28 [stdlib] Accept safe Pointer GPU kernel entry params; flip reduction buffers
+8391a23a29 2026-07-28 [stdlib] make direct safe->unsafe ptr conversion the first pick
+fab6b41d0e 2026-07-28 [stdlib] Optimize debug_assert for faster compilation time
+3104793834 2026-07-28 [bazel][Driver] Fix stdlib build under --config=hal-device-context
+f077ddf3f8 2026-07-27 [stdlib] make SIMD convertible from python
+a2178255bc 2026-07-27 [stdlib] Make `Error` implicitly copyable
+8b5f1af2d0 2026-07-27 [stdlib] cleanup: Reorganize monolithic `device_context.mojo`
+c499029d23 2026-07-27 [stdlib] Allow constructing any integer scalar from an `Intable` value
+4a93c7e378 2026-07-27 [stdlib] Use capture lists in benchmarks that capture state
+5b50737e84 2026-07-27 [stdlib] Accept raising closures in `Bencher.iter`
+7f51b7fd0f 2026-07-27 [stdlib] Add `unsafe_from` constructor for cross-safety Pointer casts
+8cda94702b 2026-07-27 [stdlib] Speed up PythonObject operator dispatch
+f395830941 2026-07-27 [mojo-lang][CheckLifetimes] Improve I-O and subtree origin processing
+01d3fd711b 2026-07-27 [max][stdlib] feat: Move `Bencher.iter_custom` to `max.bencher`
+f01b5acaa1 2026-07-27 [stdlib] cleanup: Reorganize monolithic `device_context.mojo`
+c77fd4c8ab 2026-07-27 [stdlib] Rename `TypeList.size` to `TypeList.length`
+edfd4a6128 2026-07-27 [max][stdlib] feat: Move `bench_multicontext` to `max.benchmark`
+9c654164d5 2026-07-27 [stdlib][NFC] Drop stale iterator `rebind` casts
+a100be9174 2026-07-27 [stdlib] Unify `Int` and `Scalar` range types
+9d00424a6e 2026-07-27 [stdlib] Skip pointer-overflow test on Apple GPUs
+6fee1e24ee 2026-07-26 [Integrate] Bump LLVM to 3cbb24bd5412a5ecea5a0e4d1603e0a38676432d
+ae6ddf680c 2026-07-25 [stdlib] Rename `InlineArray` to `Array` in tests, benchmarks, and scripts
+f4b3842d5c 2026-07-25 [stdlib] Rename `InlineArray` to `Array` in std/os, pathlib, python (#93390)
+36b38c2d42 2026-07-25 [stdlib] Rename `InlineArray` to `Array` in builtin, format, io, sys, reflection (#93391)
+aad737dcf8 2026-07-25 [stdlib] Rename `InlineArray` to `Array` in std/collections (#93393)
+8d7c362e41 2026-07-25 [stdlib] Have `UnsafeUnion.unsafe_ptr` return a safe `Pointer`
+6678b5163c 2026-07-25 [stdlib] Use safe OptionalPointer in _serialize
+f5bd65a76d 2026-07-25 [stdlib] Accept safe Pointer in deprecated memcpy-family wrappers
+d84e6836dc 2026-07-25 [stdlib] Use safe Pointer for capture_sizes and misc internals
+2b75c66b8f 2026-07-25 [stdlib] Use safe Pointers for several remaining stdlib APIs
+e7a0492ea6 2026-07-25 [stdlib] Use safe Pointer for the ldg global-load intrinsic
+54157c5f04 2026-07-25 [stdlib] Use safe Pointer for AMD LDS and buffer-resource intrinsics
+6e6392f1e6 2026-07-25 [mojo-lang] Require the `var` convention to be spelled out on `**kwargs`
+ffcd1b99a3 2026-07-24 [stdlib] Have `StringLiteral.unsafe_ptr` return a safe `Pointer`
+2178b9a399 2026-07-24 [stdlib] Have `Span`, `StringSlice`, and `String` `unsafe_ptr` return safe `Pointer`s
+f76825445c 2026-07-24 [MojoLang] error on custom self type unless opt in explicitly.
+7ba5a7f11f 2026-07-24 [stdlib] Support subtracting two pointers
+1c04ac0119 2026-07-24 [stdlib] Return a safe Pointer from PythonObject._try_downcast_value and get_symbol
+d310547f69 2026-07-24 [stdlib] cleanup: Delete `@deprecated` `DeviceContext` methods
+08a8c9cd47 2026-07-24 [stdlib] Rename InlineArray to Array (#93254)
+1c68758af8 2026-07-24 [stdlib][Kernels] Have `Allocation`/`OwnedPointer` `unsafe_ptr` return safe `Pointer`
+225e26a2e4 2026-07-24 [mojo-lang] Require an argument to `@explicit_destroy` on traits
+ae3246006f 2026-07-24 [stdlib] Fix RDNA4 WMMA A/B fragment width
+e636d2901c 2026-07-24 [stdlib] Have `InlineArray.unsafe_ptr` return a safe `Pointer`
+0ac81d9b6e 2026-07-24 [stdlib] Infer InlineArray size from list literals via __literal_size__
+d029482383 2026-07-24 [KGEN][Metal] Fix AIR compiler crash on nested pointer constant expressions
+0ce0ea6a2c 2026-07-24 [stdlib] Add TypeDict to std.collections
+b131811797 2026-07-24 [stdlib] Have `PythonObject` pointer accessors return a safe `Pointer`
+a67d0ad983 2026-07-24 [Kernels][KGEN] Restore 32-bit atomic scatter_nd reduce on Apple GPU
+813264436a 2026-07-24 [stdlib] Rename immutable-cast methods to `as_imm`/`get_imm`
+d4ab5093c1 2026-07-23 [stdlib] Have `List.unsafe_ptr` return a safe `Pointer`
+8e9809bb5a 2026-07-23 [stdlib] Use safe Pointer in nicheable trait and conformers
+9c9bb4ec4d 2026-07-23 [stdlib] Have `CStringSlice.unsafe_ptr` return a safe `Pointer`
+88ff3260c9 2026-07-23 [stdlib] Fix docstring examples in vectorize.mojo and warp.mojo
+e4abd28fa4 2026-07-23 [External] [Stdlib] Support arithmetic between IntLiteral and FloatLiteral (#91931)
+7ea3642647 2026-07-23 [External] [Stdlib][GPU] Fix warp shuffles for Int/UInt on Apple and NVIDIA GPUs (#93101)
+d0c1542d4a 2026-07-23 [stdlib] Add `List.try_index` for use at comptime
+e00709d328 2026-07-23 [stdlib] Add `debug_assert` for `UnsafePointer` ctor from `Int`
+b394033289 2026-07-23 [stdlib] Make `OwnedPointer` conditionally `ImplicitlyDeletable`
+92acd8ffd6 2026-07-23 [stdlib] Add `runtime.initialize_runtime()` for shared libs called from C
+805882a48e 2026-07-23 [mojo-lang] Deprecate multiply-importing overload sets
+364754c550 2026-07-22 [stdlib] Rename `memset` and `memset_zero` to `unsafe_` variants
+4ed860a33b 2026-07-22 [stdlib] Remove negative index normalization from `LinkedList.insert`
+9a3825c417 2026-07-22 [stdlib] Rename memcmp to unsafe_memcmp
+f1f4e4e475 2026-07-22 [stdlib] Rename `destroy_n` to `unsafe_destroy_n`
+c74f849a99 2026-07-22 [stdlib] Rename `DeviceContextList` to `DeviceContextArray`
+cb98f335b3 2026-07-22 [stdlib] Make linear types usable in `Set`: `insert`/`clear_with`
+3ba3bbd109 2026-07-22 [stdlib] Rename `uninit_move_n`/`uninit_copy_n` to `unsafe_` variants
+2a4b42bafa 2026-07-22 [stdlib] Allow linear types in `Optional.map`/`and_then`
+aa4a48ba26 2026-07-22 [stdlib] Clean up UnsafePointer usages missed by the pointer migration
+1ffe583841 2026-07-22 [stdlib] feat: Conditional `ImplicitlyDeletable` on `Variant` and `Optional`
+380e93c762 2026-07-22 [stdlib] Use safe Pointer in Atomic public static pointer methods
+24dad19490 2026-07-22 [stdlib] Fix stale `Span(ptr=)` call sites in AMD GPU printf paths
+aff99d7341 2026-07-22 [stdlib] Remove negative index normalization from `List.insert`
+7039928fb7 2026-07-22 [stdlib] Rename `Span(ptr=)` ctor arg to `Span(unsafe_ptr=)`
+6c3291eedc 2026-07-22 [stdlib] Fix dangling name pointer in CPython.PyCapsule_New
+b9f35bf09d 2026-07-22 [stdlib] Migrate sort's `_insertion_sort`/`_merge` off `Span.unsafe_ptr()` to safe `Pointer`
+6f6f09ef13 2026-07-22 [stdlib] Add closure-based construction and replacement to Variant
+af8ede0cac 2026-07-22 [stdlib] Fix AMDGPU print NUL termination
+42a1ca71c9 2026-07-22 [stdlib] Rename `memmove` to `unsafe_memmove`
+feaf160f9c 2026-07-22 [stdlib] Use safe Pointer in Optional internals
+7c5513720a 2026-07-22 [stdlib] Use safe Pointer in the Swiss table, Dict, and InlineArray
+c2e0889c7d 2026-07-22 [max][stdlib] feat: Move stdlib tests using `DeviceContext` or std.gpu to `max`
+5d96fccb57 2026-07-22 [stdlib] Use safe Pointer in StringSlice and UTF-8 helpers
+4e052e87de 2026-07-22 [stdlib] Use safe Pointer in String
+1e0675c364 2026-07-22 [stdlib] Use safe Pointer in Deque and Counter
+7aa05e3b54 2026-07-22 [stdlib] Loosen Variant element bound to AnyType
+5a27acbe3c 2026-07-22 [stdlib] Use safe Pointer in LinkedList, IntervalTree, and BinaryHeap
+7dcb654ea1 2026-07-22 [External] [doc] Removed extra empty line in __contains__ docstring (#92841)
+2adf3c47e5 2026-07-22 [stdlib] cleanup: Delete `DeviceContext.enqueue_cpu_range` variant taking `capturing` closure
+71cf4b657e 2026-07-22 [stdlib] Print stack-trace hint on unhandled error
+501fd78c81 2026-07-22 [stdlib] Make `b16decode` reject invalid base16 input
+91f2c553f8 2026-07-22 [stdlib] Rename `SIMDSize` to `SIMDLength`
+3aee9a12a7 2026-07-22 [Driver] Close remaining API gaps in HAL DeviceContext implementation
+921e7ccb08 2026-07-21 [stdlib] Migrate Python typed-self binding contract to safe Pointer
+1c6eee0c82 2026-07-21 [stdlib] Use safe Pointer in python C-ABI internals
+b496fd7faf 2026-07-21 [stdlib] Rename init_pointee_move_from to unsafe_write_move_from and un-gate it
+4865c4c96f 2026-07-21 [stdlib] Remove StringLiteral positional indexing
+b2721720c4 2026-07-21 [stdlib] Use safe Pointer in gpu/host DeviceContext and DeviceGraph
+22757b91b6 2026-07-21 [stdlib] Add safe Pointer path for _get_ref_with_unsafe_interior_origin
+e2aedcfe6b 2026-07-21 [stdlib] Give `HostBuffer.as_span` an interior origin
+308af67c0f 2026-07-21 [stdlib] Use safe Pointer in gpu/host driver and launch helpers
+aea7672ca0 2026-07-21 [stdlib] Loosen `InlineArray` element bound to `AnyType`
+ddc85de49d 2026-07-21 [stdlib] Remove Dead Attributes and Types
+0fd25acfc1 2026-07-21 [stdlib] Use safe Pointer in python
+01f97c6deb 2026-07-21 [stdlib] Adopt some changes from the jul 21 stabilization meeting
+9ec98faf9b 2026-07-21 [stdlib] Restore `T: KeyElement` bound on `Set`
+7a02727991 2026-07-21 [stdlib] stabilize some more list and span methods.
+9461660819 2026-07-21 [stdlib] Update HAL DeviceContext overlay.
+10644b9108 2026-07-21 [bazel][Driver] Add hal_device_context stdlib plumbing
+643b26c4a1 2026-07-21 [KGEN] `call_location` not inlined enough hard-errors at lowering
+ee4a1175c7 2026-07-21 [stdlib] Adopt interior origins in `OwnedPointer`
+26ec48d299 2026-07-21 [stdlib] Adopt interior origins in `LinkedList.get_nth`
+7fe4ef743f 2026-07-21 [stdlib] Make `FileHandle.seek` offset signed
+32bcf9f88a 2026-07-20 [stdlib] Print scalar `SIMD` `repr()` using type aliases
+4f77c7a37a 2026-07-20 [stdlib] Make `Set` conditionally `ImplicitlyDeletable`
+8344188ae0 2026-07-20 [stdlib] Use safe Pointer in runtime
+1dab824eb8 2026-07-20 [stdlib] Use safe Pointer in algorithm
+27f6debf90 2026-07-20 [stdlib] Use safe Pointer in memory
+75892094bf 2026-07-20 [stdlib] Adopt interior origins in String split/splitlines
+c5d7eb711f 2026-07-20 [stdlib] Give `List` slices an interior origin
+658f776479 2026-07-20 [stdlib] Fix use-after-free in benchmark output-suffix naming
+136b1c011c 2026-07-20 [stdlib] Adopt interior origins in more String accessors
+30549aa091 2026-07-20 [stdlib] Fix iteration bug for floating point reversed ranges
+58437668ff 2026-07-20 [stdlib] Adopt interior origins in Dict
+47f516dfad 2026-07-20 [stdlib] Use safe Pointer in builtin
+ea8f1b0fae 2026-07-20 [stdlib] Use safe Pointer in sys
+692ce9c245 2026-07-20 [stdlib] Use safe Pointer in utils
+218337a756 2026-07-20 [stdlib] Use safe Pointer in atomic
+b5c0ba1a45 2026-07-20 [KGEN][stdlib] Lower pop.atomic.cmpxchg to AIR on Apple GPU (weak only)
+880a948585 2026-07-20 [max] Add remaining DeviceGraphBuilder.add_function overloads
+67dd7056f8 2026-07-19 [stdlib] Start adopting interior origins in String
+dbc34291f5 2026-07-19 [stdlib] Adopt interior origins in Deque
+b67ffea64f 2026-07-19 [stdlib] Adopt interior origins in List
+b67291fa0a 2026-07-19 [mojo-stdlib][mojo-docs] Simplify `ref[origin_of(x)]` -> `ref[x]`.
+44fec2fb58 2026-07-19 [stdlib] Rename `InlineArray.size` to `InlineArray.length`
+f6af47b594 2026-07-18 [mojo-lang] Remove the `@__defines_interior_origins` decorator.
+a86a162031 2026-07-17 [stdlib] stabilize more list methods
+c7f8b55d71 2026-07-17 [stdlib] Make `Tuple` conditionally `ImplicitlyDeletable`
+1ff60a0465 2026-07-17 [mojo-lang] Enable Interior Origins, MVP
+1cccd5f93d 2026-07-17 [KGEN] Sort offload bundling by mangled kernel name
+12db5a46c4 2026-07-17 [docs][stdlib] DOCS-2278: Updates collections summary line
+64a1baef0f 2026-07-17 [stdlib] Avoid double-hashing keys in Dict insert paths
+b29dbdb499 2026-07-17 [stdlib] Generalize `Dict.fromkeys` to any iterable
+53383088d1 2026-07-17 [stdlib] cleanup: Remove custom self usage in device_context.mojo
+b1e721157d 2026-07-17 [stdlib] Use safe Pointer in long-tail modules and ffi internals
+31b473ce12 2026-07-17 [stdlib] Use safe Pointer in iter module and math GPU tests
+ba1e0536d5 2026-07-17 [docs][stdlib] Finalized Mojo docstring style guide
+0855fe07fc 2026-07-17 [stdlib] cleanup: Remove custom self usage in optional.mojo
+26505b2452 2026-07-17 [Driver] Implement CUDA TMA support
+67f7170db7 2026-07-17 [stdlib] Rename `StaticConstantOrigin` to `ImmStaticOrigin`
+45ad7636a8 2026-07-17 [stdlib] Add `Tuple.consume_elements` for moving out elements
+0f58e79589 2026-07-16 [stdlib] Support `math.sqrt` on `Float64` on NVIDIA GPU
+172fb41964 2026-07-16 [stdlib][NFC] Use index-free iteration in a few places
+e23cc00264 2026-07-16 [stdlib] Fix dangling fn ptr from get_function
+c76dc4311d 2026-07-16 [stdlib] Use `Pointer` type in `List`
+ade84921e3 2026-07-16 [stdlib] Rename Pointer `type` parameter to `T`
+878cf5e35a 2026-07-16 [mojo-lang][stdlib][Kernels] Migrate `read` argument/capture convention to `imm`
+3a11aa0956 2026-07-16 [stdlib] Make `DictEntry.hash` private
+fbdeb898f8 2026-07-16 [stdlib][kernels] Remove DType.invalid sentinel
+5781fdcd5b 2026-07-16 [mojo-lang] Fix remaining usages of `Immut-` prefixed origins in the compiler and use `Imm-`.
+6cf5711d8c 2026-07-16 [stdlib] Replace loose `...` unbind in `List`/`Span` args
+2ecd2b4e27 2026-07-15 [stdlib] Make `List.capacity` a method
+c685e9d537 2026-07-15 [stdlib] Remove bad Pointer constructor.
+12fdd112ff 2026-07-15 [mojo-lang] Rename `@__unsafe_disable_nested_origin_exclusivity`
+30ceb03531 2026-07-15 [stdlib] Deprecate Immut prefixes and use Imm
+c785b5bd01 2026-07-15 [stdlib] Add unsafe_ prefixed methods to Pointer
+e739c2a4e9 2026-07-15 [stdlib] Route accelerator-vendor detection through shared arch->Vendor
+038640f53b 2026-07-15 [MAX] Delete compiler package
+c9e5a27d7b 2026-07-15 [driver] Make enqueue_copy take non-null pointers.
+cf5a03aefc 2026-07-15 [stdlib] Add add count == 0 check in memcpy to fix failing metal print tests.
+2e50b6a7cf 2026-07-15 [stdlib] Rename to_numpy_array to copy_to_numpy_array
+ed93faf78b 2026-07-15 [stdlib] Improve NumPy interop dtype diagnostics
+68deb744e6 2026-07-15 [Kernels] Properly propagate alignment for 1D elementwise kernels.
+71b863c696 2026-07-14 [stdlib] Make Pointer an alias to the common pointer type.
+492edfff4a 2026-07-14 [stdlib] Fix --target-accelerator inconsistency
+bff2508884 2026-07-14 [stdlib] Rename `OwnedKwargsDict` to `StringDict`
+fa2dfcf6e5 2026-07-14 [stdlib] Support linear value types in OwnedKwargsDict
+8666714a11 2026-07-14 [stdlib] Refactor PluginHooks Selector
+9f05bad59b 2026-07-14 [stdlib] Drop ImplicitlyDeletable bound from by-ref Dict iterators
+6842d185b5 2026-07-14 [stdlib] Rename (parallel)memcpy and require non-null pointers.
+42c0e623e7 2026-07-14 [stdlib] Add Dict.insert for linear non-ImplicitlyDeletable types
+03fc9c8637 2026-07-14 [stdlib] Add Imm- prefixed type aliases.
+0105587a32 2026-07-14 [stdlib][Kernels] Fix cluster_mask_base for tall clusters
+a0fad9d924 2026-07-14 [stdlib] Add _is_unsafe and gate unsafe Pointer methods behind it
+4a21c6b9f1 2026-07-14 [stdlib] Work toward a single `Pointer` type.
+2b6e94737b 2026-07-14 [stdlib] cleanup: Remove more `downcast` and `rebind` uses
+fd3a486c25 2026-07-14 [stdlib] cleanup: Remove `downcast` uses in return values
+589c185af0 2026-07-14 [stdlib] Fix exp_approx precision
+6cbafb608a 2026-07-14 [neo-driver] Add DLpack support to Array in python HAL
+bbd55e10bd 2026-07-13 [stdlib] Add `stdlib_plugin` for all targets to correctly select stdlib plugin during compilation
+07bd5094f8 2026-07-13 [stdlib] Verify `get_plugin_index` selects the expected plugin for each `stdlib_plugin` target field value (`default`/`metal`/`cuda`/`hip`), and that an unset field resolves to the default plugin.
+98573d28f2 2026-07-13 [stdlib] Select stdlib plugin based on current target architecture
+fcc59c7f01 2026-07-13 [stdlib] Add an index-typed type accessor on `TypeList` that takes a raw `!kgen.index` directly, alongside the existing `SIMDSize`-typed `__getitem_param__`.
+93ccbe630b 2026-07-13 [driver] Document that `std.gpu.host.launch_attribute` is CUDA only
+fb68fb9937 2026-07-13 [stdlib] `CUDAPlugin`, `HIPPlugin`, and `MetalPlugin` implementations of `PluginHooks`.
+251c4bee9a 2026-07-13 [stdlib] Add default values to comptime members on `PluginHooks` so derived implementations can be less verbose
+e8eae5b0f2 2026-07-13 [Docs] Fix broken vector_addition.mojo link in gpu docstring
+8c32782093 2026-07-13 [stdlib] Use OptionalReg on PluginHooks to avoid spurious application of niche optimization at comptime
+9762a64d16 2026-07-13 [stdlib] Stabilize some List methods
+9be4b27797 2026-07-13 [stdlib] Update some comments in info.mojo
+0acabbdbc3 2026-07-13 [stdlib] Using `deinit_with` convention for deinitializing a type with a function.
+b5ad9d5bce 2026-07-13 [stdlib][NFC] Fix device graph doc-strings
+99d04e18c1 2026-07-12 [External] [Kernels][GPU] Route NVFP4 operations to cuBLAS on consumer Blackwell (sm_120 / sm_121) (#91479)
+158708e6cb 2026-07-12 [stdlib] Conform Tuple to Comparable when its elements are comparable
+8bf50cc417 2026-07-12 [mojo-lang][POP] Treat volatile loads as a store effect
+99d1e24b96 2026-07-11 [mojo-lang][POP] Remove tristate booleans from some pop ops.
+5b254af966 2026-07-11 [mojo-lang] polish: Make `@explicit_destroy` used only for setting error message
+7d00e9268c 2026-07-10 [stdlib] Make `Coord` conform to `DevicePassable`
+ed8c24f317 2026-07-10 [stdlib] Drop manual copy inits from iterator wrappers
+58e0d9ac0d 2026-07-10 [GraphCompiler] Implement the mgp.device_graph.execute runtime primitive
+0cb53c6826 2026-07-10 [stdlib] Remove a redundant transfer operator from Variant
+ee74af62de 2026-07-10 [stdlib] Add Dict.clear_with for linear non-ImplicitlyDeletable types
+bash-3.2$ git --no-pager log --since=2026-06-01 --format='%h %ad %s' --date=short --grep='mojo-lang' > /tmp/mojo_lang_co mmits.txt && wc -l /tmp/mojo_lang_commits.txt && cat /tmp/mojo_lang_commits.txt
+      70 /tmp/mojo_lang_commits.txt
+a6384745c3 2026-07-29 [mojo-lang] Introduce a __generator_type keyword
+ed5160768c 2026-07-29 [mojo-lang][stdlib] Support sugared function-pointer callees; forward `OwnedDLHandle` FFI through the C ABI
+34ae9242f5 2026-07-28 [mojo-lang][docs] Improve origin subtree discussion.
+6dfb27c958 2026-07-28 [mojo-lang] Promote thin lambdas like stateless defs
+9a6c037ea8 2026-07-28 [mojo-lang] Allow eliding a lambda's capture list and return type
+4123accaaa 2026-07-28 [mojo-lang] Fold thin lambdas as compile-time parameter values
+dfede0f2a9 2026-07-28 [mojo-lang] Add lambda expressions
+f395830941 2026-07-27 [mojo-lang][CheckLifetimes] Improve I-O and subtree origin processing
+73235bfe90 2026-07-27 [mojo-lang] Fix importing modules whose names contain dots
+3ce8fc87cb 2026-07-26 [mojo-lang] Fix package shadowing bug
+fae2eef7ca 2026-07-25 [mojo-lang][CL] Implement invalidation semantics for subtree origins
+6e6392f1e6 2026-07-25 [mojo-lang] Require the `var` convention to be spelled out on `**kwargs`
+f78847b801 2026-07-24 [mojo-lang] Support custom messages on `where` clauses
+225e26a2e4 2026-07-24 [mojo-lang] Require an argument to `@explicit_destroy` on traits
+f62b24bd37 2026-07-24 [mojo-lang] Fix **kwargs forwarding in the closure __call__ wrapper
+44bd5d721f 2026-07-24 [mojo-lang] Support combining unpacks with other call operands
+0ffc00ed88 2026-07-24 [mojo-lang] Fix move initializers using legacy syntax
+04d7cc582f 2026-07-24 [mojo-lang] Prevent modules from self-importing
+1c517bb1b4 2026-07-24 [mojo-lang] Do not cache failed imports
+0201e6cb8b 2026-07-23 [mojo-lang][KGEN] Add -fp-mode flag controlling FP contraction
+a021cd753a 2026-07-23 [mojo-lang] Reject hard keywords as free-function names
+dc57a285a5 2026-07-23 [mojo-lang] Resolve wildcard imports last to first
+805882a48e 2026-07-23 [mojo-lang] Deprecate multiply-importing overload sets
+e4d0b34f11 2026-07-23 [mojo-lang] Match extensions to their target decl, not its name
+561536d372 2026-07-21 [mojo-lang] Start implementing "subtree" origins.
+770c8aaf49 2026-07-21 [mojo-lang] Fix import-poisoning bug
+a57809bc12 2026-07-19 [mojo-lang] Declare interior origins "working"
+2a1bfb51d6 2026-07-19 Revert "[mojo-lang] Allow files to import from modules/packages of the same name"
+3f608d40eb 2026-07-19 [mojo-lang][CL] Fix crash handling `__result__` slot for I-O's
+f6af47b594 2026-07-18 [mojo-lang] Remove the `@__defines_interior_origins` decorator.
+6753dc4958 2026-07-18 [mojo-lang] Add more documentation on interior origins.
+1ff60a0465 2026-07-17 [mojo-lang] Enable Interior Origins, MVP
+878cf5e35a 2026-07-16 [mojo-lang][stdlib][Kernels] Migrate `read` argument/capture convention to `imm`
+5781fdcd5b 2026-07-16 [mojo-lang] Fix remaining usages of `Immut-` prefixed origins in the compiler and use `Imm-`.
+abc342fae5 2026-07-16 [mojo-lang] Add ability to import through directories
+2b14e8d6fe 2026-07-16 [mojo-lang] Allow files to import from modules/packages of the same name
+12fdd112ff 2026-07-15 [mojo-lang] Rename `@__unsafe_disable_nested_origin_exclusivity`
+323dfd974e 2026-07-15 [mojo-lang] Add `imm` as the preferred spelling for `read`
+ee1afa6742 2026-07-15 [mojo-lang] Fix spurious "cannot transfer" error on nested Movable where False structs
+b77a45f4f5 2026-07-15 [mojo-lang] Tighten vertical whitespace tolerance
+d9cd6d4a42 2026-07-14 [mojo-lang] Further improve import location tracking
+8bf50cc417 2026-07-12 [mojo-lang][POP] Treat volatile loads as a store effect
+99d1e24b96 2026-07-11 [mojo-lang][POP] Remove tristate booleans from some pop ops.
+5b254af966 2026-07-11 [mojo-lang] polish: Make `@explicit_destroy` used only for setting error message
+4fc8c86091 2026-07-10 [mojo-lang] Require explicit closure trait conformance for user structs
+40e00e28da 2026-07-07 [mojo-lang] Fix default Equatable for flattened register-passable structs
+79eee95ae0 2026-07-07 [mojo-lang] Refine types in ternary `if conforms_to(...)` branches
+7aab949d79 2026-07-04 [mojo-lang] feat: Support `ImplicitlyDeletable where False` for opt-out
+86bfedbf51 2026-07-03 [mojo-lang] Add internals documentation for origins.
+eea4249eea 2026-07-03 [mojo-lang][stdlib] Back TypeList.all_conforms_to with variadic conforms_to
+a263b9831a 2026-07-03 [mojo-lang] feat: Allow omitting `@explicit_destroy` when `ImplicitlyDeletable where ...` (Part 2/N)
+2912a2f3d6 2026-07-03 [mojo-lang] Improve import location tracking
+d1e8d5a1a1 2026-07-01 [mojo-lang] Reason about variadic conforms_to operands
+d19def92de 2026-06-30 [mojo-lang] Enhance call emission to bind params for indirect calls (#90407)
+4a77cb5d4f 2026-06-30 [mojo-lang] Deprecate implicit intra-package module access
+fe505135b4 2026-06-24 [mojo-lang] Make parameter-list `where` clauses a hard error
+e530504fab 2026-06-24 [mojo-lang] Reshape conforms_to to take a param_list operand
+1c0d05206c 2026-06-24 [mojo-lang] Make package/module resolution consistent
+2e2fcb23dc 2026-06-24 [mojo-lang] Fix module import/re-export logic
+52c5e3dedb 2026-06-22 [mojo-lang] Remove support for `import .module`
+9c45aef849 2026-06-18 [mojo-lang] Reject struct fields that expose `UnsafeAnyOrigin`
+4d9cd54267 2026-06-15 [mojo-lang] Implement forwarding of keyword variadics ("kwargs")
+f6349ea7f8 2026-06-15 [mojo-lang] Strip identity wrappers from `conforms_to` type values.
+5b29024d8c 2026-06-13 [mojo-lang] Diagnose excess keyword arguments. (#88817)
+9d1e85fa8b 2026-06-11 [stdlib][mojo-lang] feat: Update uses of `ImplicitlyDestructible` to `ImplicitlyDeletable`
+f952a3c585 2026-06-11 [mojo-lang] Prohibit combining `abi("C")` with `raises`
+9856e4ab8b 2026-06-09 [mojo-lang] add `@unavailable` decorator
+934e04920c 2026-06-09 [mojo-lang] Fix spurious recursive reference
+0743c36c4a 2026-06-09 [mojo-lang] Export a function with an explicit ABI
+ed631b4360 2026-06-09 [mojo-lang] Make exported fns require an explicit `abi`
+bash-3.2$ git --no-pager log --since=2026-06-01 --diff-filter=A --name-only --format='%h %ad %s' --date=short -- mojo/pr oposals > /tmp/new_proposals.txt && wc -l /tmp/new_proposals.txt && cat /tmp/new_proposals.txt
+       9 /tmp/new_proposals.txt
+86bfedbf51 2026-07-03 [mojo-lang] Add internals documentation for origins.
+
+mojo/proposals/origin-design.md
+9856e4ab8b 2026-06-09 [mojo-lang] add `@unavailable` decorator
+
+mojo/proposals/unavailable-decorator.md
+c9d417b157 2026-06-09 [stdlib] Add new `Untracked` and `UnsafeAny` origin aliases.
+
+mojo/proposals/untracked-and-any-origin-renames.md
+bash-3.2$ echo '=== stack_allocation rename ===' && git show --stat 58f3a1660b | tail -8 && echo '' && echo '=== Use uns afe_stack_allocation ===' && git show --stat 65ed692ed9 | tail -8 && echo '' && echo '=== Move std.{runtime,gpu/host/dev ice_graph} to max ===' && git show --stat 803b248a17 | tail -20 && echo '' && echo '=== Move std.gpu.compute Part 7/N == =' && git show --stat 2dfb14ff13 | tail -20 && echo '' && echo '=== Move std.algorithm Part 6/N ===' && git show --stat  e449f2829a | tail -20
+=== stack_allocation rename ===
+    The identically named LayoutTensor.stack_allocation() method and the
+    layout.tile_tensor helper are a different API and are unchanged.
+    
+    MODULAR_ORIG_COMMIT_REV_ID: 27f6aff5b9b047154efceb3ce05356e1319a54eb
+
+ mojo/stdlib/std/memory/__init__.mojo         |   2 +-
+ mojo/stdlib/std/memory/stack_allocation.mojo | 104 +++++++++++++++++++++------
+ 2 files changed, 85 insertions(+), 21 deletions(-)
+
+=== Use unsafe_stack_allocation ===
+ mojo/stdlib/std/gpu/host/device_context.mojo       |  8 ++---
+ mojo/stdlib/std/gpu/primitives/block.mojo          | 38 ++++++++++++----------
+ mojo/stdlib/std/python/bindings.mojo               | 14 ++++----
+ mojo/stdlib/std/sys/_metal_print.mojo              |  4 +--
+ .../compile_fail/span_address_space_copy_ops.mojo  |  6 ++--
+ mojo/stdlib/test/compile/test_compile.mojo         |  8 +++--
+ ...test_gpu_shared_address_space_cast_bitcast.mojo | 16 +++++----
+ 12 files changed, 86 insertions(+), 64 deletions(-)
+
+=== Move std.{runtime,gpu/host/device_graph} to max ===
+ max/kernels/src/shmem/ep.mojo                      |  2 +-
+ .../src/state_space/rms_norm_fused_residual.mojo   |  2 +-
+ max/kernels/test/gpu/device_context/BUILD.bazel    |  1 +
+ .../test_device_external_function.mojo             |  5 ++-
+ .../device_context/test_device_graph_builder.mojo  |  6 ++--
+ .../max/algorithm/backend/cpu/parallelize.mojo     |  7 ++--
+ max/mojo/max/algorithm/functional.mojo             |  2 +-
+ max/mojo/max/algorithm/reduction.mojo              |  2 +-
+ max/mojo/max/gpu/host/__init__.mojo                | 19 ++++++++++
+ .../mojo/max}/gpu/host/device_graph.mojo           |  7 ++--
+ .../std => max/mojo/max}/runtime/async_value.mojo  |  0
+ max/mojo/max/runtime/asyncrt.mojo                  | 40 ++++++++++++++++++++++
+ .../std => max/mojo/max}/runtime/tracing.mojo      |  0
+ max/mojo/test/runtime/BUILD.bazel                  | 24 +++++++++++--
+ .../mojo}/test/runtime/test_op_logging.mojo        |  2 +-
+ .../mojo}/test/runtime/test_tracing.mojo           |  2 +-
+ mojo/stdlib/std/gpu/host/__init__.mojo             |  5 ---
+ mojo/stdlib/std/runtime/asyncrt.mojo               | 27 ---------------
+ mojo/stdlib/test/runtime/BUILD.bazel               | 23 ++-----------
+ 56 files changed, 157 insertions(+), 120 deletions(-)
+
+=== Move std.gpu.compute Part 7/N ===
+ .../test_mfma_fragment_lane_mapping.mojo               |  2 +-
+ .../std => max/mojo/max}/gpu/compute/__init__.mojo     |  2 +-
+ .../mojo/max}/gpu/compute/arch/__init__.mojo           |  8 ++++----
+ .../std => max/mojo/max}/gpu/compute/arch/mma_amd.mojo |  0
+ .../mojo/max}/gpu/compute/arch/mma_amd_rdna.mojo       |  0
+ .../mojo/max}/gpu/compute/arch/mma_apple.mojo          |  0
+ .../mojo/max}/gpu/compute/arch/mma_nvidia.mojo         |  0
+ .../mojo/max}/gpu/compute/arch/mma_nvidia_sm100.mojo   |  2 +-
+ .../std => max/mojo/max}/gpu/compute/arch/tcgen05.mojo |  4 ++--
+ {mojo/stdlib/std => max/mojo/max}/gpu/compute/mma.mojo |  4 ++--
+ .../mojo/max}/gpu/compute/mma_operand_descriptor.mojo  |  0
+ .../std => max/mojo/max}/gpu/compute/mma_util.mojo     |  0
+ .../std => max/mojo/max}/gpu/compute/tensor_ops.mojo   |  2 +-
+ max/mojo/test/gpu/BUILD.bazel                          | 18 ++++++++++++++++++
+ .../test/gpu/test_apple_mma_8x8_invalid_types.mojo     |  2 +-
+ .../mojo}/test/gpu/test_apple_mma_invalid_types.mojo   |  2 +-
+ mojo/docs/nightly-changelog.md                         |  1 +
+ mojo/stdlib/std/gpu/primitives/warp.mojo               |  2 --
+ mojo/stdlib/test/gpu/BUILD.bazel                       |  2 --
+ 184 files changed, 305 insertions(+), 244 deletions(-)
+
+=== Move std.algorithm Part 6/N ===
+ .../max/_interpreter_ops/data_movement_ops.mojo    |   2 +-
+ .../max/_interpreter_ops/elementwise_cast_ops.mojo |   2 +-
+ .../max/_interpreter_ops/gather_scatter_ops.mojo   |   2 +-
+ max/python/max/_interpreter_ops/misc_ops.mojo      |   2 +-
+ .../max/_interpreter_ops/op_utils/__init__.mojo    |   2 +-
+ max/python/max/_interpreter_ops/roi_align_ops.mojo |   2 +-
+ max/tests/tests/mojo-importer/BUILD.bazel          |   1 +
+ max/tests/tests/mojo-importer/mojo_module.mojo     |   2 +-
+ .../code/manual/values/closures/test_closures.mojo |   2 +-
+ mojo/docs/manual/values/closures.mdx               |   2 +-
+ mojo/docs/tools/compilation.mdx                    |   2 +-
+ mojo/stdlib/benchmarks/BUILD.bazel                 |   9 +-
+ .../benchmarks/algorithm/bench_elementwise.mojo    |   2 +-
+ .../benchmarks/memory/bench_heap_parallel.mojo     |   2 +-
+ mojo/stdlib/std/_plugin/_trait.mojo                |  23 +-
+ mojo/stdlib/std/algorithm/__init__.mojo            |  30 +-
+ .../stdlib/std/algorithm/backend/cpu/__init__.mojo |  16 +-
+ mojo/stdlib/std/algorithm/functional.mojo          | 528 +-------------------
+ mojo/stdlib/std/runtime/asyncrt.mojo               |   2 +-
+ 175 files changed, 981 insertions(+), 776 deletions(-)
+bash-3.2$ echo '=== Array stabilization ===' && git show --stat 9dfc95aa2f | tail -20 && echo '' && echo '=== Remove mov e UnsafePointer P2 ===' && git show --stat f203eacab2 | tail -20 && echo '' && echo '=== Use unsafe_ prefix P1/N ===' &&  git show --stat d238ab1575 | tail -20 && echo '' && echo '=== Add unsafe_ prefix to Pointer ===' && git show --stat c78 5b5bd01 | tail -20 && echo '' && echo '=== Make Pointer alias ===' && git show --stat 71b863c696 | tail -20 && echo '' & & echo '=== Back OpaquePointer with safe Pointer ===' && git show --stat 3e7439949f | tail -20
+=== Array stabilization ===
+ .../src/nn/attention/gpu/apple/fa_prefill.mojo     |   2 +-
+ max/kernels/src/nn/conv/conv.mojo                  |  18 +-
+ max/kernels/src/pipeline/pipeline_dsl.mojo         |   8 +-
+ max/kernels/src/pipeline/types.mojo                |   3 +
+ .../src/structured_kernels/amd_tile_io.mojo        |   2 +-
+ .../test/gpu/nn/test_apple_fa_softmax_unit.mojo    |   2 +-
+ max/python/max/_core_mojo/sha256.mojo              |   2 +-
+ .../max/_interpreter_ops/argnonzero_ops.mojo       |   2 +-
+ .../max/_interpreter_ops/data_movement_ops.mojo    |   8 +-
+ .../max/_interpreter_ops/gather_scatter_ops.mojo   | 190 ++++-----------------
+ .../manual/metaprogramming/reflection/test.mojo    |   2 +-
+ .../manual/metaprogramming/reflection/tests.mojo   |   6 +-
+ mojo/docs/manual/metaprogramming/reflection.mdx    |   4 +-
+ mojo/docs/nightly-changelog.md                     |   4 +
+ mojo/stdlib/std/collections/array.mojo             |   8 +-
+ mojo/stdlib/std/gpu/host/device_context.mojo       |   8 +-
+ mojo/stdlib/test/collections/test_array.mojo       |   1 -
+ mojo/stdlib/test/itertools/test_cycle.mojo         |   6 +-
+ mojo/stdlib/test/itertools/test_product.mojo       |   6 +-
+ 29 files changed, 133 insertions(+), 222 deletions(-)
+
+=== Remove move UnsafePointer P2 ===
+ mojo/stdlib/test/memory/test_memory.mojo           |  1 -
+ .../test_uninit_check_gather_poison.mojo           |  2 +-
+ .../test_uninit_check_masked_load_poison.mojo      |  2 +-
+ .../test_uninit_check_simd_vector_poison.mojo      |  2 +-
+ .../compile_fail/comparison_address_space.mojo     |  4 +-
+ .../unsafe_pointer/compile_fail/conversion_1.mojo  |  4 +-
+ .../unsafe_pointer/compile_fail/conversion_4.mojo  |  6 +-
+ .../unsafe_pointer/compile_fail/conversion_5.mojo  |  6 +-
+ .../unsafe_pointer/compile_fail/conversion_6.mojo  |  4 +-
+ .../unsafe_pointer/compile_fail/conversion_7.mojo  |  4 +-
+ .../unsafe_pointer/compile_fail/conversion_8.mojo  |  6 +-
+ .../unsafe_pointer/compile_fail/mut_cast.mojo      |  4 +-
+ .../compile_fail/unsafe_from_address_0.mojo        |  2 +-
+ .../compile_fail/unsafe_from_address_neg.mojo      |  2 +-
+ ...test_gpu_shared_address_space_cast_bitcast.mojo | 28 ++++---
+ .../test_unsafe_from_address_overflow.mojo         |  2 +-
+ .../memory/unsafe_pointer/test_unsafe_pointer.mojo |  2 +-
+ mojo/stdlib/test/python/test_python_cpython.mojo   | 12 +--
+ mojo/stdlib/test/python/test_python_object.mojo    |  6 +-
+ 27 files changed, 72 insertions(+), 169 deletions(-)
+
+=== Use unsafe_ prefix P1/N ===
+commit d238ab15756bf7fd0726a69db83e6a0a036b0794
+Author: Nate <43621845+NathanSWard@users.noreply.github.com>
+Date:   Wed Jul 29 21:50:04 2026 -0600
+
+    [stdlib][driver] Use correct `unsafe_` prefixed methods on `Pointer`
+    P1/N
+    
+    MODULAR_ORIG_COMMIT_REV_ID: 2408d9db1586ddd86fc6a743213beaf09f74f709
+
+ mojo/stdlib/std/collections/string/string_slice.mojo | 2 +-
+ mojo/stdlib/std/ffi/__init__.mojo                    | 2 +-
+ mojo/stdlib/std/gpu/host/device_context.mojo         | 2 +-
+ mojo/stdlib/std/os/os.mojo                           | 4 ++--
+ mojo/stdlib/std/python/_cpython.mojo                 | 3 ++-
+ mojo/stdlib/std/subprocess/subprocess.mojo           | 2 +-
+ 6 files changed, 8 insertions(+), 7 deletions(-)
+
+=== Add unsafe_ prefix to Pointer ===
+    `unsafe_strided_load`, `unsafe_strided_store`, `unsafe_gather`,
+    `unsafe_scatter`, `unsafe_as_noalias`, `unsafe_address_space_cast`,
+    `unsafe_take_pointee`) for pointer operations that
+    are individually unsafe, rather than requiring the whole pointer to be
+    typed
+    unsafe. This lets `Pointer` stay a single type while each unsafe
+    operation is
+    marked explicitly at the call site.
+    
+    The old unprefixed names remain as thin wrappers for compatibility, but
+    are
+    now hidden from generated docs and still require an unsafe pointer to
+    call.
+    
+    MODULAR_ORIG_COMMIT_REV_ID: c3412275abd8694c8b0c8d410ac7034b364c5eda
+
+ mojo/docs/nightly-changelog.md                     |  12 +
+ mojo/stdlib/std/memory/unsafe_pointer.mojo         | 645 ++++++++++++++++-----
+ .../memory/unsafe_pointer/test_unsafe_pointer.mojo |  21 +
+ 3 files changed, 533 insertions(+), 145 deletions(-)
+
+=== Make Pointer alias ===
+
+    [stdlib] Make Pointer an alias to the common pointer type.
+    
+    This make `Pointer` an alias to the common `unsafe_pointer.Pointer`
+    type.
+    
+    MODULAR_ORIG_COMMIT_REV_ID: 7f4c7824e60023a3be1c01f97e694560d60a67b2
+
+ max/driver/src/_hal/context.mojo                   |   2 +-
+ mojo/stdlib/std/builtin/rebind.mojo                |   2 +-
+ mojo/stdlib/std/builtin/variadics.mojo             |   4 +-
+ mojo/stdlib/std/collections/inline_array.mojo      |  13 +-
+ mojo/stdlib/std/collections/linked_list.mojo       |  15 +-
+ mojo/stdlib/std/collections/optional.mojo          |  69 +++++--
+ mojo/stdlib/std/iter/__init__.mojo                 |   2 +-
+ mojo/stdlib/std/memory/pointer.mojo                | 229 +--------------------
+ mojo/stdlib/std/memory/unsafe_pointer.mojo         |  48 ++++-
+ mojo/stdlib/test/memory/test_pointer.mojo          |   2 +-
+ .../memory/unsafe_pointer/test_unsafe_pointer.mojo |  15 ++
+ 11 files changed, 145 insertions(+), 256 deletions(-)
+
+=== Back OpaquePointer with safe Pointer ===
+    that genuinely need pointer arithmetic or typed stores now spell
+    `UnsafePointer` directly; the rest use `MutPointer`/`ImmPointer`. The
+    aliases stay in place for now.
+    
+    MODULAR_ORIG_COMMIT_REV_ID: d4d11d3812abf2ef51545ca1908f4150ce535201
+
+ max/driver/src/_device_context_hal/__init__.mojo   | 39 +++++++++-------------
+ max/driver/src/_hal/plugin.mojo                    |  4 ++-
+ max/kernels/src/comm/vendor/ccl.mojo               |  2 +-
+ .../builtin_primitives/primitives.mojo             | 12 +++----
+ max/kernels/src/layout/element.mojo                |  6 ++--
+ max/kernels/src/linalg/matmul/vendor/blas.mojo     | 35 ++++++++++++-------
+ max/kernels/src/linalg/utils_gpu.mojo              |  2 +-
+ max/kernels/src/nn/conv/conv.mojo                  | 14 +++++---
+ max/kernels/src/nn/conv/conv_transpose.mojo        | 18 +++++-----
+ max/mojo/test/asyncrt/test_host_func.mojo          |  2 +-
+ mojo/stdlib/std/memory/unsafe_pointer.mojo         |  2 +-
+ mojo/stdlib/test/iter/test_ref_iteration.mojo      |  5 +--
+ .../memory/unsafe_pointer/test_unsafe_pointer.mojo |  4 +--
+ 13 files changed, 79 insertions(+), 66 deletions(-)
+bash-3.2$ echo '=== Current state checks ===' && echo '-- stack_allocation (unprefixed) remaining in stdlib --' && grep  -rn 'fn stack_allocation' mojo/stdlib/ 2>/dev/null | head -5 && echo '-- unsafe_stack_allocation definitions --' && grep  -rn 'fn unsafe_stack_allocation' mojo/stdlib/ 2>/dev/null | head -5 && echo '-- std.gpu.compute remaining --' && ls moj o/stdlib/std/gpu/compute/ 2>/dev/null && echo '-- max.gpu.compute --' && ls max/mojo/max/gpu/compute/ 2>/dev/null && ech o '-- std.algorithm remaining --' && ls mojo/stdlib/std/algorithm/ 2>/dev/null && echo '-- max.algorithm --' && ls max/m ojo/max/algorithm/ 2>/dev/null && echo '-- std.runtime remaining --' && ls mojo/stdlib/std/runtime/ 2>/dev/null && echo  '-- max.runtime --' && ls max/mojo/max/runtime/ 2>/dev/null && echo '-- std.gpu.host.device_graph remaining --' && ls mo jo/stdlib/std/gpu/host/ 2>/dev/null && echo '-- UnsafePointer (non-unsafe_) --' && grep -rn 'fn init_pointee' mojo/stdli b/std/memory/unsafe_pointer.mojo 2>/dev/null | head -5 && echo '-- ImplicitlyDestructible remaining --' && grep -rn 'Imp licitlyDestructible' mojo/stdlib/ 2>/dev/null | head -5 && echo '-- ImplicitlyCopyable remaining --' && grep -rn 'Implic itlyCopyable' mojo/stdlib/ 2>/dev/null | head -5 && echo '-- unsafe_from remaining --' && grep -rn 'fn unsafe_from' mojo /stdlib/ 2>/dev/null | head -5 && echo '-- InlineArray remaining --' && grep -rn 'InlineArray' mojo/stdlib/ 2>/dev/null  | wc -l && echo '-- struct InlineArray --' && grep -rn '^struct InlineArray' mojo/stdlib/ 2>/dev/null | head -5
+=== Current state checks ===
+-- stack_allocation (unprefixed) remaining in stdlib --
+-- unsafe_stack_allocation definitions --
+-- std.gpu.compute remaining --
+bash-3.2$ 
+bash-3.2$ 

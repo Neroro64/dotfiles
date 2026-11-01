@@ -1,38 +1,56 @@
-lastChangelogVersion: 13.12.8
 hideThinkingBlock: false
-task: 
-  isolation: 
+task:
+  isolation:
     commits: ai
-memories: 
+memories:
   enabled: true
-theme: 
-  dark: dark-volcanic
-  light: marble
-statusLine: 
+theme:
+  dark: dark-forest
+  light: light
+statusLine:
   separator: powerline
   showHookStatus: true
-terminal: 
+terminal:
   showImages: true
-display: 
+display:
   showTokenUsage: false
 steeringMode: one-at-a-time
 doubleEscapeAction: tree
 treeFilterMode: default
-startup: 
+startup:
   quiet: true
-compaction: 
-  strategy: context-full
+compaction:
   thresholdPercent: 50
-branchSummary: 
+  methodOrder:
+    - remote
+    - soft
+branchSummary:
   enabled: false
-edit: 
+edit:
   mode: hashline
 readLineNumbers: false
-renderMermaid: 
+renderMermaid:
   enabled: true
-calc: 
+calc:
   enabled: true
-inspect_image: 
-  enabled: true
-browser: 
+browser:
   headless: true
+memory:
+  backend: mnemopi
+symbolPreset: nerd
+setupVersion: 2
+modelRoles:
+  default: zai/glm-5.3-flash
+  smol: zai/glm-5.3-flash:auto
+  vision: zai/glm-5v-turbo
+  slow: zai/glm-5.3:auto
+  tiny: zai/glm-4.7-flash:off
+  plan: zai/glm-5.3:auto
+tools: {}
+mcp: {}
+defaultThinkingLevel: auto
+composer:
+  shape: box
+autolearn:
+  enabled: true
+  autoContinue: true

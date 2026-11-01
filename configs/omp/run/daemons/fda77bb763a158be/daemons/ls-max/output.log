@@ -1,0 +1,16 @@
+total 64
+drwxr-xr-x@ 13 nuoc  staff    416 Jul 31 22:51 .
+drwxr-xr-x@ 33 nuoc  staff   1056 Jul 31 22:51 ..
+-rw-r--r--@  1 nuoc  staff   1857 Jul 31 22:51 BUILD.bazel
+-rw-r--r--@  1 nuoc  staff  11593 Jul 31 22:51 CLAUDE.md
+-rw-r--r--@  1 nuoc  staff   9570 Jun  9 01:19 CONTRIBUTING.md
+drwxr-xr-x@ 14 nuoc  staff    448 Jul 31 22:51 docs
+drwxr-xr-x@ 13 nuoc  staff    416 Jul 31 22:51 examples
+drwxr-xr-x@  3 nuoc  staff     96 Jun  9 01:19 include
+drwxr-xr-x@ 10 nuoc  staff    320 Jun 17 09:26 kernels
+drwxr-xr-x@  4 nuoc  staff    128 Jul 31 22:51 mojo
+drwxr-xr-x@  5 nuoc  staff    160 Jun  9 01:19 python
+-rw-r--r--@  1 nuoc  staff   1481 Jul 31 22:51 README.md
+drwxr-xr-x@  6 nuoc  staff    192 Jul 31 22:51 tests
+---
+---

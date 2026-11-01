@@ -19,7 +19,10 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import/override with your plugins
+    -- NOTE: this lazy.nvim version does not recurse into subdirectories,
+    -- so plugins/lang/*.lua must be imported explicitly.
     { import = "plugins" },
+    { import = "plugins.lang" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
@@ -30,7 +33,9 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "tokyonight", "habamax" } },
+  -- emberbox lives in the config dir (always on rtp), so it is safe as the
+  -- first-install fallback; habamax is the vim builtin last resort.
+  install = { colorscheme = { "emberbox", "habamax" } },
   checker = {
     enabled = true, -- check for plugin updates periodically
     notify = false, -- notify on update
