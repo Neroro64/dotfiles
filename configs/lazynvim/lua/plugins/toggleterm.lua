@@ -222,12 +222,12 @@ return {
       paste(maki, rel_path .. ":" .. vim.fn.line("."))
     end
 
-    --- Pick one or more buffers (snacks multi-select) and paste their contents
-    --- into maki as fenced code blocks.
+    --- Pick one or more buffers and paste their contents into maki as
+    --- fenced code blocks. Selection is multi-select: <Tab> toggles items,
+    --- <C-a> selects all; plain <CR> sends the highlighted buffer.
     local function maki_send_buffers()
       Snacks.picker({
         source = "buffers",
-        multi = true,
         confirm = function(picker)
           -- fall back to the highlighted buffer when nothing is multi-selected
           local items = picker:selected({ fallback = true })
@@ -242,11 +242,15 @@ return {
             local buf = item.buf
             if vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_is_loaded(buf) then
               local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
-              local rel = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ":.:~")
-              if rel == "" then
-                rel = string.format("[Buffer %d]", buf)
+              -- fnamemodify("") returns the cwd, so check for a name first
+              local name = vim.api.nvim_buf_get_name(buf)
+              local rel = name ~= "" and vim.fn.fnamemodify(name, ":.:~") or string.format("[Buffer %d]", buf)
+              -- filetype may be unset for buffers never opened in a window
+              local ft = vim.bo[buf].filetype
+              if ft == "" and name ~= "" then
+                ft = vim.filetype.match({ filename = name }) or ""
               end
-              table.insert(blocks, fenced(rel, vim.bo[buf].filetype, lines))
+              table.insert(blocks, fenced(rel, ft, lines))
             end
           end
 
