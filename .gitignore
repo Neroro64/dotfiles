@@ -13,3 +13,4 @@ lazy-lock.json
 # omp
 *.mdb
 **/blobs/*
+omp/natives/
