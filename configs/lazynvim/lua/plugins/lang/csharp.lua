@@ -49,6 +49,10 @@ return {
     "mason-org/mason.nvim",
     optional = true,
     opts = function(_, opts)
+      opts.registries = opts.registries or { "github:mason-org/mason-registry" }
+      if not vim.tbl_contains(opts.registries, "github:Crashdummyy/mason-registry") then
+        table.insert(opts.registries, "github:Crashdummyy/mason-registry")
+      end
       opts.ensure_installed = vim.tbl_filter(function(p)
         return p ~= "fantomas"
       end, opts.ensure_installed or {})

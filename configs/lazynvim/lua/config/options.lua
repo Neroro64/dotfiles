@@ -1,8 +1,25 @@
--- tree-sitter (via cc-rs) generates \\?\-prefixed absolute output paths on Windows.
--- Strawberry Perl's ld.exe rejects these paths with "Invalid argument".
--- LLVM's clang uses lld-link.exe instead, which accepts \\?\ UNC paths.
-if vim.fn.has("win32") == 1 then
-  vim.env.CC = "clang"
+if vim.fn.has("win32") == 1 and not vim.env.CC then
+  local clang = vim.fn.exepath("clang")
+  if clang == "" then
+    local vswhere = (vim.env["ProgramFiles(x86)"] or "C:/Program Files (x86)")
+      .. "/Microsoft Visual Studio/Installer/vswhere.exe"
+    if vim.fn.executable(vswhere) == 1 then
+      local paths = vim.fn.systemlist({
+        vswhere,
+        "-latest",
+        "-products",
+        "*",
+        "-find",
+        "VC/Tools/Llvm/x64/bin/clang.exe",
+      })
+      if vim.v.shell_error == 0 then
+        clang = vim.trim(paths[1] or "")
+      end
+    end
+  end
+  if clang ~= "" and vim.fn.executable(clang) == 1 then
+    vim.env.CC = clang
+  end
 end
 
 -- Empty string = never touch the system clipboard provider. Clipboard access

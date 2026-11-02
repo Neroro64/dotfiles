@@ -11,6 +11,25 @@ local mojo_init_commands = {
 }
 
 return {
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = { ensure_installed = { "mojo" } },
+    init = function()
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "TSUpdate",
+        group = vim.api.nvim_create_augroup("mojo_treesitter", { clear = true }),
+        callback = function()
+          require("nvim-treesitter.parsers").mojo = {
+            install_info = {
+              url = "https://github.com/dmitry-salin/tree-sitter-mojo",
+              revision = "429918d92978087aae3e2c4b00242b8270d9ad6f",
+              queries = "nvim-queries/mojo",
+            },
+          }
+        end,
+      })
+    end,
+  },
   -- Mojo LSP with crash detection + rate-limited auto-restart.
   {
     "neovim/nvim-lspconfig",
