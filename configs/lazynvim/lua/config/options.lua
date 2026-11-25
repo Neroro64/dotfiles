@@ -33,6 +33,11 @@ vim.keymap.set("n", "<leader>uu", function()
   require("undotree").open()
 end, { desc = "Undotree" })
 
+-- Mojo's second official file extension isn't detected by the Neovim runtime
+-- (only `*.mojo` is). Must run before any file is read, hence in options and
+-- not autocmds (which LazyVim defers to VeryLazy).
+vim.filetype.add({ extension = { ["🔥"] = "mojo" } })
+
 --------------------------------------------------------------------------------
 -- Sort helpers (visual mode)
 --------------------------------------------------------------------------------
